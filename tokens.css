@@ -1,0 +1,246 @@
+/* =========================================================================
+   ANSONERI DESIGN SYSTEM — TOKENS
+   Variables for colour, type, spacing, shadow, motion.
+   Import this once per page; everything else inherits.
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap');
+
+:root {
+  /* -------------------- COLOURS — base palette -------------------- */
+  --ans-ink:        #0a0a0a;   /* primary surface · 70% of every page */
+  --ans-ink-2:      #0d0d0d;   /* alt section ground */
+  --ans-ink-3:      #111111;   /* card / spec ground */
+  --ans-ink-elev:   #161616;   /* hover surface */
+  --ans-ink-card:   #181818;   /* card fill */
+
+  --ans-bone:       #f5f3ee;   /* primary text — never #fff */
+  --ans-stone:      #a8a8a3;   /* secondary text · dim */
+  --ans-stone-low:  #6a6a65;   /* tertiary / metadata low */
+
+  --ans-orange:     #ff6b1a;   /* SIGNAL — primary accent / CTA / energy */
+  --ans-persimmon:  #d65a25;   /* PERSIMMON — secondary editorial / ground */
+  --ans-red:        #c8281c;   /* STUDIO RED — sub-brand · stamps · emphasis */
+
+  --ans-line:       #232323;   /* hairline borders, section dividers */
+  --ans-line-soft:  rgba(255,255,255,0.025);
+
+  /* Reserved (light-mode / future) — DO NOT USE without sign-off */
+  --ans-blood-ink:  #1a0f0c;
+  --ans-sand:       #d4cdb8;
+  --ans-bone-light: #f0ebe0;
+
+  /* -------------------- COLOURS — semantic -------------------- */
+  --bg:            var(--ans-ink);
+  --bg-alt:        var(--ans-ink-2);
+  --bg-card:       var(--ans-ink-card);
+  --bg-elev:       var(--ans-ink-elev);
+
+  --fg:            var(--ans-bone);
+  --fg-dim:        var(--ans-stone);
+  --fg-low:        var(--ans-stone-low);
+
+  --accent:        var(--ans-orange);
+  --accent-2:      var(--ans-persimmon);
+  --accent-studio: var(--ans-red);
+
+  --border:        var(--ans-line);
+  --border-soft:   var(--ans-line-soft);
+
+  /* -------------------- TYPE — families -------------------- */
+  --font-display:  'Oswald', 'Anton', sans-serif;             /* condensed display, all-caps */
+  --font-serif:    'Fraunces', 'Cormorant Garamond', serif;   /* italic editorial */
+  --font-body:     'Manrope', system-ui, sans-serif;          /* body */
+  --font-mono:     'JetBrains Mono', ui-monospace, monospace; /* labels, eyebrows */
+
+  /* -------------------- TYPE — sizes -------------------- */
+  --fs-hero:       clamp(3rem, 8vw, 7rem);       /* H1 cover */
+  --fs-h1:         clamp(2.5rem, 6vw, 5rem);     /* section title */
+  --fs-h2:         clamp(2rem, 5vw, 4rem);       /* sub-section */
+  --fs-h3:         clamp(1.5rem, 3vw, 2.4rem);   /* card title */
+  --fs-display-num:clamp(2rem, 5vw, 4rem);       /* oversized numerals */
+  --fs-lead:       clamp(1.15rem, 1.7vw, 1.5rem);/* hero positioning */
+  --fs-serif:      clamp(1.3rem, 2.2vw, 2rem);   /* italic intro */
+  --fs-body:       1rem;
+  --fs-body-lg:    1.1rem;
+  --fs-mono:       0.7rem;
+  --fs-mono-sm:    0.65rem;
+
+  /* -------------------- TYPE — line / tracking -------------------- */
+  --lh-display:    0.92;
+  --lh-tight:      1.05;
+  --lh-body:       1.6;
+  --lh-prose:      1.7;
+
+  --ls-display:    0.005em;
+  --ls-mono:       0.15em;
+  --ls-mono-wide:  0.20em;
+
+  /* -------------------- SPACING -------------------- */
+  --sp-1:   0.4rem;
+  --sp-2:   0.8rem;
+  --sp-3:   1.2rem;
+  --sp-4:   1.6rem;
+  --sp-5:   2rem;
+  --sp-6:   3rem;
+  --sp-7:   5rem;
+  --sp-8:   6rem;
+  --sp-9:   8rem;
+
+  --pad-section-x: 2rem;
+  --pad-section-y: 5rem;
+  --pad-section-x-mobile: 1.2rem;
+
+  /* -------------------- BORDERS / RADII -------------------- */
+  --radius-none: 0;
+  --radius-pill: 999px; /* only the round disc-sticker */
+  --bw:          1px;   /* hairline border default */
+
+  /* -------------------- SHADOWS -------------------- */
+  /* Brand uses background-tone hierarchy, not soft elevation */
+  --shadow-none:  none;
+  --shadow-stamp: 4px 4px 0 rgba(0,0,0,0.5); /* hard offset — stamps only */
+  --shadow-stamp-orange: 4px 4px 0 var(--ans-red);
+
+  /* -------------------- MOTION -------------------- */
+  --ease-out:      cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-snap:     cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-fast:      0.2s;
+  --dur-base:      0.25s;
+  --dur-slow:      0.4s;
+  --dur-reveal:    1s;
+
+  /* -------------------- LAYOUT -------------------- */
+  --grid-bg-size:  32px;
+  --backdrop-blur: blur(12px);
+  --nav-bg:        rgba(10, 10, 10, 0.78);
+}
+
+/* =========================================================================
+   SEMANTIC ELEMENT STYLES
+   Drop into a page along with :root above for instant brand defaults.
+   ========================================================================= */
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Site-wide grain overlay. Apply via `<body class="ans-grain">` or include directly. */
+.ans-grain::before,
+body.ans-grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  opacity: 0.13;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Headings ---------- */
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h1);
+  text-transform: uppercase;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+}
+h1.hero, .hero-title {
+  font-size: var(--fs-hero);
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h2);
+  text-transform: uppercase;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  margin: 0;
+}
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-h3);
+  text-transform: uppercase;
+  line-height: var(--lh-tight);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+/* ---------- Italic serif lead ---------- */
+.serif, .lead-serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-variation-settings: "opsz" 144;
+  font-size: var(--fs-serif);
+  line-height: 1.4;
+  color: var(--fg-dim);
+}
+
+/* ---------- Mono labels / eyebrows ---------- */
+.mono, .eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-mono);
+  letter-spacing: var(--ls-mono);
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+.eyebrow-accent {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: var(--ls-mono-wide);
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ---------- Body prose ---------- */
+p {
+  margin: 0 0 1rem;
+  max-width: 70ch;
+  line-height: var(--lh-prose);
+}
+p.dim { color: var(--fg-dim); }
+p.lead { font-size: var(--fs-lead); font-weight: 300; line-height: 1.4; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur-fast);
+}
+a:hover { color: var(--accent); }
+
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+/* ---------- Section eyebrow row ---------- */
+.section-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: var(--ls-mono-wide);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.8rem;
+}
+
+/* ---------- Accent helpers ---------- */
+.accent      { color: var(--accent); }
+.accent-2    { color: var(--accent-2); }
+.studio-red  { color: var(--accent-studio); }
+.dim         { color: var(--fg-dim); }
+.low         { color: var(--fg-low); }
