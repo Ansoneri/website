@@ -362,7 +362,7 @@ const About = () =>
 
     <div className="about-grid about-grid-v2">
       <div className="about-photo about-photo-v2">
-        <img src="assets/about-portrait.jpeg" alt="Kristers Ansons" />
+        <img src="assets/about-portrait.png" alt="Kristers Ansons" />
         <div className="about-photo-fog" />
         <div className="about-photo-grit" />
         <div className="about-photo-fade" />
@@ -590,7 +590,7 @@ const Cta = () =>
 // ───────── FOOTER ─────────
 const Footer = () =>
 <footer className="footer">
-    <img src="assets/ansoneri-wordmark.png" alt="Ansoneri" className="footer-logo" />
+    <img src="assets/ansoneri-wordmark.svg" alt="Ansoneri" className="footer-logo" />
     <div className="footer-contacts">
       <a href="https://instagram.com/ansons_k" target="_blank" rel="noopener noreferrer" className="footer-c">
         <span className="footer-c-tag">◆ IG</span>
