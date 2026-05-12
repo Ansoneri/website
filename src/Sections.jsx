@@ -144,7 +144,7 @@ const Hero = () => {
           </div>
         </div>
         <blockquote className="hero-philosophy">
-          <p className="hero-sub hero-sub-v2">&ldquo;Three practices, engineered with the rigour a serious architect brings to a building — aesthetics, function, and a discipline designed to last decades. No programmes here. A system: drawn by hand, crafted under load, and built on the principles of the Ansoneri philosophy.&rdquo;</p>
+          <p className="hero-sub hero-sub-v2">&ldquo;Three practices, all crafted by the Performance Architect. The standard, held constant by the Ansoneri method: the athlete&rsquo;s discipline, the scientist&rsquo;s rigour, and the designer&rsquo;s eye, built for the modern load. No programmes. A system, composed by hand and tested in real conditions.&rdquo;</p>
         </blockquote>
 
       </div>
