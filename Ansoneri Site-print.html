@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Ansoneri — Performance Architect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="src/tokens.css" />
+<link rel="stylesheet" href="src/site.css" />
+<style>
+  @page { size: A4; margin: 0.5cm; }
+  @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    html, body { background: #0e0d0b !important; }
+    /* Major sections each on their own page */
+    section.section, section.hero, section.contact-section, footer.footer {
+      break-before: page;
+      break-inside: avoid;
+      page-break-inside: avoid;
+    }
+    section.hero { break-before: avoid; }
+    /* Kill sticky/fixed nav and floating chrome */
+    .nav, .tweaks-panel, .cursor-flame, .scroll-spy { position: static !important; }
+    /* Disable transforms and animations */
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+    /* Ensure hero content fits */
+    .hero { min-height: auto !important; padding-bottom: 2rem !important; }
+  }
+</style>
+</head>
+<body data-theme="dark" data-density="editorial" data-show-grid="true" style="font-family: Manrope">
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="src/tweaks-panel.jsx"></script>
+<script type="text/babel" src="src/Sections.jsx"></script>
+<script type="text/babel" src="src/App.jsx"></script>
+<script type="text/babel">
+  (async () => {
+    try { await document.fonts.ready; } catch (e) {}
+    await new Promise(r => setTimeout(r, 1500));
+    window.print();
+  })();
+</script>
+</body>
+</html>
