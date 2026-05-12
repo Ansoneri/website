@@ -362,7 +362,7 @@ const About = () =>
 
     <div className="about-grid about-grid-v2">
       <div className="about-photo about-photo-v2">
-        <img src="assets/about-portrait.png" alt="Kristers Ansons" />
+        <img src="assets/about-portrait.jpg" alt="Kristers Ansons" />
         <div className="about-photo-fog" />
         <div className="about-photo-grit" />
         <div className="about-photo-fade" />
