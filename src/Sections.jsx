@@ -363,21 +363,10 @@ const About = () =>
     <div className="about-grid about-grid-v2">
       <div className="about-photo about-photo-v2">
         <img src="assets/about-portrait.jpg" alt="Kristers Ansons" />
-        <div className="about-photo-fog" />
         <div className="about-photo-grit" />
-        <div className="about-photo-fade" />
-        <span className="frame-cap tl">◆ A / 02 · RIGA, LATVIA</span>
-        <span className="frame-cap br">EST. 2024</span>
-        <span className="tape" style={{ top: '-12px', left: '20px', transform: 'rotate(-4deg)' }}>PROFILE
-</span>
       </div>
 
       <div className="about-body">
-        <div className="about-eyebrow">
-          <span className="bar" />
-          <span className="lbl">◆ Performance Architect</span>
-        </div>
-
         <p className="about-lead">
           I'm <span className="em">Kristers Ansons</span> — part pro cyclist, part
           sports-psych researcher, part <span className="accent">brand surgeon.</span>
