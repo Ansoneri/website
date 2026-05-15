@@ -25,8 +25,8 @@ const TopNav = ({ active, theme, onTheme, lang, onLang }) => {
   React.useEffect(() => {setMenuOpen(false);}, [active]);
   const items = [
   ['hero', '00', 'Index'],
-  ['practices', '01', 'Practices'],
-  ['about', '02', 'About'],
+  ['about', '01', 'About'],
+  ['practices', '02', 'Practices'],
   ['pricing', '03', 'Pricing'],
   ['journal', '04', 'Journal'],
   ['contact', '05', 'Contact']];
@@ -256,10 +256,10 @@ const PatternBlock = ({ kind = 'dots' }) => {
 
 const Practices = ({ blobsLocked }) =>
 <section className="section practices-section" id="practices">
-    <SectionNumeral n="01" />
+    <SectionNumeral n="02" />
     <div className="section-head section-head-pattern">
       <div className="head-l">
-        <div className="section-num">◆ 01 / Practices</div>
+        <div className="section-num">◆ 02 / Practices</div>
         <h2 className="section-h">
           <span className="sf">One operator.</span><br />
           Two fields of expertise<span className="o">.</span>
@@ -344,10 +344,10 @@ const Practices = ({ blobsLocked }) =>
 // duplicate of credentials. Bigger desktop type.
 const About = () =>
 <section className="section alt about-section" id="about">
-    <SectionNumeral n="02" />
+    <SectionNumeral n="01" />
     <div className="section-head">
       <div>
-        <div className="section-num">◆ 02 / About</div>
+        <div className="section-num">◆ 01 / About</div>
         <h2 className="section-h">
           <span className="sf">THE MAN B EHIND THE OPERATION.</span><br />
           One thesis<span className="o">
@@ -378,30 +378,40 @@ const About = () =>
           <span className="lbl">◆ Performance Architect</span>
         </div>
 
-        <p className="about-lead">
-          I'm <span className="em">Kristers Ansons</span> — part pro cyclist, part
-          sports-psych researcher, part <span className="accent">brand surgeon.</span>
-          A caffeinated romantic with a spreadsheet problem.
+        <p className="about-lead" style={{ textAlign: 'center', fontWeight: 700 }}>
+          <strong>PART ATHLETE, PART SCIENTIST, PART DESIGNER.</strong>
         </p>
 
         <p className="about-p">
-          Twelve seasons on the bike. National team kit. A start line at the Worlds
-          and a pile of cracked saddles. The body learned what training actually
-          works under <em>real</em> pressure — and what breaks the moment the
-          season runs long, the rain comes sideways, or life forgets the plan.
+          Twelve seasons as a pro cyclist, racing in the national team kit with
+          starts at the European Championships. Pro sport is its own school — the
+          intensity, the discipline, the long pursuit of results that builds a
+          champion's mindset season by season. Today I train as a hybrid athlete:
+          strength training, HYROX, and an Ironman in progress. The aim is to push
+          the body across every discipline I can find, see how it responds to each,
+          and develop it to the fullest of what is physically possible.
         </p>
         <p className="about-p">
-          Then I went back to school. <strong>MSc in Psychological Coaching and
-          Sports Science.</strong> Today I'm a researcher at the RSU/LSPA Centre
-          for Sports Healthcare Research and on the EU <span className="em">Sport-IE</span> project.
-          The psychology degree taught me what makes the work <em>stick</em> when
-          motivation has packed up and gone home.
+          The body is just part of it; the mind does the rest. The academic side
+          runs in parallel for that reason — an MSc in Psychological Coaching and
+          Sports Science, and a PhD in progress at Riga Stradiņš University in
+          Latvia. The research is the grounding: where practical experience gets
+          tested against the literature, where what holds in training gets checked
+          against the physiology, the cognitive science, and the evidence that
+          actually replicates.
         </p>
         <p className="about-p">
-          I now run two practices under one roof — Fitness for the people who train,
-          Studio for the people who teach. Same thesis: <span className="red">body,
-          mind and brand are one machine,</span> not three. Built by hand. No
-          templates. <em>Espresso optional, intent mandatory.</em>
+          Today I run three practices: Physique, Intellect, and Brand. The Ansoneri
+          standard is the core of all three — the same blueprint, the same rigour,
+          the same refusal to publish anything that has not been drafted and held
+          to scale. A client may come for one, for two, or for all three; the
+          standard is what stays constant.
+        </p>
+        <p className="about-p">
+          That standard is what I have built across twelve seasons of competition,
+          years of academic work, and a relentless pursuit of personal excellence.
+          The foundation is real. The pursuit continues — deeper in the science,
+          sharper in the practice, into what serious work still has to teach.
         </p>
 
         <div className="about-sign">

@@ -59,8 +59,8 @@ const App = () => {
       />
 
       <Hero />
-      <Practices blobsLocked={t.blobsLocked} />
       <About />
+      <Practices blobsLocked={t.blobsLocked} />
       <Metrics />
       <Pricing />
       <Manifesto />
