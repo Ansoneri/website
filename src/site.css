@@ -1413,10 +1413,10 @@ a:hover { color: var(--accent); }
 
 /* ───────── ABOUT V2 photo fade + body ───────── */
 .about-grid-v2 {
-  grid-template-columns: clamp(560px, 48vw, 1100px) minmax(0, 1fr) !important;
-  gap: 0 !important;
-  max-width: clamp(1100px, 92vw, 1900px);
-  margin-inline: auto;
+  grid-template-columns: clamp(520px, 46vw, 1000px) minmax(0, 1fr) !important;
+  gap: 2.5rem !important;
+  max-width: none;
+  margin-inline: 0;
   align-items: center;
 }
 .about-photo-v2 {
@@ -1424,10 +1424,11 @@ a:hover { color: var(--accent); }
   min-height: 720px;
   max-height: none;
   border-right: 0;
+  margin-left: calc(-1 * var(--pad-section-x) + 0.5rem);
 }
 .about-section .about-body {
-  padding: 2rem 0;
-  margin-left: -7rem;
+  padding: 2rem 1rem 2rem 0;
+  margin-left: 0;
   position: relative;
   z-index: 3;
   display: flex;
@@ -2212,3 +2213,38 @@ a:hover { color: var(--accent); }
   font-size: inherit !important;
   letter-spacing: inherit !important;
 }
+
+/* ───────── ABOUT section-num: larger, accent ───────── */
+.about-section .about-section-num {
+  font-size: 1.15rem;
+  letter-spacing: 0.24em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* ───────── HERO → ABOUT seamless transition ─────────
+   - Drop the hard border at the hero bottom
+   - Let the hero image extend full-width and fade to transparent at the base
+   - Match about background to hero base so it blends */
+.hero, .hero-v2 { border-bottom: 0 !important; }
+.hero-v3 .hero-bg-single .hero-half.full img {
+  width: 100% !important;
+  object-position: 50% 48% !important;
+  -webkit-mask-image:
+    linear-gradient(to bottom, #000 0, #000 72%, transparent 100%) !important;
+          mask-image:
+    linear-gradient(to bottom, #000 0, #000 72%, transparent 100%) !important;
+}
+/* Soften the dark vignette at the very bottom so the image fade reads,
+   while keeping the top dark for the headline contrast. */
+.hero-v3 .hero-fog {
+  background:
+    radial-gradient(ellipse at 35% 55%, transparent 0%, color-mix(in srgb, #000 30%, transparent) 60%, color-mix(in srgb, #000 55%, transparent) 100%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 40%, transparent) 0%,
+      transparent 22%,
+      transparent 70%,
+      color-mix(in srgb, var(--bg) 35%, transparent) 92%,
+      var(--bg) 100%) !important;
+}
+.about-section { border-top: 0; background: var(--bg) !important; }

@@ -347,12 +347,7 @@ const About = () =>
     <SectionNumeral n="01" />
     <div className="section-head">
       <div>
-        <div className="section-num">◆ 01 / About</div>
-        <h2 className="section-h">
-          <span className="sf">THE MAN B EHIND THE OPERATION.</span><br />
-          One thesis<span className="o">
-</span>
-        </h2>
+        <div className="section-num about-section-num">◆ 01 / About</div>
       </div>
       <div className="meta">
         <span><span className="o">◆</span> Kristers Ansons</span>
@@ -367,13 +362,13 @@ const About = () =>
       </div>
 
       <div className="about-body">
-        <p className="about-lead" style={{ textAlign: 'center', fontWeight: 700 }}>
-          <strong>PART ATHLETE, PART SCIENTIST, PART DESIGNER.</strong>
+        <p className="about-lead">
+          PART ATHLETE, PART SCIENTIST, PART DESIGNER.
         </p>
 
         <p className="about-p">
           Twelve seasons as a pro cyclist, racing in the national team kit with
-          starts at the European Championships. Pro sport is its own school — the
+          starts at the European Championships. Pro sport is its own school - the
           intensity, the discipline, the long pursuit of results that builds a
           champion's mindset season by season. Today I train as a hybrid athlete:
           strength training, HYROX, and an Ironman in progress. The aim is to push
@@ -382,7 +377,7 @@ const About = () =>
         </p>
         <p className="about-p">
           The body is just part of it; the mind does the rest. The academic side
-          runs in parallel for that reason — an MSc in Psychological Coaching and
+          runs in parallel for that reason - an MSc in Psychological Coaching and
           Sports Science, and a PhD in progress at Riga Stradiņš University in
           Latvia. The research is the grounding: where practical experience gets
           tested against the literature, where what holds in training gets checked
@@ -391,7 +386,7 @@ const About = () =>
         </p>
         <p className="about-p">
           Today I run three practices: Physique, Intellect, and Brand. The Ansoneri
-          standard is the core of all three — the same blueprint, the same rigour,
+          standard is the core of all three - the same blueprint, the same rigour,
           the same refusal to publish anything that has not been drafted and held
           to scale. A client may come for one, for two, or for all three; the
           standard is what stays constant.
@@ -399,7 +394,7 @@ const About = () =>
         <p className="about-p">
           That standard is what I have built across twelve seasons of competition,
           years of academic work, and a relentless pursuit of personal excellence.
-          The foundation is real. The pursuit continues — deeper in the science,
+          The foundation is real. The pursuit continues - deeper in the science,
           sharper in the practice, into what serious work still has to teach.
         </p>
 
