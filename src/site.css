@@ -2223,28 +2223,35 @@ a:hover { color: var(--accent); }
 }
 
 /* ───────── HERO → ABOUT seamless transition ─────────
-   - Drop the hard border at the hero bottom
-   - Let the hero image extend full-width and fade to transparent at the base
-   - Match about background to hero base so it blends */
+   The fade lives on the hero section itself, not on the parallaxed
+   background, so it stays anchored at the seam while the image scrolls. */
 .hero, .hero-v2 { border-bottom: 0 !important; }
 .hero-v3 .hero-bg-single .hero-half.full img {
   width: 100% !important;
   object-position: 50% 48% !important;
-  -webkit-mask-image:
-    linear-gradient(to bottom, #000 0, #000 72%, transparent 100%) !important;
-          mask-image:
-    linear-gradient(to bottom, #000 0, #000 72%, transparent 100%) !important;
 }
-/* Soften the dark vignette at the very bottom so the image fade reads,
-   while keeping the top dark for the headline contrast. */
+/* Strip the bottom dark from the parallaxed fog so it doesn't double up
+   with the section fade and shift around on scroll. */
 .hero-v3 .hero-fog {
   background:
     radial-gradient(ellipse at 35% 55%, transparent 0%, color-mix(in srgb, #000 30%, transparent) 60%, color-mix(in srgb, #000 55%, transparent) 100%),
     linear-gradient(180deg,
       color-mix(in srgb, var(--bg) 40%, transparent) 0%,
       transparent 22%,
-      transparent 70%,
-      color-mix(in srgb, var(--bg) 35%, transparent) 92%,
-      var(--bg) 100%) !important;
+      transparent 100%) !important;
+}
+/* Pinned bottom fade on the hero section (above bg z:auto, below content z:3). */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 32%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--bg) 30%, transparent) 45%,
+    color-mix(in srgb, var(--bg) 75%, transparent) 78%,
+    var(--bg) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 .about-section { border-top: 0; background: var(--bg) !important; }
