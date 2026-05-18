@@ -2255,5 +2255,11 @@ a:hover { color: var(--accent); }
   z-index: 1;
 }
 .about-section { border-top: 0; background: var(--bg) !important; padding-top: calc(var(--pad-section-y) + 20px); padding-bottom: calc(var(--pad-section-y) + 4rem); }
+.about-section .about-body { isolation: isolate; }
+.about-section .about-body::before {
+  content: ""; position: absolute; inset: -3rem -4rem; z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0) 75%);
+  filter: blur(18px); pointer-events: none;
+}
 .about-section .about-sign { margin-top: 1.5rem; }
 .metrics { margin-top: 3rem; }
