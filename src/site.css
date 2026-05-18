@@ -1178,7 +1178,7 @@ a:hover { color: var(--accent); }
 .hero-triad-word { font-size: clamp(1.8rem, 4.2vw, 5rem) !important; }
 
 /* philosophy quote: centered, +20px font */
-.hero-philosophy { margin: 1.6rem auto 1rem !important; padding: 0.4rem 1.2rem !important; max-width: 80ch; text-align: center; border-left: 3px solid var(--fg); }
+.hero-philosophy { margin: 1.6rem auto 1rem !important; padding: 0.4rem 1.2rem !important; max-width: 80ch; text-align: center; border-left: 0; }
 .hero-philosophy .hero-sub-v2 { margin: 0 !important; padding: 0 !important; color: var(--fg) !important; font-style: italic; font-weight: 400; font-size: clamp(1.05rem, 1.4vw, 1.75rem) !important; line-height: 1.45; }e-height: 1.55; font-family: Fraunces, serif; }
 
 /* CTA closer to quote */
@@ -1711,14 +1711,15 @@ a:hover { color: var(--accent); }
   padding: 0 !important;
 }
 .hero-v3 .hero-philosophy {
-  max-width: 80ch !important;
-  width: min(80ch, calc(100vw - 3rem)) !important;
+  max-width: 56ch !important;
+  width: min(56ch, calc(100vw - 2.5rem)) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   transform: translateY(30px) !important;
   text-align: center !important;
   position: relative !important;
   z-index: 4 !important;
+  border-left: 0 !important;
 }
 .hero-v3 .hero-philosophy::before {
   content: ""; position: absolute; inset: -1.6rem -3rem; z-index: -1;
@@ -2253,6 +2254,6 @@ a:hover { color: var(--accent); }
   pointer-events: none;
   z-index: 1;
 }
-.about-section { border-top: 0; background: var(--bg) !important; padding-bottom: calc(var(--pad-section-y) + 4rem); }
+.about-section { border-top: 0; background: var(--bg) !important; padding-top: calc(var(--pad-section-y) + 20px); padding-bottom: calc(var(--pad-section-y) + 4rem); }
 .about-section .about-sign { margin-top: 1.5rem; }
 .metrics { margin-top: 3rem; }
