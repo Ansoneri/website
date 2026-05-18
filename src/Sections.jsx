@@ -367,35 +367,31 @@ const About = () =>
         </p>
 
         <p className="about-p">
-          Twelve seasons as a pro cyclist, racing in the national team kit with
-          starts at the European Championships. Pro sport is its own school - the
-          intensity, the discipline, the long pursuit of results that builds a
-          champion's mindset season by season. Today I train as a hybrid athlete:
-          strength training, HYROX, and an Ironman in progress. The aim is to push
-          the body across every discipline I can find, see how it responds to each,
-          and develop it to the fullest of what is physically possible.
+          12 seasons pro cyclist, racing internationally with starts at the
+          European Championships. There I learned the intensity, discipline, and
+          the long pursuit of results that builds a champion's mindset. Today I
+          am developing myself as a hybrid athlete. Hyrox, Ironman, strength and
+          endurance. The aim is to push my body across domains and develop it to
+          the fullest of what is physically possible.
         </p>
         <p className="about-p">
-          The body is just part of it; the mind does the rest. The academic side
-          runs in parallel for that reason - an MSc in Psychological Coaching and
-          Sports Science, and a PhD in progress at Riga Stradiņš University in
-          Latvia. The research is the grounding: where practical experience gets
-          tested against the literature, where what holds in training gets checked
-          against the physiology, the cognitive science, and the evidence that
-          actually replicates.
+          The mind doesn't sleep. Recently graduated MSc in Psychological
+          Coaching and Sports Science, and a PhD in progress (Riga Stradins
+          University, Latvia). There my practical experience gets tested against
+          the literature, the physiology, the cognitive science, and the
+          evidence that actually matters.
         </p>
         <p className="about-p">
-          Today I run three practices: Physique, Intellect, and Brand. The Ansoneri
-          standard is the core of all three - the same blueprint, the same rigour,
-          the same refusal to publish anything that has not been drafted and held
-          to scale. A client may come for one, for two, or for all three; the
-          standard is what stays constant.
+          I run 3 practices: Physique, Intellect, and Brand. Completely different
+          fields, but The Ansoneri standard is the core of all three - blueprint,
+          rigour, and a refusal to publish anything that has not been tested in
+          the real world.
         </p>
         <p className="about-p">
           That standard is what I have built across twelve seasons of competition,
           years of academic work, and a relentless pursuit of personal excellence.
-          The foundation is real. The pursuit continues - deeper in the science,
-          sharper in the practice, into what serious work still has to teach.
+          The foundation is there but the pursuit still continues - deeper in the
+          science, sharper in the practice, into what it means to be world class.
         </p>
 
         <div className="about-sign">

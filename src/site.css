@@ -1415,8 +1415,8 @@ a:hover { color: var(--accent); }
 .about-grid-v2 {
   grid-template-columns: clamp(520px, 46vw, 1000px) minmax(0, 1fr) !important;
   gap: 2.5rem !important;
-  max-width: none;
-  margin-inline: 0;
+  max-width: 1800px;
+  margin-inline: auto;
   align-items: center;
 }
 .about-photo-v2 {
@@ -1424,7 +1424,6 @@ a:hover { color: var(--accent); }
   min-height: 720px;
   max-height: none;
   border-right: 0;
-  margin-left: calc(-1 * var(--pad-section-x) + 0.5rem);
 }
 .about-section .about-body {
   padding: 2rem 1rem 2rem 0;
@@ -2254,4 +2253,6 @@ a:hover { color: var(--accent); }
   pointer-events: none;
   z-index: 1;
 }
-.about-section { border-top: 0; background: var(--bg) !important; }
+.about-section { border-top: 0; background: var(--bg) !important; padding-bottom: calc(var(--pad-section-y) + 4rem); }
+.about-section .about-sign { margin-top: 1.5rem; }
+.metrics { margin-top: 3rem; }
