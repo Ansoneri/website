@@ -1167,19 +1167,19 @@ a:hover { color: var(--accent); }
 .hero-role-row, .hero-role-row-shifted { margin-top: 0.4rem !important; }
 
 /* triad: centered, tighter desc */
-.hero-triad { margin: 4rem auto !important; max-width: 1200px; padding: 0 !important; gap: clamp(2rem, 5vw, 5rem) !important; transform: translateY(80px) !important; transform-origin: center top !important; position: relative !important; z-index: 4 !important; justify-content: center !important; }
+.hero-triad { margin: 4rem auto !important; max-width: clamp(1200px, 80vw, 1900px); padding: 0 !important; gap: clamp(2rem, 5vw, 7rem) !important; transform: translateY(80px) !important; transform-origin: center top !important; position: relative !important; z-index: 4 !important; justify-content: center !important; }
 .hero-triad::before {
   content: ""; position: absolute; inset: -3rem -4rem; z-index: -1;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0) 75%);
   filter: blur(18px); pointer-events: none;
 }
 .hero-triad-col { gap: 0.35rem !important; }
-.hero-triad-desc { margin-top: 0.2rem !important; height: auto !important; color: rgb(207,207,207) !important; font-family: Georgia, serif; font-weight: 500; font-size: clamp(0.85rem, 1vw, 1.15rem) !important; }
-.hero-triad-word { font-size: clamp(1.8rem, 4.2vw, 5rem) !important; }
+.hero-triad-desc { margin-top: 0.2rem !important; height: auto !important; color: rgb(207,207,207) !important; font-family: Georgia, serif; font-weight: 500; font-size: clamp(0.85rem, 1vw, 1.55rem) !important; }
+.hero-triad-word { font-size: clamp(1.8rem, 4.2vw, 7rem) !important; }
 
 /* philosophy quote: centered, +20px font */
-.hero-philosophy { margin: 1.6rem auto 1rem !important; padding: 0.4rem 1.2rem !important; max-width: 80ch; text-align: center; border-left: 0; }
-.hero-philosophy .hero-sub-v2 { margin: 0 !important; padding: 0 !important; color: var(--fg) !important; font-style: italic; font-weight: 400; font-size: clamp(1.05rem, 1.4vw, 1.75rem) !important; line-height: 1.45; }e-height: 1.55; font-family: Fraunces, serif; }
+.hero-philosophy { margin: 1.6rem auto 1rem !important; padding: 0.4rem 1.2rem !important; max-width: 96ch; text-align: center; border-left: 0; }
+.hero-philosophy .hero-sub-v2 { margin: 0 !important; padding: 0 !important; color: var(--fg) !important; font-style: italic; font-weight: 400; font-size: clamp(1.2rem, 1.3vw, 1.9rem) !important; line-height: 1.45; }e-height: 1.55; font-family: Fraunces, serif; }
 
 /* CTA closer to quote */
 .hero-cta-row.hero-cta-centered { margin-top: 0.8rem !important; }
@@ -1711,8 +1711,8 @@ a:hover { color: var(--accent); }
   padding: 0 !important;
 }
 .hero-v3 .hero-philosophy {
-  max-width: 56ch !important;
-  width: min(56ch, calc(100vw - 2.5rem)) !important;
+  max-width: 96ch !important;
+  width: min(96ch, calc(100vw - 2.5rem)) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   transform: translateY(30px) !important;
@@ -2145,7 +2145,7 @@ a:hover { color: var(--accent); }
 /* Center triad descriptions under their keywords */
 .hero .hero-triad-col { text-align: center !important; align-items: center !important; }
 .hero .hero-triad-word { text-align: center !important; }
-.hero .hero-triad-desc { text-align: center !important; max-width: 28ch; margin-left: auto !important; margin-right: auto !important; }
+.hero .hero-triad-desc { text-align: center !important; max-width: 34ch; margin-left: auto !important; margin-right: auto !important; }
 
 /* Foggy text-shadow halo on all hero text (same direction as KRISTERS' shadow)
    — smaller text gets tighter, denser shadow so it still stands clear of the
