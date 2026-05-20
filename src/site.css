@@ -2299,6 +2299,12 @@ a:hover { color: var(--accent); }
     align-items: center !important;
     text-align: center !important;
   }
+  /* KRISTERS visually sits a touch right because of its letter-spacing
+     and outlined stroke; nudge it left so it lands centred over ANSONS */
+  .hero-v3 .hero-name-bigger .hn-first {
+    margin-left: -0.14em !important;
+    letter-spacing: 0.02em !important;
+  }
   .hero-name-left .hero-role-row,
   .hero-name-left .hero-role-row-shifted,
   .hero-v3 .hero-role-row,
@@ -2307,23 +2313,42 @@ a:hover { color: var(--accent); }
     margin-left: 0 !important;
     flex-wrap: wrap;
   }
+  /* Bigger THE PERFORMANCE / Architect row on phones */
+  .hero-v3 .hero-name-bigger .hero-role,
+  .hero-v3 .hero-name-bigger .hero-role .sf,
+  .hero-v3 .hero-name-bigger .hero-role .hr-arch {
+    font-size: clamp(0.95rem, 3.6vw, 1.45rem) !important;
+    letter-spacing: 0.35em !important;
+  }
   /* Roughly 2× the current hero name size on phones */
   .hero-v3 .hero-name-bigger .hero-name {
     font-size: clamp(4rem, 22vw, 14rem) !important;
   }
 
-  /* Reframe the hero portrait so the face stays in view; let it
-     occupy less vertical room if needed (we keep other spacing). */
+  /* Hero portrait: between fully cropped (face cut off) and fully
+     contained (black gap below). object-fit:cover with a top-leaning
+     position keeps the face in frame; no scale transform so the
+     bottom of the image lands at the hero fade rather than being
+     pushed past it. */
   .hero-v3 .hero-bg-single .hero-half.full img {
-    object-fit: contain !important;
-    object-position: center 6% !important;
+    object-fit: cover !important;
+    object-position: center 12% !important;
     transform: none !important;
     width: 100% !important;
   }
 
   /* Push the lower hero content down a bit so it doesn't sit on the face */
-  .hero-v3 .hero-hook-low { padding-top: 0.5rem !important; }
-  .hero-v3 .hero-triad { margin-top: 1.5rem !important; }
+  .hero-v3 .hero-hook-low { padding-top: 1.5rem !important; }
+  .hero-v3 .hero-triad { margin-top: 3.5rem !important; transform: translateY(0) !important; }
+  .hero-v3 .hero-philosophy { margin-top: 2rem !important; }
+
+  /* Kill any tiny right-edge gap caused by the desktop rule
+     width: calc(100% - 50px) on the bg image and any horizontal
+     overflow elsewhere on the page. */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  .hero-bg-single,
+  .hero-bg-single .hero-half.full,
+  .hero-bg-single .hero-half.full img { width: 100% !important; right: 0 !important; }
 
   /* ───────── Practices on mobile ───────── */
   /* Match hero's horizontal padding instead of the heavier section padding */
