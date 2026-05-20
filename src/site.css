@@ -2263,3 +2263,101 @@ a:hover { color: var(--accent); }
 }
 .about-section .about-sign { margin-top: 1.5rem; }
 .metrics { margin-top: 3rem; }
+
+/* ───────── Hero headline: dynamic position + bigger on wide screens ───────── */
+/* Defaults — left-aligned but with a viewport-scaled margin so the
+   block sits comfortably away from the left edge instead of hugging it. */
+.hero-v3 .hero-hook-low .hero-name-block.hero-name-left {
+  margin-left: clamp(20px, 5vw, 240px) !important;
+  max-width: clamp(560px, 70vw, 1900px) !important;
+}
+.hero-v3 .hero-name-bigger .hero-name {
+  font-size: clamp(3rem, 11vw, 22rem) !important;
+}
+
+/* On ultrawide / 27"+ monitors, slide the block further toward the
+   middle and let the type breathe. */
+@media (min-width: 1900px) {
+  .hero-v3 .hero-hook-low .hero-name-block.hero-name-left {
+    margin-left: clamp(160px, 11vw, 520px) !important;
+  }
+}
+
+/* ───────── Mobile (≤800px) ───────── */
+@media (max-width: 800px) {
+  /* Centre the hero headline lockup */
+  .hero-v3 .hero-hook-low .hero-name-block.hero-name-left,
+  .hero-name-left {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+    padding: 0 1rem !important;
+  }
+  .hero-v3 .hero-hook-low .hero-name-block.hero-name-left .hero-name,
+  .hero-name-left .hero-name {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  .hero-name-left .hero-role-row,
+  .hero-name-left .hero-role-row-shifted,
+  .hero-v3 .hero-role-row,
+  .hero-v3 .hero-role-row-shifted {
+    justify-content: center !important;
+    margin-left: 0 !important;
+    flex-wrap: wrap;
+  }
+  /* Roughly 2× the current hero name size on phones */
+  .hero-v3 .hero-name-bigger .hero-name {
+    font-size: clamp(4rem, 22vw, 14rem) !important;
+  }
+
+  /* Reframe the hero portrait so the face stays in view; let it
+     occupy less vertical room if needed (we keep other spacing). */
+  .hero-v3 .hero-bg-single .hero-half.full img {
+    object-fit: contain !important;
+    object-position: center 6% !important;
+    transform: none !important;
+    width: 100% !important;
+  }
+
+  /* Push the lower hero content down a bit so it doesn't sit on the face */
+  .hero-v3 .hero-hook-low { padding-top: 0.5rem !important; }
+  .hero-v3 .hero-triad { margin-top: 1.5rem !important; }
+
+  /* ───────── Practices on mobile ───────── */
+  /* Match hero's horizontal padding instead of the heavier section padding */
+  .practices-section {
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+  /* Stack the two cards and override the inline right-padding (~535px) so
+     copy can flow instead of wrapping one word per line. */
+  .practices-grid { gap: 1.2rem !important; }
+  .practices-section .practice {
+    padding: 1.6rem 1.2rem !important;
+    min-height: auto !important;
+  }
+  /* Shrink the photo halos and keep them out of the text's way; text
+     is allowed to overlap them at this breakpoint. */
+  .practice-photo,
+  .fitness-photo,
+  .studio-photo {
+    width: 55% !important;
+    height: 45% !important;
+    top: 0 !important;
+    right: 0 !important;
+    opacity: 0.85;
+  }
+  .practice .desc { max-width: none !important; }
+  .practice .title.big {
+    font-size: clamp(2.2rem, 9vw, 3.4rem) !important;
+    margin-top: 0.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .practice-mark.big {
+    font-size: clamp(1.05rem, 4.4vw, 1.6rem) !important;
+    margin-bottom: 0.6rem;
+  }
+  .practice .tagline { font-size: 0.95rem; margin-bottom: 0.8rem; }
+}
