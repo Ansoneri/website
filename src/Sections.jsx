@@ -25,8 +25,8 @@ const TopNav = ({ active, theme, onTheme, lang, onLang }) => {
   React.useEffect(() => {setMenuOpen(false);}, [active]);
   const items = [
   ['hero', '00', 'Index'],
-  ['practices', '01', 'Practices'],
-  ['about', '02', 'About'],
+  ['about', '01', 'About'],
+  ['practices', '02', 'Practices'],
   ['pricing', '03', 'Pricing'],
   ['journal', '04', 'Journal'],
   ['contact', '05', 'Contact']];
@@ -135,16 +135,16 @@ const Hero = () => {
             <p className="hero-triad-desc">An athletic body, engineered for sustained health, performance and aesthetics.</p>
           </div>
           <div className="hero-triad-col">
-            <h2 className="hero-triad-word">Intellect<span className="o">.</span></h2>
-            <p className="hero-triad-desc">Brain development, designed on the principles of sport psychology.</p>
+            <h2 className="hero-triad-word">Brand<span className="o">.</span></h2>
+            <p className="hero-triad-desc">Your offer and charisma, crafted into a profitable digital presence.</p>
           </div>
           <div className="hero-triad-col">
-            <h2 className="hero-triad-word">Brand<span className="o">.</span></h2>
-            <p className="hero-triad-desc">Your charisma, crafted into a profitable online presence.</p>
+            <h2 className="hero-triad-word">Intellect<span className="o">.</span></h2>
+            <p className="hero-triad-desc">Cognitive enhancement, crafted on the principles of neuroscience.</p>
           </div>
         </div>
         <blockquote className="hero-philosophy">
-          <p className="hero-sub hero-sub-v2">&ldquo;Three practices, engineered with the rigour a serious architect brings to a building — aesthetics, function, and a discipline designed to last decades. No programmes here. A system: drawn by hand, crafted under load, and built on the principles of the Ansoneri philosophy.&rdquo;</p>
+          <p className="hero-sub hero-sub-v2">&ldquo;Three practices, all crafted by the Performance Architect. The standard, held constant by the Ansoneri method: the athlete&rsquo;s discipline, the scientist&rsquo;s rigour, and the designer&rsquo;s eye, built for the modern load. No programmes. A system, composed by hand and tested in real conditions.&rdquo;</p>
         </blockquote>
 
       </div>
@@ -256,10 +256,10 @@ const PatternBlock = ({ kind = 'dots' }) => {
 
 const Practices = ({ blobsLocked }) =>
 <section className="section practices-section" id="practices">
-    <SectionNumeral n="01" />
+    <SectionNumeral n="02" />
     <div className="section-head section-head-pattern">
       <div className="head-l">
-        <div className="section-num">◆ 01 / Practices</div>
+        <div className="section-num">◆ 02 / Practices</div>
         <h2 className="section-h">
           <span className="sf">One operator.</span><br />
           Two fields of expertise<span className="o">.</span>
@@ -344,15 +344,10 @@ const Practices = ({ blobsLocked }) =>
 // duplicate of credentials. Bigger desktop type.
 const About = () =>
 <section className="section alt about-section" id="about">
-    <SectionNumeral n="02" />
+    <SectionNumeral n="01" />
     <div className="section-head">
       <div>
-        <div className="section-num">◆ 02 / About</div>
-        <h2 className="section-h">
-          <span className="sf">THE MAN B EHIND THE OPERATION.</span><br />
-          One thesis<span className="o">
-</span>
-        </h2>
+        <div className="section-num about-section-num">◆ 01 / About</div>
       </div>
       <div className="meta">
         <span><span className="o">◆</span> Kristers Ansons</span>
@@ -362,46 +357,45 @@ const About = () =>
 
     <div className="about-grid about-grid-v2">
       <div className="about-photo about-photo-v2">
-        <img src="assets/about-portrait.jpeg" alt="Kristers Ansons" />
-        <div className="about-photo-fog" />
+        <img src="assets/about-portrait.jpg" alt="Kristers Ansons" />
         <div className="about-photo-grit" />
-        <div className="about-photo-fade" />
-        <span className="frame-cap tl">◆ A / 02 · RIGA, LATVIA</span>
-        <span className="frame-cap br">EST. 2024</span>
-        <span className="tape" style={{ top: '-12px', left: '20px', transform: 'rotate(-4deg)' }}>PROFILE
-</span>
       </div>
 
       <div className="about-body">
-        <div className="about-eyebrow">
-          <span className="bar" />
-          <span className="lbl">◆ Performance Architect</span>
-        </div>
-
         <p className="about-lead">
-          I'm <span className="em">Kristers Ansons</span> — part pro cyclist, part
-          sports-psych researcher, part <span className="accent">brand surgeon.</span>
-          A caffeinated romantic with a spreadsheet problem.
+          PART ATHLETE, PART SCIENTIST, PART DESIGNER.
         </p>
 
         <p className="about-p">
-          Twelve seasons on the bike. National team kit. A start line at the Worlds
-          and a pile of cracked saddles. The body learned what training actually
-          works under <em>real</em> pressure — and what breaks the moment the
-          season runs long, the rain comes sideways, or life forgets the plan.
+          Twelve seasons as a pro cyclist, racing internationally with starts at
+          the European Championships. There I learned the intensity, the
+          discipline, and the long pursuit of results that builds a champion's
+          mindset season by season. Today I train as a hybrid athlete: strength
+          training, HYROX, and an Ironman in progress. The aim is to push the
+          body across disciplines, see how it responds to each, and develop it
+          to the fullest of what is physically possible.
         </p>
         <p className="about-p">
-          Then I went back to school. <strong>MSc in Psychological Coaching and
-          Sports Science.</strong> Today I'm a researcher at the RSU/LSPA Centre
-          for Sports Healthcare Research and on the EU <span className="em">Sport-IE</span> project.
-          The psychology degree taught me what makes the work <em>stick</em> when
-          motivation has packed up and gone home.
+          The body is just part of it; the mind does the rest. The academic side
+          runs in parallel for that reason - an MSc in Psychological Coaching and
+          Sports Science, and a PhD in progress at Riga Stradiņš University in
+          Latvia. The research is where practical experience gets tested against
+          the literature - against the physiology, the cognitive science, and the
+          evidence that actually replicates.
         </p>
         <p className="about-p">
-          I now run two practices under one roof — Fitness for the people who train,
-          Studio for the people who teach. Same thesis: <span className="red">body,
-          mind and brand are one machine,</span> not three. Built by hand. No
-          templates. <em>Espresso optional, intent mandatory.</em>
+          Today I run three practices: Physique, Intellect, and Brand. The
+          Ansoneri standard is the core of all three - the same blueprint, the
+          same rigour, the same refusal to publish anything that has not been
+          tested in the real world. A client may come for one, for two, or for
+          all three; the standard is what stays constant.
+        </p>
+        <p className="about-p">
+          That standard is what I have built across twelve seasons of competition,
+          years of academic work, and a relentless pursuit of personal excellence.
+          The foundation is real. The pursuit continues - deeper in the science,
+          sharper in the practice, into what the next decade of work still has
+          to find.
         </p>
 
         <div className="about-sign">
@@ -590,7 +584,7 @@ const Cta = () =>
 // ───────── FOOTER ─────────
 const Footer = () =>
 <footer className="footer">
-    <img src="assets/ansoneri-wordmark.png" alt="Ansoneri" className="footer-logo" />
+    <img src="assets/ansoneri-wordmark.svg" alt="Ansoneri" className="footer-logo" />
     <div className="footer-contacts">
       <a href="https://instagram.com/ansons_k" target="_blank" rel="noopener noreferrer" className="footer-c">
         <span className="footer-c-tag">◆ IG</span>

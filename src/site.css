@@ -1160,26 +1160,26 @@ a:hover { color: var(--accent); }
 .hero-hook-low .hero-name-block { margin-top: 10px !important; margin-left: 20px !important; padding-top: 0 !important; }
 .hero-name-bigger .hero-role-row, .hero-name-bigger .hero-role-row-shifted { font-size: 1.15em !important; }
 .hero-name-bigger .hero-name { font-size: clamp(3rem, 11vw, 16rem) !important; }
-.hero-name-bigger .hn-first { font-size: calc(0.74em - 3px) !important; letter-spacing: -1px !important; margin-left: -0.04em !important; }
+.hero-name-bigger .hn-first { font-size: calc(0.74em - 3px) !important; letter-spacing: -1px !important; margin-left: calc(-0.04em - 4px) !important; }
 .hero-name-bigger .hn-last { font-size: 1em !important; }
 .hero-name { line-height: 0.88; margin-top: 0; }
 .hero-name .hn-last { display: block; margin-top: 0.1rem; }
 .hero-role-row, .hero-role-row-shifted { margin-top: 0.4rem !important; }
 
 /* triad: centered, tighter desc */
-.hero-triad { margin: 4rem auto !important; max-width: 1200px; padding: 0 !important; gap: clamp(2rem, 5vw, 5rem) !important; transform: translateY(80px) !important; transform-origin: center top !important; position: relative !important; z-index: 4 !important; justify-content: center !important; }
+.hero-triad { margin: 4rem auto !important; max-width: clamp(1200px, 82vw, 2100px); padding: 0 !important; gap: clamp(2rem, 5vw, 14rem) !important; transform: translateY(80px) !important; transform-origin: center top !important; position: relative !important; z-index: 4 !important; justify-content: center !important; }
 .hero-triad::before {
   content: ""; position: absolute; inset: -3rem -4rem; z-index: -1;
   background: radial-gradient(ellipse at center, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0) 75%);
   filter: blur(18px); pointer-events: none;
 }
 .hero-triad-col { gap: 0.35rem !important; }
-.hero-triad-desc { margin-top: 0.2rem !important; height: auto !important; color: rgb(207,207,207) !important; font-family: Georgia, serif; font-weight: 500; font-size: clamp(0.85rem, 1vw, 1.15rem) !important; }
-.hero-triad-word { font-size: clamp(1.8rem, 4.2vw, 5rem) !important; }
+.hero-triad-desc { margin-top: 0.2rem !important; height: auto !important; color: rgb(207,207,207) !important; font-family: Georgia, serif; font-weight: 500; font-size: clamp(0.85rem, 1vw, 1.55rem) !important; }
+.hero-triad-word { font-size: clamp(1.8rem, 4.2vw, 7rem) !important; }
 
 /* philosophy quote: centered, +20px font */
-.hero-philosophy { margin: 1.6rem auto 1rem !important; padding: 0.4rem 1.2rem !important; max-width: 80ch; text-align: center; border-left: 3px solid var(--fg); }
-.hero-philosophy .hero-sub-v2 { margin: 0 !important; padding: 0 !important; color: var(--fg) !important; font-style: italic; font-weight: 400; font-size: clamp(1.05rem, 1.4vw, 1.75rem) !important; line-height: 1.45; }e-height: 1.55; font-family: Fraunces, serif; }
+.hero-philosophy { margin: 1.6rem auto 1rem !important; padding: 0.4rem 1.2rem !important; max-width: 96ch; text-align: center; border-left: 0; }
+.hero-philosophy .hero-sub-v2 { margin: 0 !important; padding: 0 !important; color: var(--fg) !important; font-style: italic; font-weight: 400; font-size: clamp(1.2rem, 1.3vw, 1.9rem) !important; line-height: 1.45; }e-height: 1.55; font-family: Fraunces, serif; }
 
 /* CTA closer to quote */
 .hero-cta-row.hero-cta-centered { margin-top: 0.8rem !important; }
@@ -1412,20 +1412,61 @@ a:hover { color: var(--accent); }
 .practice .title.small { font-size: clamp(1.6rem, 2.4vw, 2.4rem) !important; margin-bottom: 1.2rem; }
 
 /* ───────── ABOUT V2 photo fade + body ───────── */
-.about-grid-v2 { grid-template-columns: 1.05fr 1fr !important; gap: 0 !important; }
-.about-photo-v2 { min-height: 720px; border-right: 0; }
-.about-photo-fade {
-  position: absolute; top: 0; bottom: 0; right: -1px;
-  width: 38%; z-index: 2; pointer-events: none; display: none;
-  background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--bg-2) 70%, transparent) 50%, var(--bg-2) 100%);
+.about-grid-v2 {
+  grid-template-columns: clamp(520px, 46vw, 1000px) minmax(0, 1fr) !important;
+  gap: 2.5rem !important;
+  max-width: 1800px;
+  margin-inline: auto;
+  align-items: center;
 }
-.about-section .about-body { padding: 2rem 0 2rem 1.6rem; margin-left: -3rem; position: relative; z-index: 3; }
-.about-lead { font-size: clamp(2.2rem, 4vw, 3.6rem) !important; max-width: none; }
-.about-p { font-size: 1.18rem !important; line-height: 1.72 !important; max-width: 60ch; }
+.about-photo-v2 {
+  aspect-ratio: 3 / 4;
+  min-height: 720px;
+  max-height: none;
+  border-right: 0;
+}
+.about-section .about-body {
+  padding: 2rem 1rem 2rem 0;
+  margin-left: 0;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.about-lead {
+  font-size: clamp(2.2rem, 2.4vw + 1.2rem, 4.6rem) !important;
+  max-width: 78ch !important;
+  margin-inline: auto !important;
+  text-align: center !important;
+}
+.about-section .about-p {
+  font-size: clamp(1.08rem, 0.55vw + 0.85rem, 1.55rem) !important;
+  line-height: 1.7 !important;
+  max-width: 78ch;
+  width: 100%;
+  margin-inline: auto;
+  text-align: justify;
+  text-indent: 1.5em;
+  hyphens: auto;
+}
+.about-section .about-sign {
+  align-self: center;
+}
 @media (max-width: 1100px) {
-  .about-grid-v2 { grid-template-columns: 1fr !important; }
-  .about-section .about-body { margin-left: 0; padding-left: 0; }
-  .about-photo-fade { display: none; }
+  .about-grid-v2 {
+    grid-template-columns: 1fr !important;
+    max-width: none;
+  }
+  .about-photo-v2 { aspect-ratio: auto; }
+  .about-section .about-body {
+    margin-left: 0; padding-left: 0;
+    align-items: stretch;
+    text-align: left;
+  }
+  .about-lead { text-align: left !important; margin-inline: 0 !important; }
+  .about-section .about-p { margin-inline: 0; }
 }
 
 /* ───────── CTA BANNER (parallelogram) ───────── */
@@ -1661,23 +1702,24 @@ a:hover { color: var(--accent); }
 .hero-v3 .hero-triad {
   display: grid !important;
   grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  gap: clamp(2.5rem, 6vw, 6rem) !important;
-  width: min(1100px, calc(100vw - 6rem)) !important;
-  max-width: 1100px !important;
+  gap: clamp(2.5rem, 6vw, 14rem) !important;
+  width: min(2100px, calc(100vw - 4rem)) !important;
+  max-width: clamp(1100px, 60vw, 2100px) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   transform: none !important;
   padding: 0 !important;
 }
 .hero-v3 .hero-philosophy {
-  max-width: 80ch !important;
-  width: min(80ch, calc(100vw - 3rem)) !important;
+  max-width: 96ch !important;
+  width: min(96ch, calc(100vw - 2.5rem)) !important;
   margin-left: auto !important;
   margin-right: auto !important;
   transform: translateY(30px) !important;
   text-align: center !important;
   position: relative !important;
   z-index: 4 !important;
+  border-left: 0 !important;
 }
 .hero-v3 .hero-philosophy::before {
   content: ""; position: absolute; inset: -1.6rem -3rem; z-index: -1;
@@ -1707,24 +1749,26 @@ a:hover { color: var(--accent); }
   vertical-align: middle;
 }
 
-/* ───────── ABOUT photo darken + grit ───────── */
+/* ───────── ABOUT photo: grain only, no darkening ───────── */
 .about-photo img {
-  filter: grayscale(0.32) contrast(1.08) brightness(0.78);
+  filter: none;
   object-fit: cover;
   object-position: center 25%;
-  -webkit-mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, rgba(0,0,0,0.55) 80%, transparent 100%);
-          mask-image: radial-gradient(ellipse 78% 82% at 50% 50%, #000 55%, rgba(0,0,0,0.55) 80%, transparent 100%);
+  -webkit-mask-image: none;
+          mask-image: none;
 }
-.about-photo-fog {
-  position: absolute; inset: 0; z-index: 1;
-  background:
-    radial-gradient(ellipse 80% 70% at 50% 60%, transparent 0%, color-mix(in srgb, #000 35%, transparent) 70%, color-mix(in srgb, #000 70%, transparent) 100%),
-    linear-gradient(180deg, color-mix(in srgb, #000 30%, transparent) 0%, transparent 25%, transparent 70%, color-mix(in srgb, #000 50%, transparent) 100%);
-  pointer-events: none;
-}
+.about-photo-fog { display: none; }
 .about-photo-grit {
-  position: absolute; inset: 0; z-index: 1; opacity: 0.4; mix-blend-mode: overlay;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch' /%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  position: absolute; inset: 0; z-index: 1; opacity: 0.22; mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='4' stitchTiles='stitch' /%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  -webkit-mask-image:
+    linear-gradient(to right,  transparent 0, #000 40px, #000 calc(100% - 160px), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 48px, #000 calc(100% - 56px), transparent 100%);
+          mask-image:
+    linear-gradient(to right,  transparent 0, #000 40px, #000 calc(100% - 160px), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 48px, #000 calc(100% - 56px), transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
   pointer-events: none;
 }
 .about-photo .frame-cap, .about-photo .tape { z-index: 3; }
@@ -1833,13 +1877,21 @@ a:hover { color: var(--accent); }
 }
 .about-photo {
   position: relative; border: 0;
-  background: var(--bg-card); overflow: visible; min-height: 540px;
+  background: transparent; overflow: hidden; min-height: 540px;
 }
+.about-photo::after { display: none; }
 .about-photo img {
   width: 100%; height: 100%; object-fit: cover;
-  -webkit-mask-image: radial-gradient(ellipse 78% 80% at 50% 45%, #000 50%, rgba(0,0,0,0.75) 75%, transparent 100%);
-          mask-image: radial-gradient(ellipse 78% 80% at 50% 45%, #000 50%, rgba(0,0,0,0.75) 75%, transparent 100%);
-  filter: grayscale(0.15) contrast(1.05);
+  object-position: center 25%;
+  -webkit-mask-image:
+    linear-gradient(to right,  transparent 0, #000 40px, #000 calc(100% - 160px), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 48px, #000 calc(100% - 56px), transparent 100%);
+          mask-image:
+    linear-gradient(to right,  transparent 0, #000 40px, #000 calc(100% - 160px), transparent 100%),
+    linear-gradient(to bottom, transparent 0, #000 48px, #000 calc(100% - 56px), transparent 100%);
+  -webkit-mask-composite: source-in;
+          mask-composite: intersect;
+  filter: none;
   position: absolute; inset: 0;
 }
 .about-photo, .about-photo-v2 { border: 0 !important; outline: 0 !important; }
@@ -2093,7 +2145,7 @@ a:hover { color: var(--accent); }
 /* Center triad descriptions under their keywords */
 .hero .hero-triad-col { text-align: center !important; align-items: center !important; }
 .hero .hero-triad-word { text-align: center !important; }
-.hero .hero-triad-desc { text-align: center !important; max-width: 28ch; margin-left: auto !important; margin-right: auto !important; }
+.hero .hero-triad-desc { text-align: center !important; max-width: 34ch; margin-left: auto !important; margin-right: auto !important; }
 
 /* Foggy text-shadow halo on all hero text (same direction as KRISTERS' shadow)
    — smaller text gets tighter, denser shadow so it still stands clear of the
@@ -2160,4 +2212,177 @@ a:hover { color: var(--accent); }
 .hero-v3 .hero-top-bar.hero-top-top .lt {
   font-size: inherit !important;
   letter-spacing: inherit !important;
+}
+
+/* ───────── ABOUT section-num: larger, accent ───────── */
+.about-section .about-section-num {
+  font-size: 1.15rem;
+  letter-spacing: 0.24em;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+/* ───────── HERO → ABOUT seamless transition ─────────
+   The fade lives on the hero section itself, not on the parallaxed
+   background, so it stays anchored at the seam while the image scrolls. */
+.hero, .hero-v2 { border-bottom: 0 !important; }
+.hero-v3 .hero-bg-single .hero-half.full img {
+  width: 100% !important;
+  object-position: 50% 48% !important;
+}
+/* Strip the bottom dark from the parallaxed fog so it doesn't double up
+   with the section fade and shift around on scroll. */
+.hero-v3 .hero-fog {
+  background:
+    radial-gradient(ellipse at 35% 55%, transparent 0%, color-mix(in srgb, #000 30%, transparent) 60%, color-mix(in srgb, #000 55%, transparent) 100%),
+    linear-gradient(180deg,
+      color-mix(in srgb, var(--bg) 40%, transparent) 0%,
+      transparent 22%,
+      transparent 100%) !important;
+}
+/* Pinned bottom fade on the hero section (above bg z:auto, below content z:3). */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: 32%;
+  background: linear-gradient(to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--bg) 30%, transparent) 45%,
+    color-mix(in srgb, var(--bg) 75%, transparent) 78%,
+    var(--bg) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+.about-section { border-top: 0; background: var(--bg) !important; padding-top: calc(var(--pad-section-y) + 20px); padding-bottom: calc(var(--pad-section-y) + 4rem); }
+.about-section .about-body { isolation: isolate; }
+.about-section .about-body::before {
+  content: ""; position: absolute; inset: -3rem -4rem; z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.22) 45%, rgba(0,0,0,0) 75%);
+  filter: blur(18px); pointer-events: none;
+}
+.about-section .about-sign { margin-top: 1.5rem; }
+.metrics { margin-top: 3rem; }
+
+/* ───────── Hero headline: dynamic position + bigger on wide screens ───────── */
+/* Defaults — left-aligned but with a viewport-scaled margin so the
+   block sits comfortably away from the left edge instead of hugging it. */
+.hero-v3 .hero-hook-low .hero-name-block.hero-name-left {
+  margin-left: clamp(20px, 5vw, 240px) !important;
+  max-width: clamp(560px, 70vw, 1900px) !important;
+}
+.hero-v3 .hero-name-bigger .hero-name {
+  font-size: clamp(3rem, 11vw, 22rem) !important;
+}
+
+/* On ultrawide / 27"+ monitors, slide the block further toward the
+   middle and let the type breathe. */
+@media (min-width: 1900px) {
+  .hero-v3 .hero-hook-low .hero-name-block.hero-name-left {
+    margin-left: clamp(160px, 11vw, 520px) !important;
+  }
+}
+
+/* ───────── Mobile (≤800px) ───────── */
+@media (max-width: 800px) {
+  /* Centre the hero headline lockup */
+  .hero-v3 .hero-hook-low .hero-name-block.hero-name-left,
+  .hero-name-left {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    align-items: center !important;
+    padding: 0 1rem !important;
+  }
+  .hero-v3 .hero-hook-low .hero-name-block.hero-name-left .hero-name,
+  .hero-name-left .hero-name {
+    align-items: center !important;
+    text-align: center !important;
+  }
+  /* KRISTERS visually sits a touch right because of its letter-spacing
+     and outlined stroke; nudge it left so it lands centred over ANSONS */
+  .hero-v3 .hero-name-bigger .hn-first {
+    margin-left: calc(-0.14em - 4px) !important;
+    letter-spacing: 0.02em !important;
+  }
+  .hero-name-left .hero-role-row,
+  .hero-name-left .hero-role-row-shifted,
+  .hero-v3 .hero-role-row,
+  .hero-v3 .hero-role-row-shifted {
+    justify-content: center !important;
+    margin-left: 0 !important;
+    flex-wrap: wrap;
+  }
+  /* Bigger THE PERFORMANCE / Architect row on phones */
+  .hero-v3 .hero-name-bigger .hero-role,
+  .hero-v3 .hero-name-bigger .hero-role .sf,
+  .hero-v3 .hero-name-bigger .hero-role .hr-arch {
+    font-size: clamp(0.95rem, 3.6vw, 1.45rem) !important;
+    letter-spacing: 0.35em !important;
+  }
+  /* Roughly 2× the current hero name size on phones */
+  .hero-v3 .hero-name-bigger .hero-name {
+    font-size: clamp(4rem, 22vw, 14rem) !important;
+  }
+
+  /* Hero portrait: between fully cropped (face cut off) and fully
+     contained (black gap below). object-fit:cover with a top-leaning
+     position keeps the face in frame; small scale-down + leftward
+     shift trim a touch of zoom and re-centre the subject. */
+  .hero-v3 .hero-bg-single .hero-half.full img {
+    object-fit: cover !important;
+    object-position: center 12% !important;
+    transform: scale(0.97) translateX(-10px) !important;
+    transform-origin: center top !important;
+    width: 100% !important;
+  }
+
+  /* Push the lower hero content down a bit so it doesn't sit on the face */
+  .hero-v3 .hero-hook-low { padding-top: 1.5rem !important; }
+  .hero-v3 .hero-triad { margin-top: 3.5rem !important; transform: translateY(0) !important; }
+  .hero-v3 .hero-philosophy { margin-top: 2rem !important; }
+
+  /* Kill any tiny right-edge gap caused by the desktop rule
+     width: calc(100% - 50px) on the bg image and any horizontal
+     overflow elsewhere on the page. */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  .hero-bg-single,
+  .hero-bg-single .hero-half.full,
+  .hero-bg-single .hero-half.full img { width: 100% !important; right: 0 !important; }
+
+  /* ───────── Practices on mobile ───────── */
+  /* Match hero's horizontal padding instead of the heavier section padding */
+  .practices-section {
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+  /* Stack the two cards and override the inline right-padding (~535px) so
+     copy can flow instead of wrapping one word per line. */
+  .practices-grid { gap: 1.2rem !important; }
+  .practices-section .practice {
+    padding: 1.6rem 1.2rem !important;
+    min-height: auto !important;
+  }
+  /* Shrink the photo halos and keep them out of the text's way; text
+     is allowed to overlap them at this breakpoint. */
+  .practice-photo,
+  .fitness-photo,
+  .studio-photo {
+    width: 55% !important;
+    height: 45% !important;
+    top: 0 !important;
+    right: 0 !important;
+    opacity: 0.85;
+  }
+  .practice .desc { max-width: none !important; }
+  .practice .title.big {
+    font-size: clamp(2.2rem, 9vw, 3.4rem) !important;
+    margin-top: 0.8rem !important;
+    margin-bottom: 1rem !important;
+  }
+  .practice-mark.big {
+    font-size: clamp(1.05rem, 4.4vw, 1.6rem) !important;
+    margin-bottom: 0.6rem;
+  }
+  .practice .tagline { font-size: 0.95rem; margin-bottom: 0.8rem; }
 }
