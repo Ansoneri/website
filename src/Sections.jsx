@@ -135,12 +135,12 @@ const Hero = () => {
             <p className="hero-triad-desc">An athletic body, engineered for sustained health, performance and aesthetics.</p>
           </div>
           <div className="hero-triad-col">
-            <h2 className="hero-triad-word">Intellect<span className="o">.</span></h2>
-            <p className="hero-triad-desc">Cognitive enhancement, crafted on the principles of neuroscience.</p>
-          </div>
-          <div className="hero-triad-col">
             <h2 className="hero-triad-word">Brand<span className="o">.</span></h2>
             <p className="hero-triad-desc">Your offer and charisma, crafted into a profitable digital presence.</p>
+          </div>
+          <div className="hero-triad-col">
+            <h2 className="hero-triad-word">Intellect<span className="o">.</span></h2>
+            <p className="hero-triad-desc">Cognitive enhancement, crafted on the principles of neuroscience.</p>
           </div>
         </div>
         <blockquote className="hero-philosophy">
