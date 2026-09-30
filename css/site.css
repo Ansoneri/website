@@ -1,0 +1,174 @@
+/* Site-only additions. tokens.css, bundle.css and bundle.js are exports of the
+   Kristers Ansons design system - change the design system and re-export them;
+   anything this site needs on top of them lives here and in js/site.js. */
+
+/* ---------- Page shell (every page) ---------- */
+html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
+.pg { position: relative; overflow-x: hidden; min-height: 100vh; }
+.pg .ka-nav { position: fixed; top: 0; left: 0; right: 0; margin-bottom: 0; background: linear-gradient(to bottom, rgba(3,3,3,0.85), rgba(3,3,3,0)); border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.pg .ka-nav.is-scrolled { background: rgba(3,3,3,0.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+
+/* In-page anchors land below the fixed header */
+.pg [id] { scroll-margin-top: 80px; }
+
+/* Section head: eyebrow + H2 left, copy in the middle, statement right (as on Home) */
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr) auto; gap: 24px 64px; align-items: end; margin-bottom: 40px; }
+.sec-head h2 { margin-top: 18px; }
+.sec-head--two { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.sec-more { margin-top: 32px; }
+
+@media (max-width: 960px) {
+  .sec-head, .sec-head--two { grid-template-columns: 1fr; margin-bottom: 28px; }
+  .sec-head .ka-statement { display: none; }
+  .cards { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ---------- Subpage hero: text left, one photograph beside it at the text's height ---------- */
+.page-hero { padding-top: 152px; }
+.page-hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 64px; align-items: stretch; }
+.page-hero__text { display: flex; flex-direction: column; gap: 24px; justify-content: center; padding: 24px 0 40px; }
+.page-hero__text .ka-eyebrow { margin-bottom: 4px; }
+.page-hero .ka-h1 { font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02; text-wrap: balance; }
+.page-hero .ka-portrait { min-height: 560px; }
+.page-hero--solo .page-hero__text { max-width: 52em; padding-bottom: 0; }
+
+@media (max-width: 960px) {
+  .page-hero { padding-top: 104px; }
+  .page-hero:has(.ka-portrait) { padding-top: 56px; }
+  .page-hero__grid { grid-template-columns: 1fr; gap: 0; }
+  .page-hero__text { padding: 8px 0 0; gap: 18px; }
+  .page-hero .ka-h1 { font-size: 36px; }
+  .page-hero .ka-portrait { min-height: 0; }
+}
+
+/* ---------- Numbered steps (how it works) ---------- */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 56px; margin: 0; padding: 0; list-style: none; }
+.step { display: flex; flex-direction: column; gap: 14px; }
+.step .ka-body { max-width: 30em; }
+@media (max-width: 960px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
+
+/* ---------- Offers (Pakalpojumi): every offer in the same field order ---------- */
+.offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.offer { padding: 36px 32px 32px; gap: 18px; }
+.offer .ka-h3 { font-size: 16px; }
+.offer__for { color: var(--fg-2); margin: 0; }
+.offer__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.offer__list li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.5; color: var(--fg); }
+.offer__list li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 12px; height: 2px; background: var(--accent); }
+.offer__not { margin: 0; }
+.offer__price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
+.offer__price b { font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
+.offer__price span { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-3); }
+.offer .ka-cta { align-self: flex-start; }
+.offer .ka-card__icon { width: 60px; height: 60px; object-fit: contain; mix-blend-mode: screen; margin: -10px 0 -6px -8px; }
+@media (max-width: 1180px) { .offers { grid-template-columns: 1fr; max-width: 640px; } }
+@media (max-width: 960px) {
+  .offer { padding: 28px 20px 24px; }
+  .offer .ka-cta { --ka-cta-h: 48px; max-width: 100%; font-size: 12px; }
+  .offer .ka-cta__label { padding: 0 16px; }
+}
+
+/* ---------- "Not for" list ---------- */
+.not-for { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 44em; }
+.not-for li { position: relative; padding-left: 28px; font-size: 17px; line-height: 1.55; color: var(--fg-2); }
+.not-for li::before { content: ""; position: absolute; left: 0; top: 0.78em; width: 14px; height: 1px; background: var(--fg-3); }
+
+/* ---------- Story beats (Par mani) ---------- */
+.beats { display: flex; flex-direction: column; gap: 56px; margin: 0; padding: 0; list-style: none; }
+.beat { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 16px 64px; align-items: start; }
+.beat__label { display: flex; flex-direction: column; gap: 14px; }
+.beat__text { display: flex; flex-direction: column; gap: 18px; }
+.beat__text .ka-body-l { max-width: 38em; }
+@media (max-width: 960px) {
+  .beats { gap: 40px; }
+  .beat { grid-template-columns: 1fr; }
+  .beat__text .ka-body-l { font-size: 17px; }
+}
+
+/* Receipts with longer figures (10:50:38) */
+.ka-receipts--wide li { grid-template-columns: 150px minmax(0, 1fr); }
+@media (max-width: 960px) { .ka-receipts--wide li { grid-template-columns: 104px minmax(0, 1fr); } }
+
+/* ---------- Record (Rezultāti): a figure beside its light ---------- */
+.record { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 48px; align-items: center; }
+.record__figure { font-family: var(--font-display); font-weight: 700; font-size: clamp(64px, 9vw, 128px); line-height: 0.95; letter-spacing: 0.01em; color: var(--fg); font-variant-numeric: tabular-nums; margin: 18px 0 16px; }
+.record__label { font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg-2); margin: 0 0 24px; }
+.record__glow { position: relative; min-height: 360px; }
+@media (max-width: 960px) {
+  .record { grid-template-columns: 1fr; gap: 0; }
+  .record__glow { order: -1; min-height: 200px; margin: 0 calc(var(--margin-mobile) * -1); }
+}
+
+/* ---------- Closing block: one Fraunces line and the button again ---------- */
+.page-close { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
+.page-close .ka-cta-note { margin-top: -12px; }
+
+/* ---------- Kontakti ---------- */
+.contact { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 64px; align-items: start; }
+.contact__main { display: flex; flex-direction: column; gap: 28px; }
+.contact__main .ka-h1 { font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02; }
+.contact-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.contact-steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: baseline; font-size: 17px; line-height: 1.5; color: var(--fg-2); }
+@media (max-width: 960px) { .contact__main .ka-h1 { font-size: 36px; } }
+.channels { list-style: none; margin: 8px 0 0; padding: 0; border-top: 1px solid var(--rule); max-width: 36em; }
+.channels li { border-bottom: 1px solid var(--rule); }
+.channels a, .channels .channels__static { display: grid; grid-template-columns: 24px 140px minmax(0, 1fr); gap: 20px; align-items: center; padding: 18px 0; color: var(--fg); text-decoration: none; }
+.channels .ka-icon { width: 22px; height: 22px; color: var(--accent); }
+.channels__label { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--fg-3); }
+.channels__value { font-size: 16px; color: var(--fg); overflow-wrap: anywhere; }
+.channels a:hover .channels__value { color: var(--accent); }
+.contact .ka-photo { width: 100%; max-width: 380px; justify-self: end; }
+@media (max-width: 960px) {
+  .contact { grid-template-columns: 1fr; gap: 40px; }
+  .contact .ka-photo { justify-self: start; max-width: 280px; }
+  /* the icon names the channel on phones; the label stays for screen readers */
+  .channels a, .channels .channels__static { grid-template-columns: 24px minmax(0, 1fr); gap: 16px; }
+  .channels__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+}
+
+/* ---------- Long text (Privātuma politika) ---------- */
+.prose { max-width: 46em; display: flex; flex-direction: column; gap: 16px; }
+.prose .ka-h3 { margin-top: 28px; }
+.prose p, .prose li { font-size: 16px; line-height: 1.65; color: var(--fg-2); margin: 0; }
+.prose ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; }
+.prose a { color: var(--fg); }
+
+/* ---------- Phone menu panel behind .ka-nav__menu ----------
+   The Nav component collapses its links and CTA behind the menu button below
+   960px and leaves the panel to the site. Black ground, the same mono links,
+   the halo "Sākt sadarbību"; it fades in at one steady speed. */
+.site-menu { display: none; }
+
+@media (max-width: 960px) {
+  .site-menu:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: 104px var(--margin-mobile) var(--space-6);
+    background: #030303;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 300ms linear;
+  }
+  .site-menu.is-open { opacity: 1; }
+
+  .site-menu__links { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+  .site-menu__links .ka-nav__link { font-size: 15px; padding: 12px 0; }
+
+  .site-menu .ka-cta { --ka-cta-h: 48px; align-self: flex-start; width: 264px; padding: 0 20px; font-size: 12px; gap: 12px; }
+  .site-menu .ka-cta svg { width: 16px; height: 16px; }
+
+  /* While the panel is open the header sits on solid black and shows the mark */
+  .pg .ka-nav.is-menu-open { background: #030303; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .ka-nav.is-menu-open .ka-nav__brand { opacity: 1; transform: none; pointer-events: auto; }
+
+  html.site-menu-open { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu:not([hidden]) { transition: none; }
+}
