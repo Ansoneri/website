@@ -86,6 +86,10 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
   .beat__text .ka-body-l { font-size: 17px; }
 }
 
+/* Framed photo beside the facts list (Par mani) - the ticks sit 10px outside it */
+.facts-photo { display: block; width: 100%; max-width: 380px; margin-top: 40px; }
+@media (max-width: 960px) { .facts-photo { max-width: 320px; margin: 28px 10px 0; } }
+
 /* Receipts with longer figures (10:50:38) */
 .ka-receipts--wide li { grid-template-columns: 150px minmax(0, 1fr); }
 @media (max-width: 960px) { .ka-receipts--wide li { grid-template-columns: 104px minmax(0, 1fr); } }
