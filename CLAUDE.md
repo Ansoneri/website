@@ -18,8 +18,8 @@ When something visual changes, change it in the design system first, then copy i
 - `assets/photos/graduation.webp` may be published only with the other person's written consent.
 
 ## Status (30 Sep 2026)
-Done: mobile menu panel and real nav hrefs; subpages Pakalpojumi, Par mani, Rezultāti, Kontakti; privacy policy; 404. "Sākt sadarbību" opens the Calendly 30-minute call (decided; replaces the Tally intake form). `graduation.webp` (with the university official) is not used; `graduation-rsu.webp` (Kristers alone, RSU) sits framed beside the facts on Par mani, approved by Kristers 30 Sep 2026. Footer icons: Instagram and WhatsApp. Offers and prices follow "Ansoneri Fitness - Offers & Prices" (30 Sep 2026): Treniņu programma 99 €/mēnesī, Mentora programma 299 €/mēnesī, Konsultācija 50 €/stundā; plans in TrainingPeaks. Pushes to `main` deploy to GitHub Pages. Open items are listed in `README.md`.
+Done: mobile menu panel and real nav hrefs; subpages Pakalpojumi, Par mani, Rezultāti, Kontakti; privacy policy; 404. "Sākt sadarbību" opens the Calendly 30-minute call (decided; replaces the Tally intake form). `graduation.webp` (with the university official) is not used; `graduation-rsu.webp` (Kristers alone, RSU) sits framed beside the facts on Par mani, approved by Kristers 30 Sep 2026. Footer icons: Instagram and WhatsApp. Offers and prices follow "Ansoneri Fitness - Offers & Prices" (30 Sep 2026): Treniņu programma 99 €/mēnesī, Mentora programma 299 €/mēnesī, Konsultācija 50 €/stundā; plans in TrainingPeaks. Pushes to `main` deploy to GitHub Pages, live at https://ansoneri.com (domain at Cloudflare, DNS only records pointing at GitHub Pages; HTTPS enforced). Open items are listed in `README.md`.
 
 ## To do next
 1. Fill in the placeholders listed in `README.md` (WhatsApp number, prices, diploma wording, client stories).
-2. Optional: move to Astro (one layout + components, LV/EN routes), then deploy (Vercel / Netlify / Cloudflare Pages) and point ansoneri.com at it.
+2. Optional: move to Astro (one layout + components, LV/EN routes); keep ansoneri.com pointing at wherever it is hosted.
