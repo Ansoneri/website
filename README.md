@@ -40,7 +40,6 @@ All page copy follows the Ansoneri Website Copy & Style Guide (voice, field orde
 - **Prices** on Pakalpojumi come from the client pitch and programme brief (100 € programme, 50 € check-in, 50 € per hour); brand work says "Pēc apjoma". Confirm or change them.
 - **MSc line** on Par mani - write the degree exactly as on the diploma (and add the second master's degree if there is one).
 - **Par mani** text is about 275 words (Latvian); the copy guide asks for 400-700 - add your own story details, not invented ones.
-- **Graduation photo** (RSU, solo) - not added yet; see the session notes.
 - **Client stories** on Rezultāti - add only with the person's written consent.
 - **Privātuma politika** - check the storage and retention lines against how client data is actually kept.
 - "Sākt sadarbību" and the booking buttons open the Calendly 30-minute call.
