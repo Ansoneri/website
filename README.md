@@ -14,6 +14,8 @@ Every push to `main` deploys the site to GitHub Pages (`.github/workflows/pages.
 
 ### ansoneri.com (domain at Cloudflare)
 
+Connected 30 Sep 2026: https://ansoneri.com serves this site with HTTPS enforced; `www.ansoneri.com` and `ansoneri.github.io/website/` redirect to it. The setup, for reference:
+
 1. Cloudflare → ansoneri.com → DNS → Records. Delete any old A, AAAA or CNAME records for `ansoneri.com` and `www`, then add these, each with Proxy status **DNS only** (grey cloud):
 
    | Type | Name | Content |
