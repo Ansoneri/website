@@ -17,9 +17,9 @@ When something visual changes, change it in the design system first, then copy i
 - Copy: Latvian, tu-form, short hyphens (never em dashes), no exclamation marks, no emoji. Frame: physical and mental architecture, designing systems; proof with numbers (20+ clients, RSU junior researcher and PhD candidate, IRONMAN, HYROX). Never "PhD" as a finished title; never psychologist/therapy words.
 - `assets/photos/graduation.webp` may be published only with the other person's written consent.
 
+## Status (30 Sep 2026)
+Done: mobile menu panel and real nav hrefs; subpages Pakalpojumi, Par mani, Rezultāti, Kontakti; privacy policy; 404. "Sākt sadarbību" opens the Calendly 30-minute call (decided; replaces the Tally intake form). `graduation.webp` is not used. Footer icons: Instagram and WhatsApp. Pushes to `main` deploy to GitHub Pages. Open items are listed in `README.md`.
+
 ## To do next
-1. Replace `https://tally.so/r/INTAKE` in `index.html` with the real Tally intake-form link (used by every "Sākt sadarbību").
-2. Mobile menu panel for `.ka-nav__menu` (links + halo CTA), and real hrefs for the nav.
-3. Subpages in the same shell: Pakalpojumi, Par mani, Rezultāti, Kontakti (see the design system's Website guideline for the brainstorm).
-4. Optional: move to Astro (one layout + components, LV/EN routes), then deploy (Vercel / Netlify / Cloudflare Pages) and point ansoneri.com at it.
-5. Privacy policy page (footer link).
+1. Fill in the placeholders listed in `README.md` (WhatsApp number, prices, diploma wording, client stories).
+2. Optional: move to Astro (one layout + components, LV/EN routes), then deploy (Vercel / Netlify / Cloudflare Pages) and point ansoneri.com at it.
