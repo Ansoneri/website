@@ -46,12 +46,15 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 56px; margin: 0; padding: 0; list-style: none; }
 .step { display: flex; flex-direction: column; gap: 14px; }
 .step .ka-body { max-width: 30em; }
-@media (max-width: 960px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
+.steps--four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; }
+@media (max-width: 1180px) { .steps--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 960px) { .steps, .steps--four { grid-template-columns: 1fr; gap: 32px; } }
 
 /* ---------- Offers (Pakalpojumi): every offer in the same field order ---------- */
 .offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
 .offer { padding: 36px 32px 32px; gap: 18px; }
 .offer .ka-h3 { font-size: 16px; }
+.offer__areas { margin: -8px 0 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
 .offer__for { color: var(--fg-2); margin: 0; }
 .offer__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
 .offer__list li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.5; color: var(--fg); }
