@@ -30,12 +30,17 @@ Pages (plain HTML, Latvian, same shell on every page - nav, phone menu, footer):
 
 Site-only additions live in their own files: `css/site.css` (page shell, subpage layouts, phone menu panel) and `js/site.js` (phone menu). The nav and footer are repeated in every page - change them in all of them.
 
+## Copy
+
+All page copy follows the Ansoneri Website Copy & Style Guide (voice, field order for offers, no negation-led Latvian lines, gender-neutral reader lines, first-person meta descriptions). Where the guide and the design system disagree, the design system's later decisions stand: Latvian first, "Sākt sadarbību" as the primary button, Home = hero, services, footer.
+
 ## Still to fill in
 
 - **WhatsApp number** - every WhatsApp link is `https://wa.me/37100000000`; replace the number in all pages.
 - **Prices** on Pakalpojumi come from the client pitch and programme brief (100 € programme, 50 € check-in, 50 € per hour); brand work says "Pēc apjoma". Confirm or change them.
 - **MSc line** on Par mani - write the degree exactly as on the diploma (and add the second master's degree if there is one).
-- **Par mani** text is about 250 words; the copy guide asks for 400-700.
+- **Par mani** text is about 275 words (Latvian); the copy guide asks for 400-700 - add your own story details, not invented ones.
+- **Graduation photo** (RSU, solo) - not added yet; see the session notes.
 - **Client stories** on Rezultāti - add only with the person's written consent.
 - **Privātuma politika** - check the storage and retention lines against how client data is actually kept.
 - "Sākt sadarbību" and the booking buttons open the Calendly 30-minute call.
