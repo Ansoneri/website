@@ -12,6 +12,27 @@ Working with Claude Code: open this folder in Claude Code (or push it to a GitHu
 
 Every push to `main` deploys the site to GitHub Pages (`.github/workflows/pages.yml`).
 
+### ansoneri.com (domain at Cloudflare)
+
+1. Cloudflare → ansoneri.com → DNS → Records. Delete any old A, AAAA or CNAME records for `ansoneri.com` and `www`, then add these, each with Proxy status **DNS only** (grey cloud):
+
+   | Type | Name | Content |
+   | --- | --- | --- |
+   | A | `@` | `185.199.108.153` |
+   | A | `@` | `185.199.109.153` |
+   | A | `@` | `185.199.110.153` |
+   | A | `@` | `185.199.111.153` |
+   | AAAA | `@` | `2606:50c0:8000::153` |
+   | AAAA | `@` | `2606:50c0:8001::153` |
+   | AAAA | `@` | `2606:50c0:8002::153` |
+   | AAAA | `@` | `2606:50c0:8003::153` |
+   | CNAME | `www` | `ansoneri.github.io` |
+
+2. GitHub → this repo → Settings → Pages → Custom domain: `ansoneri.com` → Save. Wait for the DNS check to pass, then tick **Enforce HTTPS** (the certificate can take up to an hour).
+3. Optional, against domain takeover: GitHub → your profile Settings → Pages → Add a domain → `ansoneri.com`, and add the TXT record it shows in Cloudflare.
+
+The site then lives at the domain root (`https://ansoneri.com/`); all links are relative, so nothing in the pages changes. Leave the records on DNS only: Cloudflare's proxy in front of GitHub Pages blocks the certificate.
+
 ## What is in this repo
 
 Everything from the design system's `ansoneri-site` export, unchanged: `css/tokens.css`, `css/bundle.css`, `js/bundle.js`, `fonts/` and `assets/`. Edit those in the design system and re-export them - don't edit them here.
@@ -21,7 +42,7 @@ Pages (plain HTML, Latvian, same shell on every page - nav, phone menu, footer):
 | File | Page |
 | --- | --- |
 | `index.html` | Sākums - the approved landing page |
-| `pakalpojumi.html` | Pakalpojumi - three steps, three offers with price, who it is not for |
+| `pakalpojumi.html` | Pakalpojumi - the four-step loop, three offers with price, who it is not for |
 | `par-mani.html` | Par mani - the four beats and the facts list |
 | `rezultati.html` | Rezultāti - IRONMAN finish, facts, client stories (with consent only) |
 | `kontakti.html` | Kontakti - booking, e-mail, Instagram, WhatsApp |
@@ -37,7 +58,8 @@ All page copy follows the Ansoneri Website Copy & Style Guide (voice, field orde
 ## Still to fill in
 
 - **WhatsApp number** - every WhatsApp link is `https://wa.me/37100000000`; replace the number in all pages.
-- **Prices** on Pakalpojumi come from the client pitch and programme brief (100 € programme, 50 € check-in, 50 € per hour); brand work says "Pēc apjoma". Confirm or change them.
+- **Offers and prices** on Pakalpojumi follow "Ansoneri Fitness - Offers & Prices" (30 Sep 2026): Treniņu programma 99 € mēnesī, Mentora programma 299 € mēnesī, Konsultācija 50 € stundā (brand work is booked as consultations). Plans live in TrainingPeaks.
+- **Intake** - that document says "Sākt sadarbību" leads to a short intake form (goals, available time, restrictions). The site keeps the Calendly 30-minute call; add those questions to the Calendly event, or send a form link to use instead.
 - **MSc line** on Par mani - write the degree exactly as on the diploma (and add the second master's degree if there is one).
 - **Par mani** text is about 275 words (Latvian); the copy guide asks for 400-700 - add your own story details, not invented ones.
 - **Client stories** on Rezultāti - add only with the person's written consent.
