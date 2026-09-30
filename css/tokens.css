@@ -1,0 +1,101 @@
+/* Generated from the Kristers Ansons design system tokens.json - do not edit by hand; change the design system and re-export. */
+:root, [data-theme="web"] {
+  --ink: #020202;
+  --ink-soft: #0b0a09;
+  --surface-1: #0a0a0a;
+  --surface-2: #131313;
+  --hairline: #262626;
+  --bone: #f2eee6;
+  --text-2: #cfccc6;
+  --text-3: #8a857e;
+  --signal-orange: #ff6b1a;
+  --ember: #fd803d;
+  --studio-red: #c8281c;
+  --signal-red: #e1461a;
+  --oxblood: #5a120c;
+  --apricot: #f9a576;
+  --peach-light: #f6ceb4;
+  --paper: #f9f7f3;
+  --paper-text-2: #4a4540;
+  --paper-hairline: #d8d2c8;
+  --bg: var(--ink);
+  --panel: var(--surface-1);
+  --panel-hover: var(--surface-2);
+  --rule: var(--hairline);
+  --fg: var(--bone);
+  --fg-2: var(--text-2);
+  --fg-3: var(--text-3);
+  --accent: var(--signal-orange);
+  --accent-hover: var(--ember);
+  --on-accent: var(--ink);
+  --link: var(--signal-orange);
+  --focus: var(--signal-orange);
+  --state-error: var(--signal-orange);
+  --state-success: var(--bone);
+}
+[data-theme="paper"] {
+  --bg: var(--paper);
+  --panel: var(--paper);
+  --panel-hover: var(--paper);
+  --rule: var(--paper-hairline);
+  --fg: var(--ink-soft);
+  --fg-2: var(--paper-text-2);
+  --fg-3: var(--paper-text-2);
+  --accent: var(--signal-orange);
+  --accent-hover: var(--ember);
+  --on-accent: var(--ink);
+  --link: var(--ink-soft);
+  --focus: var(--ink-soft);
+  --state-error: var(--ink-soft);
+  --state-success: var(--ink-soft);
+}
+:root {
+  --space-0-5: 4px;
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-8: 64px;
+  --space-12: 96px;
+  --space-16: 128px;
+  --space-20: 160px;
+  --margin-mobile: 20px;
+  --content-max: 1320px;
+  --radius-none: 0px;
+  --radius-photo: 4px;
+  --radius-divider: 1.5px;
+  --stroke-hairline: 1px;
+  --stroke-icon: 1.5px;
+  --stroke-dash: 2px;
+  --stroke-signature: 3px;
+  --size-button: 56px;
+  --size-dash: 40px;
+  --size-numeral-rule: 24px;
+  --size-stat-rule: 48px;
+  --size-icon: 24px;
+  --size-logo-min: 96px;
+  --size-grain-tile: 256px;
+  --size-divider-short: 15%;
+  --opacity-grain: 0.035;
+  --opacity-hairline-bone: 0.12;
+  --opacity-border-secondary: 0.4;
+  --opacity-card-hover-border: 0.6;
+  --opacity-nav: 0.85;
+  --font-display: Oswald, "Arial Narrow", sans-serif;
+  --font-surname: Anton, Impact, "Arial Narrow", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --font-body: Manrope, system-ui, sans-serif;
+  --font-accent: Fraunces, Georgia, serif;
+}
+@font-face { font-family: 'Anton'; src: url('../fonts/Anton-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Oswald'; src: url('../fonts/Oswald-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Oswald'; src: url('../fonts/Oswald-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Oswald'; src: url('../fonts/Oswald-Bold.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Manrope'; src: url('../fonts/Manrope-SemiBold.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Fraunces'; src: url('../fonts/Fraunces-SemiBoldItalic.woff2') format('woff2'); font-weight: 600; font-style: italic; font-display: swap; }
+@font-face { font-family: 'IBM Plex Mono'; src: url('../fonts/IBMPlexMono-Light.woff2') format('woff2'); font-weight: 300; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IBM Plex Mono'; src: url('../fonts/IBMPlexMono-Regular.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+@font-face { font-family: 'IBM Plex Mono'; src: url('../fonts/IBMPlexMono-Medium.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }

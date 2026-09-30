@@ -1,0 +1,45 @@
+/* Site-only additions. tokens.css, bundle.css and bundle.js are exports of the
+   Kristers Ansons design system - change the design system and re-export them;
+   anything this site needs on top of them lives here and in js/site.js. */
+
+/* In-page anchors (#pakalpojumi, #kontakti) land below the fixed header */
+.pg [id] { scroll-margin-top: 80px; }
+
+/* ---------- Phone menu panel behind .ka-nav__menu ----------
+   The Nav component collapses its links and CTA behind the menu button below
+   960px and leaves the panel to the site. Black ground, the same mono links,
+   the halo "Sākt sadarbību"; it fades in at one steady speed. */
+.site-menu { display: none; }
+
+@media (max-width: 960px) {
+  .site-menu:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 39;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+    padding: 104px var(--margin-mobile) var(--space-6);
+    background: #030303;
+    overflow-y: auto;
+    opacity: 0;
+    transition: opacity 300ms linear;
+  }
+  .site-menu.is-open { opacity: 1; }
+
+  .site-menu__links { display: flex; flex-direction: column; gap: var(--space-1); margin: 0; padding: 0; list-style: none; }
+  .site-menu__links .ka-nav__link { font-size: 15px; padding: 12px 0; }
+
+  .site-menu .ka-cta { --ka-cta-h: 48px; align-self: flex-start; width: 264px; padding: 0 20px; font-size: 12px; gap: 12px; }
+  .site-menu .ka-cta svg { width: 16px; height: 16px; }
+
+  /* While the panel is open the header sits on solid black and shows the mark */
+  .pg .ka-nav.is-menu-open { background: #030303; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  .ka-nav.is-menu-open .ka-nav__brand { opacity: 1; transform: none; pointer-events: auto; }
+
+  html.site-menu-open { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-menu:not([hidden]) { transition: none; }
+}
