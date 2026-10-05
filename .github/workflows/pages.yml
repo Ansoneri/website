@@ -23,6 +23,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      # Browsers may keep CSS, JS and images for hours (GitHub Pages sends max-age=14400). Stamping
+      # each deploy's links with the commit makes a fresh page always load the files it was built with.
+      - name: Version CSS, JS and image links
+        run: |
+          v="${GITHUB_SHA::8}"
+          find . -name '*.html' -not -path './.git/*' -print0 |
+            xargs -0 sed -i -E "s#(href|src)=\"((css|js|assets)/[^\"?]+)\"#\1=\"\2?v=$v\"#g"
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
