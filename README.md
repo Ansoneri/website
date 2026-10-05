@@ -12,6 +12,8 @@ Working with Claude Code: open this folder in Claude Code (or push it to a GitHu
 
 Every push to `main` deploys the site to GitHub Pages (`.github/workflows/pages.yml`).
 
+On the way, the workflow adds `?v=<commit>` to every CSS, JS and image link in the HTML. GitHub Pages lets browsers keep those files for four hours, so without the stamp a returning visitor could get a new page with an old stylesheet. Leave the links in the source unstamped.
+
 ### ansoneri.com (domain at Cloudflare)
 
 Connected 30 Sep 2026: https://ansoneri.com serves this site with HTTPS enforced; `www.ansoneri.com` and `ansoneri.github.io/website/` redirect to it. The setup, for reference:
