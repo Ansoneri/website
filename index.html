@@ -32,13 +32,7 @@ html, body { margin: 0; padding: 0; height: 100%; background: #030303; color: va
 
 .services { padding-top: 24px !important; }
 @media (max-width: 960px) {
-  .ka-hero .ka-stats { flex-direction: row; margin-top: 32px; }
-  .ka-hero .ka-stat { padding: 0 12px; gap: 6px; }
-  .ka-hero .ka-stat:first-child { padding-left: 0; }
-  .ka-hero .ka-stat + .ka-stat::before { left: 0; top: 0; width: 1px; height: 100%; }
-  .ka-hero .ka-stat__figure { font-size: 19px; line-height: 1.1; }
-  .ka-hero .ka-stat__label { font-size: 9px; letter-spacing: 0.12em; }
-  .ka-hero__acts { flex-direction: column; align-items: center; gap: 12px; }
+  .ka-hero__acts { flex-direction: column; align-items: center; gap: 18px; }
   .ka-hero__acts .ka-cta { --ka-cta-h: 48px; width: 264px; padding: 0 20px; font-size: 12px; gap: 12px; }
   .ka-hero__acts .ka-cta svg { width: 16px; height: 16px; }
   .services { padding-top: 16px !important; }
@@ -66,15 +60,14 @@ html, body { margin: 0; padding: 0; height: 100%; background: #030303; color: va
     <div class="ka-hero-lockup ka-hero__name">
       <div class="ka-lockup" role="img" aria-label="Kristers Ansons" data-hero-name><span class="ka-lockup__first" aria-hidden="true">Kristers</span><span class="ka-lockup__last" aria-hidden="true">Ansons<span class="ka-square"></span></span></div>
       <hr class="ka-line">
-      <p class="ka-descriptor">Fitnesa un mentālās<br>veiktspējas arhitekts</p>
+      <h1 class="ka-descriptor">Fitnesa un mentālās<br>veiktspējas arhitekts</h1>
     </div>
-    <h1 class="ka-thesis">Ķermeņa un prāta arhitektūra.<br>Sistēmas, ko vispirms uzbūvēju sev.</h1>
-    <div class="ka-hero__acts"><a class="ka-cta ka-cta--halo" href="https://calendly.com/kristersansons14/30min" target="_blank" rel="noopener">Sākt sadarbību <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15.5"/><path d="m13.5 6 6 6-6 6"/></svg></a><a class="ka-cta ka-cta--ghost" href="par-mani.html">Vairāk par mani</a></div>
-    <ul class="ka-stats ka-stats--compact">
-  <li class="ka-stat"><span class="ka-stat__figure">20+</span><span class="ka-stat__label">Trenēti klienti</span></li>
-  <li class="ka-stat"><span class="ka-stat__figure">RSU</span><span class="ka-stat__label">Jaunais pētnieks,<br>doktorants</span></li>
-  <li class="ka-stat"><span class="ka-stat__figure">IRONMAN<span class="ka-sep"> ·</span> HYROX</span><span class="ka-stat__label">Sacensību pieredze</span></li>
-</ul>
+    <div class="ka-hero__acts"><a class="ka-cta ka-cta--halo" href="https://calendly.com/kristersansons14/30min" target="_blank" rel="noopener">Sākt sadarbību <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15.5"/><path d="m13.5 6 6 6-6 6"/></svg></a><a class="ka-link" href="par-mani.html">Par mani <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15.5"/><path d="m13.5 6 6 6-6 6"/></svg></a></div>
+    <div class="ka-proof">
+      <div class="ka-proof__item"><b>20+ klienti</b><span>svara samazināšana · ķermeņa sastāvs · plānošana</span></div>
+      <div class="ka-proof__item"><b>Doktorants</b><span>sporta zinātnē, RSU</span></div>
+      <div class="ka-proof__item"><b>Hibrīdatlēts</b><span>IRONMAN · HYROX · riteņbraukšana · spēks</span></div>
+    </div>
   </div>
   <div class="ka-statement ka-hero__statement"><p class="ka-statement__lead"><span>Plāns.</span><span>Slodze.</span><span>Atjaunošanās.</span></p><span class="ka-dash"></span><p class="ka-statement__rest"><span>Uzmērīt</span><span>Uzzīmēt</span><span>Nodot</span></p></div>
 </section>
@@ -84,7 +77,7 @@ html, body { margin: 0; padding: 0; height: 100%; background: #030303; color: va
     <p class="ka-body">Mēs visi esam mēģinājuši mainīt ieradumus ar gribasspēku. Izrādās, ilgāk iztur tas, kas ir projektēts - slodze, atjaunošanās un fokuss, salikti vienā plānā. Labā ziņa: tādu plānu var uzzīmēt tieši tev, un es parādīšu, kā.</p>
     <div class="ka-statement"><span class="ka-dash"></span><p class="ka-statement__rest"><span>Ķermenis</span><span>Prāts</span><span>Zīmols</span></p></div>
   </div>
-  <div class="cards" data-reveal><article class="ka-card ka-card--service ka-card--bg-corner" tabindex="0"><img class="ka-card__icon" src="assets/service-icons/icon-dumbbell.webp" alt="" width="60" height="60"><h3 class="ka-h3">Fitnesa koučings</h3><p class="ka-card__body">Treniņu plāns pēc tavas vēstures, darba nedēļas un mērķa - spēks, izturība un atjaunošanās vienā sistēmā.</p></article><article class="ka-card ka-card--service ka-card--bg-horizon" tabindex="0"><img class="ka-card__icon" src="assets/service-icons/icon-brain.webp" alt="" width="60" height="60"><h3 class="ka-h3">Mentālo resursu veicināšana</h3><p class="ka-card__body">Fokuss, regulācija un noturība zem slodzes - trenēti tāpat kā jebkura cita spēja.</p></article><article class="ka-card ka-card--service ka-card--bg-right" tabindex="0"><img class="ka-card__icon" src="assets/service-icons/icon-compass.webp" alt="" width="60" height="60"><h3 class="ka-h3">Brenda identitātes veidošana</h3><p class="ka-card__body">Sakārtoju, kā tavs darbs izskatās no malas, lai tas atbilst saturam.</p></article></div>
+  <div class="cards ka-glass-stage" data-reveal><article class="ka-card ka-card--service ka-card--glass ka-card--bg-corner" tabindex="0"><img class="ka-card__icon" src="assets/service-icons/icon-dumbbell.webp" alt="" width="60" height="60"><h3 class="ka-h3">Fitnesa koučings</h3><p class="ka-card__body">Treniņu plāns pēc tavas vēstures, darba nedēļas un mērķa - spēks, izturība un atjaunošanās vienā sistēmā.</p></article><article class="ka-card ka-card--service ka-card--glass ka-card--bg-horizon" tabindex="0"><img class="ka-card__icon" src="assets/service-icons/icon-brain.webp" alt="" width="60" height="60"><h3 class="ka-h3">Mentālo resursu veicināšana</h3><p class="ka-card__body">Fokuss, regulācija un noturība zem slodzes - trenēti tāpat kā jebkura cita spēja.</p></article><article class="ka-card ka-card--service ka-card--glass ka-card--bg-right" tabindex="0"><img class="ka-card__icon" src="assets/service-icons/icon-compass.webp" alt="" width="60" height="60"><h3 class="ka-h3">Brenda identitātes veidošana</h3><p class="ka-card__body">Sakārtoju, kā tavs darbs izskatās no malas, lai tas atbilst saturam.</p></article></div>
   <p class="sec-more" data-reveal><a class="ka-link" href="pakalpojumi.html">Skatīt piedāvājumus <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15.5"/><path d="m13.5 6 6 6-6 6"/></svg></a></p>
 </section>
 <footer class="ka-footer" id="kontakti">

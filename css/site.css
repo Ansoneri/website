@@ -8,6 +8,10 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
 .pg .ka-nav { position: fixed; top: 0; left: 0; right: 0; margin-bottom: 0; background: linear-gradient(to bottom, rgba(3,3,3,0.85), rgba(3,3,3,0)); border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
 .pg .ka-nav.is-scrolled { background: rgba(3,3,3,0.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
 
+/* Two-line uppercase headings: Latvian marks above (ā ē ī ū) and below (ķ ļ ņ ģ) need room between lines,
+   or a cedilla on one line touches a macron on the next */
+.pg .ka-h2, .page-hero .ka-h1, .contact__main .ka-h1 { line-height: 1.28; }
+
 /* In-page anchors land below the fixed header */
 .pg [id] { scroll-margin-top: 80px; }
 
@@ -29,7 +33,7 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
 .page-hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 64px; align-items: stretch; }
 .page-hero__text { display: flex; flex-direction: column; gap: 24px; justify-content: center; padding: 24px 0 40px; }
 .page-hero__text .ka-eyebrow { margin-bottom: 4px; }
-.page-hero .ka-h1 { font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02; text-wrap: balance; }
+.page-hero .ka-h1 { font-size: clamp(40px, 4.4vw, 64px); text-wrap: balance; }
 .page-hero .ka-portrait { min-height: 560px; }
 .page-hero--solo .page-hero__text { max-width: 52em; padding-bottom: 0; }
 
@@ -46,36 +50,60 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
 .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 56px; margin: 0; padding: 0; list-style: none; }
 .step { display: flex; flex-direction: column; gap: 14px; }
 .step .ka-body { max-width: 30em; }
-.steps--four { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; }
-@media (max-width: 1180px) { .steps--four { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 960px) { .steps, .steps--four { grid-template-columns: 1fr; gap: 32px; } }
+.step__word { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); margin: 0; }
+@media (max-width: 960px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
 
-/* ---------- Offers (Pakalpojumi): every offer in the same field order ---------- */
-.offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
-.offer { padding: 36px 32px 32px; gap: 18px; }
-.offer .ka-h3 { font-size: 16px; }
-.offer__areas { margin: -8px 0 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); }
-.offer__for { color: var(--fg-2); margin: 0; }
-.offer__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.offer__list li { position: relative; padding-left: 22px; font-size: 15px; line-height: 1.5; color: var(--fg); }
-.offer__list li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 12px; height: 2px; background: var(--accent); }
-.offer__not { margin: 0; }
-.offer__price { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; margin-top: auto; padding-top: 8px; }
-.offer__price b { font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
-.offer__price span { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-3); }
-.offer .ka-cta { align-self: flex-start; }
-.offer .ka-card__icon { width: 60px; height: 60px; object-fit: contain; mix-blend-mode: screen; margin: -10px 0 -6px -8px; }
-@media (max-width: 1180px) { .offers { grid-template-columns: 1fr; max-width: 640px; } }
+/* ---------- Pakalpojumi (the 2 Oct 2026 mockup) ---------- */
+.sec-title { margin-bottom: 40px; }
+.pak-line { width: 340px; max-width: 70%; }
+.page-hero--solo .pak-line + .ka-body-l { margin-top: 4px; }
+
+/* Three areas: one of Kristers's light studies behind each card (the component darkens its top for the text) */
+.areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.area { gap: 16px; min-height: 360px; padding: 36px; border-color: rgba(245, 243, 238, 0.10); }
+.area .ka-h3 { font-size: 26px; line-height: 1.15; }
+.area__tag, .plan__tag { margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.area__note { margin: auto 0 0; padding-top: 8px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+
+/* Three ways to work together: every plan in the same field order; the closest one carries the signature line as its border */
+.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
+.plan { gap: 18px; padding: 36px; }
+.plan .ka-h3 { font-size: 30px; line-height: 1.1; }
+.plan__tag { color: var(--fg-3); }
+.plan--lead { border: 2px solid transparent; background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--line-signature) border-box; }
+.plan--lead .plan__tag { color: var(--accent); }
+.plan__price { display: flex; align-items: baseline; gap: 10px; margin: 0; }
+.plan__price b { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
+.plan__price span, .plan__for span { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+.plan__for span { font-size: 11px; letter-spacing: 0.14em; }
+.plan__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.plan__list li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.5; color: var(--fg-2); }
+.plan__list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; background: var(--accent); }
+.plan__not { margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-3); }
+.plan .ka-cta { margin-top: auto; align-self: stretch; justify-content: center; --ka-cta-h: 52px; padding: 0 24px; font-size: 12px; }
+.offers-also { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 24px; margin: 28px 0 0; padding-top: 24px; font-size: 15px; line-height: 1.6; color: var(--fg-2); }
+.offers-also > span:nth-child(2) { max-width: 760px; }
+.offers-also__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-3); }
+
+/* Checkable facts: big figure, mono line under it */
+.facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
+.facts li { display: flex; flex-direction: column; gap: 8px; }
+.facts b { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.05; color: var(--fg); font-variant-numeric: tabular-nums; }
+.facts span { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+.facts a { color: var(--accent); text-decoration: none; white-space: nowrap; }
+.facts a:hover { color: var(--accent-hover); }
+
+@media (max-width: 1180px) { .plans { grid-template-columns: 1fr; max-width: 640px; } }
 @media (max-width: 960px) {
-  .offer { padding: 28px 20px 24px; }
-  .offer .ka-cta { --ka-cta-h: 48px; max-width: 100%; font-size: 12px; }
-  .offer .ka-cta__label { padding: 0 16px; }
+  .sec-title { margin-bottom: 28px; }
+  .areas, .facts { grid-template-columns: 1fr; gap: 12px; }
+  .facts { gap: 28px; }
+  .area, .plan { padding: 28px 20px 24px; min-height: 0; }
+  .area .ka-h3 { font-size: 22px; }
+  .plan .ka-h3 { font-size: 26px; }
+  .plan__price b { font-size: 40px; }
+  .facts b { font-size: 36px; }
 }
-
-/* ---------- "Not for" list ---------- */
-.not-for { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; max-width: 44em; }
-.not-for li { position: relative; padding-left: 28px; font-size: 17px; line-height: 1.55; color: var(--fg-2); }
-.not-for li::before { content: ""; position: absolute; left: 0; top: 0.78em; width: 14px; height: 1px; background: var(--fg-3); }
 
 /* ---------- Story beats (Par mani) ---------- */
 .beats { display: flex; flex-direction: column; gap: 56px; margin: 0; padding: 0; list-style: none; }
@@ -107,14 +135,14 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
   .record__glow { order: -1; min-height: 200px; margin: 0 calc(var(--margin-mobile) * -1); }
 }
 
-/* ---------- Closing block: one Fraunces line and the button again ---------- */
+/* ---------- Closing block: one Oswald Light line and the button again ---------- */
 .page-close { display: flex; flex-direction: column; align-items: flex-start; gap: 28px; }
 .page-close .ka-cta-note { margin-top: -12px; }
 
 /* ---------- Kontakti ---------- */
 .contact { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 64px; align-items: start; }
 .contact__main { display: flex; flex-direction: column; gap: 28px; }
-.contact__main .ka-h1 { font-size: clamp(40px, 4.4vw, 64px); line-height: 1.02; }
+.contact__main .ka-h1 { font-size: clamp(40px, 4.4vw, 64px); }
 .contact-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
 .contact-steps li { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: baseline; font-size: 17px; line-height: 1.5; color: var(--fg-2); }
 @media (max-width: 960px) { .contact__main .ka-h1 { font-size: 36px; } }
