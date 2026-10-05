@@ -37,14 +37,14 @@ The site then lives at the domain root (`https://ansoneri.com/`); all links are 
 
 ## What is in this repo
 
-Everything from the design system's `ansoneri-site` export, unchanged: `css/tokens.css`, `css/bundle.css`, `js/bundle.js`, `fonts/` and `assets/`. Edit those in the design system and re-export them - don't edit them here.
+Everything from the design system, unchanged: `css/tokens.css`, `css/bundle.css`, `js/bundle.js`, `fonts/` and `assets/`. Edit those in the design system and re-export them - don't edit them here. `tools/ds_to_site.py` rebuilds `tokens.css` and `bundle.css` from the design system's `tokens.json`, `bundle.css` and `design-system.json` (last synced: the 2 Oct 2026 version).
 
 Pages (plain HTML, Latvian, same shell on every page - nav, phone menu, footer):
 
 | File | Page |
 | --- | --- |
 | `index.html` | Sākums - the approved landing page |
-| `pakalpojumi.html` | Pakalpojumi - the four-step loop, three offers with price, who it is not for |
+| `pakalpojumi.html` | Pakalpojumi - after the 2 Oct 2026 mockup: three areas, three steps, three offers with price, checkable facts |
 | `par-mani.html` | Par mani - the four beats and the facts list |
 | `rezultati.html` | Rezultāti - IRONMAN finish, facts, client stories (with consent only) |
 | `kontakti.html` | Kontakti - booking, e-mail, Instagram, WhatsApp |
@@ -60,7 +60,10 @@ All page copy follows the Ansoneri Website Copy & Style Guide (voice, field orde
 ## Still to fill in
 
 - **WhatsApp number** - every WhatsApp link is `https://wa.me/37100000000`; replace the number in all pages.
-- **Offers and prices** on Pakalpojumi follow "Ansoneri Fitness - Offers & Prices" (30 Sep 2026): Treniņu programma 99 € mēnesī, Mentora programma 299 € mēnesī, Konsultācija 50 € stundā (brand work is booked as consultations). Plans live in TrainingPeaks.
+- **Offers and prices** on Pakalpojumi follow the Pakalpojumi mockup (2 Oct 2026): Mentor programma 299 € mēnesī, Treniņu programma 99 € mēnesī, Konsultācija 50 € stundā (60 minutes); brand work is booked as consultations. Prices are written the Latvian way, "299 €"; the mockup wrote "€299".
+- **Places per month** for the Mentor programma - the mockup has "Vietas mēnesī: [SKAITS]"; left out until there is a number.
+- **First step** - the mockup's closing line says the first step is the paid 60-minute consultation (50 €), but Calendly only has the free 30-minute call, so every booking button still opens that and the note under it says "30 minūtes · video zvans · bez maksas". Add a 60-minute event in Calendly to switch.
+- **2 × MSc** on Pakalpojumi reads "sporta zinātnē" only; add the qualification exactly as on the diplomas.
 - **Intake** - that document says "Sākt sadarbību" leads to a short intake form (goals, available time, restrictions). The site keeps the Calendly 30-minute call; add those questions to the Calendly event, or send a form link to use instead.
 - **MSc line** on Par mani - write the degree exactly as on the diploma (and add the second master's degree if there is one).
 - **Par mani** text is about 275 words (Latvian); the copy guide asks for 400-700 - add your own story details, not invented ones.

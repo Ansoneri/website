@@ -49,18 +49,18 @@ body {
 
 /* ---------- Type helpers ---------- */
 .ka-h1 { font-family: var(--font-display); font-weight: 700; font-size: 56px; line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); margin: 0; }
-.ka-h2 { font-family: var(--font-display); font-weight: 500; font-size: 40px; line-height: 1.05; letter-spacing: 0.04em; text-transform: uppercase; color: var(--fg); margin: 0; }
+.ka-h2 { font-family: var(--font-display); font-weight: 700; font-size: 60px; line-height: 0.98; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); margin: 0; }
 .ka-h2 b, .ka-h2 strong { font-weight: 700; }
 .ka-h2--mixed { font-weight: 300; }
-.ka-h3 { font-family: var(--font-mono); font-weight: 500; font-size: 15px; line-height: 1.4; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg); margin: 0; }
+.ka-h3 { font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; color: var(--fg); margin: 0; }
 .ka-descriptor { font-family: var(--font-mono); font-weight: 300; font-size: 20px; line-height: 1.35; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-2); margin: 0; }
 .ka-body-l { font-size: 19px; line-height: 1.6; color: var(--fg-2); margin: 0; max-width: 36em; }
 .ka-body { font-size: 16px; line-height: 1.6; color: var(--fg-2); margin: 0; max-width: 40em; }
 .ka-caption { font-size: 13px; line-height: 1.5; color: var(--fg-3); margin: 0; }
 @media (max-width: 767px) {
   .ka-h1 { font-size: 36px; }
-  .ka-h2 { font-size: 28px; }
-  .ka-h3 { font-size: 14px; }
+  .ka-h2 { font-size: 36px; }
+  .ka-h3 { font-size: 19px; }
   .ka-descriptor { font-size: 14px; line-height: 1.5; }
   .ka-body-l { font-size: 17px; }
 }
@@ -162,6 +162,7 @@ body {
   height: var(--stroke-signature);
   background: var(--line-signature);
   border: 0;
+  border-radius: var(--radius-line, 1.5px);   /* softly rounded ends */
   margin: 0;
   transform-origin: left center;
 }
@@ -260,7 +261,7 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  border-radius: 0;
+  border-radius: var(--radius-button, 8px);
   border: 1px solid transparent;
   cursor: pointer;
   transition: background-color 200ms var(--ka-ease), border-color 200ms var(--ka-ease), color 200ms var(--ka-ease);
@@ -403,7 +404,7 @@ body {
   padding: var(--space-5);
   background: var(--panel);
   border: 1px solid var(--rule);
-  border-radius: 0;
+  border-radius: var(--radius-card, 14px);
   transition: border-color 300ms var(--ka-ease);
 }
 .ka-card::after {
@@ -425,7 +426,7 @@ body {
 .ka-card .ka-link { margin-top: auto; padding-top: 8px; }
 
 /* ---------- Quote / closing line ---------- */
-.ka-quote { font-family: var(--font-accent); font-style: italic; font-weight: 600; font-size: 32px; line-height: 1.25; color: var(--fg); margin: 0; quotes: none; max-width: 22em; }
+.ka-quote { font-family: var(--font-display); font-style: normal; font-weight: 300; font-size: 40px; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; color: var(--fg); margin: 0; quotes: none; max-width: 18em; }
 .ka-quote--display { font-size: 56px; line-height: 1.1; }
 @media (max-width: 767px) { .ka-quote { font-size: 26px; } .ka-quote--display { font-size: 38px; } }
 
@@ -551,7 +552,7 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
   color: var(--bone);
   background: var(--ink);
   border: 1px solid transparent;
-  border-radius: 0;
+  border-radius: var(--radius-button, 8px);
   cursor: pointer;
   box-shadow: var(--ka-bloom-rest);
   transform: scale(1);
@@ -582,6 +583,7 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
   inset: calc(var(--ka-line) * -1);
   z-index: -1;
   padding: calc(var(--ka-line) + 1px);  /* ring thickness: the border plus 1px */
+  border-radius: calc(var(--radius-button, 8px) + var(--ka-line));
   background: conic-gradient(from var(--ka-angle), transparent 0% 66%, var(--studio-red) 80%, var(--signal-orange) 92%, var(--bone) 99.2%, transparent 100%);
   animation: ka-orbit 3.2s linear infinite;   /* always turning at one speed; hover only fades it in */
   /* keep only the ring: full box minus the content box */
@@ -600,10 +602,11 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
 .ka-cta--underline::after {
   content: "";
   position: absolute;
-  left: -1px;
-  right: -1px;
+  left: var(--radius-button, 8px);
+  right: var(--radius-button, 8px);
   bottom: -1px;
   height: 3px;
+  border-radius: 1.5px;
   background: var(--line-signature);
   box-shadow: 0 2px 14px rgba(255, 107, 26, 0.35);
   transition: box-shadow 800ms var(--ka-slow);
@@ -612,8 +615,8 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
 .ka-cta--underline::before {
   content: "";
   position: absolute;
-  left: -1px;
-  right: -1px;
+  left: var(--radius-button, 8px);
+  right: var(--radius-button, 8px);
   bottom: -1px;
   height: 3px;
   z-index: 1;
@@ -643,6 +646,7 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
 }
 .ka-cta--halo::before {
   inset: -1px;
+  border-radius: inherit;
   z-index: -2;
   background: var(--ka-wheel);
   filter: blur(10px);
@@ -652,6 +656,7 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
 }
 .ka-cta--halo::after {
   inset: 0;
+  border-radius: inherit;
   z-index: -1;
   border: var(--ka-line) solid transparent;
   background: linear-gradient(var(--ink), var(--ink)) padding-box, var(--ka-wheel) border-box;
@@ -828,7 +833,7 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
 
 /* Service card: black, icon beside the title, its own low glow; on hover it grows a little, at one speed */
 .ka-card--service { display: grid; grid-template-columns: 68px 1fr; gap: 8px 22px; align-items: start; padding: 32px 28px 30px; background: #030303 var(--ka-grain) repeat; background-size: 384px 384px; transform: scale(1); transition: transform 500ms linear, border-color 400ms linear; }
-.ka-card--service .ka-card__icon { grid-row: span 2; width: 68px; height: 68px; margin-top: -14px; object-fit: contain; mix-blend-mode: screen; }   /* the icon images are drawn on black: screen drops the black */
+.ka-card--service .ka-card__icon { grid-row: span 2; width: 68px; height: 68px; margin-top: -14px; object-fit: contain; }   /* transparent PNG/WebP - the glow is in the alpha, so it sits on glass or black alike */
 .ka-card--service .ka-card__body { -webkit-line-clamp: unset; display: block; }
 .ka-card--service:is(:hover, :focus-within, .is-hover) { transform: scale(1.025); border-color: rgba(255, 107, 26, 0.45); }
 .ka-card--service::after { transition: opacity 500ms linear; }
@@ -836,9 +841,53 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
 .ka-card--service:is(.ka-card--g01, .ka-card--g02, .ka-card--g04):is(:hover, :focus-within, .is-hover)::after { opacity: 0.85; }
 @media (prefers-reduced-motion: reduce) { .ka-card--service, .ka-card--service:is(:hover, :focus-within) { transform: none; transition: none; } }
 
+/* Glass (2 Oct 2026): frosted panels over a light. Put the cards in a .ka-glass-stage - it lays one warm horizon
+   behind the whole row - and give each card .ka-card--glass. The light shows through blurred; the text sits on frost. */
+.ka-glass-stage { position: relative; isolation: isolate; }
+.ka-glass-stage::before { content: ""; position: absolute; z-index: -1; left: -6%; right: -6%; top: -18%; bottom: -30%; pointer-events: none;
+  background: radial-gradient(40% 50% at 18% 55%, rgba(214, 58, 28, 0.55) 0%, rgba(122, 22, 18, 0.2) 50%, transparent 78%),
+              radial-gradient(30% 45% at 52% 30%, rgba(255, 107, 26, 0.28) 0%, transparent 70%),
+              radial-gradient(35% 50% at 88% 45%, rgba(255, 140, 60, 0.3) 0%, transparent 70%),
+              var(--ka-card-bg-horizon) center 62% / 100% auto no-repeat;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%); mask-image: linear-gradient(to bottom, transparent 0%, #000 22%, #000 78%, transparent 100%); }
+.ka-card--glass { background: linear-gradient(155deg, rgba(255, 255, 255, 0.11) 0%, rgba(255, 255, 255, 0.035) 45%, rgba(255, 255, 255, 0.015) 100%), rgba(10, 9, 8, 0.3);
+  -webkit-backdrop-filter: blur(22px) saturate(140%); backdrop-filter: blur(22px) saturate(140%);
+  border: 1px solid rgba(245, 243, 238, 0.10);
+  box-shadow: inset 0 1px 0 rgba(245, 243, 238, 0.14), inset 0 0 0 1px rgba(245, 243, 238, 0.02), 0 24px 48px -28px rgba(0, 0, 0, 0.9); }
+.ka-card--glass[class*="ka-card--bg-"]::after { opacity: 0.5; }
+.ka-card--glass[class*="ka-card--bg-"]:is(:hover, :focus-within, .is-hover)::after { opacity: 0.8; }
+.ka-card--glass:is(:hover, :focus-within, .is-hover) { border-color: rgba(255, 107, 26, 0.4); }
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) { .ka-card--glass { background: rgba(14, 12, 11, 0.92); } }
+[data-theme="paper"] .ka-glass-stage::before { display: none; }
+[data-theme="paper"] .ka-card--glass { background: rgba(255, 255, 255, 0.7); border-color: var(--paper-hairline); box-shadow: none; }
+
 /* Hero statement: the short vertical text on the portrait's dark side, as in the mockup */
 .ka-hero__statement { position: absolute; top: 24%; right: var(--space-8); z-index: 2; text-shadow: 0 0 14px rgba(2, 2, 2, 0.9), 0 0 3px rgba(2, 2, 2, 0.8); }
 .ka-hero__statement .ka-statement__rest { color: var(--fg-2); }
+
+/* Proof row (decided 2 Oct 2026): three bold words with a readable line under each, set wider than the
+   hero text column so it runs out over the lower part of the photograph; a soft black fade behind keeps it legible. */
+.ka-hero__acts { align-items: center; }
+.ka-hero__acts .ka-link { margin-top: 0; }
+.ka-proof { position: relative; z-index: 3; display: grid; grid-template-columns: 1.3fr 1fr 1.2fr; margin-top: 64px; padding-top: 26px; width: min(1060px, calc(100vw - 128px)); }
+.ka-proof::before { content: ""; position: absolute; z-index: -1; left: -64px; right: -200px; top: -40px; bottom: -40px; pointer-events: none;
+  background: linear-gradient(to right, rgba(3, 3, 3, 0.92) 0%, rgba(3, 3, 3, 0.75) 55%, rgba(3, 3, 3, 0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 75%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 30%, #000 75%, transparent); }
+.ka-proof__item { position: relative; padding: 0 28px; }
+.ka-proof__item:first-child { padding-left: 0; }
+.ka-proof__item + .ka-proof__item::before { content: ""; position: absolute; left: 0; top: 2px; bottom: 2px; width: 1px; background: linear-gradient(to bottom, transparent, #4a4541 20%, #4a4541 80%, transparent); }
+.ka-proof b { display: block; font-family: var(--font-display); font-weight: 700; font-size: 36px; line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); white-space: nowrap; }
+.ka-proof span { display: block; margin-top: 10px; font-size: 15px; line-height: 1.45; color: var(--fg-2); }
+.ka-hero { padding-bottom: 56px; }
+@media (max-width: 1180px) { .ka-proof b { font-size: 30px; } }
+@media (max-width: 960px) {
+  .ka-proof { grid-template-columns: 1fr; gap: 20px; margin-top: 40px; padding-top: 0; width: auto; }
+  .ka-proof::before { display: none; }
+  .ka-proof__item, .ka-proof__item:first-child { padding: 0 0 0 16px; border-left: 2px solid var(--accent); }
+  .ka-proof__item + .ka-proof__item::before { display: none; }
+  .ka-proof b { font-size: 28px; }
+  .ka-proof span { font-size: 14.5px; }
+}
 
 /* Compact proof row for the hero: smaller figures, so words (IRONMAN · HYROX) fit as well as numbers */
 .ka-stats--compact .ka-stat__figure { font-size: 28px; letter-spacing: 0.02em; }
