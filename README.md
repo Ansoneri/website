@@ -64,11 +64,9 @@ All page copy follows the Ansoneri Website Copy & Style Guide (voice, field orde
 - **WhatsApp number** - every WhatsApp link is `https://wa.me/37100000000`; replace the number in all pages.
 - **Offers and prices** on Pakalpojumi follow the Pakalpojumi mockup (2 Oct 2026): Mentor programma 299 € mēnesī, Treniņu programma 99 € mēnesī, Konsultācija 50 € stundā (60 minutes); brand work is booked as consultations. Prices are written the Latvian way, "299 €"; the mockup wrote "€299".
 - **Places per month** for the Mentor programma - the mockup has "Vietas mēnesī: [SKAITS]"; left out until there is a number.
-- **First step** - the mockup's closing line says the first step is the paid 60-minute consultation (50 €), but Calendly only has the free 30-minute call, so every booking button still opens that and the note under it says "30 minūtes · video zvans · bez maksas". Add a 60-minute event in Calendly to switch.
 - **2 × MSc** on Pakalpojumi reads "sporta zinātnē" only; add the qualification exactly as on the diplomas.
-- **Intake** - that document says "Sākt sadarbību" leads to a short intake form (goals, available time, restrictions). The site keeps the Calendly 30-minute call; add those questions to the Calendly event, or send a form link to use instead.
 - **MSc line** on Par mani - write the degree exactly as on the diploma (and add the second master's degree if there is one).
 - **Par mani** text is about 275 words (Latvian); the copy guide asks for 400-700 - add your own story details, not invented ones.
 - **Client stories** on Rezultāti - add only with the person's written consent.
 - **Privātuma politika** - check the storage and retention lines against how client data is actually kept.
-- "Sākt sadarbību" and the booking buttons open the Calendly 30-minute call.
+- "Sākt sadarbību" and every booking button open the Tally form "Pirms pirmās sarunas" (https://tally.so/r/Gx2zdQ, about ten minutes). Its thank-you page links to Calendly, where the time for the first conversation is picked; the notes under the buttons, Kontakti and the privacy policy describe that order.
