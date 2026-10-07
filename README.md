@@ -53,7 +53,7 @@ Pages (plain HTML, Latvian, same shell on every page - nav, phone menu, footer):
 | `privatuma-politika.html` | Privātuma politika |
 | `404.html` | Not found |
 
-Site-only additions live in their own files: `css/site.css` (page shell, subpage layouts, phone menu panel) and `js/site.js` (phone menu). The nav and footer are repeated in every page - change them in all of them.
+Site-only additions live in their own files: `css/site.css` (page shell, subpage layouts, phone menu panel, home motion) and `js/site.js` (phone menu, home motion). The home motion is driven by `data-parallax` / `data-slide` attributes in `index.html`; it switches on only when the head script adds `.js-motion`, which it skips with reduced motion. The nav and footer are repeated in every page - change them in all of them.
 
 ## Copy
 

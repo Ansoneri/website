@@ -34,3 +34,56 @@
   });
   wide.addEventListener("change", function (e) { if (e.matches && isOpen()) setOpen(false); });
 })();
+
+// Home page motion (7 Oct 2026; site-only until it is approved for the design system).
+// The hero's photo, text and statement move at their own rates while the page scrolls, and the
+// service cards slide in from the sides. The parallax follows the scroll position itself and the
+// cards run at one steady speed - linear, as the brand's motion rule asks. With reduced motion
+// on, <html> never gets .js-motion and nothing here runs.
+(function () {
+  "use strict";
+  if (!document.documentElement.classList.contains("js-motion")) return;
+  var layers = Array.prototype.slice.call(document.querySelectorAll("[data-parallax]"));
+  var slides = Array.prototype.slice.call(document.querySelectorAll("[data-slide]"));
+  var wide = window.matchMedia("(min-width: 961px)");
+
+  // Parallax: data-parallax is the share of the scroll a layer lags behind (negative = moves ahead),
+  // data-parallax-narrow the same below 961px, data-parallax-wide limits a layer to wide screens,
+  // data-parallax-zoom grows it slowly and data-parallax-fade fades it as the hero leaves.
+  // data-parallax-cut (the hero photo): the part pushed below the hero's edge is handed to the
+  // photo's own bottom fade as --ka-cut, so the hero's clip never shows as a hard line.
+  var queued = false;
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function frame() {
+    queued = false;
+    var vh = window.innerHeight || 800;
+    var t = Math.min(window.scrollY || window.pageYOffset || 0, vh * 1.5);   // the hero is gone by then
+    layers.forEach(function (el) {
+      if (el.hasAttribute("data-parallax-wide") && !wide.matches) { el.style.translate = el.style.scale = el.style.opacity = ""; return; }
+      var speed = parseFloat((!wide.matches && el.getAttribute("data-parallax-narrow")) || el.getAttribute("data-parallax")) || 0;
+      el.style.translate = "0 " + (t * speed).toFixed(1) + "px";
+      var zoom = parseFloat(el.getAttribute("data-parallax-zoom"));
+      var sc = zoom ? 1 + zoom * clamp(t / vh) : 1;
+      if (zoom) el.style.scale = sc.toFixed(4);
+      if (el.hasAttribute("data-parallax-cut")) {
+        var over = wide.matches ? (t * speed + (sc - 1) * el.offsetHeight) / sc : 0;
+        el.style.setProperty("--ka-cut", Math.max(0, over).toFixed(1) + "px");
+      }
+      if (el.hasAttribute("data-parallax-fade")) el.style.opacity = (1 - clamp((t - vh * 0.2) / (vh * 0.6))).toFixed(3);
+    });
+  }
+  function queue() { if (!queued) { queued = true; requestAnimationFrame(frame); } }
+  if (layers.length) {
+    frame();
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+  }
+
+  // Cards: in place once a fifth of each is on screen; css/site.css sets the start and the speed.
+  if (!slides.length) return;
+  if (!("IntersectionObserver" in window)) { slides.forEach(function (el) { el.classList.add("is-in"); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+  }, { threshold: 0.2 });
+  slides.forEach(function (el) { io.observe(el); });
+})();
