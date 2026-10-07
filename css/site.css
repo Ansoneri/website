@@ -28,6 +28,31 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
   .cards { grid-template-columns: 1fr; gap: 12px; }
 }
 
+/* ---------- Home page motion (js/site.js; only with .js-motion, which reduced motion never sets) ---------- */
+.js-motion [data-parallax] { will-change: translate; }
+.js-motion .ka-hero__media[data-parallax] { transform-origin: 50% 0; }
+/* The photo's bottom fade starts --ka-cut above its edge: the share the parallax pushed below the hero (0 at rest) */
+@media (min-width: 961px) {
+  .js-motion .ka-hero__media[data-parallax-cut] img {
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0, transparent var(--ka-cut, 0px), #000 calc(var(--ka-cut, 0px) + 14%), #000 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent 0%, #000 28%), linear-gradient(to top, transparent 0, transparent var(--ka-cut, 0px), #000 calc(var(--ka-cut, 0px) + 14%), #000 92%, transparent 100%);
+  }
+}
+/* Service cards slide in from the sides at one steady speed, one after another; the hover grow keeps its own timing */
+.js-motion [data-slide] { opacity: 0; transition: translate 900ms linear, opacity 900ms linear, transform 500ms linear, border-color 400ms linear; }
+.js-motion [data-slide="left"] { translate: -120px 0; }
+.js-motion [data-slide="right"] { translate: 120px 0; }
+.js-motion [data-slide="up"] { translate: 0 64px; }
+.js-motion [data-slide]:nth-child(2) { transition-delay: 150ms, 150ms, 0s, 0s; }
+.js-motion [data-slide]:nth-child(3) { transition-delay: 300ms, 300ms, 0s, 0s; }
+.js-motion [data-slide].is-in { opacity: 1; translate: 0 0; }
+@media (max-width: 960px) {
+  /* stacked: each card arrives on its own, alternating sides */
+  .js-motion [data-slide="left"], .js-motion [data-slide="right"] { translate: -64px 0; }
+  .js-motion [data-slide="up"] { translate: 64px 0; }
+  .js-motion [data-slide]:nth-child(n) { transition-delay: 0s; }
+}
+
 /* ---------- Subpage hero: text left, one photograph beside it at the text's height ---------- */
 .page-hero { padding-top: 152px; }
 .page-hero__grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 64px; align-items: stretch; }
