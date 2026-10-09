@@ -87,3 +87,44 @@
   }, { threshold: 0.2 });
   slides.forEach(function (el) { io.observe(el); });
 })();
+
+// Pakalpojumi (9 Oct 2026, from the Mentor programme page).
+// 1. The header's "Sākt sadarbību" waits until the hero's own button ([data-hero-cta]) has scrolled
+//    away, so the page never shows the same button twice at the top.
+// 2. The three offer cards carry a soft light that follows the pointer; on touch screens it follows
+//    the middle of the screen as the page scrolls.
+(function () {
+  "use strict";
+  var heroCta = document.querySelector("[data-hero-cta]");
+  var navCta = document.querySelector(".ka-nav__end .ka-cta");
+  if (heroCta && navCta) {
+    navCta.classList.add("nav-cta-wait");
+    if (!("IntersectionObserver" in window)) navCta.classList.add("is-on");
+    else new IntersectionObserver(function (e) { navCta.classList.toggle("is-on", !e[0].isIntersecting); },
+      { rootMargin: "-80px 0px 0px 0px" }).observe(heroCta);
+  }
+
+  var tri = document.querySelector(".o-tri");
+  if (!tri) return;
+  var cards = Array.prototype.slice.call(tri.querySelectorAll(".o-card"));
+  function set(c, x, y) { c.style.setProperty("--mx", x + "px"); c.style.setProperty("--my", y + "px"); }
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    tri.addEventListener("pointermove", function (e) {
+      cards.forEach(function (c) { var r = c.getBoundingClientRect(); set(c, e.clientX - r.left, e.clientY - r.top); });
+    });
+    tri.addEventListener("pointerleave", function () { cards.forEach(function (c) { set(c, -999, -999); }); });
+  } else {
+    var queued = false;
+    var follow = function () {
+      queued = false;
+      var mid = window.innerHeight * 0.5;
+      cards.forEach(function (c) {
+        var r = c.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > window.innerHeight + 200) return;
+        set(c, r.width * 0.5, mid - r.top);
+      });
+    };
+    window.addEventListener("scroll", function () { if (!queued) { queued = true; requestAnimationFrame(follow); } }, { passive: true });
+    follow();
+  }
+})();

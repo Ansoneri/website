@@ -13,9 +13,9 @@ FOLDER = {"Glows": "glows", "Icons": "icons", "Logos": "logos", "Photography": "
           "Texture": "texture", "Lines": "lines", "Service icons": "service-icons", "Card backgrounds": "card-backgrounds"}
 ds = json.load(open(f"{DS}/project/design-system.json"))
 blob = {}
-for g, grp in ds["assetGroups"].items():
+for grp in ds["assetGroups"].values():   # keys may be URL-encoded ("Card~20backgrounds"); the name is not
     for name, f in grp["files"].items():
-        blob[f["blob"]] = f"../assets/{FOLDER[g]}/{name}"
+        blob[f["blob"]] = f"../assets/{FOLDER[grp['name']]}/{name}"
 css = open(f"{DS}/project/components/bundle.css").read()
 missing = set()
 def sub(m):
@@ -31,8 +31,9 @@ ref = lambda v: re.sub(r"\{([a-z0-9-]+)\}", r"var(--\1)", v)
 web, paper, root = [], [], []
 for c in t["color"]["tokens"]:
     v = c["value"]
-    if isinstance(v, dict):
-        web.append(f"  --{c['name']}: {ref(v['web'])};"); paper.append(f"  --{c['name']}: {ref(v['paper'])};")
+    if isinstance(v, dict):   # {"web": ...} for raw colours, plus "paper" for the themed ones
+        web.append(f"  --{c['name']}: {ref(v['web'])};")
+        if "paper" in v: paper.append(f"  --{c['name']}: {ref(v['paper'])};")
     else:
         web.append(f"  --{c['name']}: {v};")
 for sec in ("spacing", "radius", "stroke", "size", "opacity"):

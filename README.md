@@ -46,7 +46,7 @@ Pages (plain HTML, Latvian, same shell on every page - nav, phone menu, footer):
 | File | Page |
 | --- | --- |
 | `index.html` | Sākums - the approved landing page |
-| `pakalpojumi.html` | Pakalpojumi - after the 2 Oct 2026 mockup: three areas, three steps, three offers with price, checkable facts |
+| `pakalpojumi.html` | Pakalpojumi - the Mentor programme page (9 Oct 2026 artifact "Mentor programma - Kristers Ansons"): hero, why Mentor, nine elements, Rasējums / Mentor / Konsultācija with the comparison table, five phases, who it fits, credentials, questions. Its own styles are in `css/pakalpojumi.css` |
 | `par-mani.html` | Par mani - the four beats and the facts list |
 | `rezultati.html` | Rezultāti - IRONMAN finish, facts, client stories (with consent only) |
 | `kontakti.html` | Kontakti - booking, e-mail, Instagram, WhatsApp |
@@ -57,15 +57,17 @@ Site-only additions live in their own files: `css/site.css` (page shell, subpage
 
 ## Copy
 
-All page copy follows the Ansoneri Website Copy & Style Guide (voice, field order for offers, no negation-led Latvian lines, gender-neutral reader lines, first-person meta descriptions). Where the guide and the design system disagree, the design system's later decisions stand: Latvian first, "Sākt sadarbību" as the primary button, Home = hero, services, footer.
+All page copy follows the design system's **Website copy** section and its voice (reworked 9 Oct 2026): a coach first and an ambassador of the science, helping verbs in the first person (palīdzēšu, pielāgošu, parūpēšos), the psychology of trying named and looked after, stories that end in a lesson, one or two numbers per paragraph, architecture words only as an accent, no pillar labels (Ķermenis / Prāts / Zīmols). Fixed facts: sešas sezonas profesionālajā šosejas riteņbraukšanā (2018-2024) and 14 gadi mērķtiecīgā sportā - never twelve seasons. Every main page closes with the Ansoneri principle in Fraunces Light Italic (`.ka-principle`), the only italic on the site. Where the separate copy guide and the design system disagree, the design system stands.
 
 ## Still to fill in
 
 - **WhatsApp number** - every WhatsApp link is `https://wa.me/37100000000`; replace the number in all pages.
-- **Offers and prices** on Pakalpojumi follow the Pakalpojumi mockup (2 Oct 2026): Mentor programma 299 € mēnesī, Treniņu programma 99 € mēnesī, Konsultācija 50 € stundā (60 minutes); brand work is booked as consultations. Prices are written the Latvian way, "299 €"; the mockup wrote "€299".
-- **Places per month** for the Mentor programma - the mockup has "Vietas mēnesī: [SKAITS]"; left out until there is a number.
-- **2 × MSc** on Pakalpojumi reads "sporta zinātnē" only; add the qualification exactly as on the diplomas.
-- **MSc line** on Par mani - write the degree exactly as on the diploma (and add the second master's degree if there is one).
+- **Offers and prices** (design system, decided 9 Oct 2026): Rasējums 149 € vienreiz, Mentor 299 € mēnesī or 799 € par 3 mēnešiem, Konsultācija 50 € stundā; upgrade Rasējums → Mentor within 30 days credits the 149 €. Prices are written "149 €" (the Mentor artifact wrote "€149").
+- **"3 vietas"** - the Mentor page says "3 vietas uz ziemas sezonu" in the hero and the close, and "Palikušas 3 vietas" on the Mentor card; change all three when the number changes.
+- **Form length** - the Mentor artifact says the application takes 5 minutes; the live Tally form says about ten, so the site says "apmēram 10 minūtes". Change it if the form gets shorter.
+- **Testimonial** - the Mentor artifact has a placeholder for a client quote under the credentials; left out until there is one with written consent.
+- **New images not yet in the design system** - the nine-element icons (`assets/service-icons/icon-talk`, `-barbell`, `-nutrition`, `-week`, `-phone`, `-message`, `-mind`), `assets/photos/studio-portrait-warm.webp` and `assets/glows/g05-orb-wide.webp` came from the Mentor artifact; add them to the design system's asset groups.
+- **MSc line** - the degrees are written as "sporta zinātnē un psiholoģiskajā koučingā"; write each exactly as on its diploma.
 - **Par mani** text is about 275 words (Latvian); the copy guide asks for 400-700 - add your own story details, not invented ones.
 - **Client stories** on Rezultāti - add only with the person's written consent.
 - **Privātuma politika** - check the storage and retention lines against how client data is actually kept.
