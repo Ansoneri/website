@@ -215,14 +215,16 @@ body {
   display: inline-flex;
   flex-direction: column;
   gap: 14px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  line-height: 1.4;
-  letter-spacing: 0.28em;
+  font-family: var(--font-body);      /* Manrope Bold caps (7 Oct 2026) - never smaller-looking than the body text under it */
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--fg-3);
+  color: var(--fg-2);
   margin: 0;
 }
+[data-theme="paper"] .ka-eyebrow { font-size: 1em; color: var(--fg); }   /* in documents it matches the body size */
 .ka-eyebrow::before { content: ""; display: block; width: var(--size-dash); height: var(--stroke-dash); background: var(--accent); }
 .ka-eyebrow--inline { flex-direction: row; align-items: center; gap: 16px; }
 .ka-eyebrow--inline::before { width: 32px; }
@@ -429,6 +431,10 @@ body {
 .ka-quote { font-family: var(--font-display); font-style: normal; font-weight: 300; font-size: 40px; line-height: 1.05; letter-spacing: 0.02em; text-transform: uppercase; color: var(--fg); margin: 0; quotes: none; max-width: 18em; }
 .ka-quote--display { font-size: 56px; line-height: 1.1; }
 @media (max-width: 767px) { .ka-quote { font-size: 26px; } .ka-quote--display { font-size: 38px; } }
+/* The Ansoneri principle (7 Oct 2026): the only italic in the system, one fixed line that closes a page or document */
+.ka-principle { font-family: var(--font-principle, Fraunces, Georgia, serif); font-style: italic; font-weight: 300; font-size: 28px; line-height: 1.3; letter-spacing: 0; text-transform: none; color: var(--fg-2); margin: 0; max-width: 30em; font-optical-sizing: auto; }
+[data-theme="paper"] .ka-principle { color: var(--fg); }
+@media (max-width: 767px) { .ka-principle { font-size: 21px; } }
 
 /* ---------- Form field ---------- */
 .ka-field { display: flex; flex-direction: column; gap: 10px; }
@@ -921,3 +927,18 @@ textarea.ka-field__input { resize: vertical; min-height: 112px; }
   .ka-receipts li { grid-template-columns: 7ch 1fr; gap: 16px; padding: 14px 0; }
   .ka-receipts b { font-size: 22px; }
 }
+
+/* ---- Document rhythm: PDF reading pages (7 Oct 2026) ----
+   Sizes in pt on A4 (1px = 1pt in the previews). Title to lead: 18pt, so the lead never
+   sits on the title. Lead to rule: 36pt; rule to the next section: 24pt - the rule sits
+   between the two, a little nearer the section it opens. Sections flow from the top of
+   the page: never spread them out to fill the page height. */
+[data-theme="paper"] { --doc-title-gap: 18px; --doc-rule-before: 36px; --doc-rule-after: 24px; --doc-head-gap: 8px; --doc-meta-gap: 12px; }
+.ka-doc-title { font-family: var(--font-display); font-weight: 700; font-size: 30px; line-height: 1.12; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); margin: 0 0 var(--doc-title-gap, 18px); }
+.ka-doc-lead { font-family: var(--font-body); font-size: 11px; line-height: 16px; color: var(--fg-2); margin: 0; max-width: 470px; }
+.ka-doc-section { display: grid; grid-template-columns: 46px minmax(0, 1fr); margin-top: var(--doc-rule-before, 36px); padding-top: var(--doc-rule-after, 24px); border-top: 1px solid var(--fg); }
+.ka-doc-section__num { font-family: var(--font-display); font-weight: 700; font-size: 26px; line-height: 0.9; color: var(--accent); }
+.ka-doc-section__title { font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); margin: 0 0 var(--doc-head-gap, 8px); }
+.ka-doc-section__meta { font-family: var(--font-mono); font-size: 7.5px; line-height: 1.4; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-2); margin: 0 0 var(--doc-meta-gap, 12px); }
+.ka-doc-section p:not([class]) { font-family: var(--font-body); font-size: 11px; line-height: 16px; color: var(--fg); margin: 0 0 11px; }
+.ka-doc-section > :last-child > :last-child { margin-bottom: 0; }   /* the 36pt above the next rule is the whole gap */

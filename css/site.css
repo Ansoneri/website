@@ -71,64 +71,12 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
   .page-hero .ka-portrait { min-height: 0; }
 }
 
-/* ---------- Numbered steps (how it works) ---------- */
-.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 56px; margin: 0; padding: 0; list-style: none; }
-.step { display: flex; flex-direction: column; gap: 14px; }
-.step .ka-body { max-width: 30em; }
-.step__word { font-family: var(--font-display); font-weight: 700; font-size: 32px; line-height: 1.05; letter-spacing: 0.01em; text-transform: uppercase; color: var(--fg); margin: 0; }
-@media (max-width: 960px) { .steps { grid-template-columns: 1fr; gap: 32px; } }
+/* ---------- Header button that waits for the hero's own button to scroll away (js/site.js) ---------- */
+.ka-nav .ka-nav__end .ka-cta.nav-cta-wait:not(.is-on) { opacity: 0; transform: translateY(-4px); pointer-events: none; }   /* beats the header's own reveal rule */
 
-/* ---------- Pakalpojumi (the 2 Oct 2026 mockup) ---------- */
-.sec-title { margin-bottom: 40px; }
-.pak-line { width: 340px; max-width: 70%; }
-.page-hero--solo .pak-line + .ka-body-l { margin-top: 4px; }
-
-/* Three areas: one of Kristers's light studies behind each card (the component darkens its top for the text) */
-.areas { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
-.area { gap: 16px; min-height: 360px; padding: 36px; border-color: rgba(245, 243, 238, 0.10); }
-.area .ka-h3 { font-size: 26px; line-height: 1.15; }
-.area__tag, .plan__tag { margin: 0; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
-.area__note { margin: auto 0 0; padding-top: 8px; font-family: var(--font-mono); font-size: 11px; line-height: 1.5; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
-
-/* Three ways to work together: every plan in the same field order; the closest one carries the signature line as its border */
-.plans { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; align-items: stretch; }
-.plan { gap: 18px; padding: 36px; }
-.plan .ka-h3 { font-size: 30px; line-height: 1.1; }
-.plan__tag { color: var(--fg-3); }
-.plan--lead { border: 2px solid transparent; background: linear-gradient(var(--panel), var(--panel)) padding-box, var(--line-signature) border-box; }
-.plan--lead .plan__tag { color: var(--accent); }
-.plan__price { display: flex; align-items: baseline; gap: 10px; margin: 0; }
-.plan__price b { font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 1; color: var(--fg); font-variant-numeric: tabular-nums; }
-.plan__price span, .plan__for span { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
-.plan__for span { font-size: 11px; letter-spacing: 0.14em; }
-.plan__list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
-.plan__list li { position: relative; padding-left: 18px; font-size: 16px; line-height: 1.5; color: var(--fg-2); }
-.plan__list li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; background: var(--accent); }
-.plan__not { margin: 0; font-size: 14px; line-height: 1.5; color: var(--fg-3); }
-.plan .ka-cta { margin-top: auto; align-self: stretch; justify-content: center; --ka-cta-h: 52px; padding: 0 24px; font-size: 12px; }
-.offers-also { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 24px; margin: 28px 0 0; padding-top: 24px; font-size: 15px; line-height: 1.6; color: var(--fg-2); }
-.offers-also > span:nth-child(2) { max-width: 760px; }
-.offers-also__label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-3); }
-
-/* Checkable facts: big figure, mono line under it */
-.facts { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
-.facts li { display: flex; flex-direction: column; gap: 8px; }
-.facts b { font-family: var(--font-display); font-weight: 700; font-size: 44px; line-height: 1.05; color: var(--fg); font-variant-numeric: tabular-nums; }
-.facts span { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
-.facts a { color: var(--accent); text-decoration: none; white-space: nowrap; }
-.facts a:hover { color: var(--accent-hover); }
-
-@media (max-width: 1180px) { .plans { grid-template-columns: 1fr; max-width: 640px; } }
-@media (max-width: 960px) {
-  .sec-title { margin-bottom: 28px; }
-  .areas, .facts { grid-template-columns: 1fr; gap: 12px; }
-  .facts { gap: 28px; }
-  .area, .plan { padding: 28px 20px 24px; min-height: 0; }
-  .area .ka-h3 { font-size: 22px; }
-  .plan .ka-h3 { font-size: 26px; }
-  .plan__price b { font-size: 40px; }
-  .facts b { font-size: 36px; }
-}
+/* ---------- The Ansoneri principle: one italic line that closes a page, before the footer ---------- */
+.principle-end { padding-top: 0; }
+.page-close .ka-principle { margin-top: 24px; }
 
 /* ---------- Story beats (Par mani) ---------- */
 .beats { display: flex; flex-direction: column; gap: 56px; margin: 0; padding: 0; list-style: none; }
@@ -232,3 +180,6 @@ html, body { margin: 0; padding: 0; background: #030303; color: var(--fg); }
 @media (prefers-reduced-motion: reduce) {
   .site-menu:not([hidden]) { transition: none; }
 }
+
+/* Text for screen readers only (e.g. the tick marks in the Pakalpojumi comparison table) */
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
