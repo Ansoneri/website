@@ -1,0 +1,775 @@
+<!doctype html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Pilnais profils - Kristers Ansons</title>
+<meta name="description" content="Desmit minūšu profils par treniņiem, miegu, atjaunošanos, motivāciju un mentālajām prasmēm. Uzreiz saņem atskaiti ar savām prioritātēm.">
+<meta name="theme-color" content="#030303">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://ansoneri.com/profils.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="lv_LV">
+<meta property="og:site_name" content="Ansoneri">
+<meta property="og:title" content="Pilnais profils - Kristers Ansons">
+<meta property="og:description" content="Desmit minūšu profils par treniņiem, miegu, atjaunošanos, motivāciju un mentālajām prasmēm. Uzreiz saņem atskaiti ar savām prioritātēm.">
+<meta property="og:url" content="https://ansoneri.com/profils.html">
+<meta property="og:image" content="https://ansoneri.com/assets/hero-poster.jpg">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@1,9..144,300&family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@300;500;700&display=swap">
+<style>
+/* Layout concept: a lab intake - one domain per screen on black, then the result printed as a bone-paper lab report. */
+:root {
+  --ink: #030303; --ink-2: #0f0c0b; --ink-3: #1a1513;
+  --bone: #f5f3ee; --bone-2: #cfccc6; --bone-3: #8a857e;
+  --paper: #f5f3ee; --paper-ink: #141110; --paper-text: #2b2724; --paper-mute: #6a635b; --paper-rule: rgba(20,17,16,.14);
+  --orange: #ff6b1a; --red: #c8281c; --oxblood: #5a120c;
+  --signature: linear-gradient(90deg, var(--oxblood) 0%, var(--red) 30%, var(--orange) 68%, var(--bone) 100%);
+  --f-surname: Anton, Impact, "Arial Narrow", sans-serif;
+  --f-display: Oswald, "Arial Narrow", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --f-body: Manrope, system-ui, sans-serif;
+  --f-principle: Fraunces, Georgia, serif;
+  color-scheme: dark;
+  box-sizing: border-box; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { background: var(--ink); }
+body { margin: 0; background: var(--ink); color: var(--bone); font-family: var(--f-body); font-size: 16px; font-weight: 500; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 20; background: var(--ink); }
+[hidden] { display: none !important; }
+a { color: inherit; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; border-radius: 6px; }
+.wrap { width: 100%; max-width: 980px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--f-mono); font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--bone-3); }
+.sq { display: inline-block; width: .11em; height: .13em; margin-left: .05em; background: var(--orange); }
+
+/* top bar */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: rgba(3,3,3,.86); -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.bar__in { display: flex; justify-content: space-between; align-items: center; gap: 16px; height: 62px; }
+.brand { font-family: var(--f-surname); font-size: 24px; text-transform: uppercase; text-decoration: none; display: inline-block; transform: scaleX(1.17); transform-origin: left; }
+.back { font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--bone-2); text-decoration: none; }
+.back:hover { color: var(--bone); }
+.prog { height: 3px; background: rgba(245,243,238,.1); }
+.prog i { display: block; height: 100%; width: var(--p, 0%); background: var(--signature); transition: width .5s cubic-bezier(.2,.7,.2,1); }
+
+/* buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 54px; padding: 0 26px; border-radius: 8px; border: 0; cursor: pointer; font-family: var(--f-mono); font-weight: 500; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; text-decoration: none; }
+.btn--main { color: var(--ink); background: linear-gradient(90deg, var(--orange), #ff8d4d); box-shadow: 0 14px 30px -14px rgba(255,107,26,.7); }
+.btn--main:disabled { opacity: .35; cursor: not-allowed; box-shadow: none; }
+.btn--ghost { color: var(--bone); background: transparent; box-shadow: inset 0 0 0 1.5px rgba(245,243,238,.3); }
+.btn--ghost:hover { box-shadow: inset 0 0 0 1.5px var(--bone); }
+.btn svg { width: 16px; height: 16px; }
+
+/* intro */
+.intro { padding-block: clamp(48px, 10vh, 110px) 80px; display: grid; gap: 28px; }
+.intro h1 { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(56px, 12vw, 136px); line-height: .92; text-wrap: balance; }
+.rule { display: block; width: 96px; height: 4px; border-radius: 2px; background: var(--signature); }
+.intro__lead { margin: 0; max-width: 32em; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.5; font-weight: 600; color: var(--bone-2); }
+.doms { list-style: none; margin: 8px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1px solid rgba(245,243,238,.14); }
+.doms li { padding: 18px 16px 18px 0; border-bottom: 1px solid rgba(245,243,238,.14); display: grid; gap: 4px; min-width: 0; }
+.doms b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 21px; letter-spacing: .01em; }
+.doms span { font-size: 14px; color: var(--bone-3); line-height: 1.45; }
+.intro__acts { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+.intro__meta { font-size: 14px; color: var(--bone-3); }
+@media (max-width: 700px) { .doms { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* wizard */
+.step { padding-block: clamp(36px, 7vh, 72px) 140px; display: grid; gap: 10px; }
+.step__head { display: grid; gap: 14px; margin-bottom: 18px; }
+.step__head h2 { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(48px, 9vw, 104px); line-height: .94; }
+.step__head p { margin: 0; font-size: 18px; font-weight: 600; color: var(--bone-2); }
+.q { padding: 26px 0 28px; border-top: 1px solid rgba(245,243,238,.12); display: grid; gap: 16px; }
+.q__t { margin: 0; font-family: var(--f-display); font-weight: 500; font-size: clamp(21px, 2.2vw, 27px); line-height: 1.2; letter-spacing: .005em; color: var(--bone); }
+.q__t small { display: block; margin-top: 6px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--orange); }
+.scale { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.scale button, .chips button { cursor: pointer; border: 0; border-radius: 10px; background: var(--ink-3); box-shadow: inset 0 0 0 1px rgba(245,243,238,.12); transition: background .2s linear, box-shadow .2s linear, color .2s linear; }
+.scale button { height: 58px; font-family: var(--f-surname); font-size: 26px; color: var(--bone-2); }
+.scale button:hover, .chips button:hover { box-shadow: inset 0 0 0 1px rgba(245,243,238,.4); }
+.scale button[aria-checked="true"], .chips button[aria-checked="true"] { background: linear-gradient(180deg, #ff7a2e, #e2501a); color: var(--ink); box-shadow: 0 10px 22px -12px rgba(255,107,26,.9); }
+.scale__ends { display: flex; justify-content: space-between; gap: 12px; font-size: 13.5px; font-weight: 600; color: var(--bone-3); }
+.scale__now { min-height: 1.4em; font-size: 15px; font-weight: 700; color: var(--orange); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { min-height: 50px; padding: 0 18px; font-size: 15.5px; font-weight: 700; color: var(--bone); text-align: left; }
+.pre { font-family: var(--f-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--bone-3); }
+.nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; background: linear-gradient(0deg, var(--ink) 60%, rgba(3,3,3,0)); padding-bottom: max(16px, env(safe-area-inset-bottom, 0px)); padding-top: 28px; }
+.nav__in { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.nav__left { font-size: 13.5px; font-weight: 600; color: var(--bone-3); }
+.nav__btns { display: flex; gap: 10px; }
+@media (max-width: 520px) { .scale button { height: 54px; font-size: 22px; } .nav__left { display: none; } .nav__btns { width: 100%; } .nav__btns .btn { flex: 1; padding: 0 12px; } }
+
+/* report: printed as a lab sheet */
+.report { padding-block: 34px 90px; display: grid; gap: 22px; }
+.sample { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 18px; border-radius: 10px; background: rgba(255,107,26,.12); box-shadow: inset 0 0 0 1px rgba(255,107,26,.4); font-size: 14.5px; font-weight: 600; }
+.sheet { background: var(--paper); color: var(--paper-text); border-radius: 18px; padding: clamp(24px, 5vw, 60px); display: grid; gap: clamp(34px, 6vw, 56px); box-shadow: 0 40px 80px -40px rgba(0,0,0,.9); }
+.sheet .mono { color: var(--paper-mute); }
+.sheet__meta { display: flex; justify-content: space-between; gap: 10px 24px; flex-wrap: wrap; padding-bottom: 14px; border-bottom: 2px solid var(--paper-ink); }
+.sheet h2 { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(30px, 4vw, 46px); line-height: 1; color: var(--paper-ink); }
+.sheet h3 { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 20px; letter-spacing: .02em; color: var(--paper-ink); }
+.sec { display: grid; gap: 20px; }
+.hero-r { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .7fr); gap: 28px; align-items: end; }
+.hero-r__type { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(44px, 7.4vw, 92px); line-height: .94; color: var(--paper-ink); text-wrap: balance; }
+.hero-r__desc { margin: 14px 0 0; font-size: clamp(17px, 1.6vw, 20px); line-height: 1.55; font-weight: 600; color: var(--paper-text); max-width: 32em; }
+.hero-r__ctx { margin: 12px 0 0; font-size: 14px; color: var(--paper-mute); font-weight: 600; }
+.ready { display: grid; gap: 6px; justify-items: end; text-align: right; }
+.ready__n { font-family: var(--f-surname); font-size: clamp(84px, 12vw, 140px); line-height: .85; color: var(--paper-ink); font-variant-numeric: tabular-nums; }
+.ready__n small { font-size: .3em; color: var(--paper-mute); }
+.ready__l { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 18px; color: var(--red); }
+@media (max-width: 640px) { .hero-r { grid-template-columns: minmax(0, 1fr); } .ready { justify-items: start; text-align: left; } }
+
+.dom { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: center; }
+.radar { width: 100%; max-width: 380px; height: auto; justify-self: center; }
+.radar text { font-family: var(--f-display); font-weight: 700; font-size: 13px; text-transform: uppercase; fill: var(--paper-ink); letter-spacing: .04em; }
+.dlist { display: grid; gap: 0; border-top: 1px solid var(--paper-rule); }
+.drow { display: grid; grid-template-columns: 128px minmax(0, 1fr) 40px; gap: 6px 14px; align-items: center; padding: 13px 0; border-bottom: 1px solid var(--paper-rule); }
+.drow b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 17px; color: var(--paper-ink); }
+.drow i { display: block; height: 8px; border-radius: 4px; background: rgba(20,17,16,.1); position: relative; overflow: hidden; }
+.drow i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 4px; background: var(--c, linear-gradient(90deg, var(--red), var(--orange))); }
+.drow em { font-style: normal; font-family: var(--f-surname); font-size: 22px; color: var(--paper-ink); text-align: right; font-variant-numeric: tabular-nums; }
+.drow span { grid-column: 1 / -1; font-size: 14.5px; line-height: 1.5; color: var(--paper-text); }
+.drow.is-low b, .drow.is-low em { color: var(--red); }
+@media (max-width: 760px) { .dom { grid-template-columns: minmax(0, 1fr); } .drow { grid-template-columns: 104px minmax(0, 1fr) 36px; } }
+
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.panel { display: grid; gap: 14px; align-content: start; padding: 24px; border-radius: 14px; background: #fffdf9; box-shadow: 0 1px 0 rgba(20,17,16,.05), 0 20px 36px -28px rgba(20,17,16,.5); min-width: 0; }
+.panel p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--paper-text); }
+.verdict { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 26px; line-height: 1.05; color: var(--paper-ink); }
+.mbar { display: grid; grid-template-columns: 122px minmax(0, 1fr) 26px; gap: 10px; align-items: center; font-size: 13.5px; font-weight: 700; color: var(--paper-ink); }
+.mbar i { display: block; height: 7px; border-radius: 4px; background: rgba(20,17,16,.1); position: relative; overflow: hidden; }
+.mbar i::after { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 4px; background: var(--c); }
+.mbar em { font-style: normal; font-family: var(--f-mono); font-size: 12px; text-align: right; color: var(--paper-mute); }
+.scaleline { display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--paper-mute); }
+@media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } }
+
+.prio { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: p; border-top: 2px solid var(--paper-ink); }
+.prio > li { counter-increment: p; display: grid; grid-template-columns: 78px minmax(0, 1fr); gap: 4px 20px; padding: 24px 0; border-bottom: 1px solid var(--paper-rule); }
+.prio > li::before { content: counter(p); grid-row: span 3; font-family: var(--f-surname); font-size: 72px; line-height: .85; color: transparent; -webkit-text-stroke: 1.5px var(--paper-ink); }
+.prio h4 { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 24px; color: var(--paper-ink); }
+.prio p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--paper-text); }
+.prio ul { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.prio ul li { display: block; padding: 0 0 0 20px; border: 0; position: relative; font-size: 15px; font-weight: 700; color: var(--paper-ink); }
+.prio ul li::before { content: ""; position: absolute; left: 0; top: .55em; width: 7px; height: 7px; background: var(--orange); -webkit-text-stroke: 0; }
+@media (max-width: 520px) { .prio > li { grid-template-columns: 54px minmax(0, 1fr); } .prio > li::before { font-size: 54px; } }
+
+.flags { display: grid; gap: 10px; }
+.flag { padding: 14px 16px; border-radius: 10px; background: rgba(200,40,28,.08); box-shadow: inset 3px 0 0 var(--red); font-size: 15px; font-weight: 600; line-height: 1.5; color: var(--paper-ink); }
+.rec { display: grid; gap: 16px; padding: clamp(24px, 4vw, 40px); border-radius: 16px; background: var(--ink); color: var(--bone); }
+.rec .mono { color: var(--bone-3); }
+.rec__t { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(32px, 4.4vw, 52px); line-height: 1; }
+.rec p { margin: 0; font-size: 16.5px; line-height: 1.55; color: var(--bone-2); max-width: 34em; }
+.rec__acts { display: flex; flex-wrap: wrap; gap: 12px; }
+.rec__note { font-size: 13px; color: var(--bone-3); }
+details.how { border-top: 1px solid var(--paper-rule); padding-top: 18px; }
+details.how summary { cursor: pointer; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 18px; color: var(--paper-ink); }
+details.how div { display: grid; gap: 10px; margin-top: 14px; font-size: 14.5px; line-height: 1.6; color: var(--paper-text); }
+details.how code { font-family: var(--f-mono); font-size: 12.5px; background: rgba(20,17,16,.06); padding: 1px 5px; border-radius: 4px; }
+details.how a { color: var(--red); }
+.fine { margin: 0; font-size: 13px; line-height: 1.5; color: var(--paper-mute); }
+.toast { position: fixed; left: 50%; bottom: max(24px, env(safe-area-inset-bottom, 0px)); translate: -50% 0; z-index: 30; padding: 12px 18px; border-radius: 8px; background: var(--bone); color: var(--ink); font-weight: 700; font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ===== round 5 ===== */
+.rule { display: none; }
+.q__t small { display: none; }
+.q__hint { margin: -6px 0 0; font-size: 14px; font-weight: 600; color: var(--bone-3); }
+.chips--multi button[aria-checked="true"]::after { content: " ✓"; }
+.q textarea { width: 100%; min-height: 96px; resize: vertical; padding: 14px 16px; border-radius: 10px; border: 0; background: var(--ink-3); box-shadow: inset 0 0 0 1px rgba(245,243,238,.18); color: var(--bone); font: 500 16px/1.5 var(--f-body); }
+.q textarea:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.q__sub { display: grid; gap: 10px; }
+.q__sub label { font-size: 15px; font-weight: 700; color: var(--bone); }
+
+/* report: radar never leaves the screen */
+.radar { width: 100%; max-width: 460px; overflow: visible; }
+.radar text { font-size: 15px; }
+.radar .rv { fill: var(--red); font-family: var(--f-surname); font-size: 17px; }
+.drow { grid-template-columns: 150px minmax(0, 1fr) 40px; }
+@media (max-width: 760px) { .drow { grid-template-columns: 116px minmax(0, 1fr) 34px; } .drow b { font-size: 15px; line-height: 1.15; } }
+.chiplist { display: flex; flex-wrap: wrap; gap: 6px; }
+.chiplist span { padding: 6px 10px; border-radius: 6px; background: rgba(20,17,16,.07); font-size: 13.5px; font-weight: 700; color: var(--paper-ink); }
+.chiplist span.hot { background: rgba(255,107,26,.16); }
+.answers { display: grid; gap: 12px; margin: 0; }
+.answers div { display: grid; gap: 4px; }
+.answers dt { font-weight: 800; font-size: 14.5px; color: var(--paper-ink); }
+.answers dd { margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--paper-text); }
+.panel--wide { grid-column: 1 / -1; }
+.skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 28px; }
+@media (max-width: 760px) { .skills { grid-template-columns: minmax(0, 1fr); } }
+
+/* send + download */
+.send { display: grid; gap: 18px; padding: clamp(24px, 4vw, 40px); border-radius: 16px; background: var(--ink); color: var(--bone); scroll-margin-top: 90px; }
+.send h3 { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(28px, 3.6vw, 42px); line-height: 1.04; color: var(--bone); }
+.send p { margin: 0; font-size: 16px; line-height: 1.55; color: var(--bone-2); }
+.send .chips button { background: var(--ink-3); }
+.field { display: grid; gap: 8px; }
+.field label { font-size: 14.5px; font-weight: 700; color: var(--bone); }
+.field input, .field textarea { width: 100%; padding: 14px 16px; border-radius: 10px; border: 0; background: var(--ink-3); box-shadow: inset 0 0 0 1px rgba(245,243,238,.18); color: var(--bone); font: 500 16px/1.5 var(--f-body); }
+.field textarea { min-height: 90px; resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.fields2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 640px) { .fields2 { grid-template-columns: minmax(0, 1fr); } }
+.consent { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; line-height: 1.5; color: var(--bone-2); }
+.consent input { width: 20px; height: 20px; margin-top: 2px; accent-color: var(--orange); flex: none; }
+.send__err { min-height: 1.2em; font-size: 14px; font-weight: 700; color: var(--orange); }
+.done { display: grid; gap: 14px; justify-items: start; }
+.done b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.05; color: var(--bone); }
+.next { display: grid; gap: 14px; justify-items: center; text-align: center; padding: clamp(28px, 5vw, 48px) 0 8px; }
+.next b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(40px, 7vw, 76px); line-height: 1.02; color: var(--paper-ink); text-wrap: balance; }
+.next p { margin: 0; max-width: 30em; font-size: 16px; color: var(--paper-text); }
+.next .btn--ghost { color: var(--paper-ink); box-shadow: inset 0 0 0 1.5px rgba(20,17,16,.35); }
+
+@media print {
+  @page { margin: 12mm; }
+  html, body { background: #fff !important; }
+  .bar, .nav, .toast, .sample, .rec__acts, .rec__note, .send, .next, details.how { display: none !important; }
+  .report { padding: 0 !important; }
+  .sheet { box-shadow: none !important; border-radius: 0 !important; padding: 0 !important; }
+  .rec { background: #f5f3ee !important; color: #141110 !important; }
+  .rec p, .rec .mono { color: #2b2724 !important; }
+  .sec, .panel, .prio > li, .hero-r { break-inside: avoid; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+
+/* round 12: room under headings (the cedilla in Ņ, Ļ, Ķ), panel headings, notes */
+.step__head { gap: 20px; }
+.step__head h2 { line-height: 1.04; padding-bottom: .14em; }
+.q--note textarea { width: 100%; min-height: 92px; box-sizing: border-box; border-radius: 12px; border: 1px solid rgba(245,243,238,.18); background: rgba(245,243,238,.04); color: var(--bone); font: inherit; font-size: 16px; padding: 12px 14px; resize: vertical; }
+.q--note .q__t small { display: inline; margin-left: 10px; }
+.ph { margin: 0; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: clamp(24px, 2.4vw, 32px); line-height: 1.06; padding-bottom: .08em; color: inherit; }
+.panel .verdict { font-size: clamp(18px, 1.8vw, 22px) !important; text-transform: none !important; letter-spacing: 0 !important; }
+.v--risk, .v--ctrl, .v--low { color: #c8281c !important; }
+.v--ok, .v--auto { color: #ff6b1a !important; }
+.v--room, .v--mixed { color: #d9662f !important; }
+
+.q__text { width: 100%; min-height: 84px; box-sizing: border-box; border-radius: 12px; border: 1px solid rgba(245,243,238,.18); background: rgba(245,243,238,.04); color: var(--bone); font: inherit; font-size: 16px; padding: 12px 14px; resize: vertical; margin-top: 10px; }
+label.q__t small { display: inline !important; margin-left: 10px; }
+
+.q__in { width: 100%; max-width: 360px; box-sizing: border-box; margin-top: 12px; padding: 14px 16px; border-radius: 12px; border: 0; background: rgba(245,243,238,.04); box-shadow: inset 0 0 0 1px rgba(245,243,238,.18); color: var(--bone); font: 500 17px/1.4 var(--f-body); }
+.q__in[type=number] { -moz-appearance: textfield; appearance: textfield; }
+.q__in::-webkit-inner-spin-button, .q__in::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.q__in:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.q--field + .q--field .q__in { max-width: 160px; }
+.privacy { margin: 26px 0 0; padding: 18px 18px 14px; border-radius: 14px; box-shadow: inset 0 0 0 1px rgba(245,243,238,.12); display: grid; gap: 12px; max-width: 640px; }
+.privacy p { margin: 0; font-size: 14px; line-height: 1.55; color: var(--bone-2); }
+.privacy .privacy__h { font: 500 10.5px/1 var(--f-mono); letter-spacing: .22em; text-transform: uppercase; color: var(--bone); }
+.privacy .consent em { font-style: normal; font: 500 9.5px/1 var(--f-mono); letter-spacing: .18em; text-transform: uppercase; color: var(--orange); margin-left: 6px; white-space: nowrap; }
+.privacy__err { color: #ff8a5c !important; min-height: 0; }
+.privacy__err:empty { display: none; }
+</style>
+</head>
+<body>
+<header class="bar">
+  <div class="wrap bar__in"><a class="brand" href="index.html">Ansons<span class="sq"></span></a><a class="back" href="index.html">← Atpakaļ uz lapu</a></div>
+  <div class="prog" aria-hidden="true"><i id="prog"></i></div>
+</header>
+
+<main id="app">
+  <section class="intro wrap" id="intro">
+    <span class="mono">Pilnais profils · apmēram 10 minūtes</span>
+    <h1>Pilnais profils</h1>
+    <p class="intro__lead">Sešas jomas, kas nosaka tavu formu. No tavām atbildēm uzbūvēšu atskaiti ar tavu profilu, gatavību, trim prioritātēm un pirmās nedēļas soļiem.</p>
+    <ul class="doms">
+      <li><b>Treniņi</b><span>Regularitāte un struktūra</span></li>
+      <li><b>Miegs</b><span>Ritms, kvalitāte, ilgums</span></li>
+      <li><b>Atjaunošanās</b><span>Stress un atpūta</span></li>
+      <li><b>Motivācija</b><span>Kāpēc tu gribi pārmaiņas</span></li>
+      <li><b>Veselība</b><span>Enerģija, uzturs, sāpes</span></li>
+      <li><b>Mentālās prasmes</b><span>Fokuss, regulācija, noturība</span></li>
+    </ul>
+    <div class="privacy">
+      <p class="privacy__h">Tavi dati</p>
+      <p>Tavas atbildes, arī par veselību, saņemu tikai es: kad nosūti atskaiti, tā caur FormSubmit nonāk manā e-pastā. Tālāk tās nevienam nenododu, un tu jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. Vairāk <a href="privatuma-politika.html">privātuma politikā</a>.</p>
+      <label class="consent"><input type="checkbox" id="cPlan"><span>Piekrītu, ka manas atbildes tiek saglabātas un izmantotas, lai sagatavotu man personalizētu plānu un ieteikumus. <em>Obligāti</em></span></label>
+      <label class="consent"><input type="checkbox" id="cImprove"><span>Piekrītu, ka manas atbildes bez vārda un kontaktiem tiek izmantotas pakalpojumu uzlabošanai. <em>Pēc izvēles</em></span></label>
+      <p class="privacy__err" id="cErr" role="alert"></p>
+    </div>
+    <div class="intro__acts"><button class="btn btn--main" id="start" type="button">Sākt profilu</button><button class="btn btn--ghost" id="demo" type="button">Parauga atskaite</button></div>
+    <p class="intro__meta" id="prefNote" hidden>Dažas atbildes jau aizpildītas no ātrā profila. Tās vari mainīt.</p>
+  </section>
+
+  <section class="step wrap" id="step" hidden aria-live="polite"></section>
+  <section class="report wrap" id="report" hidden></section>
+</main>
+
+<div class="nav" id="nav" hidden><div class="wrap nav__in"><span class="nav__left" id="navLeft"></span><div class="nav__btns"><button class="btn btn--ghost" id="prev" type="button">Atpakaļ</button><button class="btn btn--main" id="next" type="button">Tālāk</button></div></div></div>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(() => {
+  /* Where the report goes. On ansoneri.com put a form-to-email endpoint here (for example Web3Forms or Formspree,
+     both free to start); it emails each report straight to Kristers's inbox. Empty = mockup mode. */
+  const SEND_ENDPOINT = "https://formsubmit.co/ajax/kristersansons14@gmail.com";
+  const SEND_KEY = "";
+  const BACK = "index.html#w2";
+
+  const AGREE = ["Nepiekrītu", "Drīzāk nepiekrītu", "Ne jā, ne nē", "Drīzāk piekrītu", "Pilnīgi piekrītu"];
+  const FREQ = ["Nekad", "Reti", "Dažreiz", "Bieži", "Ļoti bieži"];
+  const HEALTH = ["Slikta", "Viduvēja", "Laba", "Ļoti laba", "Izcila"];
+  const IMP = ["Nav svarīgi", "Mazliet svarīgi", "Vidēji", "Svarīgi", "Ļoti svarīgi"];
+  const CONF = ["Nemaz", "Mazliet", "Vidēji", "Diezgan", "Pilnīgi"];
+
+  /* ---------- the questionnaire: original items, each mapped to a construct ---------- */
+  const SECTIONS = [
+    { id: "ctx", t: "Konteksts", lead: "Pastāsti par sevi un to, ko gribi sasniegt. Mērķus vari izvēlēties vairākus.", q: [
+      { id: "name", type: "field", q: "Kā mani sauc?", ph: "Vārds", ac: "given-name", ok: (v) => !!v && v.length >= 2 },
+      { id: "age", type: "field", q: "Cik man ir gadu?", ph: "Piemēram, 32", num: true, ok: (v) => +v >= 14 && +v <= 99 },
+      { id: "goal", type: "multi", q: "Ko es gribu sasniegt nākamajos 3 mēnešos?", hint: "Izvēlies visu, kas attiecas uz tevi", opts: ["Samazināt svaru", "Spēks un muskuļi", "Izturība un sacensības", "Vairāk enerģijas", "Labāka veselība", "Mazāk stresa", "Atgriezties sportā"] },
+      { id: "freq", type: "choice", q: "Cik treniņu man ir parastā nedēļā?", opts: ["0", "1-2", "3-4", "5+"] },
+      { id: "exp", type: "choice", q: "Cik ilgi es jau trenējos regulāri?", opts: ["Mazāk par gadu", "1-3 gadi", "3+ gadi", "Biju profesionālis"] },
+      { id: "time", type: "choice", q: "Cik laika nedēļā varu atvēlēt treniņiem?", opts: ["Līdz 2 h", "2-4 h", "4-6 h", "6+ h"] },
+    ] },
+    { id: "tr", t: "Treniņi", lead: "Domā par pēdējiem diviem mēnešiem. Kā tu trenējies, ko tu dari un kā tu to novērtētu godīgi, ne ideālajā nedēļā.", q: [
+      { id: "Tkind", type: "multi", q: "Ko es pārsvarā daru treniņos?", hint: "Izvēlies visu, kas attiecas uz tevi", opts: ["Spēka treniņi zālē", "Skriešana, ritenis vai peldēšana", "Komandu sports", "Grupu nodarbības", "Joga vai mobilitāte", "Treniņi mājās", "Pagaidām neko"] },
+      { id: "T1", type: "scale", lab: AGREE, q: "Es trenējos pēc plāna, nevis pēc noskaņojuma" },
+      { id: "T2", type: "scale", lab: AGREE, q: "Treniņus izlaižu reti, ne biežāk kā reizi divās nedēļās" },
+      { id: "T3", type: "scale", lab: AGREE, q: "Es zinu, kāpēc veicu katru treniņu" },
+      { id: "T4", type: "scale", lab: AGREE, q: "Savu progresu es varu izmērīt, nevis tikai sajust" },
+      { id: "T5", type: "scale", lab: AGREE, q: "Es jūtu, ka slodze pakāpeniski pieaug: vairāk svara, atkārtojumu vai ātrāks temps" },
+    ] },
+    { id: "sl", t: "Miegs", lead: "Domā par pēdējām divām nedēļām.", q: [
+      { id: "S1", type: "scale", lab: AGREE, q: "Es eju gulēt un ceļos aptuveni vienā laikā, arī brīvdienās" },
+      { id: "S2", type: "scale", lab: AGREE, q: "Es esmu apmierināts ar savu miegu" },
+      { id: "S3", type: "scale", lab: AGREE, q: "Dienā es jūtos možs un necīnos ar miegainību" },
+      { id: "S4", type: "scale", lab: AGREE, q: "Es iemiegu ātri un naktī daudz nemostos" },
+      { id: "S5", type: "choice", q: "Cik stundas es parasti guļu?", opts: ["Mazāk par 6", "6-7", "7-8", "8-9", "9+"] },
+    ] },
+    { id: "st", t: "Atjaunošanās", lead: "Domā par pēdējo mēnesi. Cik daudz slodzes ir darbā un dzīvē, un cik labi tu atjaunojies.", q: [
+      { id: "R1", type: "scale", lab: FREQ, q: "Cik bieži man šķiet, ka es nespēju tikt galā ar svarīgām lietām savā dzīvē?" },
+      { id: "R2", type: "scale", lab: FREQ, q: "Cik bieži es jūtos saspringts vai nervozs?" },
+      { id: "R3", type: "scale", lab: FREQ, q: "Cik bieži es jūtu, ka lietas notiek tā, kā es vēlos?" },
+      { id: "R4", type: "scale", lab: FREQ, q: "Cik bieži nākamajā dienā pēc smaga treniņa es jūtos atpūties?" },
+      { id: "R5", type: "scale", lab: FREQ, q: "Cik bieži man ir laiks tikai sev: pastaiga, pirts, hobijs vai draugi?" },
+    ] },
+    { id: "mo", t: "Motivācija", lead: "Kāpēc tu gribi pārmaiņas un kāpēc tieši tagad. Te nav pareizo atbilžu. Jo godīgāk, jo labāks būs plāns.", q: [
+      { id: "Mwhy", type: "multi", q: "Kas mani mudina mainīt kaut ko tieši tagad?", hint: "Izvēlies visu, kas attiecas uz tevi", opts: ["Izskats un ķermeņa forma", "Veselība un ilgmūžība", "Enerģija ikdienā", "Sportisks rezultāts vai sacensības", "Mazāk stresa, labāks garastāvoklis", "Pašapziņa", "Ārsta ieteikums vai veselības signāls", "Konkrēts notikums priekšā"] },
+      { id: "Mbar", type: "multi", q: "Kas man līdz šim ir traucējis?", hint: "Izvēlies visu, kas attiecas uz tevi", opts: ["Laika trūkums", "Nezinu, ko tieši darīt", "Motivācija pazūd pēc dažām nedēļām", "Rezultāti nenāk", "Sāpes vai traumas", "Stress un nogurums", "Nav, kas palīdz noturēt ritmu", "Nekas īpašs"] },
+      { id: "Mimp", type: "scale", lab: IMP, q: "Cik svarīgi man ir kaut ko mainīt tieši tagad?" },
+      { id: "Mconf", type: "scale", lab: CONF, q: "Cik pārliecināts es esmu, ka man izdosies, ja būs labs plāns?" },
+      { id: "M1", type: "scale", lab: AGREE, q: "Es trenējos, jo man tas patīk" },
+      { id: "M2", type: "scale", lab: AGREE, q: "Es trenējos, jo tas ir svarīgi man pašam" },
+      { id: "M3", type: "scale", lab: AGREE, q: "Es jūtos vainīgs, ja izlaižu treniņu" },
+      { id: "M4", type: "scale", lab: AGREE, q: "Es trenējos, jo citi to no manis gaida" },
+      { id: "M5", type: "scale", lab: AGREE, q: "Īsti neredzu jēgu trenēties" },
+    ] },
+    { id: "he", t: "Veselība", lead: "Enerģija, uzturs un tas, kas varētu ierobežot treniņus.", q: [
+      { id: "H1", type: "scale", lab: HEALTH, q: "Kā es vērtēju savu veselību kopumā?" },
+      { id: "H2", type: "scale", lab: AGREE, q: "Man pietiek enerģijas arī dienas otrajā pusē" },
+      { id: "H3", type: "scale", lab: AGREE, q: "Es ēdu regulāri un pietiekami daudz olbaltumvielu (1,6-2 g uz kg ķermeņa svara dienā)" },
+      { id: "H4", type: "choice", q: "Vai šobrīd man ir sāpes vai trauma, kas ietekmē treniņus?", opts: ["Nē", "Viegli, varu trenēties", "Jā, tas ierobežo"], follow: { when: ["Viegli, varu trenēties", "Jā, tas ierobežo"], id: "H4t", label: "Kas tieši? Kur sāp, kopš kura laika, vai esi bijis pie ārsta?" } },
+    ] },
+    { id: "ps", t: "Mentālās prasmes", lead: "Prāts ir trenējams tāpat kā ķermenis: uzmanība, emocijas, plānošana, stress un mērķi. Domā gan par darbu, gan par sportu.", q: [
+      { id: "P1", type: "scale", lab: AGREE, q: "Es spēju strādāt 45 minūtes bez novēršanās", skill: "Uzmanība" },
+      { id: "P2", type: "scale", lab: AGREE, q: "Pirms svarīga notikuma es zinu, kā sevi nomierināt vai uzmundrināt", skill: "Regulācija" },
+      { id: "P3", type: "scale", lab: AGREE, q: "Pēc neveiksmes es ātri saņemos un turpinu", skill: "Noturība" },
+      { id: "P4", type: "scale", lab: AGREE, q: "Grūtos brīžos mana iekšējā balss palīdz, nevis traucē", skill: "Iekšējā runa" },
+      { id: "P5", type: "scale", lab: AGREE, q: "Es izvirzu konkrētus mērķus ar termiņu", skill: "Mērķi" },
+      { id: "P6", type: "scale", lab: AGREE, q: "Pirms grūta uzdevuma es iztēlojos, kā to izpildīšu", skill: "Iztēle" },
+      { id: "P7", type: "scale", lab: AGREE, q: "Spiediena brīžos es uzticos savām spējām", skill: "Pārliecība" },
+      { id: "P8", type: "scale", lab: AGREE, q: "Es spēju kontrolēt emocijas arī tad, kad viss neiet pēc plāna", skill: "Emociju kontrole" },
+      { id: "P9", type: "scale", lab: AGREE, q: "Es plānoju savu nedēļu un turos pie plāna", skill: "Plānošana" },
+      { id: "P10", type: "scale", lab: AGREE, q: "Ilgstoša stresa periodos es zinu, kā saglabāt enerģiju un ritmu", skill: "Stresa kontrole" },
+    ] },
+    { id: "co", t: "Sadarbība", lead: "Pēdējais solis. Tas palīdzēs saprast, kāds atbalsts tev der vislabāk.", q: [
+      { id: "Csup", type: "choice", q: "Kāds atbalsts man palīdzētu visvairāk?", opts: ["Plāns, ko izpildu pats", "Plāns un regulāra pārbaude", "Treneris blakus visu ceļu"] },
+      { id: "Cprev", type: "choice", q: "Vai es jau esmu strādājis ar treneri?", opts: ["Nē", "Jā, un tas strādāja", "Jā, bet tas nestrādāja"], follow: { when: ["Jā, un tas strādāja", "Jā, bet tas nestrādāja"], id: "Cprevt", label: "Kas tieši strādāja vai nestrādāja?" } },
+      { id: "Cwhen", type: "choice", q: "Kad es gribu sākt?", opts: ["Šonedēļ", "2-4 nedēļu laikā", "Pēc 1-2 mēnešiem", "Pagaidām tikai interesējos"] },
+      { id: "Cinv", type: "choice", q: "Cik es esmu gatavs mēnesī ieguldīt savā formā un veselībā?", opts: ["Līdz 50 €", "50-150 €", "150-300 €", "300 € un vairāk"] },
+      { id: "Cwin", type: "text", q: "Kā izskatītos veiksmīgi nākamie 3 mēneši?", hint: "Piemēram, kā tu izskaties, jūties, ko spēj izdarīt", ph: "Piemēram: -5 kg, 10 pievilkšanās, mierīgāks miegs" },
+    ] },
+  ];
+  const ALL = SECTIONS.flatMap((s) => s.q);
+
+  /* example answers: a busy professional who trains a lot but sleeps and recovers poorly */
+  const SAMPLE = { name: "Anna", age: "34", goal: ["Spēks un muskuļi", "Vairāk enerģijas"], freq: "3-4", exp: "3+ gadi", time: "4-6 h", Tkind: ["Spēka treniņi zālē", "Skriešana, ritenis vai peldēšana"], T1: 4, T2: 4, T3: 3, T4: 2, T5: 3, S1: 2, S2: 2, S3: 2, S4: 3, S5: "6-7", R1: 4, R2: 4, R3: 3, R4: 2, R5: 2, Mwhy: ["Izskats un ķermeņa forma", "Enerģija ikdienā", "Mazāk stresa, labāks garastāvoklis"], Mbar: ["Laika trūkums", "Stress un nogurums"], Mimp: 5, Mconf: 3, M1: 4, M2: 5, M3: 4, M4: 2, M5: 1, H1: 4, H2: 2, H3: 3, H4: "Viegli, varu trenēties", H4t: "Labais celis pēc garākiem skrējieniem, apmēram 2 mēnešus", P1: 3, P2: 2, P3: 3, P4: 2, P5: 4, P6: 2, P7: 3, P8: 3, P9: 4, P10: 2, Csup: "Plāns un regulāra pārbaude", Cprev: "Jā, bet tas nestrādāja", Cprevt: "Plāns bija labs, bet pēc mēneša pazudu", Cwhen: "2-4 nedēļu laikā", Cinv: "150-300 €", Cwin: "Vairāk enerģijas pēc darba un 3 treniņi nedēļā bez izlaišanas" };
+
+  /* ===================== INJURY NOTES =====================
+     Reads the free text about pain or injury and gives a first coaching conclusion: which area, how long,
+     whether a doctor has seen it, warning signs, and what the first weeks of training will do around it.
+     It is a coach's screening, not a diagnosis. */
+  const AREAS = [
+    { re: /cel[ii]|ceļ|menisk|krust/i, k: "celis", plan: "mazāk skriešanas apjoma un lēcienu sākumā, vairāk gurnu un augšstilbu spēka, slodzi kāpināsim pa soļiem" },
+    { re: /mugur|jostas|krust[uv]|skriemel|disk/i, k: "mugura", plan: "stabilitāte un kontrolēta kustība pirms smagām pacelšanām, slodzi pievienosim tikai bez sāpju pieauguma" },
+    { re: /plec|lāpstiņ|rotator/i, k: "plecs", plan: "lāpstiņu stabilitāte un rotatoru spēks, spiedieni virs galvas tikai bez sāpēm" },
+    { re: /potīt|pēd|ahil|stilb/i, k: "potīte vai pēda", plan: "pakāpeniska skriešanas slodze, ikru un pēdas spēks, līdzsvara darbs" },
+    { re: /gūž|cirksn|iegurn/i, k: "gūža", plan: "gūžas kustīgums un sēžas muskuļu spēks, izvairīsimies no sāpīgām amplitūdām" },
+    { re: /kakl/i, k: "kakls", plan: "stāja, kakla un plecu joslas izturība, galvas pozīcija pacelšanās laikā" },
+    { re: /elkon|plaukst|delm|pirkst/i, k: "roka", plan: "satvēriena un apakšdelma slodze pakāpeniski, vingrinājumu varianti bez sāpēm" },
+  ];
+  function injury(text, level) {
+    const t = (text || "").toLowerCase();
+    const area = AREAS.find((x) => x.re.test(t));
+    const num = t.match(/(\d+[.,]?\d*)\s*(ned|mēn|men|gad|dien)/);
+    let months = null;
+    if (num) { const v = parseFloat(num[1].replace(",", ".")), u = num[2]; months = u.startsWith("gad") ? v * 12 : u.startsWith("ned") ? v / 4.3 : u.startsWith("dien") ? v / 30 : v; }
+    const seen = /ārst|arst|fizio|ortoped|traumatolog|mr|rentgen|izmeklē/.test(t);
+    const red = [];
+    if (/nakt/.test(t)) red.push("sāpes naktī");
+    if (/tirp|nejūt|nejut|vājum|vajum/.test(t)) red.push("tirpšana vai vājums");
+    if (/pietūk|pietuk|tūsk/.test(t)) red.push("pietūkums");
+    if (/operā|opera/.test(t)) red.push("pēc operācijas");
+    if (/stipr|ļoti sāp|asas|ass /.test(t)) red.push("stipras sāpes");
+    const where = area ? area.k[0].toUpperCase() + area.k.slice(1) : "Sāpes vai trauma";
+    const when = months == null ? "" : months < 1.5 ? ", nesen" : months < 3 ? `, apmēram ${Math.round(months)} mēn.` : ", ilgāk par 3 mēnešiem";
+    let check = "";
+    if (red.length || level === "Jā, tas ierobežo" || (months != null && months >= 3 && !seen))
+      check = (seen ? "Tā kā speciālists jau to ir redzējis, paņem viņa ieteikumus uz pirmo sarunu. " : "Pirms slodzes kāpināšanas iesaku ārsta vai fizioterapeita pārbaudi. ")
+        + (red.length ? `Brīdinājuma pazīmes: ${red.join(", ")}.` : "");
+    else check = seen ? "Speciālists to jau ir redzējis, tāpēc pirmajā sarunā sekosim viņa ieteikumiem." : "Pirmajā sarunā to izrunāsim, un, ja sāpes nemazināsies 2-3 nedēļās, iesaku fizioterapeitu.";
+    const plan = area ? `Pirmajās nedēļās: ${area.plan}.` : "Pirmajās nedēļās izvēlēsimies vingrinājumus, kas nesāp, un slodzi kāpināsim pa soļiem.";
+    return { where: where + when, check, plan, text: `${where + when}. ${check} ${plan}`.replace(/\s+/g, " ").trim() };
+  }
+
+  /* ===================== SCORING ===================== */
+  const pct = (x) => (x - 1) * 25;
+  const avg = (a) => a.reduce((s, x) => s + x, 0) / a.length;
+  const FREQ_SCORE = { "0": 0, "1-2": 50, "3-4": 100, "5+": 100 };
+  const LOAD = { "0": 0, "1-2": 40, "3-4": 75, "5+": 100 };
+  const DUR = { "Mazāk par 6": 0, "6-7": 50, "7-8": 100, "8-9": 100, "9+": 70 };
+  const SKILLS = SECTIONS.find((s) => s.id === "ps").q;
+
+  function score(a) {
+    const d = {};
+    d["Treniņi"] = .8 * avg(["T1", "T2", "T3", "T4", "T5"].map((k) => pct(a[k]))) + .2 * FREQ_SCORE[a.freq];
+    d["Miegs"] = .75 * avg(["S1", "S2", "S3", "S4"].map((k) => pct(a[k]))) + .25 * DUR[a.S5];
+    const calm = avg([100 - pct(a.R1), 100 - pct(a.R2), pct(a.R3)]);
+    const recov = avg([pct(a.R4), pct(a.R5)]);
+    d["Atjaunošanās"] = .6 * calm + .4 * recov;
+    const s = { intr: a.M1 - 1, iden: a.M2 - 1, intro: a.M3 - 1, ext: a.M4 - 1, amot: a.M5 - 1 };
+    const rai = 3 * s.intr + 2 * s.iden - s.intro - 2 * s.ext - 3 * s.amot;   // -24..+20
+    d["Motivācija"] = .5 * ((rai + 24) / 44 * 100) + .25 * pct(a.Mimp) + .25 * pct(a.Mconf);
+    d["Veselība"] = avg(["H1", "H2", "H3"].map((k) => pct(a[k])));
+    d["Mentālās prasmes"] = avg(SKILLS.map((q) => pct(a[q.id])));
+    Object.keys(d).forEach((k) => d[k] = Math.round(d[k]));
+
+    const readiness = Math.round(avg(Object.values(d)));
+    const load = LOAD[a.freq];
+    const capacity = Math.round(.5 * d["Miegs"] + .5 * d["Atjaunošanās"]);
+    const balance = load >= 75 && capacity < 50 ? "risk" : load <= 40 && capacity >= 60 ? "room" : "ok";
+    const auto = (s.intr + s.iden) / 2, ctrl = (s.intro + s.ext) / 2;
+    const mtype = s.amot >= 3 || auto <= 1 ? "low" : auto >= ctrl + 1 ? "auto" : ctrl >= auto ? "ctrl" : "mixed";
+    const weakSkill = SKILLS.slice().sort((x, y) => a[x.id] - a[y.id])[0];
+
+    const flags = [];
+    if (a.H4 && a.H4 !== "Nē") { const j = injury(a.H4t, a.H4); flags.push((a.H4 === "Jā, tas ierobežo" ? "Trauma ierobežo treniņus. " : "Vieglas sāpes. ") + j.where + (a.H4t ? " („" + a.H4t + "”)" : "") + ". " + j.check + " " + j.plan); }
+    if (a.H1 <= 2) flags.push("Tu vērtē savu veselību kā vāju vai viduvēju. Pirmajā sarunā sāksim ar to, kas tieši tevi ierobežo.");
+    if (calm < 25) flags.push("Stresa slodze ir ļoti augsta. Ja tā turpinās nedēļām, ir vērts parunāt arī ar ģimenes ārstu vai psihologu.");
+    if (a.S5 === "Mazāk par 6") flags.push("Tu guli mazāk par 6 stundām. Tas ir pirmais, ko risināsim, pirms pievienojam slodzi.");
+    if ((a.Mwhy || []).includes("Ārsta ieteikums vai veselības signāls")) flags.push("Tevi uz pārmaiņām mudina ārsts vai veselības signāls. Paņem līdzi ārsta ieteikumus uz pirmo sarunu.");
+
+    const health = a.H4 === "Jā, tas ierobežo" || a.H1 <= 2;
+    const lowest = Object.entries(d).sort((x, y) => x[1] - y[1])[0][0];
+    let arch;
+    if (health) arch = "health";
+    else if (balance === "risk") arch = "overload";
+    else if (d["Motivācija"] >= 65 && d["Treniņi"] < 45) arch = "nosystem";
+    else if (d["Treniņi"] >= 65 && mtype === "ctrl") arch = "nospark";
+    else if (readiness >= 72) arch = "ready";
+    else if (a.Mconf <= 2 && a.Mimp >= 4) arch = "doubt";
+    else if (lowest === "Miegs" && d["Miegs"] < 55) arch = "sleep";
+    else if (lowest === "Mentālās prasmes" && d["Mentālās prasmes"] < 50) arch = "focus";
+    else if (readiness < 45) arch = "restart";
+    else arch = "base";
+
+    const W = { "Miegs": 1.3, "Atjaunošanās": 1.2, "Veselība": 1.2, "Treniņi": 1.1, "Motivācija": 1, "Mentālās prasmes": .9 };
+    const prio = Object.entries(d).map(([k, v]) => ({ k, v, need: (100 - v) * W[k] })).filter((x) => x.v < 80).sort((x, y) => y.need - x.need).slice(0, 3);
+    let rec;
+    if (health) rec = "consult";
+    else if (a.Cinv === "Līdz 50 €" || a.Cwhen === "Pagaidām tikai interesējos") rec = "consult";
+    else if (a.Csup === "Plāns, ko izpildu pats" && readiness >= 60 && !(a.Mbar || []).includes("Nav, kas palīdz noturēt ritmu") && !(a.Mbar || []).includes("Motivācija pazūd pēc dažām nedēļām")) rec = "plan";
+    else rec = "mentor";
+    /* for Kristers only: how warm the lead is */
+    const soon = ["Šonedēļ", "2-4 nedēļu laikā"].includes(a.Cwhen), budget = ["150-300 €", "300 € un vairāk"].includes(a.Cinv);
+    const lead = soon && budget ? "karsts" : soon || budget ? "silts" : "vēss";
+    return { d, readiness, load, capacity, balance, s, rai, mtype, flags, arch, prio, rec, lead, weakSkill, calm: Math.round(calm), recov: Math.round(recov) };
+  }
+
+  /* ===================== TEXT (coach voice: what I will do for you) ===================== */
+  const ARCH = {
+    health: ["Vispirms veselība", "Pirms plāna jāsaprot, kas tevi ierobežo. Sāksim ar sarunu par veselību, un, ja vajag, palīdzēšu saprast, pie kura speciālista vērsties."],
+    overload: ["Augsta slodze, maza rezerve", "Tu trenējies regulāri, bet miegs un atjaunošanās neiet līdzi. Vairāk darba tagad dotu mazāk. Pielāgošu slodzi tam, cik ātri tavs ķermenis atjaunojas."],
+    nosystem: ["Motivācija bez sistēmas", "Gribēšanas tev pietiek. Trūkst plāna, kas iederas tavā nedēļā un rāda progresu skaitļos. To uzzīmēsim kopā."],
+    nospark: ["Sistēma bez dzirksteles", "Ritms ir, bet motivācija balstās vainas sajūtā vai citu gaidās. Ilgtermiņā tā izdeg. Palīdzēšu atrast iemeslu, kas ir tavs."],
+    ready: ["Gatavs nākamajam līmenim", "Pamats ir stabils visās jomās. Nākamais progress nāks no testiem un precīza plāna, nevis no vairāk darba."],
+    doubt: ["Gribu, bet šaubos", "Pārmaiņas tev ir svarīgas, bet pārliecība vēl klibo. Pārliecība aug no mazām uzvarām, tāpēc sāksim ar soļiem, kas noteikti izdosies."],
+    sleep: ["Pamats bez atjaunošanās", "Miegs ir vājākais posms. Bez tā treniņš dod mazāk, nekā varētu, un enerģija dienā krīt."],
+    focus: ["Jauda bez virziena", "Fiziskais pamats ir, bet mentālās prasmes bremzē. Tās var trenēt tāpat kā spēku."],
+    restart: ["Restarts", "Labākais sākums ir mazs un regulārs. Pirmās 4 nedēļas būvēsim ieradumu, nevis rekordus."],
+    base: ["Stabila bāze", "Lielākā daļa jomu strādā. Mērķtiecīgs darbs ar vienu vai divām vājākajām jomām dos lielāko lēcienu."],
+  };
+  const DOM_TXT = {
+    "Treniņi": ["Treniņi notiek bez ritma. Šeit ir lielākā iespēja.", "Ritms ir, bet struktūra un mērījumi vēl klibo.", "Regulārs, mērķtiecīgs darbs."],
+    "Miegs": ["Miegs bremzē atjaunošanos un enerģiju.", "Miegs ir viduvējs. Ritms un ilgums ir pirmās sviras.", "Miegs strādā tev par labu."],
+    "Atjaunošanās": ["Stress un atjaunošanās izmanto visu rezervi.", "Rezerve ir, bet smagās nedēļās tā beidzas.", "Laba stresa noturība un atjaunošanās."],
+    "Motivācija": ["Motivācija ir vāja vai balstās ārējā spiedienā.", "Motivācija ir jaukta: daļa tava, daļa pienākums.", "Motivācija nāk no tevis paša. Tā noturas."],
+    "Veselība": ["Veselība un enerģija ierobežo slodzi.", "Pamats ir, bet enerģija vai uzturs klibo.", "Labs veselības un enerģijas pamats."],
+    "Mentālās prasmes": ["Uzmanība un regulācija ir vāja vieta.", "Mentālās prasmes ir vidējas. Tās var trenēt.", "Spēcīgas mentālās prasmes."],
+  };
+  const SKILL_TIP = {
+    "Uzmanība": "Darba bloki 45 + 5 minūtes, telefons citā telpā",
+    "Regulācija": "Pirms svarīga uzdevuma 1 minūte lēnas elpošanas ar garāku izelpu",
+    "Noturība": "Pēc neveiksmes uzraksti vienu lietu, ko nākamreiz darīsi citādi, un aizver tēmu",
+    "Iekšējā runa": "Izvēlies vienu īsu frāzi grūtajam brīdim, piemēram, „vēl viens atkārtojums”, un trenē to treniņos",
+    "Mērķi": "Viens mērķis ar skaitli un datumu, sadalīts 4 nedēļu posmos",
+    "Iztēle": "Pirms grūta treniņa 60 sekundes iztēlojies, kā izpildi pirmo un pēdējo piegājienu",
+    "Pārliecība": "Pieraksti 3 treniņus, kas izdevās, un pārlasi tos pirms grūta uzdevuma",
+    "Emociju kontrole": "Kad emocijas kāpj, nosauc tās vārdā un ieelpo 4 sekundes, izelpo 6 sekundes, pirms rīkojies",
+    "Plānošana": "Svētdienā 10 minūtes: ieraksti nedēļas treniņus kalendārā kā tikšanās",
+    "Stresa kontrole": "Smagās nedēļās samazini treniņu apjomu, nevis izlaid treniņus, un ieplāno vienu atslēgšanās brīdi",
+  };
+  const PRIO = {
+    "Miegs": ["Miega ritms un ilgums", "Miega trūkums samazina spēku, izturību un lēmumu kvalitāti un palēnina atjaunošanos.", ["Fiksēts celšanās laiks 7 dienas nedēļā, ±30 minūtes", "Ekrāni prom 45 minūtes pirms miega, guļamistaba vēsa un tumša"]],
+    "Atjaunošanās": ["Stress un atpūta", "Stress un treniņš izmanto vienu un to pašu atjaunošanās rezervi.", ["Smagās darba nedēļās treniņu apjoms -30 %, intensitāte paliek", "2 apzināti atslēgšanās brīži nedēļā, ierakstīti kalendārā"]],
+    "Treniņi": ["Regulārs treniņu ritms", "Regularitāte ilgtermiņā dod vairāk nekā perfekts plāns, ko neizpildi.", ["3 fiksēti treniņu laiki nedēļā, kā tikšanās", "Viens mērāms rādītājs, ko pārbaudi ik 4 nedēļas"]],
+    "Motivācija": ["Iemesls, kas ir tavs", "Motivācija, kas nāk no paša, noturas ilgāk nekā vainas sajūta vai citu gaidas. Pārliecība aug no mazām uzvarām.", ["Uzraksti vienu iemeslu trenēties, kas ir tikai tavs", "Pirmajai nedēļai mērķis, kas noteikti izdosies"]],
+    "Veselība": ["Enerģija un uzturs", "Enerģija un uzturs nosaka, cik slodzes tu spēj panest un pārvērst progresā.", ["Olbaltumvielas katrā ēdienreizē, kopā 1,6-2 g uz kg dienā", "Ja ir sāpes vai ilgstošs nogurums, pārbaude pirms slodzes kāpināšanas"]],
+    "Mentālās prasmes": ["Mentālās prasmes", "Uzmanību, regulāciju un noturību var trenēt tāpat kā spēku.", null],
+  };
+  const BARRIER = {
+    "Laika trūkums": "Uzzīmēšu plānu, kas iederas tavā kalendārā, pat ar 2-3 stundām nedēļā.",
+    "Nezinu, ko tieši darīt": "Katram treniņam būs skaidrs uzdevums un iemesls.",
+    "Motivācija pazūd pēc dažām nedēļām": "Mazi mērķi ik 4 nedēļas un iknedēļas atskaite, kas rāda progresu.",
+    "Rezultāti nenāk": "Testēsim, lai redzētu, kas strādā, un pielāgošu plānu.",
+    "Sāpes vai traumas": "Slodzi kāpināsim uzmanīgi, un, ja vajag, kopā ar fizioterapeitu.",
+    "Stress un nogurums": "Plāns pielāgosies smagām nedēļām, nevis otrādi.",
+    "Nav, kas palīdz noturēt ritmu": "Būšu blakus: atskaite katru nedēļu un saziņa darba dienās.",
+  };
+  const MTYPE = {
+    auto: ["Iekšēja", "Tu trenējies tāpēc, ka pats to gribi. Tas ir stiprākais pamats ilgtermiņa noturībai."],
+    ctrl: ["Ārēja", "Liela daļa motivācijas nāk no vainas sajūtas vai citu gaidām. Tas strādā īsi, bet izdeg."],
+    mixed: ["Jaukta", "Ir gan paša iemesli, gan pienākuma sajūta. Plāns stiprinās to, kas ir tavs."],
+    low: ["Zema", "Šobrīd trūkst iemesla, kas ir tavs. Sākums būs mazs un ar ātri redzamu progresu."],
+  };
+  const BAL = {
+    risk: ["Pārslodzes risks", "Slodze ir augstāka, nekā miegs un atjaunošanās šobrīd spēj nest."],
+    room: ["Neizmantota rezerve", "Atjaunošanās spēj nest vairāk slodzes, nekā tu šobrīd dod."],
+    ok: ["Līdzsvarā", "Slodze un atjaunošanās šobrīd ir samērīgas."],
+  };
+  const REC = {
+    consult: ["Konsultācija", "50 €", "Sāksim ar sarunu par veselību un to, kas tevi ierobežo. Plāns sekos, kad zināsim, kas ir droši tavā situācijā."],
+    plan: ["Patstāvīgais plāns", "149 €", "Tavs pamats ir stabils, un ritmu tu proti noturēt. Personīgs plāns dos virzienu, ko vari izpildīt pats."],
+    mentor: ["Elite Coaching Mentorship", "299 € mēnesī", "Tev noderēs struktūra un kāds, kas palīdz noturēt ritmu. Viss vienā cenā: konsultācijas, testi, materiāli, treniņu plāns un pielāgošana katru nedēļu."],
+  };
+  const band = (v) => (v < 45 ? 0 : v < 70 ? 1 : 2);
+  const READY = ["Daudz neizmantota potenciāla", "Stabila bāze", "Tuvu savam potenciālam"];
+
+  /* ===================== UI ===================== */
+  const $ = (s) => document.getElementById(s);
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  let answers = {}, cur = -1, isSample = false, last = null;
+  try { const q = JSON.parse(localStorage.getItem("ansoneri-quick") || "null"); if (Array.isArray(q) && q.length === 5) { answers.T1 = q[0]; answers.R2 = q[1]; answers.S2 = q[2]; answers.Mimp = q[3]; answers.H1 = q[4]; $("prefNote").hidden = false; } } catch (e) {}
+
+  const answered = (q) => q.type === "field" ? q.ok(answers[q.id]) : q.type === "text" ? true : q.type === "multi" ? Array.isArray(answers[q.id]) && answers[q.id].length > 0 : answers[q.id] !== undefined;
+  function qHTML(q) {
+    const v = answers[q.id];
+    const hint = q.hint ? `<p class="q__hint">${q.hint}</p>` : "";
+    if (q.type === "scale") {
+      const btns = [1, 2, 3, 4, 5].map((n) => `<button type="button" role="radio" aria-checked="${v === n}" aria-label="${n} - ${q.lab[n - 1]}" data-q="${q.id}" data-v="${n}">${n}</button>`).join("");
+      return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(q.q)}</p><div class="scale" role="radiogroup" aria-labelledby="t-${q.id}">${btns}</div><div class="scale__ends"><span>1 · ${q.lab[0]}</span><span>5 · ${q.lab[4]}</span></div><div class="scale__now" id="now-${q.id}">${v ? q.lab[v - 1] : ""}</div></div>`;
+    }
+    if (q.type === "field") return `<div class="q q--field"><label class="q__t" for="${q.id}">${esc(q.q)}</label><input class="q__in" id="${q.id}" data-free="${q.id}" ${q.num ? 'type="number" inputmode="numeric" min="14" max="99"' : 'type="text" maxlength="40"'} autocomplete="${q.ac || "off"}" placeholder="${esc(q.ph || "")}" value="${esc(v || "")}"></div>`;
+    if (q.type === "text") return `<div class="q"><label class="q__t" for="${q.id}">${esc(q.q)} <small>Nav obligāti</small></label>${hint}<textarea class="q__text" id="${q.id}" data-free="${q.id}" maxlength="500" placeholder="${esc(q.ph || "")}">${esc(v || "")}</textarea></div>`;
+    if (q.type === "multi") {
+      const sel = v || [];
+      const btns = q.opts.map((o) => `<button type="button" role="checkbox" aria-checked="${sel.includes(o)}" data-q="${q.id}" data-v="${esc(o)}">${esc(o)}</button>`).join("");
+      return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(q.q)}</p>${hint}<div class="chips chips--multi" role="group" aria-labelledby="t-${q.id}">${btns}</div></div>`;
+    }
+    const btns = q.opts.map((o) => `<button type="button" role="radio" aria-checked="${v === o}" data-q="${q.id}" data-v="${esc(o)}">${esc(o)}</button>`).join("");
+    const f = q.follow, fshow = f && f.when.includes(v);
+    const follow = f ? `<div class="q__sub" id="sub-${q.id}"${fshow ? "" : " hidden"}><label for="${f.id}">${esc(f.label)}</label><textarea id="${f.id}" data-free="${f.id}" maxlength="400">${esc(answers[f.id] || "")}</textarea></div>` : "";
+    return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(q.q)}</p>${hint}<div class="chips" role="radiogroup" aria-labelledby="t-${q.id}">${btns}</div>${follow}</div>`;
+  }
+  function renderStep() {
+    const s = SECTIONS[cur];
+    const nid = "note_" + s.id;
+    $("step").innerHTML = `<header class="step__head"><span class="mono">Solis ${cur + 1} no ${SECTIONS.length}</span><h2>${s.t}</h2><p>${s.lead}</p></header>${s.q.map(qHTML).join("")}`
+      + `<div class="q q--note"><label class="q__t" for="${nid}">Piezīmes <small>Nav obligāti</small></label><p class="q__hint">Viss, ko gribi, lai es zinu par šo jomu.</p><textarea id="${nid}" data-free="${nid}" maxlength="600" placeholder="Piemēram, kas tieši, kopš kura laika, kas jau ir mēģināts">${esc(answers[nid] || "")}</textarea></div>`;
+    updNav();
+  }
+  function updNav() {
+    const s = SECTIONS[cur], done = s.q.every(answered);
+    const n = ALL.filter(answered).length;
+    $("next").disabled = !done;
+    $("next").textContent = cur === SECTIONS.length - 1 ? "Skatīt atskaiti" : "Tālāk";
+    $("navLeft").textContent = `${n} no ${ALL.length} atbildēti`;
+    $("prog").style.setProperty("--p", (n / ALL.length * 100) + "%");
+  }
+  $("step").addEventListener("click", (e) => {
+    const b = e.target.closest("button[data-q]"); if (!b) return;
+    const id = b.dataset.q, q = ALL.find((x) => x.id === id);
+    if (q.type === "multi") {
+      let sel = answers[id] || [];
+      const v = b.dataset.v, none = ["Pagaidām neko", "Nekas īpašs"];
+      if (sel.includes(v)) sel = sel.filter((x) => x !== v);
+      else sel = none.includes(v) ? [v] : sel.filter((x) => !none.includes(x)).concat(v);
+      answers[id] = sel;
+      b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-checked", sel.includes(x.dataset.v)));
+    } else {
+      answers[id] = q.type === "scale" ? +b.dataset.v : b.dataset.v;
+      b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-checked", x === b));
+      if (q.type === "scale") $("now-" + id).textContent = q.lab[answers[id] - 1];
+      if (q.follow) { const sub = $("sub-" + id), on = q.follow.when.includes(answers[id]); sub.hidden = !on; if (!on) delete answers[q.follow.id]; else $(q.follow.id).focus(); }
+    }
+    updNav();
+  });
+  $("step").addEventListener("input", (e) => { const t = e.target.closest("[data-free]"); if (t) { answers[t.dataset.free] = t.value.trim(); if (t.classList.contains("q__in")) updNav(); } });
+  const show = (view) => { $("intro").hidden = view !== "intro"; $("step").hidden = view !== "step"; $("nav").hidden = view !== "step"; $("report").hidden = view !== "report"; scrollTo({ top: 0 }); };
+  $("start").addEventListener("click", () => {
+    if (!$("cPlan").checked) { $("cErr").textContent = "Atzīmē pirmo piekrišanu, lai varu saglabāt tavas atbildes un sagatavot tev plānu."; $("cPlan").focus(); return; }
+    $("cErr").textContent = ""; answers._consent = { plan: true, improve: $("cImprove").checked, at: new Date().toISOString() };
+    isSample = false; cur = 0; show("step"); renderStep(); });
+  $("cPlan").addEventListener("change", () => { if ($("cPlan").checked) $("cErr").textContent = ""; });
+  $("demo").addEventListener("click", () => { isSample = true; answers = JSON.parse(JSON.stringify(SAMPLE)); renderReport(); });
+  $("prev").addEventListener("click", () => { if (cur === 0) { show("intro"); return; } cur--; renderStep(); scrollTo({ top: 0 }); });
+  $("next").addEventListener("click", () => { if (cur < SECTIONS.length - 1) { cur++; renderStep(); scrollTo({ top: 0 }); } else renderReport(); });
+
+  /* radar: labels on two lines, with enough room in the drawing that nothing leaves the screen */
+  function radar(d) {
+    const keys = Object.keys(d), W = 430, H = 400, cx = W / 2, cy = 200, R = 104, n = keys.length;
+    const pt = (i, r) => { const a = -Math.PI / 2 + i * 2 * Math.PI / n; return [cx + Math.cos(a) * r, cy + Math.sin(a) * r]; };
+    let g = "";
+    [25, 50, 75, 100].forEach((lv) => { g += `<polygon points="${keys.map((_, i) => pt(i, R * lv / 100).join(",")).join(" ")}" fill="none" stroke="rgba(20,17,16,${lv === 100 ? .28 : .12})" stroke-width="1"/>`; });
+    keys.forEach((_, i) => { const [x, y] = pt(i, R); g += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="rgba(20,17,16,.12)"/>`; });
+    const poly = keys.map((k, i) => pt(i, R * Math.max(4, d[k]) / 100).join(",")).join(" ");
+    g += `<polygon points="${poly}" fill="rgba(255,107,26,.22)" stroke="#c8281c" stroke-width="2.5" stroke-linejoin="round"/>`;
+    keys.forEach((k, i) => { const [x, y] = pt(i, R * Math.max(4, d[k]) / 100); g += `<circle cx="${x}" cy="${y}" r="4.5" fill="#141110"/>`; });
+    keys.forEach((k, i) => {
+      const [x, y] = pt(i, R + 20), side = Math.abs(x - cx) < 8 ? "middle" : x < cx ? "end" : "start";
+      const lines = k.split(" "), top = y < cy - 20 ? y - (lines.length) * 16 + 4 : y < cy + 20 ? y - (lines.length - 1) * 8 : y + 12;
+      const tsp = lines.map((l, j) => `<tspan x="${x}" y="${top + j * 16}">${l}</tspan>`).join("");
+      g += `<text text-anchor="${side}">${tsp}<tspan class="rv" x="${x}" y="${top + lines.length * 16 + 1}">${d[k]}</tspan></text>`;
+    });
+    return `<svg class="radar" viewBox="0 0 ${W} ${H}" role="img" aria-label="Profila diagramma: ${keys.map((k) => k + " " + d[k]).join(", ")}">${g}</svg>`;
+  }
+
+  function summaryText(r, id) {
+    const a = answers;
+    return `Ansoneri profils (${id})\nVārds: ${a.name || "-"}, ${a.age || "-"} gadi\nPiekrišana: plānam ${a._consent ? "jā" : "-"}, uzlabošanai ${a._consent && a._consent.improve ? "jā" : "nē"}\nProfils: ${ARCH[r.arch][0]}\nSasniegtais potenciāls: ${r.readiness}/100\n` + Object.entries(r.d).map(([k, v]) => `${k}: ${v}`).join("\n")
+      + `\nMērķi: ${(a.goal || []).join(", ")}\nKāpēc tagad: ${(a.Mwhy || []).join(", ")}\nTraucēja: ${(a.Mbar || []).join(", ")}`
+      + (a.H4t ? `\nSāpes/trauma: ${a.H4t}\nTraumas secinājums: ${injury(a.H4t, a.H4).text}` : "")
+      + SECTIONS.map((s) => a["note_" + s.id] ? `\nPiezīmes (${s.t}): ${a["note_" + s.id]}` : "").join("")
+      + `\nAtbalsts: ${a.Csup || "-"}\nTreneris iepriekš: ${a.Cprev || "-"}${a.Cprevt ? " („" + a.Cprevt + "”)" : ""}\nSākt: ${a.Cwhen || "-"}\nBudžets mēnesī: ${a.Cinv || "-"}`
+      + (a.Cwin ? `\nVeiksmīgi 3 mēneši: ${a.Cwin}` : "") + `\nLead: ${r.lead}` + `\nPrioritātes: ${r.prio.map((p) => p.k).join(", ") || "precizitāte"}\nIeteiktais sākums: ${REC[r.rec][0]}`;
+  }
+
+  function renderReport() {
+    const r = score(answers), a = answers;
+    const [atype, adesc] = ARCH[r.arch];
+    const today = new Date().toLocaleDateString("lv-LV", { day: "2-digit", month: "2-digit", year: "numeric" });
+    const id = "AP-" + Object.values(r.d).join("").slice(0, 6);
+    last = { r, id };
+    const lowKey = Object.entries(r.d).sort((x, y) => x[1] - y[1])[0][0];
+    const drows = Object.entries(r.d).map(([k, v]) => `<div class="drow${k === lowKey ? " is-low" : ""}"><b>${k}</b><i style="--w:${Math.max(3, v)}%"></i><em>${v}</em><span>${DOM_TXT[k][band(v)]}</span></div>`).join("");
+    const M = [["Iekšējā", (r.s.intr + r.s.iden) / 2, "#ff6b1a"], ["Ārējā", (r.s.intro + r.s.ext) / 2, "#c8281c"], ["Zema", r.s.amot, "#8a857e"]];
+    const mbars = M.map(([k, v, c]) => `<div class="mbar">${k}<i style="--w:${v * 25}%;--c:${c}"></i><em>${Math.round(v * 25)}%</em></div>`).join("");
+    const skills = SKILLS.map((q) => `<div class="mbar">${q.skill}<i style="--w:${pct(a[q.id])}%;--c:${q.id === r.weakSkill.id ? "#c8281c" : "#141110"}"></i><em>${a[q.id]}/5</em></div>`).join("");
+    const prio = r.prio.length ? r.prio.map((p) => {
+      let [t, why, acts] = PRIO[p.k];
+      if (!acts) acts = [SKILL_TIP[r.weakSkill.skill], "Vājākā prasme tagad: " + r.weakSkill.skill.toLowerCase() + ". To trenēsim pirmo"];
+      return `<li><h4>${t}</h4><p>${why} <b>${p.k}: ${p.v}/100.</b></p><ul>${acts.map((x) => `<li>${x}</li>`).join("")}</ul></li>`;
+    }).join("") : `<li><h4>Precizitāte</h4><p>Visas jomas ir virs 80. Nākamo progresu atradīs testi laboratorijā.</p><ul><li>Spēka un izturības testi</li><li>Mērķis ar konkrētu skaitli un datumu</li></ul></li>`;
+    const flags = r.flags.length ? `<div class="sec"><h3>Uzmanību</h3><div class="flags">${r.flags.map((f) => `<div class="flag">${esc(f)}</div>`).join("")}</div></div>` : "";
+    const why = (a.Mwhy || []).map((x) => `<span class="hot">${esc(x)}</span>`).join("");
+    const bars = (a.Mbar || []).filter((x) => BARRIER[x]);
+    const barHTML = bars.length ? `<dl class="answers">${bars.map((x) => `<div><dt>${esc(x)}</dt><dd>${BARRIER[x]}</dd></div>`).join("")}</dl>` : `<p>Tu neatzīmēji konkrētus šķēršļus. Tas ir labs sākumpunkts.</p>`;
+    const conf = a.Mconf <= 2 ? "Pārliecība vēl ir zema. Tā aug no mazām uzvarām, tāpēc pirmās nedēļas būs veidotas tā, lai tās noteikti izdotos." : a.Mconf >= 4 ? "Tu tici, ka tev izdosies. Tas ir viens no stiprākajiem prognozētājiem, ka plānu noturēsi." : "Pārliecība ir vidēja. Ar katru izpildītu nedēļu tā augs.";
+    const rec = REC[r.rec];
+    const SUP = { "Plāns, ko izpildu pats": " Tu teici, ka tev der plāns, ko izpildi pats.", "Plāns un regulāra pārbaude": " Tu teici, ka tev palīdzētu regulāra pārbaude. Tieši to dod mentorship.", "Treneris blakus visu ceļu": " Tu teici, ka gribi treneri blakus visu ceļu. Tieši tā strādā mentorship." };
+    const supNote = SUP[a.Csup] || "";
+    const timeNote = a.time === "Līdz 2 h" ? " Ar 2 stundām nedēļā plāns ir iespējams: 2 spēka treniņi pa 45 minūtēm un ikdienas soļi." : "";
+
+    $("report").innerHTML = `
+      ${isSample ? `<div class="sample"><span>Parauga atskaite ar izdomātām atbildēm, lai redzētu algoritmu darbībā.</span><button class="btn btn--ghost" id="own" type="button">Aizpildīt savu</button></div>` : ""}
+      <article class="sheet">
+        <div class="sheet__meta"><span class="mono">Ansoneri · Veiktspējas profils</span><span class="mono">${id} · ${today}</span></div>
+        <div class="hero-r">
+          <div><span class="mono">${a.name ? esc(a.name) + ", tavs profils" : "Tavs profils"}</span><p class="hero-r__type">${atype}</p><p class="hero-r__desc">${adesc}</p><p class="hero-r__ctx">${a.age ? esc(a.age) + " gadi · " : ""}Mērķi: ${esc((a.goal || []).join(", "))} · ${esc(a.freq)} treniņi nedēļā · ${esc(a.exp)} · ${esc(a.time)} nedēļā</p></div>
+          <div class="ready"><span class="mono">Sasniegtais potenciāls</span><span class="ready__n">${r.readiness}<small>/100</small></span><span class="ready__l">${READY[band(r.readiness)]}</span></div>
+        </div>
+        <div class="sec"><h2>Sešas jomas</h2><div class="dom">${radar(r.d)}<div class="dlist">${drows}</div></div></div>
+        <div class="two">
+          <div class="panel"><h3 class="ph">Slodze pret atjaunošanos</h3><span class="verdict v--${r.balance}">${BAL[r.balance][0]}</span><p>${BAL[r.balance][1]}</p>
+            <div class="mbar">Slodze<i style="--w:${r.load}%;--c:#141110"></i><em>${r.load}</em></div>
+            <div class="mbar">Kapacitāte<i style="--w:${r.capacity}%;--c:#ff6b1a"></i><em>${r.capacity}</em></div></div>
+          <div class="panel"><h3 class="ph">Motivācijas kvalitāte</h3><span class="verdict v--${r.mtype}">${MTYPE[r.mtype][0]}</span><p>${MTYPE[r.mtype][1]}</p>${mbars}<div class="scaleline"><span>Ārēja</span><span>Iekšēja</span></div></div>
+          <div class="panel panel--wide"><h3 class="ph">Tavs dzinējs un bremzes</h3><span class="verdict">Kāpēc tagad</span><div class="chiplist">${why}</div><p>${conf} Svarīgums: ${a.Mimp}/5 · pārliecība: ${a.Mconf}/5.</p><span class="verdict">Kas traucēja un ko darīsim</span>${barHTML}</div>
+          <div class="panel panel--wide"><h3 class="ph">Mentālās prasmes</h3><span class="verdict">Vājākā: ${r.weakSkill.skill}</span><div class="skills">${skills}</div><p>${SKILL_TIP[r.weakSkill.skill]}.</p></div>
+        </div>
+        ${flags}
+        <div class="sec"><h2>Tavas 3 prioritātes</h2><ol class="prio">${prio}</ol></div>
+        <div class="rec"><span class="mono">Ieteiktais sākums</span><p class="rec__t">${rec[0]} · ${rec[1]}</p><p>${rec[2]}${supNote}${timeNote}</p>
+          <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">Nosūtīt Kristeram</button><button class="btn btn--ghost" id="pdf" type="button">Lejupielādēt PDF</button></div>
+          <span class="rec__note">Atskaiti nosūtīsi tieši Kristeram. Viņš ar tevi sazināsies 24 stundu laikā darba dienās.</span></div>
+        <form class="send" id="send" hidden novalidate>
+          <h3 id="sendTitle">Ko tu domā par savu profilu?</h3>
+          <p>Tava atskaite un komentārs nonāks pie manis. Paskatīšos uz taviem skaitļiem un sazināšos ar tevi.</p>
+          <div class="field"><span class="q__hint" style="margin:0">Cik precīzi profils tevi apraksta?</span><div class="chips" role="radiogroup" aria-label="Cik precīzi profils tevi apraksta">${["Trāpīja precīzi", "Daļēji", "Netrāpīja"].map((o) => `<button type="button" role="radio" aria-checked="false" data-fit="${o}">${o}</button>`).join("")}</div></div>
+          <div class="field"><label for="sMsg">Komentārs vai jautājums</label><textarea id="sMsg" maxlength="800" placeholder="Piemēram, kas tevi pārsteidza vai ko gribi mainīt pirmo"></textarea></div>
+          <div class="fields2"><div class="field"><label for="sName">Vārds</label><input id="sName" autocomplete="name"></div><div class="field"><label for="sContact">E-pasts vai telefons</label><input id="sContact" autocomplete="email"></div></div>
+          <label class="consent"><input type="checkbox" id="sOk"><span>Piekrītu, ka Kristers saņem manas atbildes un sazinās ar mani par tām.</span></label>
+          <div class="send__err" id="sErr" aria-live="polite"></div>
+          <div class="rec__acts"><button class="btn btn--main" type="submit">Nosūtīt atskaiti</button></div>
+        </form>
+        <div class="send" id="sent" hidden></div>
+        <div class="next"><span class="mono">Kas tālāk</span><b>Kāpēc izvēlēties mani?</b><p>14 gadi sportā, sporta zinātne RSU un 20+ klienti. Paskaties, kā strādājam kopā.</p><a class="btn btn--ghost" href="${BACK}">Atpakaļ uz lapu</a></div>
+        <details class="how"><summary>Kā tiek aprēķināts</summary><div>
+          <p>Katra atbilde 1-5 kļūst par 0-100 punktiem. <b>Treniņi</b> = 80 % struktūra, regularitāte un progresīva slodze + 20 % treniņu biežums. <b>Miegs</b> = 75 % ritms, apmierinātība, možums un efektivitāte + 25 % ilgums (7-9 h = 100), pēc Buysse miega veselības modeļa (<a href="https://doi.org/10.5665/sleep.3298" target="_blank" rel="noopener">Buysse, 2014</a>). <b>Atjaunošanās</b> = 60 % uztvertais stress (pēc Cohen uztvertā stresa idejas, <a href="https://doi.org/10.2307/2136404" target="_blank" rel="noopener">Cohen u.c., 1983</a>) + 40 % atjaunošanās.</p>
+          <p><b>Motivācija</b> = 50 % relatīvās autonomijas indekss <code>3·iekšējā + 2·identificētā − introjicētā − 2·ārējā − 3·amotivācija</code> pēc pašnoteikšanās teorijas (<a href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener">Ryan un Deci, 2000</a>; <a href="https://doi.org/10.1123/jsep.26.2.191" target="_blank" rel="noopener">Markland un Tobin, 2004</a>) + 25 % pārmaiņu svarīgums + 25 % pārliecība, ka izdosies. Svarīguma un pārliecības jautājumi nāk no motivējošās intervēšanas (Miller un Rollnick), pārliecība ir pašefektivitāte (<a href="https://doi.org/10.1037/0033-295X.84.2.191" target="_blank" rel="noopener">Bandura, 1977</a>). Iemesli un šķēršļi netiek vērtēti punktos. Tie nosaka atskaites tekstu.</p>
+          <p><b>Veselība</b> izmanto vienu pašvērtējuma jautājumu, kas pētījumos labi prognozē veselības iznākumus (<a href="https://doi.org/10.2307/2955359" target="_blank" rel="noopener">Idler un Benyamini, 1997</a>), plus enerģija un uzturs. Olbaltumvielu robeža 1,6-2 g/kg balstās <a href="https://doi.org/10.1136/bjsports-2017-097608" target="_blank" rel="noopener">Morton u.c., 2018</a>. <b>Mentālās prasmes</b> sedz septiņas prasmes no sporta psiholoģijas stratēģiju modeļa (<a href="https://doi.org/10.1080/026404199365560" target="_blank" rel="noopener">Thomas, Murphy un Hardy, 1999</a>).</p>
+          <p><b>Sasniegtais potenciāls</b> = sešu jomu vidējais. <b>Slodze pret atjaunošanos</b>: ja treniņu biežums ir augsts un miega un atjaunošanās vidējais ir zem 50, profils rāda pārslodzes risku. <b>Prioritātes</b> = (100 − punkti) × svars: miegam 1,3, atjaunošanās un veselībai 1,2, treniņiem 1,1, motivācijai 1,0, mentālajām prasmēm 0,9.</p>
+          <p>Jautājumi ir oriģināli un veidoti pēc šiem modeļiem, bet tā nav validēta aptauja. Tā ir trenera skrīnings sarunas sākumam.</p>
+        </div></details>
+        <p class="fine">Šī atskaite ir trenera atgriezeniskā saite, nevis medicīnisks vai psiholoģisks novērtējums. Ja tev ir veselības problēmas, konsultējies ar ārstu.</p>
+      </article>`;
+    show("report");
+    $("prog").style.setProperty("--p", "100%");
+    const own = $("own"); if (own) own.addEventListener("click", () => { answers = {}; isSample = false; cur = 0; show("step"); renderStep(); });
+    wireSend(r, id);
+  }
+
+  function openSend(title) {
+    const f = $("send"); f.hidden = false; $("sendTitle").textContent = title;
+    if (answers.name && !$("sName").value) $("sName").value = answers.name;
+    f.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  }
+  function wireSend(r, id) {
+    let fit = "";
+    $("sendOpen").addEventListener("click", () => openSend("Nosūtīt atskaiti Kristeram"));
+    $("pdf").addEventListener("click", () => {
+      const framed = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
+      if (framed) toast("Makets: PDF lejupielāde strādās ansoneri.com lapā");
+      else { document.title = "Ansoneri profils " + id; window.print(); }
+      openSend("Ko tu domā par savu profilu?");
+    });
+    $("send").addEventListener("click", (e) => { const b = e.target.closest("button[data-fit]"); if (!b) return; fit = b.dataset.fit; b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-checked", x === b)); });
+    $("send").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = $("sName").value.trim(), contact = $("sContact").value.trim();
+      if (!name || !contact) { $("sErr").textContent = "Ieraksti vārdu un e-pastu vai telefonu, lai varu ar tevi sazināties."; return; }
+      if (!$("sOk").checked) { $("sErr").textContent = "Atzīmē piekrišanu, lai varu saņemt tavas atbildes."; return; }
+      $("sErr").textContent = "";
+      const payload = { subject: "Jauns profils: " + name + " (" + id + ")", name, contact, fit, message: $("sMsg").value.trim(), report: summaryText(r, id), answers: JSON.stringify(answers) };
+      const sent = $("sent");
+      if (SEND_ENDPOINT) {
+        try {
+          const res = await fetch(SEND_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ _subject: payload.subject, _template: "table", _captcha: "false", ...payload }) });
+          const out = await res.json().catch(() => ({}));
+          if (!res.ok || String(out.success) === "false") throw new Error(res.status);
+          $("send").hidden = true; sent.hidden = false;
+          sent.innerHTML = `<div class="done"><b>Paldies, ${esc(name)}. Atskaite nosūtīta.</b><p>Sazināšos ar tevi 24 stundu laikā darba dienās. Pa to laiku paskaties, kā strādājam kopā.</p><a class="btn btn--main" href="${BACK}">Kāpēc izvēlēties mani</a></div>`;
+          setTimeout(() => { location.href = BACK; }, 4000);
+        } catch (err) { $("sErr").textContent = "Neizdevās nosūtīt. Pārbaudi savienojumu un mēģini vēlreiz."; }
+      } else {
+        $("send").hidden = true; sent.hidden = false;
+        sent.innerHTML = `<div class="done"><b>Makets: šeit atskaite aizietu pie Kristera.</b><p>Uz ansoneri.com šī poga nosūtīs atskaiti, komentāru un kontaktus tieši uz Kristera e-pastu, un pēc dažām sekundēm cilvēks nonāks atpakaļ lapā pie „Kāpēc izvēlēties mani”.</p><a class="btn btn--main" href="${BACK}">Kāpēc izvēlēties mani</a></div>`;
+      }
+      sent.scrollIntoView({ block: "center" });
+    });
+  }
+  let tt;
+  function toast(m) { const t = $("toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 3200); }
+})();
+</script>
+</body>
+</html>
