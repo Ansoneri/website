@@ -221,16 +221,40 @@ details.how a { color: var(--red); }
 .next .btn--ghost { color: var(--paper-ink); box-shadow: inset 0 0 0 1.5px rgba(20,17,16,.35); }
 
 @media print {
-  @page { margin: 12mm; }
+  @page { size: A4; margin: 11mm 0 10mm; }
+  :root { color-scheme: light !important; }
   html, body { background: #fff !important; }
-  .bar, .nav, .toast, .sample, .rec__acts, .rec__note, .send, .next, details.how { display: none !important; }
-  .report { padding: 0 !important; }
-  .sheet { box-shadow: none !important; border-radius: 0 !important; padding: 0 !important; }
-  .rec { background: #f5f3ee !important; color: #141110 !important; }
-  .rec p, .rec .mono { color: #2b2724 !important; }
-  .sec, .panel, .prio > li, .hero-r { break-inside: avoid; }
+  body::before, body::after { display: none !important; }
+  .bar, .nav, .prog, .toast, .sample, .rec__acts, .rec__note, .send, .next, details.how, .intro, .step, .back { display: none !important; }
+  .report { display: block !important; padding: 0 !important; margin: 0 !important; max-width: none !important; }
+  .report.wrap { padding: 0 !important; }
+  .sheet { background: #fff !important; box-shadow: none !important; border-radius: 0 !important; padding: 0 14mm !important; gap: 6mm !important; max-width: none !important; font-size: 10pt !important; }
+  .sheet__meta { border-bottom: 1.5px solid #141110 !important; padding-bottom: 2.5mm !important; }
+  .hero-r { gap: 8mm !important; align-items: end !important; }
+  .hero-r__type { font-size: 29pt !important; line-height: .96 !important; }
+  .hero-r__desc { font-size: 11pt !important; margin-top: 3mm !important; }
+  .hero-r__ctx { font-size: 9pt !important; }
+  .ready__n { font-size: 46pt !important; }
+  .sec { gap: 4mm !important; }
+  .sec > h2, .sec h3, .ph { break-after: avoid; }
+  .radar { max-width: 56mm !important; }
+  .drow { padding: 1.4mm 0 !important; grid-template-columns: 35mm minmax(0, 1fr) 9mm !important; }
+  .drow span { font-size: 8.5pt !important; }
+  .two { gap: 5mm !important; }
+  .panel { box-shadow: none !important; background: #faf8f4 !important; border: 0.6pt solid #e2ded6 !important; padding: 5mm !important; gap: 3mm !important; border-radius: 3mm !important; }
+  .panel p, .flag, .prio p, .prio li li { font-size: 9.5pt !important; }
+  .prio > li { padding: 4mm 0 !important; grid-template-columns: 16mm minmax(0, 1fr) !important; }
+  .prio > li::before { font-size: 40pt !important; }
+  .rec { background: #141110 !important; color: #f5f3ee !important; border-radius: 3mm !important; padding: 6mm !important; }
+  .rec p, .rec .mono { color: #f5f3ee !important; }
+  .rec .rec__t { color: #ff8a3d !important; }
+  .pfoot { display: block !important; margin: 0; padding-top: 3mm; border-top: 0.6pt solid #d8d4cc; font: 500 8pt/1.4 var(--f-mono); letter-spacing: .06em; color: #6b665f !important; }
+  .fine { font-size: 7.5pt !important; color: #8a857e !important; margin-top: -4mm !important; }
+  .fine, .pfoot { break-before: avoid; break-inside: avoid; }
+  .panel, .drow, .flag, .rec, .hero-r, .prio > li, .answers > div, .mbar { break-inside: avoid; }
   * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
+.pfoot { display: none; }
 
 /* round 12: room under headings (the cedilla in Ņ, Ļ, Ķ), panel headings, notes */
 .step__head { gap: 20px; }
@@ -280,7 +304,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     </ul>
     <div class="privacy">
       <p class="privacy__h">Tavi dati</p>
-      <p>Tavas atbildes, arī par veselību, saņemu tikai es: kad nosūti atskaiti, tā caur FormSubmit nonāk manā e-pastā. Tālāk tās nevienam nenododu, un tu jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. Vairāk <a href="privatuma-politika.html">privātuma politikā</a>.</p>
+      <p>Tavas atbildes, arī par veselību, saņemu tikai es: kad nosūti atskaiti, tā caur Tally (tally.so) nonāk pie manis. Tālāk tās nevienam nenododu, un tu jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. Vairāk <a href="privatuma-politika.html">privātuma politikā</a>.</p>
       <label class="consent"><input type="checkbox" id="cPlan"><span>Piekrītu, ka manas atbildes tiek saglabātas un izmantotas, lai sagatavotu man personalizētu plānu un ieteikumus. <em>Obligāti</em></span></label>
       <label class="consent"><input type="checkbox" id="cImprove"><span>Piekrītu, ka manas atbildes bez vārda un kontaktiem tiek izmantotas pakalpojumu uzlabošanai. <em>Pēc izvēles</em></span></label>
       <p class="privacy__err" id="cErr" role="alert"></p>
@@ -300,8 +324,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 (() => {
   /* Where the report goes. On ansoneri.com put a form-to-email endpoint here (for example Web3Forms or Formspree,
      both free to start); it emails each report straight to Kristers's inbox. Empty = mockup mode. */
-  const SEND_ENDPOINT = "https://formsubmit.co/ajax/kristersansons14@gmail.com";
-  const SEND_KEY = "";
+  const TALLY_FORM = "laaJxk"; /* Tally form "Nosūti profilu Kristeram": name, phone, e-mail, comment + the report as hidden fields */
   const BACK = "index.html#w2";
 
   const AGREE = ["Nepiekrītu", "Drīzāk nepiekrītu", "Ne jā, ne nē", "Drīzāk piekrītu", "Pilnīgi piekrītu"];
@@ -700,17 +723,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
         <div class="sec"><h2>Tavas 3 prioritātes</h2><ol class="prio">${prio}</ol></div>
         <div class="rec"><span class="mono">Ieteiktais sākums</span><p class="rec__t">${rec[0]} · ${rec[1]}</p><p>${rec[2]}${supNote}${timeNote}</p>
           <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">Nosūtīt Kristeram</button><button class="btn btn--ghost" id="pdf" type="button">Lejupielādēt PDF</button></div>
-          <span class="rec__note">Atskaiti nosūtīsi tieši Kristeram. Viņš ar tevi sazināsies 24 stundu laikā darba dienās.</span></div>
-        <form class="send" id="send" hidden novalidate>
-          <h3 id="sendTitle">Ko tu domā par savu profilu?</h3>
-          <p>Tava atskaite un komentārs nonāks pie manis. Paskatīšos uz taviem skaitļiem un sazināšos ar tevi.</p>
-          <div class="field"><span class="q__hint" style="margin:0">Cik precīzi profils tevi apraksta?</span><div class="chips" role="radiogroup" aria-label="Cik precīzi profils tevi apraksta">${["Trāpīja precīzi", "Daļēji", "Netrāpīja"].map((o) => `<button type="button" role="radio" aria-checked="false" data-fit="${o}">${o}</button>`).join("")}</div></div>
-          <div class="field"><label for="sMsg">Komentārs vai jautājums</label><textarea id="sMsg" maxlength="800" placeholder="Piemēram, kas tevi pārsteidza vai ko gribi mainīt pirmo"></textarea></div>
-          <div class="fields2"><div class="field"><label for="sName">Vārds</label><input id="sName" autocomplete="name"></div><div class="field"><label for="sContact">E-pasts vai telefons</label><input id="sContact" autocomplete="email"></div></div>
-          <label class="consent"><input type="checkbox" id="sOk"><span>Piekrītu, ka Kristers saņem manas atbildes un sazinās ar mani par tām.</span></label>
-          <div class="send__err" id="sErr" aria-live="polite"></div>
-          <div class="rec__acts"><button class="btn btn--main" type="submit">Nosūtīt atskaiti</button></div>
-        </form>
+          <span class="rec__note">Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.</span></div>
         <div class="send" id="sent" hidden></div>
         <div class="next"><span class="mono">Kas tālāk</span><b>Kāpēc izvēlēties mani?</b><p>14 gadi sportā, sporta zinātne RSU un 20+ klienti. Paskaties, kā strādājam kopā.</p><a class="btn btn--ghost" href="${BACK}">Atpakaļ uz lapu</a></div>
         <details class="how"><summary>Kā tiek aprēķināts</summary><div>
@@ -720,6 +733,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
           <p><b>Sasniegtais potenciāls</b> = sešu jomu vidējais. <b>Slodze pret atjaunošanos</b>: ja treniņu biežums ir augsts un miega un atjaunošanās vidējais ir zem 50, profils rāda pārslodzes risku. <b>Prioritātes</b> = (100 − punkti) × svars: miegam 1,3, atjaunošanās un veselībai 1,2, treniņiem 1,1, motivācijai 1,0, mentālajām prasmēm 0,9.</p>
           <p>Jautājumi ir oriģināli un veidoti pēc šiem modeļiem, bet tā nav validēta aptauja. Tā ir trenera skrīnings sarunas sākumam.</p>
         </div></details>
+        <p class="pfoot">Kristers Ansons · Fitnesa un mentālās veiktspējas treneris · ansoneri.com · kristersansons14@gmail.com</p>
         <p class="fine">Šī atskaite ir trenera atgriezeniskā saite, nevis medicīnisks vai psiholoģisks novērtējums. Ja tev ir veselības problēmas, konsultējies ar ārstu.</p>
       </article>`;
     show("report");
@@ -728,43 +742,35 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     wireSend(r, id);
   }
 
-  function openSend(title) {
-    const f = $("send"); f.hidden = false; $("sendTitle").textContent = title;
-    if (answers.name && !$("sName").value) $("sName").value = answers.name;
-    f.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  function loadTally() {
+    return new Promise((res, rej) => {
+      if (window.Tally) return res();
+      const sc = document.createElement("script"); sc.src = "https://tally.so/widgets/embed.js"; sc.async = true;
+      sc.onload = () => (window.Tally ? res() : rej()); sc.onerror = rej; document.head.appendChild(sc);
+    });
   }
   function wireSend(r, id) {
-    let fit = "";
-    $("sendOpen").addEventListener("click", () => openSend("Nosūtīt atskaiti Kristeram"));
-    $("pdf").addEventListener("click", () => {
-      const framed = (() => { try { return window.self !== window.top; } catch (e) { return true; } })();
-      if (framed) toast("Makets: PDF lejupielāde strādās ansoneri.com lapā");
-      else { document.title = "Ansoneri profils " + id; window.print(); }
-      openSend("Ko tu domā par savu profilu?");
+    const hidden = () => ({
+      vards: answers.name || "", profila_id: id, lead: r.lead, ieteikums: REC[r.rec][0] + " · " + REC[r.rec][1],
+      uzlabosanai: answers._consent && answers._consent.improve ? "jā" : "nē", atskaite: summaryText(r, id).slice(0, 6000),
     });
-    $("send").addEventListener("click", (e) => { const b = e.target.closest("button[data-fit]"); if (!b) return; fit = b.dataset.fit; b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-checked", x === b)); });
-    $("send").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const name = $("sName").value.trim(), contact = $("sContact").value.trim();
-      if (!name || !contact) { $("sErr").textContent = "Ieraksti vārdu un e-pastu vai telefonu, lai varu ar tevi sazināties."; return; }
-      if (!$("sOk").checked) { $("sErr").textContent = "Atzīmē piekrišanu, lai varu saņemt tavas atbildes."; return; }
-      $("sErr").textContent = "";
-      const payload = { subject: "Jauns profils: " + name + " (" + id + ")", name, contact, fit, message: $("sMsg").value.trim(), report: summaryText(r, id), answers: JSON.stringify(answers) };
-      const sent = $("sent");
-      if (SEND_ENDPOINT) {
-        try {
-          const res = await fetch(SEND_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json", Accept: "application/json" }, body: JSON.stringify({ _subject: payload.subject, _template: "table", _captcha: "false", ...payload }) });
-          const out = await res.json().catch(() => ({}));
-          if (!res.ok || String(out.success) === "false") throw new Error(res.status);
-          $("send").hidden = true; sent.hidden = false;
-          sent.innerHTML = `<div class="done"><b>Paldies, ${esc(name)}. Atskaite nosūtīta.</b><p>Sazināšos ar tevi 24 stundu laikā darba dienās. Pa to laiku paskaties, kā strādājam kopā.</p><a class="btn btn--main" href="${BACK}">Kāpēc izvēlēties mani</a></div>`;
-          setTimeout(() => { location.href = BACK; }, 4000);
-        } catch (err) { $("sErr").textContent = "Neizdevās nosūtīt. Pārbaudi savienojumu un mēģini vēlreiz."; }
-      } else {
-        $("send").hidden = true; sent.hidden = false;
-        sent.innerHTML = `<div class="done"><b>Makets: šeit atskaite aizietu pie Kristera.</b><p>Uz ansoneri.com šī poga nosūtīs atskaiti, komentāru un kontaktus tieši uz Kristera e-pastu, un pēc dažām sekundēm cilvēks nonāks atpakaļ lapā pie „Kāpēc izvēlēties mani”.</p><a class="btn btn--main" href="${BACK}">Kāpēc izvēlēties mani</a></div>`;
-      }
+    const done = () => {
+      const sent = $("sent"); sent.hidden = false;
+      sent.innerHTML = `<div class="done"><b>Paldies${answers.name ? ", " + esc(answers.name) : ""}. Atskaite ir pie manis.</b><p>Sazināšos ar tevi 24 stundu laikā darba dienās. Pa to laiku paskaties, kā strādājam kopā.</p><a class="btn btn--main" href="${BACK}">Kā strādājam kopā</a></div>`;
       sent.scrollIntoView({ block: "center" });
+    };
+    $("sendOpen").addEventListener("click", async () => {
+      const b = $("sendOpen"); b.disabled = true;
+      try {
+        await loadTally();
+        window.Tally.openPopup(TALLY_FORM, { layout: "modal", width: 560, overlay: true, hiddenFields: hidden(), onSubmit: done });
+      } catch (e) {
+        const q = new URLSearchParams(hidden()); window.open("https://tally.so/r/" + TALLY_FORM + "?" + q.toString(), "_blank", "noopener");
+      } finally { b.disabled = false; }
+    });
+    $("pdf").addEventListener("click", () => {
+      const t = document.title; document.title = "Ansoneri profils " + id + (answers.name ? " - " + answers.name : "");
+      window.print(); setTimeout(() => { document.title = t; }, 1500);
     });
   }
   let tt;

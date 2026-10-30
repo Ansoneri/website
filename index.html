@@ -1264,6 +1264,10 @@ html.t-b .wipe--down .qb { color: #ff8a3d; }
 .tsw button { border: 0; background: transparent; color: rgba(245,243,238,.7); font: 500 9.5px/1 var(--f-mono); letter-spacing: .16em; text-transform: uppercase; padding: 8px 10px; border-radius: 999px; cursor: pointer; }
 .tsw button[aria-pressed="true"] { background: var(--bone); color: #111; }
 html.in-preview .tsw { display: none; }
+
+/* ===== performance: phones ===== */
+.mm__node { will-change: transform; }
+.wipe__stage { contain: paint; }
 </style>
 </head>
 <body>
@@ -1424,7 +1428,7 @@ html.in-preview .tsw { display: none; }
   const ease = (t) => 1 - Math.pow(1 - t, 3);
   const lerp = (a, b, t) => a + (b - a) * t;
   /* a slightly softer follow than before, and it settles completely, so the loop can sleep */
-  const smooth = (cur, target) => { const n = cur + (target - cur) * .16; return Math.abs(target - n) < .0004 ? target : n; };
+  const smooth = fine ? (cur, target) => { const n = cur + (target - cur) * .16; return Math.abs(target - n) < .0004 ? target : n; } : (cur, target) => target;
   const narrow = () => innerWidth < 700;
   let vh = innerHeight, vw = innerWidth;
 
@@ -1528,14 +1532,14 @@ html.in-preview .tsw { display: none; }
   /* wipes: the image climbs; --hl is the horizon line in the viewport */
   document.querySelectorAll(".wipe").forEach((w) => {
     track(w);
-    const img = w.querySelector(".wipe__img"), mid = w.classList.contains("wipe--up") ? .53 : .462;
+    const img = w.querySelector(".wipe__img"), types = [...w.querySelectorAll(".wipe__type")], mid = w.classList.contains("wipe--up") ? .53 : .462;
     let p = 0;
     scenes.push(() => {
       if (!near(w)) return false;
       const t = prog(w); p = reduce ? t : smooth(p, t);
       const q = seg(p, .06, .94), k = q * q * (3 - 2 * q), H = 2.4 * vh, y = -(H - vh) * k;
       setVar(img, "--wy", y.toFixed(1) + "px");
-      setVar(w, "--hl", (clamp((mid * H + y) / vh, 0, 1) * 100).toFixed(2) + "%");
+      const hl = (clamp((mid * H + y) / vh, 0, 1) * 100).toFixed(2) + "%"; types.forEach((el) => setVar(el, "--hl", hl));
       return p !== t;
     });
   });
@@ -1555,7 +1559,7 @@ html.in-preview .tsw { display: none; }
   const kick = () => { lastScroll = performance.now(); if (!running) { running = true; requestAnimationFrame(frame); } };
   const relayout = () => { sizeType(); measure(); measureTrack(); kick(); };
   addEventListener("scroll", kick, { passive: true });
-  addEventListener("resize", relayout);
+  addEventListener("resize", () => { if (!fine && innerWidth === vw && Math.abs(innerHeight - vh) < 160) return; relayout(); });
   addEventListener("load", relayout);
   (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(relayout);
   relayout();
@@ -1655,7 +1659,7 @@ html.in-preview .tsw { display: none; }
       const a = ease(clamp((prog - .08) / .34)), f = reduce ? 0 : Math.sin(time / 1700 + k * 2.1) * 1.6;
       return [x * (.18 + .82 * a) + f, y * (.18 + .82 * a) - f * .5];
     });
-    pts.forEach(([x, y], k) => { nodes[k].style.left = (50 + x / 2) + "%"; nodes[k].style.top = (50 + y / 2) + "%"; });
+    pts.forEach(([x, y], k) => { nodes[k].style.transform = "translate3d(" + (x / 200 * mw).toFixed(1) + "px," + (y / 200 * mh).toFixed(1) + "px,0)"; });
     pts.forEach(([x, y], k) => {
       const len = Math.hypot(x, y), ux = x / len, uy = y / len, sx = ux * 33, sy = uy * 33, ex = x - ux * 9, ey = y - uy * 9;
       if (v === "b") { const mx = (sx + ex) / 2 - uy * 12 * (k % 2 ? 1 : -1), my = (sy + ey) / 2 + ux * 12 * (k % 2 ? 1 : -1);
@@ -1677,7 +1681,10 @@ html.in-preview .tsw { display: none; }
   const setV = (nv) => { v = nv; map.dataset.v = nv; document.querySelectorAll(".mmv button").forEach((b) => b.classList.toggle("is-on", b.dataset.v === nv)); place(performance.now()); kick(); };
   document.querySelectorAll(".mmv button").forEach((b) => b.addEventListener("click", () => setV(b.dataset.v)));
   nodes.forEach((b, k) => b.addEventListener("click", () => { touched = true; clearInterval(timer); show(k); }));
-  const onScroll = () => { const r = map.getBoundingClientRect(); prog = clamp((innerHeight - r.top) / (innerHeight + r.height)); if (reduce || v === "a") place(performance.now()); };
+  let mw = 0, mh = 0, mtop = 0;
+  const mmeasure = () => { const r = map.getBoundingClientRect(); mw = r.width; mh = r.height; mtop = r.top + scrollY; };
+  mmeasure(); if ("ResizeObserver" in window) new ResizeObserver(mmeasure).observe(map); addEventListener("load", mmeasure);
+  const onScroll = () => { const top = mtop - scrollY; prog = clamp((innerHeight - top) / (innerHeight + mh)); if (reduce || v === "a") place(performance.now()); };
   addEventListener("scroll", onScroll, { passive: true }); onScroll(); show(0); setV(v);
   if ("IntersectionObserver" in window) new IntersectionObserver(([e]) => { live = e.isIntersecting; if (live) kick();
     clearInterval(timer); if (live && !touched && !reduce) timer = setInterval(() => show((cur + 1) % n), 3200); }, { threshold: .25 }).observe(map);
@@ -1690,18 +1697,23 @@ html.in-preview .tsw { display: none; }
   const hero = document.getElementById("hero"), hq = document.getElementById("hq"), w = document.getElementById("hqw"), vid = document.getElementById("heroVid");
   if (!hero || !hq) return;
   const clamp = (x) => Math.max(0, Math.min(1, x)), seg = (t, a, b) => clamp((t - a) / (b - a)), ease = (x) => 1 - Math.pow(1 - x, 3);
-  let raf = 0;
+  let raf = 0, top = 0, total = 0, H = 0, vh = innerHeight, vw = innerWidth;
+  const fineP = matchMedia("(hover: hover) and (pointer: fine)").matches;
+  const measure = () => { vh = innerHeight; vw = innerWidth; top = hero.getBoundingClientRect().top + scrollY; total = hero.offsetHeight - vh; H = w.offsetHeight; };
   const tick = () => { raf = 0;
-    const vh = innerHeight, total = hero.offsetHeight - vh, t = total > 0 ? clamp(-hero.getBoundingClientRect().top / total) : 0;
+    const t = total > 0 ? clamp((scrollY - top) / total) : 0;
     hq.style.setProperty("--qO", ease(seg(t, .2, .34)).toFixed(3));
     hq.style.setProperty("--qY", ((1 - ease(seg(t, .2, .34))) * 24).toFixed(1) + "px");
-    const wt = ease(seg(t, .4, .86)), H = w.offsetHeight, hz = vh * 1.9 + (-vh * .12 - vh * 1.9) * wt;
+    const wt = ease(seg(t, .4, .86)), hz = vh * 1.9 + (-vh * .12 - vh * 1.9) * wt;
     w.style.transform = "translate3d(0," + (hz - H * .6).toFixed(1) + "px,0)";
     hq.style.setProperty("--hl", hz.toFixed(1) + "px");
     if (vid) { if (wt >= 1 && !vid.paused) vid.pause(); else if (wt < 1 && vid.paused && t > 0 && t < 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) vid.play().catch(() => {}); }
   };
   const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
-  addEventListener("scroll", ask, { passive: true }); addEventListener("resize", ask); tick();
+  addEventListener("scroll", ask, { passive: true });
+  addEventListener("resize", () => { if (!fineP && innerWidth === vw && Math.abs(innerHeight - vh) < 160) return; measure(); ask(); });
+  addEventListener("load", () => { measure(); ask(); });
+  measure(); tick();
 })();
 </script>
 <script>
@@ -1729,6 +1741,9 @@ html.in-preview .tsw { display: none; }
   const cards = [...sec.querySelectorAll(".mvC__card")];
   let cur = -1;
   const clamp = (v) => Math.max(0, Math.min(1, v));
+  const geoB = { top: 0, h: 1, items: [] };
+  function bmeasure() { const r = list.getBoundingClientRect(); geoB.top = r.top + scrollY; geoB.h = r.height || 1; geoB.items = items.map((it) => it.getBoundingClientRect().top + scrollY); }
+  if ("ResizeObserver" in window) new ResizeObserver(() => bmeasure()).observe(list);
   function tick() {
     const vh = innerHeight, v = sec.dataset.v;
     if (v === "a") {
@@ -1739,9 +1754,9 @@ html.in-preview .tsw { display: none; }
       if (i !== cur) { cur = i; k.textContent = S[i][0]; t.textContent = S[i][1]; d.textContent = S[i][2];
         [t.parentElement, d].forEach((e) => { e.classList.remove("is-swap"); void e.offsetWidth; e.classList.add("is-swap"); }); }
     } else if (v === "b") {
-      const r = list.getBoundingClientRect(), p = clamp((vh * .55 - r.top) / r.height);
+      const lt = geoB.top - scrollY, p = clamp((vh * .55 - lt) / geoB.h);
       fill.style.setProperty("--bp", p.toFixed(4));
-      items.forEach((it) => it.classList.toggle("is-on", it.getBoundingClientRect().top < vh * .55));
+      items.forEach((it, j) => it.classList.toggle("is-on", geoB.items[j] - scrollY < vh * .55));
     } else if (!reduce) {
       cards.forEach((c, j) => { const nx = cards[j + 1]; if (!nx) { c.style.setProperty("--cs", 1); return; }
         const a = c.getBoundingClientRect(), b = nx.getBoundingClientRect(), o = clamp(1 - (b.top - a.top) / a.height);
@@ -1749,7 +1764,7 @@ html.in-preview .tsw { display: none; }
     }
   }
   let raf = 0; addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(() => { raf = 0; tick(); }); }, { passive: true });
-  addEventListener("resize", tick); tick();
+  addEventListener("resize", () => { bmeasure(); tick(); }); addEventListener("load", () => { bmeasure(); tick(); }); bmeasure(); tick();
 })();
 </script>
 <script>
