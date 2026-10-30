@@ -1302,6 +1302,19 @@ html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; 
 
 /* the question hands over straight to the map: "Ne tikai izskats..." follows right under it */
 #profils > .white:first-child { padding-top: clamp(4px, 1.5vh, 20px); }
+
+/* ===== the orange thread: from under the first question into the map, where it draws the ring; a stronger lead (30 Oct 2026) ===== */
+#elites-fitness { position: relative; z-index: 6; }
+.thread { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 0; }
+.thread__p { fill: none; stroke: #ff6b1a; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.thread__dot { fill: #ff6b1a; }
+#elites-fitness .mm__wrap, #elites-fitness .sect-head { position: relative; z-index: 1; }
+html.thread-on .mm__ring { stroke: transparent; }
+.mm-lead { color: #141110 !important; font-size: clamp(19px, 5vw, 24px) !important; font-weight: 600 !important; line-height: 1.45 !important; max-width: 22em !important; }
+.mm-lead b { display: block; margin-bottom: .32em; font-family: "Oswald", var(--f-display), sans-serif; font-weight: 700; text-transform: uppercase; font-size: clamp(36px, 10vw, 64px); line-height: 1.1; letter-spacing: -.005em; color: #141110; }
+.mm-lead em { font-style: normal; background: linear-gradient(transparent 60%, rgba(255,107,26,.42) 60%, rgba(255,107,26,.42) 92%, transparent 92%); padding: 0 .08em; }
+@media (max-width: 899px) { .mm-lead { padding-right: 26px; } }
+@media (min-width: 900px) { #elites-fitness .sect-head { padding-left: 0; } }
 </style>
 </head>
 <body>
@@ -1340,7 +1353,7 @@ html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; 
 
 <div class="bone" id="profils">
   <div class="white wrap">
-<section class="mm" id="elites-fitness" aria-label="Kā izskatās labākā forma"><header class="sect-head"><p class="sect-lead">Ne tikai izskats. Tā ir sajūta, kad ķermenis un prāts strādā tev par labu.</p></header><div class="mm__wrap"><div class="mm__map" id="mmap" data-v="c"><svg class="mm__lines" viewBox="-100 -100 200 200" aria-hidden="true"><circle class="mm__ring" r="78"></circle><g id="mmLines"></g></svg><div class="mm__core" aria-hidden="true"><strong>Labākā<br>forma</strong></div><button class="mm__node is-on" type="button" data-i="0" data-t="Ķermenis, kas spēj" data-d="Tu vari skriet, lēkt, nest un celt bez bailēm savainoties. Kāpnes, kalni un sacensības ir prieks, nevis pārbaudījums." style="--a:-90.00deg" aria-pressed="true">Spēks</button><button class="mm__node" type="button" data-i="1" data-t="Enerģija visu dienu" data-d="Tu pamosties izgulējies, pēcpusdienā nesabrūc, un ēdiens dod spēku, nevis vainas sajūtu." style="--a:-38.57deg" aria-pressed="false">Enerģija</button><button class="mm__node" type="button" data-i="2" data-t="Ātri atjaunojies" data-d="Pēc smagas nedēļas tu atjaunojies dažās dienās. Miegs ir dziļš, un sāpes nav ikdiena." style="--a:12.86deg" aria-pressed="false">Atjaunošanās</button><button class="mm__node" type="button" data-i="3" data-t="Miers spiedienā" data-d="Kad kļūst grūti, tu paliec mierīgs un domā skaidri. Stress tevi nevada." style="--a:64.29deg" aria-pressed="false">Miers</button><button class="mm__node" type="button" data-i="4" data-t="Tu zini, kur esi" data-d="Tu zini savu spēku, izturību un to, kas jāuzlabo tālāk. Progresu redzi skaitļos, nevis min." style="--a:115.71deg" aria-pressed="false">Skaidrība</button><button class="mm__node" type="button" data-i="5" data-t="Tu zini, uz ko ej" data-d="Tev ir mērķis un ritms, ko noturi arī tad, kad motivācija pazūd." style="--a:167.14deg" aria-pressed="false">Virziens</button><button class="mm__node" type="button" data-i="6" data-t="Cilvēki ap tevi" data-d="Tev apkārt ir cilvēki, kas iet tajā pašā virzienā un velk tevi uz augšu." style="--a:218.57deg" aria-pressed="false">Cilvēki</button></div><div class="mm__panel" aria-live="polite"><span class="mm__n" id="mmN">01 / 07</span><h3 id="mmT">Ķermenis, kas spēj</h3><p id="mmD">Tu vari skriet, lēkt, nest un celt bez bailēm savainoties. Kāpnes, kalni un sacensības ir prieks, nevis pārbaudījums.</p><div class="mm__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></section>
+<section class="mm" id="elites-fitness" aria-label="Kā izskatās labākā forma"><svg class="thread" aria-hidden="true"><path class="thread__p" d=""/><circle class="thread__dot" r="4" cx="-20" cy="-20"/></svg><header class="sect-head"><p class="sect-lead mm-lead"><b>Ne tikai izskats.</b> Tā ir sajūta, kad <em>ķermenis un prāts</em> strādā tev par labu.</p></header><div class="mm__wrap"><div class="mm__map" id="mmap" data-v="c"><svg class="mm__lines" viewBox="-100 -100 200 200" aria-hidden="true"><circle class="mm__ring" r="78"></circle><g id="mmLines"></g></svg><div class="mm__core" aria-hidden="true"><strong>Labākā<br>forma</strong></div><button class="mm__node is-on" type="button" data-i="0" data-t="Ķermenis, kas spēj" data-d="Tu vari skriet, lēkt, nest un celt bez bailēm savainoties. Kāpnes, kalni un sacensības ir prieks, nevis pārbaudījums." style="--a:-90.00deg" aria-pressed="true">Spēks</button><button class="mm__node" type="button" data-i="1" data-t="Enerģija visu dienu" data-d="Tu pamosties izgulējies, pēcpusdienā nesabrūc, un ēdiens dod spēku, nevis vainas sajūtu." style="--a:-38.57deg" aria-pressed="false">Enerģija</button><button class="mm__node" type="button" data-i="2" data-t="Ātri atjaunojies" data-d="Pēc smagas nedēļas tu atjaunojies dažās dienās. Miegs ir dziļš, un sāpes nav ikdiena." style="--a:12.86deg" aria-pressed="false">Atjaunošanās</button><button class="mm__node" type="button" data-i="3" data-t="Miers spiedienā" data-d="Kad kļūst grūti, tu paliec mierīgs un domā skaidri. Stress tevi nevada." style="--a:64.29deg" aria-pressed="false">Miers</button><button class="mm__node" type="button" data-i="4" data-t="Tu zini, kur esi" data-d="Tu zini savu spēku, izturību un to, kas jāuzlabo tālāk. Progresu redzi skaitļos, nevis min." style="--a:115.71deg" aria-pressed="false">Skaidrība</button><button class="mm__node" type="button" data-i="5" data-t="Tu zini, uz ko ej" data-d="Tev ir mērķis un ritms, ko noturi arī tad, kad motivācija pazūd." style="--a:167.14deg" aria-pressed="false">Virziens</button><button class="mm__node" type="button" data-i="6" data-t="Cilvēki ap tevi" data-d="Tev apkārt ir cilvēki, kas iet tajā pašā virzienā un velk tevi uz augšu." style="--a:218.57deg" aria-pressed="false">Cilvēki</button></div><div class="mm__panel" aria-live="polite"><span class="mm__n" id="mmN">01 / 07</span><h3 id="mmT">Ķermenis, kas spēj</h3><p id="mmD">Tu vari skriet, lēkt, nest un celt bez bailēm savainoties. Kāpnes, kalni un sacensības ir prieks, nevis pārbaudījums.</p><div class="mm__dots" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div></div></section>
 <section id="tavs-profils" aria-label="Tavs profils"><header class="sect-head"><h2 class="sect">Tavs profils</h2><p class="sect-lead">Piecas atbildes, un uzreiz redzēsi, kur vari iegūt visvairāk.</p></header><form class="qp" id="prof" aria-label="Ātrais profils"><div class="qp__q"><div class="qp__item"><div class="qp__top"><label for="q1">Cik regulārs ir tavs treniņu plāns?<small>Pēdējā mēneša laikā</small></label><output for="q1">2</output></div><input id="q1" type="range" min="1" max="5" step="1" value="2"><div class="qp__ends" aria-hidden="true"><span>1 · Bez plāna</span><span>5 · Ik nedēļu pēc plāna</span></div></div><div class="qp__item"><div class="qp__top"><label for="q2">Cik stipri stress ietekmē tavu dzīvi?<small>Darbs, ģimene, nauda, viss kopā</small></label><output for="q2">4</output></div><input id="q2" type="range" min="1" max="5" step="1" value="4"><div class="qp__ends" aria-hidden="true"><span>1 · Gandrīz nemaz</span><span>5 · Ļoti stipri</span></div></div><div class="qp__item"><div class="qp__top"><label for="q3">Cik kvalitatīvi tu guli?<small>Vai pamosties atpūties?</small></label><output for="q3">3</output></div><input id="q3" type="range" min="1" max="5" step="1" value="3"><div class="qp__ends" aria-hidden="true"><span>1 · Slikti</span><span>5 · Izcili</span></div></div><div class="qp__item"><div class="qp__top"><label for="q4">Cik motivēts tu esi trenēties?<small>Šobrīd, ne ideālajā nedēļā</small></label><output for="q4">4</output></div><input id="q4" type="range" min="1" max="5" step="1" value="4"><div class="qp__ends" aria-hidden="true"><span>1 · Nav motivācijas</span><span>5 · Pilnīgi</span></div></div><div class="qp__item"><div class="qp__top"><label for="q5">Kā tu vērtē savu veselību kopumā?<small>Tava paša vērtējums</small></label><output for="q5">3</output></div><input id="q5" type="range" min="1" max="5" step="1" value="3"><div class="qp__ends" aria-hidden="true"><span>1 · Slikta</span><span>5 · Izcila</span></div></div></div><div class="qp__card" aria-live="polite"><span class="mono">Tava ātrā atbilde</span>
 <p class="qp__lead">Visvairāk vari iegūt šeit</p><p class="qp__lever" id="pLever"></p>
 <div class="qp__bars" id="pBars"></div>
@@ -1809,6 +1822,61 @@ html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; 
   if (!("IntersectionObserver" in window)) { el.classList.add("is-in"); return; }
   const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { el.classList.add("is-in"); io.disconnect(); } }), { rootMargin: "0px 0px -18% 0px" });
   io.observe(el);
+})();
+</script>
+<script>
+/* the thread: from under the question, down beside the lead, into the map - where it draws the ring.
+   geometry is measured once (load, resize, layout changes); scrolling only moves the dash, no layout reads */
+(() => {
+  const sec = document.getElementById("elites-fitness"); if (!sec) return;
+  const svg = sec.querySelector(".thread"), path = svg.querySelector(".thread__p"), dot = svg.querySelector(".thread__dot");
+  const lead = sec.querySelector(".mm-lead"), map = document.getElementById("mmap"), wrapEl = sec.parentElement;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  document.documentElement.classList.add("thread-on");
+  let secTop = 0, L1 = 0, L2 = 0, total = 0, entryY = 0, startY = 0, ringSpan = 1, raf = 0, ok = false;
+  const measure = () => {
+    const sr = sec.getBoundingClientRect(), wr = wrapEl.getBoundingClientRect(), lr = lead.getBoundingClientRect(), mr = map.getBoundingClientRect();
+    const ty = new DOMMatrix(getComputedStyle(lead).transform).m42 || 0;
+    const W = sr.width, wide = innerWidth >= 900;
+    const cx = mr.left - sr.left + mr.width / 2, cy = mr.top - sr.top + mr.height / 2, R = mr.width * .39;
+    /* start right under the question's small line, where it sits when the hero lets go */
+    const hero = document.getElementById("hero"), stage = hero.querySelector(".stage"), hq = document.getElementById("hq"), sub = document.querySelector(".hq__b .hq__sub");
+    const qY = parseFloat(hq.style.getPropertyValue("--qY")) || 0;
+    const subOff = sub.getBoundingClientRect().bottom - stage.getBoundingClientRect().top - qY;
+    const heroBottom = hero.getBoundingClientRect().bottom + scrollY;
+    const y0 = (heroBottom - stage.offsetHeight + subOff + 16) - (sr.top + scrollY), leadTop = lr.top - ty - sr.top, leadBot = lr.bottom - ty - sr.top;
+    secTop = sr.top + scrollY;
+    let d1, ring;
+    if (!wide) {
+      const x0 = sub.getBoundingClientRect().left - sr.left + sub.getBoundingClientRect().width / 2, xr = W - 10, ex = cx + R;
+      d1 = `M${x0} ${y0} C${x0} ${y0 + 90} ${xr} ${y0 + 40} ${xr} ${Math.max(y0 + 160, leadTop + 10)} L${xr} ${cy - R * .95} C${xr} ${cy - R * .35} ${ex} ${cy - R * .45} ${ex} ${cy}`;
+      ring = ` A${R} ${R} 0 1 1 ${cx - R} ${cy} A${R} ${R} 0 1 1 ${ex} ${cy}`;
+    } else {
+      const x0 = sub.getBoundingClientRect().left - sr.left, xl = lr.left - sr.left - 26, ex = cx - R;
+      d1 = `M${x0} ${y0} C${x0} ${y0 + 60} ${xl} ${y0 + 30} ${xl} ${Math.max(y0 + 120, leadTop + 10)} L${xl} ${Math.max(leadBot + 40, cy - R * 1.1)} C${xl} ${cy - R * .4} ${ex} ${cy - R * .5} ${ex} ${cy}`;
+      ring = ` A${R} ${R} 0 1 0 ${cx + R} ${cy} A${R} ${R} 0 1 0 ${ex} ${cy}`;
+    }
+    path.setAttribute("d", d1); L1 = path.getTotalLength();
+    path.setAttribute("d", d1 + ring); total = path.getTotalLength(); L2 = total - L1;
+    entryY = cy; startY = y0; ringSpan = Math.min(R * 1.6, innerHeight * .28);
+    path.style.strokeDasharray = total + " " + total; ok = true; tick();
+  };
+  const clamp = (x) => Math.max(0, Math.min(1, x));
+  const tick = () => { raf = 0; if (!ok) return;
+    const line = scrollY + innerHeight * .88 - secTop;
+    const a = clamp((line - startY) / Math.max(1, entryY - startY)), b = clamp((line - entryY) / ringSpan);
+    const len = reduce ? total : L1 * a + L2 * b;
+    path.style.strokeDashoffset = (total - len).toFixed(1);
+    const pt = path.getPointAtLength(Math.max(.1, len));
+    dot.setAttribute("cx", pt.x.toFixed(1)); dot.setAttribute("cy", pt.y.toFixed(1));
+    dot.style.opacity = len > 2 && len < total - 2 ? 1 : 0;
+  };
+  addEventListener("scroll", () => { if (!raf) raf = requestAnimationFrame(tick); }, { passive: true });
+  let lw = innerWidth; addEventListener("resize", () => { if (innerWidth !== lw) { lw = innerWidth; measure(); } });
+  addEventListener("load", measure); if (document.fonts) document.fonts.ready.then(measure);
+  lead.addEventListener("transitionend", measure);
+  if ("ResizeObserver" in window) new ResizeObserver(() => measure()).observe(sec);
+  measure();
 })();
 </script>
 </body></html>
