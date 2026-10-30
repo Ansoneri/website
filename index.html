@@ -1060,8 +1060,6 @@ html.is-pv .vsw { display: none; }
 /* hero: longer, so the question and the white wave each get their moment */
 .hero--vid { height: 440vh; }
 .hq { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
-/* phones: when the browser bar hides, the screen grows past the sticky frame; after the wave that gap is bone, not black */
-.hero--vid.is-bone { background: var(--g) repeat, #f5f3ee; background-size: var(--gs), auto; }
 .hq__w { position: absolute; left: 0; top: 0; width: 100%; height: 300vh; height: 300svh; background: url("assets/gen/wipe-up-soft.webp") center top / 100% 100% no-repeat; will-change: transform;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 34%, #000 46%); mask-image: linear-gradient(180deg, transparent 0%, transparent 34%, #000 46%); transform: translate3d(0, 120vh, 0); }
 .hq__w::after { content: ""; position: absolute; inset: 0; background: var(--g) repeat; background-size: var(--gs); }
@@ -1285,6 +1283,19 @@ html .wipe__type p.wq { font-size: clamp(32px, 9.4vw, 46px) !important; max-widt
   html .wipe__type p.wq { font-size: clamp(44px, 4.8vw, 86px) !important; max-width: 12.5em; }
   .hq__sub { margin-top: 26px; font-size: 12px; }
 }
+
+/* ===== phones (30 Oct 2026): sticky frames fill the LARGE viewport, so nothing shows below them when the browser bars shrink.
+   --bar is the height the bars can take; text stays inside the always-visible part by sitting --bar higher. ===== */
+:root { --bar: 0px; }
+@supports (height: 100lvh) { :root { --bar: calc(100lvh - 100svh); } }
+.hero--vid .stage, .wipe__stage { height: 100vh !important; height: 100lvh !important; }
+.hero--vid .stage > .hb, .hero--vid .stage > .reveal { margin-bottom: var(--bar); }
+.hq__t { bottom: var(--bar); }
+.hq__w { height: 300vh; height: 300lvh; }
+.wipe__type { bottom: var(--bar); }
+/* results: the long red-to-black fade is back, and the section starts inside it */
+html #darbs ~ .fadeband { height: 36vh !important; }
+html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; }
 </style>
 </head>
 <body>
@@ -1714,7 +1725,7 @@ html .wipe__type p.wq { font-size: clamp(32px, 9.4vw, 46px) !important; max-widt
   const hero = document.getElementById("hero"), hq = document.getElementById("hq"), w = document.getElementById("hqw"), vid = document.getElementById("heroVid");
   if (!hero || !hq) return;
   const clamp = (x) => Math.max(0, Math.min(1, x)), seg = (t, a, b) => clamp((t - a) / (b - a)), ease = (x) => 1 - Math.pow(1 - x, 3);
-  let raf = 0, top = 0, total = 0, H = 0, vh = innerHeight, vw = innerWidth, isBone = false;
+  let raf = 0, top = 0, total = 0, H = 0, vh = innerHeight, vw = innerWidth;
   const fineP = matchMedia("(hover: hover) and (pointer: fine)").matches;
   const measure = () => { vh = innerHeight; vw = innerWidth; top = hero.getBoundingClientRect().top + scrollY; total = hero.offsetHeight - vh; H = w.offsetHeight; };
   const tick = () => { raf = 0;
@@ -1724,7 +1735,6 @@ html .wipe__type p.wq { font-size: clamp(32px, 9.4vw, 46px) !important; max-widt
     const wt = ease(seg(t, .4, .86)), hz = vh * 1.9 + (-vh * .12 - vh * 1.9) * wt;
     w.style.transform = "translate3d(0," + (hz - H * .6).toFixed(1) + "px,0)";
     hq.style.setProperty("--hl", hz.toFixed(1) + "px");
-    const bone = hz < vh * .995; if (bone !== isBone) { isBone = bone; hero.classList.toggle("is-bone", bone); }
     if (vid) { if (wt >= 1 && !vid.paused) vid.pause(); else if (wt < 1 && vid.paused && t > 0 && t < 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) vid.play().catch(() => {}); }
   };
   const ask = () => { if (!raf) raf = requestAnimationFrame(tick); };
