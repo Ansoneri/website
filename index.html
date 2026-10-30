@@ -1058,7 +1058,7 @@ html.is-pv .vsw { display: none; }
 
 /* ===== round 11 ===== */
 /* hero: longer, so the question and the white wave each get their moment */
-.hero--vid { height: 440vh; }
+.hero--vid { height: 392vh; }
 .hq { position: absolute; inset: 0; z-index: 5; pointer-events: none; }
 .hq__w { position: absolute; left: 0; top: 0; width: 100%; height: 300vh; height: 300svh; background: url("assets/gen/wipe-up-soft.webp") center top / 100% 100% no-repeat; will-change: transform;
   -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 34%, #000 46%); mask-image: linear-gradient(180deg, transparent 0%, transparent 34%, #000 46%); transform: translate3d(0, 120vh, 0); }
@@ -1299,6 +1299,9 @@ html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; 
 
 /* profile card: a second way out - straight to a conversation */
 .qp__talk { margin-top: 14px; }
+
+/* the question hands over straight to the map: "Ne tikai izskats..." follows right under it */
+#profils > .white:first-child { padding-top: clamp(4px, 1.5vh, 20px); }
 </style>
 </head>
 <body>
@@ -1734,9 +1737,9 @@ html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; 
   const measure = () => { vh = innerHeight; vw = innerWidth; top = hero.getBoundingClientRect().top + scrollY; total = hero.offsetHeight - vh; H = w.offsetHeight; };
   const tick = () => { raf = 0;
     const t = total > 0 ? clamp((scrollY - top) / total) : 0;
-    hq.style.setProperty("--qO", ease(seg(t, .2, .34)).toFixed(3));
-    hq.style.setProperty("--qY", ((1 - ease(seg(t, .2, .34))) * 24).toFixed(1) + "px");
-    const wt = ease(seg(t, .4, .86)), hz = vh * 1.9 + (-vh * .12 - vh * 1.9) * wt;
+    hq.style.setProperty("--qO", ease(seg(t, .233, .396)).toFixed(3));
+    hq.style.setProperty("--qY", ((1 - ease(seg(t, .233, .396))) * 24).toFixed(1) + "px");
+    const wt = ease(seg(t, .466, 1)), hz = vh * 1.9 + (-vh * .12 - vh * 1.9) * wt;
     w.style.transform = "translate3d(0," + (hz - H * .6).toFixed(1) + "px,0)";
     hq.style.setProperty("--hl", hz.toFixed(1) + "px");
     if (vid) { if (wt >= 1 && !vid.paused) vid.pause(); else if (wt < 1 && vid.paused && t > 0 && t < 1 && !matchMedia("(prefers-reduced-motion: reduce)").matches) vid.play().catch(() => {}); }
