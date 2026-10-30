@@ -434,7 +434,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     if (/operā|opera/.test(t)) red.push("pēc operācijas");
     if (/stipr|ļoti sāp|asas|ass /.test(t)) red.push("stipras sāpes");
     const where = area ? area.k[0].toUpperCase() + area.k.slice(1) : "Sāpes vai trauma";
-    const when = months == null ? "" : months < 1.5 ? ", nesen" : months < 3 ? `, apmēram ${Math.round(months)} mēn.` : ", ilgāk par 3 mēnešiem";
+    const when = months == null ? "" : months < 1.5 ? ", nesen" : months < 3 ? `, apmēram ${Math.round(months)} mēnešus` : ", ilgāk par 3 mēnešiem";
     let check = "";
     if (red.length || level === "Jā, tas ierobežo" || (months != null && months >= 3 && !seen))
       check = (seen ? "Tā kā speciālists jau to ir redzējis, paņem viņa ieteikumus uz pirmo sarunu. " : "Pirms slodzes kāpināšanas iesaku ārsta vai fizioterapeita pārbaudi. ")
@@ -699,7 +699,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     const conf = a.Mconf <= 2 ? "Pārliecība vēl ir zema. Tā aug no mazām uzvarām, tāpēc pirmās nedēļas būs veidotas tā, lai tās noteikti izdotos." : a.Mconf >= 4 ? "Tu tici, ka tev izdosies. Tas ir viens no stiprākajiem prognozētājiem, ka plānu noturēsi." : "Pārliecība ir vidēja. Ar katru izpildītu nedēļu tā augs.";
     const rec = REC[r.rec];
     const SUP = { "Plāns, ko izpildu pats": " Tu teici, ka tev der plāns, ko izpildi pats.", "Plāns un regulāra pārbaude": " Tu teici, ka tev palīdzētu regulāra pārbaude. Tieši to dod mentorship.", "Treneris blakus visu ceļu": " Tu teici, ka gribi treneri blakus visu ceļu. Tieši tā strādā mentorship." };
-    const supNote = SUP[a.Csup] || "";
+    const supNote = r.rec === "consult" ? "" : r.rec === "plan" ? (a.Csup === "Plāns, ko izpildu pats" ? SUP[a.Csup] : "") : (a.Csup && a.Csup !== "Plāns, ko izpildu pats" ? SUP[a.Csup] : "");
     const timeNote = a.time === "Līdz 2 h" ? " Ar 2 stundām nedēļā plāns ir iespējams: 2 spēka treniņi pa 45 minūtēm un ikdienas soļi." : "";
 
     $("report").innerHTML = `
