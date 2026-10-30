@@ -1295,7 +1295,7 @@ html .wipe__type p.wq { font-size: clamp(32px, 9.4vw, 46px) !important; max-widt
 .wipe__type { bottom: var(--bar); }
 /* results: the long red-to-black fade is back, and the section starts inside it */
 html #darbs ~ .fadeband { height: 36vh !important; }
-html #rezultati { position: relative; z-index: 1; margin-top: -22vh !important; }
+html #mentor { position: relative; z-index: 1; margin-top: -18vh !important; }
 
 /* profile card: a second way out - straight to a conversation */
 .qp__talk { margin-top: 14px; }
@@ -1325,6 +1325,19 @@ html.thread-on .mm__ring { stroke: transparent; }
 
 /* map core: "Pilna veiktspēja" - the longer word needs a smaller size to sit inside the circle */
 .mm__core strong { font-size: clamp(14.5px, 3.9vw, 26px) !important; letter-spacing: 0; line-height: 1.14 !important; }
+
+/* ===== desktop (30 Oct 2026): calmer headline size; "Kā mēs strādājam" as two columns - the heading stays, the steps move ===== */
+@media (min-width: 1000px) {
+  .sect { font-size: clamp(72px, 8.4vw, 124px) !important; }
+  #darbs { display: grid !important; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); column-gap: clamp(40px, 5vw, 96px); align-items: start;
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right: max(var(--gutter), env(safe-area-inset-right, 0px)); }
+  #darbs > .sect-head { grid-column: 1; grid-row: 1; position: sticky; top: clamp(96px, 16vh, 150px); align-self: start; margin: 0; padding: 0 !important; }
+  #darbs > .sect-head .sect-lead { max-width: 22em; }
+  #darbs > .sect-head .sect { font-size: clamp(60px, 6.4vw, 104px) !important; overflow-wrap: normal; }
+  #darbs > .mvA { display: none !important; }
+  #darbs > .mvB { grid-column: 2; grid-row: 1; padding-left: 0 !important; padding-right: 0 !important; }
+  #darbs .mvB__list { max-width: none; margin: 0; }
+}
 </style>
 </head>
 <body>
@@ -1419,21 +1432,6 @@ html.thread-on .mm__ring { stroke: transparent; }
     </div>
   </section>
 <div class="fadeband" aria-hidden="true"></div>
-
-<section class="res wrap" id="rezultati">
-    <header class="sect-head"><h2 class="sect">Rezultāti</h2><p class="sect-lead">Tikai izmērītais.</p></header>
-    <div class="res__grid">
-      <article class="res__card res__card--own"><span class="mono">Pārbaudīts uz sevis</span><h3>Kristers, IRONMAN Tallinn 2026</h3>
-        <dl class="res__nums"><div><dt>Finišs</dt><dd>10:50:38</dd></div><div><dt>Distance</dt><dd>226 km</dd></div><div><dt>Pro sezonas</dt><dd>6</dd></div></dl>
-        <p>Pirmais IRONMAN pēc pro riteņbraukšanas.</p></article>
-      <article class="res__card res__card--slot"><span class="mono">Klienta stāsts · drīzumā</span><h3>Ar atļauju un reāliem skaitļiem</h3>
-        <dl class="res__nums"><div><dt>Ķermeņa sastāvs</dt><dd>—</dd></div><div><dt>Spēks</dt><dd>—</dd></div><div><dt>Izturība</dt><dd>—</dd></div></dl>
-        </article>
-      <article class="res__card res__card--slot"><span class="mono">Klienta stāsts · drīzumā</span><h3>Ar atļauju un reāliem skaitļiem</h3>
-        <dl class="res__nums"><div><dt>Miegs</dt><dd>—</dd></div><div><dt>Enerģija</dt><dd>—</dd></div><div><dt>Regularitāte</dt><dd>—</dd></div></dl>
-        </article>
-    </div>
-  </section>
 
 <section class="offer offer--orbit wrap" id="mentor">
     <header class="sect-head"><h2 class="sect">Piedāvājums</h2><p class="sect-lead">Trīs veidi sākt.</p></header>
