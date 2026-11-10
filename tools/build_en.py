@@ -59,14 +59,14 @@ TABLE = [
     ('aria-label="Kristers treniņā"', 'aria-label="Kristers training"'),
     ("Fitnesa un mentālās veiktspējas treneris", "Fitness and mental performance coach"),
     ("Cik tālu tu esi<br>no savas<br>labākās formas?", "How far are you<br>from your<br>best shape?"),
-    ("Uzzini zemāk - 5 jautājumi, 1 minūte", "Find out below - 5 questions, 1 minute"),
+    ("Uzzini zemāk - 5 jautājumi, 1 minūte", "Find out below - 5 questions, 1 min"),
 
     # ---- performance map ----
     ('aria-label="Pilna veiktspēja"', 'aria-label="Full performance"'),
     ("<b>Augstākā līmeņa fitness nav tikai izskats.</b> Tas ir daudzu īpašību un rīcību kopums, kurā <em>ķermenis un prāts</em> strādā tev par labu.",
      "<b>Top-level fitness is not just about looks.</b> It is a whole set of qualities and habits, where <em>body and mind</em> work in your favour."),
     ("<strong>Pilna<br>veiktspēja</strong>", "<strong>Full<br>performance</strong>"),
-    ("Ķermenis, kas spēj", "A body that can"),
+    ("Ķermenis, kas spēj", "A capable body"),
     ("Tu vari skriet, lēkt, nest un celt bez bailēm savainoties. Kāpnes, kalni un sacensības ir prieks, nevis pārbaudījums.",
      "You can run, jump, carry and lift without fear of getting hurt. Stairs, hills and races are a joy, not a test."),
     (">Spēks<", ">Strength<"),
@@ -118,7 +118,7 @@ TABLE = [
     ("Gribi vairāk?", "Want more?"),
     ("Pilnais profils", "Full profile"),
     ("10 minūtes · detalizēta atskaite ar tavām prioritātēm", "10 minutes · a detailed report with your priorities"),
-    ("Vēlies sakārtot šīs lietas?", "Want to sort these things out?"),
+    ("Vēlies sakārtot šīs lietas?", "Want to sort this out?"),
     (">Sazināmies " + ARROW, ">Let's talk " + ARROW),
     ("Trenera atgriezeniskā saite pēc tavām atbildēm, nevis medicīnisks vai psiholoģisks novērtējums.",
      "A coach's feedback on your answers, not a medical or psychological assessment."),
@@ -298,7 +298,7 @@ TABLE = [
     ("Veidots tieši tev", "Custom made"),
     ('<p class="o-per">mēnesī</p>', '<p class="o-per">per month</p>'),
     ("Viss vienā cenā. Plāns, kas mainās līdz ar tavu dzīvi,<br>un treneris, kas palīdz to noturēt.",
-     "Everything in one price. A plan that changes as your life does,<br>and a coach who helps you stick to it."),
+     "Everything in one price. A plan that changes with your life,<br>and a coach who helps you stick to it."),
     ("4 konsultācijas mēnesī", "4 consultations a month"),
     ("Plāns pielāgots katru nedēļu", "Plan adjusted every week"),
     ("Iknedēļas atskaite: es pamanu, kad tu nobremzē", "Weekly check-in: I notice when you slow down"),
@@ -393,7 +393,7 @@ def rel(url):
         if "#" in rest:
             rest, hash_ = rest.split("#", 1)
             hash_ = "#" + hash_
-        q = rest + ("&" if rest.startswith("?") else "?") + "lang=en" if "lang=" not in rest else rest
+        q = re.sub(r"lang=\w+", "lang=en", rest) if "lang=" in rest else rest + ("&" if rest.startswith("?") else "?") + "lang=en"
         return "../profils.html" + q + hash_
     return "../" + u
 
