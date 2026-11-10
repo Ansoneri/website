@@ -348,7 +348,7 @@ TABLE = [
 
     # ---- closing ----
     ('<span class="mono">Pirmais solis</span>', '<span class="mono">The first step</span>'),
-    ("Tava forma ir tavu pēdējo 1000 izvēļu summa.", "Your shape is the sum of your last 1000 choices."),
+    ("Tavs fitness ir tavu pēdējo 1000 izvēļu summa.", "Your fitness is the sum of your last 1000 choices."),
     ("Nākamās var būt gudrākas. Sāc ar profilu, un pirmajā sarunā atradīsim, kas tev dos visvairāk.",
      "The next ones can be smarter. Start with the profile, and in our first conversation we will find what gives you the most."),
     ("Sākt pieteikumu", "Start your application"),
