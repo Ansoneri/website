@@ -1016,13 +1016,21 @@ html.is-pv .vsw { display: none; }
 .bone { position: relative; }
 .bone::before { content: ""; position: absolute; left: 0; right: 0; top: -2px; height: 70px; pointer-events: none; z-index: 1; background: linear-gradient(180deg, #f5f3ee, rgba(245,243,238,0)); }
 .endw__bg { -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 22%); mask-image: linear-gradient(180deg, transparent 0%, #000 22%); }
-/* desktop: the photo keeps a natural size on the right and fades into the bone background on every side; the texture stays */
+/* closing photo (Kristers on the bench): a real photo on the right that fades into the bone towards the text and the top, texture on top.
+   desktop: the right half, face right of the headline; phones/tablets: the lower part of the section, under the text */
+.endw__bg { background: var(--g) repeat, #f5f3ee !important; background-size: var(--gs), auto !important; }
+.endw__bg::after { content: ""; position: absolute; right: 0; bottom: 0; pointer-events: none;
+  background: var(--g) repeat, var(--img) 62% 26% / cover no-repeat; background-size: var(--gs), cover; opacity: .62; }
 @media (min-width: 1000px) {
-  .endw__bg { background: var(--g) repeat, #f5f3ee !important; background-size: var(--gs), auto !important; }
-  .endw__bg::after { content: ""; position: absolute; top: 0; bottom: 0; right: 0; width: max(46vw, 520px);
-    background: var(--g) repeat, var(--img) 62% 32% / cover no-repeat; background-size: var(--gs), cover; opacity: .42;
-    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 14%, #000 32%), linear-gradient(180deg, #000 82%, transparent 100%); -webkit-mask-composite: source-in;
-    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 14%, #000 32%), linear-gradient(180deg, #000 82%, transparent 100%); mask-composite: intersect; }
+  .endw__bg::after { top: 0; width: max(52vw, 560px);
+    -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 26%, rgba(0,0,0,.78) 52%, #000 72%), linear-gradient(180deg, rgba(0,0,0,.2) 0%, #000 34%, #000 86%, transparent 100%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.28) 26%, rgba(0,0,0,.78) 52%, #000 72%), linear-gradient(180deg, rgba(0,0,0,.2) 0%, #000 34%, #000 86%, transparent 100%); mask-composite: intersect; }
+}
+@media (max-width: 999px) {
+  .endw__in { padding-bottom: min(92vw, 520px) !important; }
+  .endw__bg::after { left: 0; height: min(125vw, 700px); background-position: 0 0, 64% 22%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.45) 26%, #000 52%, #000 90%, transparent 100%), linear-gradient(90deg, rgba(0,0,0,.35) 0%, #000 55%); -webkit-mask-composite: source-in;
+    mask-image: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.45) 26%, #000 52%, #000 90%, transparent 100%), linear-gradient(90deg, rgba(0,0,0,.35) 0%, #000 55%); mask-composite: intersect; }
 }
 .endw { background: var(--g) repeat, #f5f3ee; background-size: var(--gs), auto; }
 .sect-head, .sect-head::before, .sect-head::after { border: 0 !important; }
