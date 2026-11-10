@@ -53,6 +53,10 @@ button { font: inherit; color: inherit; }
 .brand { font-family: var(--f-surname); font-size: 24px; text-transform: uppercase; text-decoration: none; display: inline-block; transform: scaleX(1.17); transform-origin: left; }
 .back { font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: var(--bone-2); text-decoration: none; }
 .back:hover { color: var(--bone); }
+.bar__r { display: flex; align-items: center; gap: 18px; }
+.lang { cursor: pointer; padding: 7px 11px; border: 0; border-radius: 6px; background: transparent; box-shadow: inset 0 0 0 1px rgba(245,243,238,.3); font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; color: var(--bone); }
+.lang:hover { box-shadow: inset 0 0 0 1px var(--bone); }
+@media (max-width: 420px) { .back { display: none; } }
 .prog { height: 3px; background: rgba(245,243,238,.1); }
 .prog i { display: block; height: 100%; width: var(--p, 0%); background: var(--signature); transition: width .5s cubic-bezier(.2,.7,.2,1); }
 
@@ -322,7 +326,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 .rec__price { display: grid; justify-items: end; }
 .rec__price b { font-family: var(--f-surname); font-weight: 400; font-size: clamp(56px, 7vw, 84px); line-height: .9; color: var(--bone); }
 .rec__price span { font-family: var(--f-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--bone-3); }
-.rec__line { display: block; height: 2px; border-radius: 1px; background: var(--signature); }
+.rec__line { display: block; height: 2px; border-radius: 0; background: linear-gradient(90deg, #5a120c 0%, #c8281c 30%, #ff6b1a 68%, #f5f3ee 100%); -webkit-backface-visibility: hidden; }
 .rec .rec__hook { font-family: var(--f-display); font-weight: 500; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.3; color: var(--bone); max-width: 30em; }
 .rec .rec__why { font-size: 16px; color: var(--bone-2); }
 .rec__feats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
@@ -419,6 +423,9 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .rec > * + * { margin-top: 4.6mm !important; }
   .rec > .rec__alt, .rec > .rec__steps, .rec > .rec__links { margin-top: 6mm !important; }
   .rec__links { display: flex !important; flex-wrap: wrap; gap: 4mm; }
+  html[lang="en"] .rec > * + * { margin-top: 3.6mm !important; }
+  html[lang="en"] .rec > .rec__alt, html[lang="en"] .rec > .rec__steps, html[lang="en"] .rec > .rec__links { margin-top: 4.6mm !important; }
+  html[lang="en"] .rec { padding-top: 9mm !important; padding-bottom: 9mm !important; }
   .rec > .rec__line { margin-top: 3mm !important; height: 2px !important; }
   .rec .mono, .rec__price span { font-size: 7.5pt !important; }
   .rec__badge { font-size: 7pt !important; padding: 1.4mm 3mm !important; }
@@ -450,16 +457,16 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 </head>
 <body>
 <header class="bar">
-  <div class="wrap bar__in"><a class="brand" href="index.html">Ansons<span class="sq"></span></a><a class="back" href="index.html">← Atpakaļ uz lapu</a></div>
+  <div class="wrap bar__in"><a class="brand" href="index.html">Ansons<span class="sq"></span></a><div class="bar__r"><button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button><a class="back" href="index.html" data-i18n="back">← Atpakaļ uz lapu</a></div></div>
   <div class="prog" aria-hidden="true"><i id="prog"></i></div>
 </header>
 
 <main id="app">
   <section class="intro wrap" id="intro">
-    <span class="mono">Pilnais profils · apmēram 10 minūtes</span>
-    <h1>Pilnais profils</h1>
-    <p class="intro__lead">Sešas jomas, kas nosaka tavu formu. No tavām atbildēm uzbūvēšu atskaiti ar tavu profilu, gatavību, trim prioritātēm un pirmās nedēļas soļiem.</p>
-    <ul class="doms">
+    <span class="mono" data-i18n="kicker">Pilnais profils · apmēram 10 minūtes</span>
+    <h1 data-i18n="h1">Pilnais profils</h1>
+    <p class="intro__lead" data-i18n="lead">Sešas jomas, kas nosaka tavu formu. No tavām atbildēm uzbūvēšu atskaiti ar tavu profilu, gatavību, trim prioritātēm un pirmās nedēļas soļiem.</p>
+    <ul class="doms" data-i18n="doms">
       <li><b>Treniņi</b><span>Regularitāte un struktūra</span></li>
       <li><b>Miegs</b><span>Ritms, kvalitāte, ilgums</span></li>
       <li><b>Atjaunošanās</b><span>Stress un atpūta</span></li>
@@ -468,21 +475,21 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       <li><b>Mentālās prasmes</b><span>Fokuss, regulācija, noturība</span></li>
     </ul>
     <div class="privacy">
-      <p class="privacy__h">Tavi dati</p>
-      <p>Tavas atbildes, arī par veselību, saņemu tikai es. Kad pabeidz profilu, atskaite nonāk pie manis, un es to saglabāju savā Google kontā, lai sagatavotos sarunai, veidotu tavu plānu un vēlāk salīdzinātu progresu. Ja nospied „Nosūtīt Kristeram”, caur Tally (tally.so) pievieno arī savus kontaktus. Tālāk atbildes nevienam nenododu, un tu jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. Vairāk <a href="privatuma-politika.html">privātuma politikā</a>.</p>
-      <label class="consent"><input type="checkbox" id="cPlan"><span>Piekrītu, ka manas atbildes tiek nosūtītas Kristeram, saglabātas un izmantotas trenera darbam: lai sagatavotu man personalizētu plānu un ieteikumus. <em>Obligāti</em></span></label>
-      <label class="consent"><input type="checkbox" id="cImprove"><span>Piekrītu, ka manas atbildes bez vārda un kontaktiem tiek izmantotas pakalpojumu uzlabošanai. <em>Pēc izvēles</em></span></label>
+      <p class="privacy__h" data-i18n="ph">Tavi dati</p>
+      <p data-i18n="priv">Tavas atbildes, arī par veselību, saņemu tikai es. Kad pabeidz profilu, atskaite nonāk pie manis, un es to saglabāju savā Google kontā, lai sagatavotos sarunai, veidotu tavu plānu un vēlāk salīdzinātu progresu. Ja nospied „Nosūtīt Kristeram”, caur Tally (tally.so) pievieno arī savus kontaktus. Tālāk atbildes nevienam nenododu, un tu jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. Vairāk <a href="privatuma-politika.html">privātuma politikā</a>.</p>
+      <label class="consent"><input type="checkbox" id="cPlan"><span data-i18n="c1">Piekrītu, ka manas atbildes tiek nosūtītas Kristeram, saglabātas un izmantotas trenera darbam: lai sagatavotu man personalizētu plānu un ieteikumus. <em>Obligāti</em></span></label>
+      <label class="consent"><input type="checkbox" id="cImprove"><span data-i18n="c2">Piekrītu, ka manas atbildes bez vārda un kontaktiem tiek izmantotas pakalpojumu uzlabošanai. <em>Pēc izvēles</em></span></label>
       <p class="privacy__err" id="cErr" role="alert"></p>
     </div>
-    <div class="intro__acts"><button class="btn btn--main" id="start" type="button">Sākt profilu</button><button class="btn btn--ghost" id="demo" type="button">Parauga atskaite</button></div>
-    <p class="intro__meta" id="prefNote" hidden>Dažas atbildes jau aizpildītas no ātrā profila. Tās vari mainīt.</p>
+    <div class="intro__acts"><button class="btn btn--main" id="start" type="button" data-i18n="start">Sākt profilu</button><button class="btn btn--ghost" id="demo" type="button" data-i18n="demo">Parauga atskaite</button></div>
+    <p class="intro__meta" id="prefNote" hidden data-i18n="pref">Dažas atbildes jau aizpildītas no ātrā profila. Tās vari mainīt.</p>
   </section>
 
   <section class="step wrap" id="step" hidden aria-live="polite"></section>
   <section class="report wrap" id="report" hidden></section>
 </main>
 
-<div class="nav" id="nav" hidden><div class="wrap nav__in"><span class="nav__left" id="navLeft"></span><div class="nav__btns"><button class="btn btn--ghost" id="prev" type="button">Atpakaļ</button><button class="btn btn--main" id="next" type="button">Tālāk</button></div></div></div>
+<div class="nav" id="nav" hidden><div class="wrap nav__in"><span class="nav__left" id="navLeft"></span><div class="nav__btns"><button class="btn btn--ghost" id="prev" type="button" data-i18n="prev">Atpakaļ</button><button class="btn btn--main" id="next" type="button">Tālāk</button></div></div></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
@@ -496,6 +503,10 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   const TALLY_FORM = "laaJxk"; /* Tally form "Nosūti profilu Kristeram": name, phone, e-mail, comment + the report as hidden fields */
   const WA = "37126694933"; /* WhatsApp Business: +371 2669 4933 */
   const BACK = "index.html#darbs";
+  /* language: ?lang=en or the EN button; source tag for links shared in content: ?src=instagram (shows up in Kristers's e-mail and sheet) */
+  const PARAMS = new URLSearchParams(location.search);
+  let LANG = PARAMS.get("lang") === "en" ? "en" : PARAMS.get("lang") === "lv" ? "lv" : (() => { try { return localStorage.getItem("ansoneri-lang") === "en" ? "en" : "lv"; } catch (e) { return "lv"; } })();
+  const SRC = (PARAMS.get("src") || PARAMS.get("utm_source") || "").replace(/[^\w.-]/g, "").slice(0, 40);
 
   const AGREE = ["Nepiekrītu", "Drīzāk nepiekrītu", "Ne jā, ne nē", "Drīzāk piekrītu", "Pilnīgi piekrītu"];
   const FREQ = ["Nekad", "Reti", "Dažreiz", "Bieži", "Ļoti bieži"];
@@ -583,35 +594,37 @@ label.q__t small { display: inline !important; margin-left: 10px; }
      whether a doctor has seen it, warning signs, and what the first weeks of training will do around it.
      It is a coach's screening, not a diagnosis. */
   const AREAS = [
-    { re: /cel[ii]|ceļ|menisk|krust/i, k: "celis", plan: "mazāk skriešanas apjoma un lēcienu sākumā, vairāk gurnu un augšstilbu spēka, slodzi kāpināsim pa soļiem" },
-    { re: /mugur|jostas|krust[uv]|skriemel|disk/i, k: "mugura", plan: "stabilitāte un kontrolēta kustība pirms smagām pacelšanām, slodzi pievienosim tikai bez sāpju pieauguma" },
-    { re: /plec|lāpstiņ|rotator/i, k: "plecs", plan: "lāpstiņu stabilitāte un rotatoru spēks, spiedieni virs galvas tikai bez sāpēm" },
-    { re: /potīt|pēd|ahil|stilb/i, k: "potīte vai pēda", plan: "pakāpeniska skriešanas slodze, ikru un pēdas spēks, līdzsvara darbs" },
-    { re: /gūž|cirksn|iegurn/i, k: "gūža", plan: "gūžas kustīgums un sēžas muskuļu spēks, izvairīsimies no sāpīgām amplitūdām" },
-    { re: /kakl/i, k: "kakls", plan: "stāja, kakla un plecu joslas izturība, galvas pozīcija pacelšanās laikā" },
-    { re: /elkon|plaukst|delm|pirkst/i, k: "roka", plan: "satvēriena un apakšdelma slodze pakāpeniski, vingrinājumu varianti bez sāpēm" },
+    { re: /cel[ii]|ceļ|menisk|krust|knee|acl|patell/i, k: "celis", plan: "mazāk skriešanas apjoma un lēcienu sākumā, vairāk gurnu un augšstilbu spēka, slodzi kāpināsim pa soļiem" },
+    { re: /mugur|jostas|krust[uv]|skriemel|disk|back|spine|lumbar/i, k: "mugura", plan: "stabilitāte un kontrolēta kustība pirms smagām pacelšanām, slodzi pievienosim tikai bez sāpju pieauguma" },
+    { re: /plec|lāpstiņ|rotator|shoulder/i, k: "plecs", plan: "lāpstiņu stabilitāte un rotatoru spēks, spiedieni virs galvas tikai bez sāpēm" },
+    { re: /potīt|pēd|ahil|stilb|ankle|foot|feet|achilles|shin|calf/i, k: "potīte vai pēda", plan: "pakāpeniska skriešanas slodze, ikru un pēdas spēks, līdzsvara darbs" },
+    { re: /gūž|cirksn|iegurn|hip|groin|pelvi/i, k: "gūža", plan: "gūžas kustīgums un sēžas muskuļu spēks, izvairīsimies no sāpīgām amplitūdām" },
+    { re: /kakl|neck/i, k: "kakls", plan: "stāja, kakla un plecu joslas izturība, galvas pozīcija pacelšanās laikā" },
+    { re: /elkon|plaukst|delm|pirkst|elbow|wrist|hand|finger/i, k: "roka", plan: "satvēriena un apakšdelma slodze pakāpeniski, vingrinājumu varianti bez sāpēm" },
   ];
-  function injury(text, level) {
+  function injury(text, level, en) {
+    const X = (lv) => (en ? EN[lv] || lv : lv);
     const t = (text || "").toLowerCase();
     const area = AREAS.find((x) => x.re.test(t));
-    const num = t.match(/(\d+[.,]?\d*)\s*(ned|mēn|men|gad|dien)/);
+    const num = t.match(/(\d+[.,]?\d*)\s*(ned|mēn|men|gad|dien|week|wk|month|mo|year|yr|day)/);
     let months = null;
-    if (num) { const v = parseFloat(num[1].replace(",", ".")), u = num[2]; months = u.startsWith("gad") ? v * 12 : u.startsWith("ned") ? v / 4.3 : u.startsWith("dien") ? v / 30 : v; }
-    const seen = /ārst|arst|fizio|ortoped|traumatolog|mr|rentgen|izmeklē/.test(t);
+    if (num) { const v = parseFloat(num[1].replace(",", ".")), u = num[2]; months = /^(gad|year|yr)/.test(u) ? v * 12 : /^(ned|week|wk)/.test(u) ? v / 4.3 : /^(dien|day)/.test(u) ? v / 30 : v; }
+    const seen = /ārst|arst|fizio|ortoped|traumatolog|\bmri?\b|rentgen|izmeklē|doctor|\bgp\b|physio|x-ray|scan|specialist/.test(t);
     const red = [];
-    if (/nakt/.test(t)) red.push("sāpes naktī");
-    if (/tirp|nejūt|nejut|vājum|vajum/.test(t)) red.push("tirpšana vai vājums");
-    if (/pietūk|pietuk|tūsk/.test(t)) red.push("pietūkums");
-    if (/operā|opera/.test(t)) red.push("pēc operācijas");
-    if (/stipr|ļoti sāp|asas|ass /.test(t)) red.push("stipras sāpes");
-    const where = area ? area.k[0].toUpperCase() + area.k.slice(1) : "Sāpes vai trauma";
-    const when = months == null ? "" : months < 1.5 ? ", nesen" : months < 3 ? `, apmēram ${Math.round(months)} mēnešus` : ", ilgāk par 3 mēnešiem";
+    if (/nakt|night/.test(t)) red.push("sāpes naktī");
+    if (/tirp|nejūt|nejut|vājum|vajum|tingl|numb|weak/.test(t)) red.push("tirpšana vai vājums");
+    if (/pietūk|pietuk|tūsk|swell/.test(t)) red.push("pietūkums");
+    if (/operā|opera|surger/.test(t)) red.push("pēc operācijas");
+    if (/stipr|ļoti sāp|asas|ass |severe|sharp/.test(t)) red.push("stipras sāpes");
+    const ak = area ? X(area.k) : "";
+    const where = area ? ak[0].toUpperCase() + ak.slice(1) : X("Sāpes vai trauma");
+    const when = months == null ? "" : months < 1.5 ? (en ? ", recent" : ", nesen") : months < 3 ? (en ? `, about ${Math.round(months)} months` : `, apmēram ${Math.round(months)} mēnešus`) : (en ? ", longer than 3 months" : ", ilgāk par 3 mēnešiem");
     let check = "";
     if (red.length || level === "Jā, tas ierobežo" || (months != null && months >= 3 && !seen))
-      check = (seen ? "Tā kā speciālists jau to ir redzējis, paņem viņa ieteikumus uz pirmo sarunu. " : "Pirms slodzes kāpināšanas iesaku ārsta vai fizioterapeita pārbaudi. ")
-        + (red.length ? `Brīdinājuma pazīmes: ${red.join(", ")}.` : "");
-    else check = seen ? "Speciālists to jau ir redzējis, tāpēc pirmajā sarunā sekosim viņa ieteikumiem." : "Pirmajā sarunā to izrunāsim, un, ja sāpes nemazināsies 2-3 nedēļās, iesaku fizioterapeitu.";
-    const plan = area ? `Pirmajās nedēļās: ${area.plan}.` : "Pirmajās nedēļās izvēlēsimies vingrinājumus, kas nesāp, un slodzi kāpināsim pa soļiem.";
+      check = X(seen ? "Tā kā speciālists jau to ir redzējis, paņem viņa ieteikumus uz pirmo sarunu. " : "Pirms slodzes kāpināšanas iesaku ārsta vai fizioterapeita pārbaudi. ")
+        + (red.length ? `${en ? "Warning signs" : "Brīdinājuma pazīmes"}: ${red.map(X).join(", ")}.` : "");
+    else check = X(seen ? "Speciālists to jau ir redzējis, tāpēc pirmajā sarunā sekosim viņa ieteikumiem." : "Pirmajā sarunā to izrunāsim, un, ja sāpes nemazināsies 2-3 nedēļās, iesaku fizioterapeitu.");
+    const plan = area ? `${en ? "In the first weeks" : "Pirmajās nedēļās"}: ${X(area.plan)}.` : X("Pirmajās nedēļās izvēlēsimies vingrinājumus, kas nesāp, un slodzi kāpināsim pa soļiem.");
     return { where: where + when, check, plan, text: `${where + when}. ${check} ${plan}`.replace(/\s+/g, " ").trim() };
   }
 
@@ -646,11 +659,11 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     const weakSkill = SKILLS.slice().sort((x, y) => a[x.id] - a[y.id])[0];
 
     const flags = [];
-    if (a.H4 && a.H4 !== "Nē") { const j = injury(a.H4t, a.H4); flags.push((a.H4 === "Jā, tas ierobežo" ? "Trauma ierobežo treniņus. " : "Vieglas sāpes. ") + j.where + (a.H4t ? " („" + a.H4t + "”)" : "") + ". " + j.check + " " + j.plan); }
-    if (a.H1 <= 2) flags.push("Tu vērtē savu veselību kā vāju vai viduvēju. Pirmajā sarunā sāksim ar to, kas tieši tevi ierobežo.");
-    if (calm < 25) flags.push("Stresa slodze ir ļoti augsta. Ja tā turpinās nedēļām, ir vērts parunāt arī ar ģimenes ārstu vai psihologu.");
-    if (a.S5 === "Mazāk par 6") flags.push("Tu guli mazāk par 6 stundām. Tas ir pirmais, ko risināsim, pirms pievienojam slodzi.");
-    if ((a.Mwhy || []).includes("Ārsta ieteikums vai veselības signāls")) flags.push("Tevi uz pārmaiņām mudina ārsts vai veselības signāls. Paņem līdzi ārsta ieteikumus uz pirmo sarunu.");
+    if (a.H4 && a.H4 !== "Nē") { const j = injury(a.H4t, a.H4, LANG === "en"); flags.push(L(a.H4 === "Jā, tas ierobežo" ? "Trauma ierobežo treniņus. " : "Vieglas sāpes. ") + j.where + (a.H4t ? (LANG === "en" ? " (\u201c" + a.H4t + "\u201d)" : " („" + a.H4t + "”)") : "") + ". " + j.check + " " + j.plan); }
+    if (a.H1 <= 2) flags.push(L("Tu vērtē savu veselību kā vāju vai viduvēju. Pirmajā sarunā sāksim ar to, kas tieši tevi ierobežo."));
+    if (calm < 25) flags.push(L("Stresa slodze ir ļoti augsta. Ja tā turpinās nedēļām, ir vērts parunāt arī ar ģimenes ārstu vai psihologu."));
+    if (a.S5 === "Mazāk par 6") flags.push(L("Tu guli mazāk par 6 stundām. Tas ir pirmais, ko risināsim, pirms pievienojam slodzi."));
+    if ((a.Mwhy || []).includes("Ārsta ieteikums vai veselības signāls")) flags.push(L("Tevi uz pārmaiņām mudina ārsts vai veselības signāls. Paņem līdzi ārsta ieteikumus uz pirmo sarunu."));
 
     const health = a.H4 === "Jā, tas ierobežo" || a.H1 <= 2;
     const lowest = Object.entries(d).sort((x, y) => x[1] - y[1])[0][0];
@@ -742,11 +755,200 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   };
   const REC = {
     consult: ["Konsultācija", "50 €", "Sāksim ar sarunu par veselību un to, kas tevi ierobežo. Plāns sekos, kad zināsim, kas ir droši tavā situācijā."],
-    plan: ["Patstāvīgais plāns", "149 €", "Tavs pamats ir stabils, un ritmu tu proti noturēt. Personīgs plāns dos virzienu, ko vari izpildīt {pats|pati}."],
-    mentor: ["Elite Coaching Mentorship", "299 € mēnesī", "Tev noderēs struktūra un kāds, kas palīdz noturēt ritmu. Viss vienā cenā: konsultācijas, testi, materiāli, treniņu plāns un pielāgošana katru nedēļu."],
+    plan: ["Patstāvīgais plāns", "150 €", "Tavs pamats ir stabils, un ritmu tu proti noturēt. Personīgs plāns dos virzienu, ko vari izpildīt {pats|pati}."],
+    mentor: ["Elite Coaching Mentorship", "300 € mēnesī", "Tev noderēs struktūra un kāds, kas palīdz noturēt ritmu. Viss vienā cenā: konsultācijas, testi, materiāli, treniņu plāns un pielāgošana katru nedēļu."],
   };
   const band = (v) => (v < 45 ? 0 : v < 70 ? 1 : 2);
   const READY = ["Daudz neizmantota potenciāla", "Stabila bāze", "Tuvu savam potenciālam"];
+
+  /* ===================== ENGLISH =====================
+     One-to-one English for every Latvian string the visitor sees. Keys are the Latvian source (with {m|f} tokens where the Latvian has them);
+     the answers keep their Latvian values, so the scoring and Kristers's e-mail and sheet stay in Latvian whatever the language. */
+  const EN = {
+    /* scales */
+    "Nepiekrītu": "Disagree", "Drīzāk nepiekrītu": "Somewhat disagree", "Ne jā, ne nē": "Neither", "Drīzāk piekrītu": "Somewhat agree", "Pilnīgi piekrītu": "Fully agree",
+    "Nekad": "Never", "Reti": "Rarely", "Dažreiz": "Sometimes", "Bieži": "Often", "Ļoti bieži": "Very often",
+    "Slikta": "Poor", "Viduvēja": "Fair", "Laba": "Good", "Ļoti laba": "Very good", "Izcila": "Excellent",
+    "Nav svarīgi": "Not important", "Mazliet svarīgi": "A little important", "Vidēji": "Moderately", "Svarīgi": "Important", "Ļoti svarīgi": "Very important",
+    "Nemaz": "Not at all", "Mazliet": "A little", "Diezgan": "Quite", "Pilnīgi": "Completely",
+    /* sections */
+    "Konteksts": "Context", "Pastāsti par sevi un to, ko gribi sasniegt. Mērķus vari izvēlēties vairākus.": "Tell me about yourself and what you want to achieve. You can choose several goals.",
+    "Es esmu": "I am", "Lai atskaite uzrunā tevi pareizi": "So the report speaks to you correctly", "Sieviete": "Woman", "Vīrietis": "Man",
+    "Kā mani sauc?": "What is my name?", "Vārds": "Name", "Cik man ir gadu?": "How old am I?", "Piemēram, 32": "For example, 32",
+    "Ko es gribu sasniegt nākamajos 3 mēnešos?": "What do I want to achieve in the next 3 months?", "Izvēlies visu, kas attiecas uz tevi": "Choose everything that applies to you",
+    "Samazināt svaru": "Lose weight", "Spēks un muskuļi": "Strength and muscle", "Izturība un sacensības": "Endurance and races", "Vairāk enerģijas": "More energy", "Labāka veselība": "Better health", "Mazāk stresa": "Less stress", "Atgriezties sportā": "Get back into sport",
+    "Cik treniņu man ir parastā nedēļā?": "How many training sessions do I have in a normal week?",
+    "Cik ilgi es jau trenējos regulāri?": "How long have I been training regularly?", "Mazāk par gadu": "Less than a year", "1-3 gadi": "1-3 years", "3+ gadi": "3+ years", "Biju profesionālis": "I was a professional", "Biju {profesionālis|profesionāle}": "I was a professional",
+    "Cik laika nedēļā varu atvēlēt treniņiem?": "How much time a week can I give to training?", "Līdz 2 h": "Up to 2 h",
+    "Treniņi": "Training", "Domā par pēdējiem diviem mēnešiem. Kā tu trenējies, ko tu dari un kā tu to novērtētu godīgi, ne ideālajā nedēļā.": "Think about the last two months. How you train, what you do and how you would rate it honestly, not in your ideal week.",
+    "Ko es pārsvarā daru treniņos?": "What do I mostly do in training?", "Spēka treniņi zālē": "Strength training in the gym", "Skriešana, ritenis vai peldēšana": "Running, cycling or swimming", "Komandu sports": "Team sports", "Grupu nodarbības": "Group classes", "Joga vai mobilitāte": "Yoga or mobility", "Treniņi mājās": "Training at home", "Pagaidām neko": "Nothing yet",
+    "Es trenējos pēc plāna, nevis pēc noskaņojuma": "I train to a plan, not to my mood",
+    "Treniņus izlaižu reti, ne biežāk kā reizi divās nedēļās": "I rarely skip sessions, no more than once every two weeks",
+    "Es zinu, kāpēc veicu katru treniņu": "I know why I do each session",
+    "Savu progresu es varu izmērīt, nevis tikai sajust": "I can measure my progress, not just feel it",
+    "Es jūtu, ka slodze pakāpeniski pieaug: vairāk svara, atkārtojumu vai ātrāks temps": "I can feel the load rising step by step: more weight, more reps or a faster pace",
+    "Miegs": "Sleep", "Domā par pēdējām divām nedēļām.": "Think about the last two weeks.",
+    "Es eju gulēt un ceļos aptuveni vienā laikā, arī brīvdienās": "I go to bed and get up at about the same time, weekends too",
+    "Es esmu {apmierināts|apmierināta} ar savu miegu": "I am satisfied with my sleep",
+    "Dienā es jūtos {možs|moža} un necīnos ar miegainību": "During the day I feel alert and don't fight sleepiness",
+    "Es iemiegu ātri un naktī daudz nemostos": "I fall asleep quickly and rarely wake up at night",
+    "Cik stundas es parasti guļu?": "How many hours do I usually sleep?", "Mazāk par 6": "Less than 6",
+    "Atjaunošanās": "Recovery", "Domā par pēdējo mēnesi. Cik daudz slodzes ir darbā un dzīvē, un cik labi tu atjaunojies.": "Think about the last month. How much load there is at work and in life, and how well you recover.",
+    "Cik bieži man šķiet, ka es nespēju tikt galā ar svarīgām lietām savā dzīvē?": "How often do I feel I can't cope with the important things in my life?",
+    "Cik bieži es jūtos {saspringts vai nervozs|saspringta vai nervoza}?": "How often do I feel tense or nervous?",
+    "Cik bieži es jūtu, ka lietas notiek tā, kā es vēlos?": "How often do I feel things are going the way I want?",
+    "Cik bieži nākamajā dienā pēc smaga treniņa es jūtos {atpūties|atpūtusies}?": "How often do I feel rested the day after a hard session?",
+    "Cik bieži man ir laiks tikai sev: pastaiga, pirts, hobijs vai draugi?": "How often do I have time just for myself: a walk, the sauna, a hobby or friends?",
+    "Motivācija": "Motivation", "Kāpēc tu gribi pārmaiņas un kāpēc tieši tagad. Te nav pareizo atbilžu. Jo godīgāk, jo labāks būs plāns.": "Why you want a change and why right now. There are no right answers here. The more honest you are, the better the plan.",
+    "Kas mani mudina mainīt kaut ko tieši tagad?": "What is pushing me to change something right now?",
+    "Izskats un ķermeņa forma": "Appearance and body shape", "Veselība un ilgmūžība": "Health and longevity", "Enerģija ikdienā": "Everyday energy", "Sportisks rezultāts vai sacensības": "A sports result or a race", "Mazāk stresa, labāks garastāvoklis": "Less stress, better mood", "Pašapziņa": "Self-confidence", "Ārsta ieteikums vai veselības signāls": "A doctor's advice or a health signal", "Konkrēts notikums priekšā": "A specific event coming up",
+    "Kas man līdz šim ir traucējis?": "What has held me back so far?",
+    "Laika trūkums": "Lack of time", "Nezinu, ko tieši darīt": "I don't know exactly what to do", "Motivācija pazūd pēc dažām nedēļām": "Motivation fades after a few weeks", "Rezultāti nenāk": "Results don't come", "Sāpes vai traumas": "Pain or injuries", "Stress un nogurums": "Stress and fatigue", "Nav, kas palīdz noturēt ritmu": "No one to help me keep the rhythm", "Nekas īpašs": "Nothing in particular",
+    "Cik svarīgi man ir kaut ko mainīt tieši tagad?": "How important is it for me to change something right now?",
+    "Cik {pārliecināts|pārliecināta} es esmu, ka man izdosies, ja būs labs plāns?": "How confident am I that I will succeed with a good plan?",
+    "Es trenējos, jo man tas patīk": "I train because I enjoy it", "Es trenējos, jo tas ir svarīgi man {pašam|pašai}": "I train because it matters to me", "Es jūtos {vainīgs|vainīga}, ja izlaižu treniņu": "I feel guilty when I skip a session", "Es trenējos, jo citi to no manis gaida": "I train because others expect it of me", "Īsti neredzu jēgu trenēties": "I don't really see the point of training",
+    "Veselība": "Health", "Enerģija, uzturs un tas, kas varētu ierobežot treniņus.": "Energy, nutrition and anything that could limit your training.",
+    "Kā es vērtēju savu veselību kopumā?": "How do I rate my health overall?", "Man pietiek enerģijas arī dienas otrajā pusē": "I have enough energy in the second half of the day too",
+    "Es ēdu regulāri un pietiekami daudz olbaltumvielu (1,6-2 g uz kg ķermeņa svara dienā)": "I eat regularly and get enough protein (1.6-2 g per kg of body weight a day)",
+    "Vai šobrīd man ir sāpes vai trauma, kas ietekmē treniņus?": "Do I have pain or an injury right now that affects my training?", "Nē": "No", "Viegli, varu trenēties": "Mild, I can train", "Jā, tas ierobežo": "Yes, it limits me",
+    "Kas tieši? Kur sāp, kopš kura laika, vai esi {bijis|bijusi} pie ārsta?": "What exactly? Where does it hurt, since when, have you seen a doctor?",
+    "Mentālās prasmes": "Mental skills", "Prāts ir trenējams tāpat kā ķermenis: uzmanība, emocijas, plānošana, stress un mērķi. Domā gan par darbu, gan par sportu.": "The mind can be trained just like the body: attention, emotions, planning, stress and goals. Think about both work and sport.",
+    "Es spēju strādāt 45 minūtes bez novēršanās": "I can work for 45 minutes without distraction", "Uzmanība": "Attention",
+    "Pirms svarīga notikuma es zinu, kā sevi nomierināt vai uzmundrināt": "Before an important event I know how to calm myself down or lift myself up", "Regulācija": "Regulation",
+    "Pēc neveiksmes es ātri saņemos un turpinu": "After a setback I pull myself together quickly and carry on", "Noturība": "Resilience",
+    "Grūtos brīžos mana iekšējā balss palīdz, nevis traucē": "In hard moments my inner voice helps rather than gets in the way", "Iekšējā runa": "Self-talk",
+    "Es izvirzu konkrētus mērķus ar termiņu": "I set specific goals with a deadline", "Mērķi": "Goals",
+    "Pirms grūta uzdevuma es iztēlojos, kā to izpildīšu": "Before a hard task I picture how I will do it", "Iztēle": "Imagery",
+    "Spiediena brīžos es uzticos savām spējām": "Under pressure I trust my abilities", "Pārliecība": "Confidence",
+    "Es spēju kontrolēt emocijas arī tad, kad viss neiet pēc plāna": "I can control my emotions even when things don't go to plan", "Emociju kontrole": "Emotional control",
+    "Es plānoju savu nedēļu un turos pie plāna": "I plan my week and stick to the plan", "Plānošana": "Planning",
+    "Ilgstoša stresa periodos es zinu, kā saglabāt enerģiju un ritmu": "During long stressful periods I know how to keep my energy and rhythm", "Stresa kontrole": "Stress control",
+    "Sadarbība": "Working together", "Pēdējais solis. Tas palīdzēs saprast, kāds atbalsts tev der vislabāk.": "The last step. It helps me understand what kind of support suits you best.",
+    "Kāds atbalsts man palīdzētu visvairāk?": "What kind of support would help me most?", "Plāns, ko izpildu pats": "A plan I follow on my own", "Plāns, ko izpildu {pats|pati}": "A plan I follow on my own", "Plāns un regulāra pārbaude": "A plan and regular check-ins", "Treneris blakus visu ceļu": "A coach beside me all the way",
+    "Vai es jau esmu {strādājis|strādājusi} ar treneri?": "Have I worked with a coach before?", "Jā, un tas strādāja": "Yes, and it worked", "Jā, bet tas nestrādāja": "Yes, but it didn't work", "Kas tieši strādāja vai nestrādāja?": "What exactly worked or didn't?",
+    "Kad es gribu sākt?": "When do I want to start?", "Šonedēļ": "This week", "2-4 nedēļu laikā": "Within 2-4 weeks", "Pēc 1-2 mēnešiem": "In 1-2 months", "Pagaidām tikai interesējos": "Just looking for now",
+    "Cik es esmu {gatavs|gatava} mēnesī ieguldīt savā formā un veselībā?": "How much am I ready to invest in my fitness and health each month?", "Līdz 50 €": "Up to 50 €", "300 € un vairāk": "300 € or more",
+    "Kā izskatītos veiksmīgi nākamie 3 mēneši?": "What would a successful next 3 months look like?", "Piemēram, kā tu izskaties, jūties, ko spēj izdarīt": "For example, how you look, how you feel, what you can do", "Piemēram: -5 kg, 10 pievilkšanās, mierīgāks miegs": "For example: -5 kg, 10 pull-ups, calmer sleep",
+    /* profile types */
+    "Vispirms veselība": "Health first", "Pirms plāna jāsaprot, kas tevi ierobežo. Sāksim ar sarunu par veselību, un, ja vajag, palīdzēšu saprast, pie kura speciālista vērsties.": "Before a plan, we need to understand what is limiting you. We will start with a conversation about your health and, if needed, I will help you work out which specialist to see.",
+    "Augsta slodze, maza rezerve": "High load, little reserve", "Tu trenējies regulāri, bet miegs un atjaunošanās neiet līdzi. Vairāk darba tagad dotu mazāk. Pielāgošu slodzi tam, cik ātri tavs ķermenis atjaunojas.": "You train regularly, but sleep and recovery are not keeping up. More work right now would give you less. I will match the load to how fast your body recovers.",
+    "Motivācija bez sistēmas": "Motivation without a system", "Gribēšanas tev pietiek. Trūkst plāna, kas iederas tavā nedēļā un rāda progresu skaitļos. To uzzīmēsim kopā.": "You have plenty of drive. What is missing is a plan that fits your week and shows your progress in numbers. We will draw it up together.",
+    "Sistēma bez dzirksteles": "A system without a spark", "Ritms ir, bet motivācija balstās vainas sajūtā vai citu gaidās. Ilgtermiņā tā izdeg. Palīdzēšu atrast iemeslu, kas ir tavs.": "The rhythm is there, but your motivation rests on guilt or other people's expectations. In the long run that burns out. I will help you find a reason that is your own.",
+    "{Gatavs|Gatava} nākamajam līmenim": "Ready for the next level", "Pamats ir stabils visās jomās. Nākamais progress nāks no testiem un precīza plāna, nevis no vairāk darba.": "Your base is solid in every area. Your next progress will come from testing and a precise plan, not from more work.",
+    "Gribu, bet šaubos": "I want to, but I doubt", "Pārmaiņas tev ir svarīgas, bet pārliecība vēl klibo. Pārliecība aug no mazām uzvarām, tāpēc sāksim ar soļiem, kas noteikti izdosies.": "Change matters to you, but your confidence is still shaky. Confidence grows from small wins, so we will start with steps that are sure to work.",
+    "Pamats bez atjaunošanās": "A base without recovery", "Miegs ir vājākais posms. Bez tā treniņš dod mazāk, nekā varētu, un enerģija dienā krīt.": "Sleep is the weakest link. Without it, training gives you less than it could and your energy drops during the day.",
+    "Jauda bez virziena": "Power without direction", "Fiziskais pamats ir, bet mentālās prasmes bremzē. Tās var trenēt tāpat kā spēku.": "The physical base is there, but your mental skills are holding you back. They can be trained just like strength.",
+    "Restarts": "Restart", "Labākais sākums ir mazs un regulārs. Pirmās 4 nedēļas būvēsim ieradumu, nevis rekordus.": "The best start is small and regular. For the first 4 weeks we will build a habit, not records.",
+    "Stabila bāze": "Solid base", "Lielākā daļa jomu strādā. Mērķtiecīgs darbs ar vienu vai divām vājākajām jomām dos lielāko lēcienu.": "Most areas are working. Focused work on the one or two weakest will give you the biggest jump.",
+    "Daudz neizmantota potenciāla": "Lots of untapped potential", "Tuvu savam potenciālam": "Close to your potential",
+    /* domain lines */
+    "Treniņi notiek bez ritma. Šeit ir lielākā iespēja.": "Your training has no rhythm. This is your biggest opportunity.", "Ritms ir, bet struktūra un mērījumi vēl klibo.": "The rhythm is there, but structure and measurement still lag.", "Regulārs, mērķtiecīgs darbs.": "Regular, purposeful work.",
+    "Miegs bremzē atjaunošanos un enerģiju.": "Sleep is holding back your recovery and energy.", "Miegs ir viduvējs. Ritms un ilgums ir pirmās sviras.": "Your sleep is average. Rhythm and duration are the first levers.", "Miegs strādā tev par labu.": "Sleep is working in your favour.",
+    "Stress un atjaunošanās izmanto visu rezervi.": "Stress and recovery are using up your whole reserve.", "Rezerve ir, bet smagās nedēļās tā beidzas.": "There is a reserve, but in hard weeks it runs out.", "Laba stresa noturība un atjaunošanās.": "Good stress resilience and recovery.",
+    "Motivācija ir vāja vai balstās ārējā spiedienā.": "Motivation is weak or rests on outside pressure.", "Motivācija ir jaukta: daļa tava, daļa pienākums.": "Motivation is mixed: part of it is yours, part of it is duty.", "Motivācija nāk no tevis {paša|pašas}. Tā noturas.": "Your motivation comes from you. It lasts.",
+    "Veselība un enerģija ierobežo slodzi.": "Health and energy are limiting your training load.", "Pamats ir, bet enerģija vai uzturs klibo.": "The base is there, but energy or nutrition is lagging.", "Labs veselības un enerģijas pamats.": "A good base of health and energy.",
+    "Uzmanība un regulācija ir vāja vieta.": "Attention and regulation are a weak spot.", "Mentālās prasmes ir vidējas. Tās var trenēt.": "Your mental skills are average. They can be trained.", "Spēcīgas mentālās prasmes.": "Strong mental skills.",
+    /* mental skill tips */
+    "Darba bloki 45 + 5 minūtes, telefons citā telpā": "Work blocks of 45 + 5 minutes, phone in another room",
+    "Pirms svarīga uzdevuma 1 minūte lēnas elpošanas ar garāku izelpu": "Before an important task, 1 minute of slow breathing with a longer exhale",
+    "Pēc neveiksmes uzraksti vienu lietu, ko nākamreiz darīsi citādi, un aizver tēmu": "After a setback, write down one thing you will do differently next time, then close the topic",
+    "Izvēlies vienu īsu frāzi grūtajam brīdim, piemēram, „vēl viens atkārtojums”, un trenē to treniņos": "Pick one short phrase for the hard moment, for example “one more rep”, and practise it in training",
+    "Viens mērķis ar skaitli un datumu, sadalīts 4 nedēļu posmos": "One goal with a number and a date, split into 4-week blocks",
+    "Pirms grūta treniņa 60 sekundes iztēlojies, kā izpildi pirmo un pēdējo piegājienu": "Before a hard session, spend 60 seconds picturing your first and last set",
+    "Pieraksti 3 treniņus, kas izdevās, un pārlasi tos pirms grūta uzdevuma": "Write down 3 sessions that went well and reread them before a hard task",
+    "Kad emocijas kāpj, nosauc tās vārdā un ieelpo 4 sekundes, izelpo 6 sekundes, pirms rīkojies": "When emotions rise, name them, breathe in for 4 seconds and out for 6 before you act",
+    "Svētdienā 10 minūtes: ieraksti nedēļas treniņus kalendārā kā tikšanās": "On Sunday, 10 minutes: put the week's sessions in your calendar like meetings",
+    "Smagās nedēļās samazini treniņu apjomu, nevis izlaid treniņus, un ieplāno vienu atslēgšanās brīdi": "In hard weeks, cut training volume rather than skipping sessions, and plan one moment to switch off",
+    /* priorities */
+    "Miega ritms un ilgums": "Sleep rhythm and duration", "Miega trūkums samazina spēku, izturību un lēmumu kvalitāti un palēnina atjaunošanos.": "Lack of sleep reduces strength, endurance and the quality of your decisions, and slows recovery.",
+    "Fiksēts celšanās laiks 7 dienas nedēļā, ±30 minūtes": "A fixed wake-up time 7 days a week, ±30 minutes", "Ekrāni prom 45 minūtes pirms miega, guļamistaba vēsa un tumša": "Screens away 45 minutes before sleep, a cool and dark bedroom",
+    "Stress un atpūta": "Stress and rest", "Stress un treniņš izmanto vienu un to pašu atjaunošanās rezervi.": "Stress and training draw on the same recovery reserve.",
+    "Smagās darba nedēļās treniņu apjoms -30 %, intensitāte paliek": "In heavy work weeks, training volume -30 %, intensity stays", "2 apzināti atslēgšanās brīži nedēļā, ierakstīti kalendārā": "2 deliberate switch-off moments a week, written in your calendar",
+    "Regulārs treniņu ritms": "A regular training rhythm", "Regularitāte ilgtermiņā dod vairāk nekā perfekts plāns, ko neizpildi.": "In the long run, consistency gives you more than a perfect plan you don't follow.",
+    "3 fiksēti treniņu laiki nedēļā, kā tikšanās": "3 fixed training times a week, like meetings", "Viens mērāms rādītājs, ko pārbaudi ik 4 nedēļas": "One measurable marker you check every 4 weeks",
+    "Iemesls, kas ir tavs": "A reason of your own", "Motivācija, kas nāk no paša, noturas ilgāk nekā vainas sajūta vai citu gaidas. Pārliecība aug no mazām uzvarām.": "Motivation that comes from yourself lasts longer than guilt or other people's expectations. Confidence grows from small wins.",
+    "Uzraksti vienu iemeslu trenēties, kas ir tikai tavs": "Write down one reason to train that is yours alone", "Pirmajai nedēļai mērķis, kas noteikti izdosies": "A goal for the first week that is sure to work",
+    "Enerģija un uzturs": "Energy and nutrition", "Enerģija un uzturs nosaka, cik slodzes tu spēj panest un pārvērst progresā.": "Energy and nutrition decide how much load you can handle and turn into progress.",
+    "Olbaltumvielas katrā ēdienreizē, kopā 1,6-2 g uz kg dienā": "Protein at every meal, 1.6-2 g per kg a day in total", "Ja ir sāpes vai ilgstošs nogurums, pārbaude pirms slodzes kāpināšanas": "If you have pain or ongoing fatigue, get checked before the load goes up",
+    "Uzmanību, regulāciju un noturību var trenēt tāpat kā spēku.": "Attention, regulation and resilience can be trained just like strength.",
+    /* barriers */
+    "Uzzīmēšu plānu, kas iederas tavā kalendārā, pat ar 2-3 stundām nedēļā.": "I will draw up a plan that fits your calendar, even with 2-3 hours a week.",
+    "Katram treniņam būs skaidrs uzdevums un iemesls.": "Every session will have a clear task and a reason.",
+    "Mazi mērķi ik 4 nedēļas un iknedēļas atskaite, kas rāda progresu.": "Small goals every 4 weeks and a weekly check-in that shows your progress.",
+    "Testēsim, lai redzētu, kas strādā, un pielāgošu plānu.": "We will test to see what works, and I will adjust the plan.",
+    "Slodzi kāpināsim uzmanīgi, un, ja vajag, kopā ar fizioterapeitu.": "We will raise the load carefully and, if needed, together with a physiotherapist.",
+    "Plāns pielāgosies smagām nedēļām, nevis otrādi.": "The plan will adapt to hard weeks, not the other way round.",
+    "Būšu blakus: atskaite katru nedēļu un saziņa darba dienās.": "I will be there: a check-in every week and contact on weekdays.",
+    /* motivation and load */
+    "Iekšēja": "Internal", "Tu trenējies tāpēc, ka {pats|pati} to gribi. Tas ir stiprākais pamats ilgtermiņa noturībai.": "You train because you want to. That is the strongest base for keeping it up long term.",
+    "Ārēja": "External", "Liela daļa motivācijas nāk no vainas sajūtas vai citu gaidām. Tas strādā īsi, bet izdeg.": "A large part of your motivation comes from guilt or other people's expectations. That works for a while, but it burns out.",
+    "Jaukta": "Mixed", "Ir gan paša iemesli, gan pienākuma sajūta. Plāns stiprinās to, kas ir tavs.": "There are reasons of your own and a sense of duty. The plan will strengthen what is yours.",
+    "Zema": "Low", "Šobrīd trūkst iemesla, kas ir tavs. Sākums būs mazs un ar ātri redzamu progresu.": "Right now a reason of your own is missing. The start will be small, with progress you can see quickly.",
+    "Iekšējā": "Internal", "Ārējā": "External",
+    "Pārslodzes risks": "Risk of overload", "Slodze ir augstāka, nekā miegs un atjaunošanās šobrīd spēj nest.": "Your load is higher than your sleep and recovery can carry right now.",
+    "Neizmantota rezerve": "Unused reserve", "Atjaunošanās spēj nest vairāk slodzes, nekā tu šobrīd dod.": "Your recovery could carry more load than you are giving it now.",
+    "Līdzsvarā": "Balanced", "Slodze un atjaunošanās šobrīd ir samērīgas.": "Your load and recovery are in proportion right now.",
+    "Slodze": "Load", "Kapacitāte": "Capacity",
+    /* recommendation and offer */
+    "Konsultācija": "Consultation", "Sāksim ar sarunu par veselību un to, kas tevi ierobežo. Plāns sekos, kad zināsim, kas ir droši tavā situācijā.": "We will start with a conversation about your health and what is limiting you. The plan will follow once we know what is safe in your situation.",
+    "Patstāvīgais plāns": "Self-guided plan", "Tavs pamats ir stabils, un ritmu tu proti noturēt. Personīgs plāns dos virzienu, ko vari izpildīt {pats|pati}.": "Your base is solid and you know how to keep a rhythm. A personal plan will give you a direction you can follow on your own.",
+    "Tev noderēs struktūra un kāds, kas palīdz noturēt ritmu. Viss vienā cenā: konsultācijas, testi, materiāli, treniņu plāns un pielāgošana katru nedēļu.": "You will benefit from structure and someone who helps you keep the rhythm. Everything in one price: consultations, tests, materials, a training plan and adjustments every week.",
+    " Tu teici, ka tev der plāns, ko izpildi {pats|pati}.": " You said a plan you follow on your own suits you.",
+    " Tu teici, ka tev palīdzētu regulāra pārbaude. Tieši to dod mentorship.": " You said regular check-ins would help you. That is exactly what mentorship gives.",
+    " Tu teici, ka gribi treneri blakus visu ceļu. Tieši tā strādā mentorship.": " You said you want a coach beside you all the way. That is exactly how mentorship works.",
+    "mēnesī": "a month", "vienreiz": "one-off", "stundā": "an hour", "Veidots tieši tev": "Custom made",
+    "Viss vienā cenā. Plāns, kas mainās līdz ar tavu dzīvi, un treneris, kas palīdz to noturēt.": "Everything in one price. A plan that changes with your life, and a coach who helps you stick to it.",
+    "4 konsultācijas mēnesī": "4 consultations a month", "Plāns pielāgots katru nedēļu": "Plan adjusted every week", "Iknedēļas atskaite: es pamanu, kad tu nobremzē": "Weekly check-in: I notice when you slow down", "Visi testi un progresa mērījumi": "All tests and progress measurements", "Treniņu, uztura un atjaunošanās plāns": "Training, nutrition and recovery plan", "Visi materiāli": "All materials",
+    "Sākuma plāns": "Starter plan", "Sākuma plāns patstāvīgai lietošanai. Es to izveidoju, tu seko {pats|pati}.": "A starter plan to use on your own. I build it, you follow it.",
+    "Sākuma saruna un tavs profils": "An intro call and your profile", "Treniņu plāns un uztura vadlīnijas": "Training plan and nutrition guidelines", "Plāns, kas balstīts uz tavām 3 prioritātēm": "A plan built on your 3 priorities", "Ja dzīvē kaut kas mainās, plāns jāveido no jauna": "If something changes in your life, the plan has to be rebuilt",
+    "Pirmais solis": "First step", "Viena saruna par tavu jautājumu. Klātienē Rīgā vai tiešsaistē.": "One conversation about your question. In person in Riga or online.",
+    "Izrunājam šo profilu un to, kas tevi ierobežo": "We go through this profile and what is limiting you", "Atbildes uz taviem jautājumiem": "Answers to your questions", "Skaidrs nākamais solis": "A clear next step", "Ja vajag, palīdzu saprast, pie kura speciālista vērsties": "If needed, I help you work out which specialist to see",
+    "Alternatīva": "Alternative", "150 € vienreiz": "150 € one-off", "Ja gribi vairāk atbalsta": "If you want more support", "300 € mēnesī": "300 € a month",
+    "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}. Plāns netiek pielāgots katru nedēļu: ja dzīvē kaut kas mainās, tas jāveido no jauna.": "An intro call, your profile, a training plan and nutrition guidelines. I build it, you follow it. The plan is not adjusted every week: if something changes in your life, it has to be rebuilt.",
+    "Plāns, ko pielāgoju katru nedēļu, 4 konsultācijas mēnesī un iknedēļas atskaite: es pamanu, kad tu nobremzē.": "A plan I adjust every week, 4 consultations a month and a weekly check-in: I notice when you slow down.",
+    "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.": "Within 48 hours of our call you get your plan for the first month.", "48 stundu laikā pēc sarunas saņem savu plānu.": "Within 48 hours of our call you get your plan.", "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt.": "By the end of our call you will know what is safe in your situation and where to start.",
+    /* flags and injuries */
+    "Trauma ierobežo treniņus. ": "The injury limits your training. ", "Vieglas sāpes. ": "Mild pain. ",
+    "Tu vērtē savu veselību kā vāju vai viduvēju. Pirmajā sarunā sāksim ar to, kas tieši tevi ierobežo.": "You rate your health as poor or fair. In our first call we will start with what exactly is limiting you.",
+    "Stresa slodze ir ļoti augsta. Ja tā turpinās nedēļām, ir vērts parunāt arī ar ģimenes ārstu vai psihologu.": "Your stress load is very high. If it goes on for weeks, it is worth talking to your GP or a psychologist too.",
+    "Tu guli mazāk par 6 stundām. Tas ir pirmais, ko risināsim, pirms pievienojam slodzi.": "You sleep less than 6 hours. That is the first thing we will sort out before we add load.",
+    "Tevi uz pārmaiņām mudina ārsts vai veselības signāls. Paņem līdzi ārsta ieteikumus uz pirmo sarunu.": "A doctor or a health signal is pushing you to change. Bring your doctor's advice to our first call.",
+    "celis": "knee", "mugura": "back", "plecs": "shoulder", "potīte vai pēda": "ankle or foot", "gūža": "hip", "kakls": "neck", "roka": "arm", "Sāpes vai trauma": "Pain or injury",
+    "mazāk skriešanas apjoma un lēcienu sākumā, vairāk gurnu un augšstilbu spēka, slodzi kāpināsim pa soļiem": "less running volume and jumping at first, more hip and thigh strength, and we raise the load step by step",
+    "stabilitāte un kontrolēta kustība pirms smagām pacelšanām, slodzi pievienosim tikai bez sāpju pieauguma": "stability and controlled movement before heavy lifts, adding load only when the pain doesn't rise",
+    "lāpstiņu stabilitāte un rotatoru spēks, spiedieni virs galvas tikai bez sāpēm": "shoulder blade stability and rotator cuff strength, overhead presses only when pain-free",
+    "pakāpeniska skriešanas slodze, ikru un pēdas spēks, līdzsvara darbs": "gradual running load, calf and foot strength, balance work",
+    "gūžas kustīgums un sēžas muskuļu spēks, izvairīsimies no sāpīgām amplitūdām": "hip mobility and glute strength, avoiding painful ranges of movement",
+    "stāja, kakla un plecu joslas izturība, galvas pozīcija pacelšanās laikā": "posture, neck and upper back endurance, head position while lifting",
+    "satvēriena un apakšdelma slodze pakāpeniski, vingrinājumu varianti bez sāpēm": "grip and forearm load step by step, pain-free exercise variations",
+    "sāpes naktī": "pain at night", "tirpšana vai vājums": "tingling or weakness", "pietūkums": "swelling", "pēc operācijas": "after surgery", "stipras sāpes": "severe pain",
+    "Tā kā speciālists jau to ir redzējis, paņem viņa ieteikumus uz pirmo sarunu. ": "Since a specialist has already seen it, bring their advice to our first call. ",
+    "Pirms slodzes kāpināšanas iesaku ārsta vai fizioterapeita pārbaudi. ": "Before we raise the load, I recommend a check by a doctor or physiotherapist. ",
+    "Speciālists to jau ir redzējis, tāpēc pirmajā sarunā sekosim viņa ieteikumiem.": "A specialist has already seen it, so in our first call we will follow their advice.",
+    "Pirmajā sarunā to izrunāsim, un, ja sāpes nemazināsies 2-3 nedēļās, iesaku fizioterapeitu.": "We will talk it through in our first call, and if the pain doesn't ease within 2-3 weeks, I recommend a physiotherapist.",
+    "Pirmajās nedēļās izvēlēsimies vingrinājumus, kas nesāp, un slodzi kāpināsim pa soļiem.": "In the first weeks we will choose exercises that don't hurt and raise the load step by step.",
+  };
+  const T = (lv, en) => (LANG === "en" ? en : lv);
+  const L = (s) => (LANG === "en" && s != null && EN[s] != null ? EN[s] : s);
+
+  const EN_HTML = {
+    back: "← Back to the site", kicker: "Full profile · about 10 minutes", h1: "Full profile",
+    lead: "Six areas that shape your fitness. From your answers I build a report with your profile, your readiness, three priorities and steps for your first week.",
+    doms: "<li><b>Training</b><span>Consistency and structure</span></li><li><b>Sleep</b><span>Rhythm, quality, duration</span></li><li><b>Recovery</b><span>Stress and rest</span></li><li><b>Motivation</b><span>Why you want a change</span></li><li><b>Health</b><span>Energy, nutrition, pain</span></li><li><b>Mental skills</b><span>Focus, regulation, resilience</span></li>",
+    ph: "Your data",
+    priv: "Only I receive your answers, including those about your health. When you finish the profile, the report reaches me and I keep it in my Google account to prepare for our call, build your plan and later compare your progress. If you press \u201cSend to Kristers\u201d, you also add your contacts through Tally (tally.so). I don't pass your answers on to anyone, and you can ask me to delete them at any time by writing to kristersansons14@gmail.com. More in the <a href=\"privatuma-politika.html\">privacy policy</a> (in Latvian).",
+    c1: "I agree that my answers are sent to Kristers, stored and used for his coaching work: to prepare a personalised plan and recommendations for me. <em>Required</em>",
+    c2: "I agree that my answers, without my name and contacts, are used to improve the service. <em>Optional</em>",
+    start: "Start the profile", demo: "Sample report", pref: "Some answers are already filled in from the quick profile. You can change them.", prev: "Back",
+  };
+  const LV_HTML = {};
+  document.querySelectorAll("[data-i18n]").forEach((el) => { LV_HTML[el.dataset.i18n] = el.innerHTML; });
+  function applyLang() {
+    document.documentElement.lang = LANG;
+    document.querySelectorAll("[data-i18n]").forEach((el) => { const k = el.dataset.i18n; el.innerHTML = LANG === "en" ? EN_HTML[k] : LV_HTML[k]; });
+    const b = document.getElementById("lang"); b.textContent = LANG === "en" ? "LV" : "EN"; b.setAttribute("aria-label", LANG === "en" ? "Pārslēgt uz latviešu valodu" : "Switch to English");
+    document.title = LANG === "en" ? "Full profile - Kristers Ansons" : "Pilnais profils - Kristers Ansons";
+  }
 
   /* ===================== UI ===================== */
   const $ = (s) => document.getElementById(s);
@@ -754,43 +956,43 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   /* gendered text: "{pats|pati}" reads the first form for men, the second for women */
   const G = (t) => String(t).replace(/\{([^{}|]*)\|([^{}|]*)\}/g, (_, m, f) => (answers.sex === "Sieviete" ? f : m));
   const OPT_G = { "Plāns, ko izpildu pats": "Plāns, ko izpildu {pats|pati}", "Biju profesionālis": "Biju {profesionālis|profesionāle}" };
-  const optLabel = (o) => G(OPT_G[o] || o);
+  const optLabel = (o) => G(L(OPT_G[o] || o));
   let answers = {}, cur = -1, isSample = false, last = null;
   try { const q = JSON.parse(localStorage.getItem("ansoneri-quick") || "null"); if (Array.isArray(q) && q.length === 5) { answers.T1 = q[0]; answers.R2 = q[1]; answers.S2 = q[2]; answers.Mimp = q[3]; answers.H1 = q[4]; $("prefNote").hidden = false; } } catch (e) {}
 
   const answered = (q) => q.type === "field" ? q.ok(answers[q.id]) : q.type === "text" ? true : q.type === "multi" ? Array.isArray(answers[q.id]) && answers[q.id].length > 0 : answers[q.id] !== undefined;
   function qHTML(q) {
     const v = answers[q.id];
-    const hint = q.hint ? `<p class="q__hint">${q.hint}</p>` : "";
+    const hint = q.hint ? `<p class="q__hint">${L(q.hint)}</p>` : "";
     if (q.type === "scale") {
-      const btns = [1, 2, 3, 4, 5].map((n) => `<button type="button" role="radio" aria-checked="${v === n}" aria-label="${n} - ${q.lab[n - 1]}" data-q="${q.id}" data-v="${n}">${n}</button>`).join("");
-      return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(G(q.q))}</p><div class="scale" role="radiogroup" aria-labelledby="t-${q.id}">${btns}</div><div class="scale__ends"><span>1 · ${q.lab[0]}</span><span>5 · ${q.lab[4]}</span></div><div class="scale__now" id="now-${q.id}">${v ? q.lab[v - 1] : ""}</div></div>`;
+      const btns = [1, 2, 3, 4, 5].map((n) => `<button type="button" role="radio" aria-checked="${v === n}" aria-label="${n} - ${L(q.lab[n - 1])}" data-q="${q.id}" data-v="${n}">${n}</button>`).join("");
+      return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(G(L(q.q)))}</p><div class="scale" role="radiogroup" aria-labelledby="t-${q.id}">${btns}</div><div class="scale__ends"><span>1 · ${L(q.lab[0])}</span><span>5 · ${L(q.lab[4])}</span></div><div class="scale__now" id="now-${q.id}">${v ? L(q.lab[v - 1]) : ""}</div></div>`;
     }
-    if (q.type === "field") return `<div class="q q--field"><label class="q__t" for="${q.id}">${esc(G(q.q))}</label><input class="q__in" id="${q.id}" data-free="${q.id}" ${q.num ? 'type="number" inputmode="numeric" min="14" max="99"' : 'type="text" maxlength="40"'} autocomplete="${q.ac || "off"}" placeholder="${esc(q.ph || "")}" value="${esc(v || "")}"></div>`;
-    if (q.type === "text") return `<div class="q"><label class="q__t" for="${q.id}">${esc(G(q.q))} <small>Nav obligāti</small></label>${hint}<textarea class="q__text" id="${q.id}" data-free="${q.id}" maxlength="500" placeholder="${esc(q.ph || "")}">${esc(v || "")}</textarea></div>`;
+    if (q.type === "field") return `<div class="q q--field"><label class="q__t" for="${q.id}">${esc(G(L(q.q)))}</label><input class="q__in" id="${q.id}" data-free="${q.id}" ${q.num ? 'type="number" inputmode="numeric" min="14" max="99"' : 'type="text" maxlength="40"'} autocomplete="${q.ac || "off"}" placeholder="${esc(L(q.ph || ""))}" value="${esc(v || "")}"></div>`;
+    if (q.type === "text") return `<div class="q"><label class="q__t" for="${q.id}">${esc(G(L(q.q)))} <small>${T("Nav obligāti", "Optional")}</small></label>${hint}<textarea class="q__text" id="${q.id}" data-free="${q.id}" maxlength="500" placeholder="${esc(L(q.ph || ""))}">${esc(v || "")}</textarea></div>`;
     if (q.type === "multi") {
       const sel = v || [];
       const btns = q.opts.map((o) => `<button type="button" role="checkbox" aria-checked="${sel.includes(o)}" data-q="${q.id}" data-v="${esc(o)}">${esc(optLabel(o))}</button>`).join("");
-      return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(G(q.q))}</p>${hint}<div class="chips chips--multi" role="group" aria-labelledby="t-${q.id}">${btns}</div></div>`;
+      return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(G(L(q.q)))}</p>${hint}<div class="chips chips--multi" role="group" aria-labelledby="t-${q.id}">${btns}</div></div>`;
     }
     const btns = q.opts.map((o) => `<button type="button" role="radio" aria-checked="${v === o}" data-q="${q.id}" data-v="${esc(o)}">${esc(optLabel(o))}</button>`).join("");
     const f = q.follow, fshow = f && f.when.includes(v);
-    const follow = f ? `<div class="q__sub" id="sub-${q.id}"${fshow ? "" : " hidden"}><label for="${f.id}">${esc(G(f.label))}</label><textarea id="${f.id}" data-free="${f.id}" maxlength="400">${esc(answers[f.id] || "")}</textarea></div>` : "";
-    return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(G(q.q))}</p>${hint}<div class="chips" role="radiogroup" aria-labelledby="t-${q.id}">${btns}</div>${follow}</div>`;
+    const follow = f ? `<div class="q__sub" id="sub-${q.id}"${fshow ? "" : " hidden"}><label for="${f.id}">${esc(G(L(f.label)))}</label><textarea id="${f.id}" data-free="${f.id}" maxlength="400">${esc(answers[f.id] || "")}</textarea></div>` : "";
+    return `<div class="q"><p class="q__t" id="t-${q.id}">${esc(G(L(q.q)))}</p>${hint}<div class="chips" role="radiogroup" aria-labelledby="t-${q.id}">${btns}</div>${follow}</div>`;
   }
   function renderStep() {
     const s = SECTIONS[cur];
     const nid = "note_" + s.id;
-    $("step").innerHTML = `<header class="step__head"><span class="mono">Solis ${cur + 1} no ${SECTIONS.length}</span><h2>${s.t}</h2><p>${s.lead}</p></header>${s.q.map(qHTML).join("")}`
-      + `<div class="q q--note"><label class="q__t" for="${nid}">Piezīmes <small>Nav obligāti</small></label><p class="q__hint">Viss, ko gribi, lai es zinu par šo jomu.</p><textarea id="${nid}" data-free="${nid}" maxlength="600" placeholder="Piemēram, kas tieši, kopš kura laika, kas jau ir mēģināts">${esc(answers[nid] || "")}</textarea></div>`;
+    $("step").innerHTML = `<header class="step__head"><span class="mono">${T("Solis", "Step")} ${cur + 1} ${T("no", "of")} ${SECTIONS.length}</span><h2>${L(s.t)}</h2><p>${L(s.lead)}</p></header>${s.q.map(qHTML).join("")}`
+      + `<div class="q q--note"><label class="q__t" for="${nid}">${T("Piezīmes", "Notes")} <small>${T("Nav obligāti", "Optional")}</small></label><p class="q__hint">${T("Viss, ko gribi, lai es zinu par šo jomu.", "Anything you want me to know about this area.")}</p><textarea id="${nid}" data-free="${nid}" maxlength="600" placeholder="${T("Piemēram, kas tieši, kopš kura laika, kas jau ir mēģināts", "For example, what exactly, since when, what you have already tried")}">${esc(answers[nid] || "")}</textarea></div>`;
     updNav();
   }
   function updNav() {
     const s = SECTIONS[cur], done = s.q.every(answered);
     const n = ALL.filter(answered).length;
     $("next").disabled = !done;
-    $("next").textContent = cur === SECTIONS.length - 1 ? "Skatīt atskaiti" : "Tālāk";
-    $("navLeft").textContent = `${n} no ${ALL.length} atbildēti`;
+    $("next").textContent = cur === SECTIONS.length - 1 ? T("Skatīt atskaiti", "See my report") : T("Tālāk", "Next");
+    $("navLeft").textContent = T(`${n} no ${ALL.length} atbildēti`, `${n} of ${ALL.length} answered`);
     $("prog").style.setProperty("--p", (n / ALL.length * 100) + "%");
   }
   $("step").addEventListener("click", (e) => {
@@ -806,7 +1008,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     } else {
       answers[id] = q.type === "scale" ? +b.dataset.v : b.dataset.v;
       b.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-checked", x === b));
-      if (q.type === "scale") $("now-" + id).textContent = q.lab[answers[id] - 1];
+      if (q.type === "scale") $("now-" + id).textContent = L(q.lab[answers[id] - 1]);
       if (id === "sex") { renderStep(); return; }
       if (q.follow) { const sub = $("sub-" + id), on = q.follow.when.includes(answers[id]); sub.hidden = !on; if (!on) delete answers[q.follow.id]; else $(q.follow.id).focus(); }
     }
@@ -815,13 +1017,23 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   $("step").addEventListener("input", (e) => { const t = e.target.closest("[data-free]"); if (t) { answers[t.dataset.free] = t.value.trim(); if (t.classList.contains("q__in")) updNav(); } });
   const show = (view) => { $("intro").hidden = view !== "intro"; $("step").hidden = view !== "step"; $("nav").hidden = view !== "step"; $("report").hidden = view !== "report"; scrollTo({ top: 0 }); };
   $("start").addEventListener("click", () => {
-    if (!$("cPlan").checked) { $("cErr").textContent = "Atzīmē pirmo piekrišanu, lai varu saglabāt tavas atbildes un sagatavot tev plānu."; $("cPlan").focus(); return; }
+    if (!$("cPlan").checked) { $("cErr").textContent = T("Atzīmē pirmo piekrišanu, lai varu saglabāt tavas atbildes un sagatavot tev plānu.", "Tick the first consent so I can keep your answers and prepare your plan."); $("cPlan").focus(); return; }
     $("cErr").textContent = ""; answers._consent = { plan: true, improve: $("cImprove").checked, at: new Date().toISOString() };
     isSample = false; cur = 0; show("step"); renderStep(); });
   $("cPlan").addEventListener("change", () => { if ($("cPlan").checked) $("cErr").textContent = ""; });
   $("demo").addEventListener("click", () => { isSample = true; answers = JSON.parse(JSON.stringify(SAMPLE)); renderReport(); });
   $("prev").addEventListener("click", () => { if (cur === 0) { show("intro"); return; } cur--; renderStep(); scrollTo({ top: 0 }); });
   $("next").addEventListener("click", () => { if (cur < SECTIONS.length - 1) { cur++; renderStep(); scrollTo({ top: 0 }); } else renderReport(); });
+
+  applyLang();
+  $("lang").addEventListener("click", () => {
+    LANG = LANG === "en" ? "lv" : "en";
+    try { localStorage.setItem("ansoneri-lang", LANG); } catch (e) {}
+    const u = new URL(location.href); u.searchParams.set("lang", LANG); history.replaceState(null, "", u);
+    applyLang(); $("cErr").textContent = "";
+    if (!$("step").hidden) renderStep();
+    else if (!$("report").hidden) renderReport();
+  });
 
   /* radar: labels on two lines, with enough room in the drawing that nothing leaves the screen */
   function radar(d) {
@@ -835,11 +1047,11 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     keys.forEach((k, i) => { const [x, y] = pt(i, R * Math.max(4, d[k]) / 100); g += `<circle cx="${x}" cy="${y}" r="4.5" fill="#141110"/>`; });
     keys.forEach((k, i) => {
       const [x, y] = pt(i, R + 20), side = Math.abs(x - cx) < 8 ? "middle" : x < cx ? "end" : "start";
-      const lines = k.split(" "), top = y < cy - 20 ? y - (lines.length) * 16 + 4 : y < cy + 20 ? y - (lines.length - 1) * 8 : y + 12;
+      const lines = L(k).split(" "), top = y < cy - 20 ? y - (lines.length) * 16 + 4 : y < cy + 20 ? y - (lines.length - 1) * 8 : y + 12;
       const tsp = lines.map((l, j) => `<tspan x="${x}" y="${top + j * 16}">${l}</tspan>`).join("");
       g += `<text text-anchor="${side}">${tsp}<tspan class="rv" x="${x}" y="${top + lines.length * 16 + 4}">${d[k]}</tspan></text>`;
     });
-    return `<svg class="radar" viewBox="0 0 ${W} ${H}" role="img" aria-label="Profila diagramma: ${keys.map((k) => k + " " + d[k]).join(", ")}">${g}</svg>`;
+    return `<svg class="radar" viewBox="0 0 ${W} ${H}" role="img" aria-label="${T("Profila diagramma", "Profile chart")}: ${keys.map((k) => L(k) + " " + d[k]).join(", ")}">${g}</svg>`;
   }
 
   function summaryText(r, id) {
@@ -849,7 +1061,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       + (a.H4t ? `\nSāpes/trauma: ${a.H4t}\nTraumas secinājums: ${injury(a.H4t, a.H4).text}` : "")
       + SECTIONS.map((s) => a["note_" + s.id] ? `\nPiezīmes (${s.t}): ${a["note_" + s.id]}` : "").join("")
       + `\nAtbalsts: ${a.Csup || "-"}\nTreneris iepriekš: ${a.Cprev || "-"}${a.Cprevt ? " („" + a.Cprevt + "”)" : ""}\nSākt: ${a.Cwhen || "-"}\nBudžets mēnesī: ${a.Cinv || "-"}`
-      + (a.Cwin ? `\nVeiksmīgi 3 mēneši: ${a.Cwin}` : "") + `\nLead: ${r.lead}` + `\nPrioritātes: ${r.prio.map((p) => p.k).join(", ") || "precizitāte"}\nIeteiktais sākums: ${REC[r.rec][0]}`;
+      + (a.Cwin ? `\nVeiksmīgi 3 mēneši: ${a.Cwin}` : "") + `\nLead: ${r.lead}\nValoda: ${LANG.toUpperCase()}\nAvots: ${SRC || "tiešs apmeklējums"}` + `\nPrioritātes: ${r.prio.map((p) => p.k).join(", ") || "precizitāte"}\nIeteiktais sākums: ${REC[r.rec][0]}`;
   }
 
   /* score ring for the cover */
@@ -874,21 +1086,21 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       const [x0, y0] = P(a0, r), [x1, y1] = P(a1, r);
       g += `<path d="M${cx},${cy} L${f(x0)},${f(y0)} A${f(r)},${f(r)} 0 0 1 ${f(x1)},${f(y1)} Z" fill="${col}"/>`;
       const [lx, ly] = P(mid, R + 16), side = Math.abs(lx - cx) < 10 ? "middle" : lx < cx ? "end" : "start";
-      const lines = q.skill.split(" "), h = (lines.length + 1) * 14;
+      const lines = L(q.skill).split(" "), h = (lines.length + 1) * 14;
       const top = ly < cy - 30 ? ly - h + 10 : ly > cy + 30 ? ly + 11 : ly - h / 2 + 10;
       g += `<text class="rl${q.id === weakId ? " is-weak" : ""}" text-anchor="${side}">${lines.map((l, j) => `<tspan x="${f(lx)}" y="${f(top + j * 14)}">${l}</tspan>`).join("")}<tspan class="rlv" x="${f(lx)}" y="${f(top + lines.length * 14)}">${v}/5</tspan></text>`;
     });
     g += `<circle cx="${cx}" cy="${cy}" r="3" fill="#f5f3ee"/>`;
-    return `<svg class="rose" viewBox="0 0 ${W} ${H}" role="img" aria-label="Mentālās prasmes: ${SKILLS.map((q) => q.skill + " " + a[q.id] + "/5").join(", ")}">${g}</svg>`;
+    return `<svg class="rose" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L("Mentālās prasmes")}: ${SKILLS.map((q) => L(q.skill) + " " + a[q.id] + "/5").join(", ")}">${g}</svg>`;
   }
 
   /* what each starting point includes - the same offer as on the home page (#mentor) */
   const CHECK = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg>`;
   const OFFER = {
-    mentor: { tag: "Elite Coaching", t: "Mentorship", price: "299 €", per: "mēnesī", badge: "Ātrākais progress",
+    mentor: { tag: "Elite Coaching", t: "Mentorship", price: "300 €", per: "mēnesī", badge: "Veidots tieši tev",
       hook: "Viss vienā cenā. Plāns, kas mainās līdz ar tavu dzīvi, un treneris, kas palīdz to noturēt.",
       feats: ["4 konsultācijas mēnesī", "Plāns pielāgots katru nedēļu", "Iknedēļas atskaite: es pamanu, kad tu nobremzē", "Visi testi un progresa mērījumi", "Treniņu, uztura un atjaunošanās plāns", "Visi materiāli"], cmp: true },
-    plan: { tag: "Sākuma plāns", t: "Patstāvīgais plāns", price: "149 €", per: "vienreiz", badge: "",
+    plan: { tag: "Sākuma plāns", t: "Patstāvīgais plāns", price: "150 €", per: "vienreiz", badge: "",
       hook: "Sākuma plāns patstāvīgai lietošanai. Es to izveidoju, tu seko {pats|pati}.",
       feats: ["Sākuma saruna un tavs profils", "Treniņu plāns un uztura vadlīnijas", "Plāns, kas balstīts uz tavām 3 prioritātēm", "Ja dzīvē kaut kas mainās, plāns jāveido no jauna"], cmp: true },
     consult: { tag: "Pirmais solis", t: "Konsultācija", price: "50 €", per: "stundā", badge: "",
@@ -898,120 +1110,126 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 
   function renderReport() {
     const r = score(answers), a = answers;
-    const [atype, adesc] = ARCH[r.arch];
-    const today = new Date().toLocaleDateString("lv-LV", { day: "2-digit", month: "2-digit", year: "numeric" });
+    const [atype, adesc] = ARCH[r.arch].map(L);
+    const today = new Date().toLocaleDateString(T("lv-LV", "en-GB"), { day: "2-digit", month: "2-digit", year: "numeric" });
     const id = "AP-" + Object.values(r.d).join("").slice(0, 6);
     last = { r, id };
     const name = a.name ? esc(a.name) : "";
-    const run = (n) => `<div class="pg__run"><span>Ansoneri · Veiktspējas profils${name ? " · " + name : ""}</span><span>${id} · ${n} / 05</span></div>`;
+    const run = (n) => `<div class="pg__run"><span>Ansoneri · ${T("Veiktspējas profils", "Performance profile")}${name ? " · " + name : ""}</span><span>${id} · ${n} / 05</span></div>`;
     const lowKey = Object.entries(r.d).sort((x, y) => x[1] - y[1])[0][0];
-    const BANDL = ["Vāja vieta", "Vidēji", "Strādā"];
-    const jrows = Object.entries(r.d).map(([k, v]) => `<div class="jrow${k === lowKey ? " is-low" : ""}"><b>${k}</b><span class="jbar"><i style="--w:${Math.max(2, v)}%"></i></span><em>${v}</em><small>${k === lowKey ? "Lielākā iespēja" : BANDL[band(v)]}</small><p>${DOM_TXT[k][band(v)]}</p></div>`).join("");
+    const BANDL = LANG === "en" ? ["Weak spot", "Average", "Working"] : ["Vāja vieta", "Vidēji", "Strādā"];
+    const jrows = Object.entries(r.d).map(([k, v]) => `<div class="jrow${k === lowKey ? " is-low" : ""}"><b>${L(k)}</b><span class="jbar"><i style="--w:${Math.max(2, v)}%"></i></span><em>${v}</em><small>${k === lowKey ? T("Lielākā iespēja", "Biggest opportunity") : BANDL[band(v)]}</small><p>${L(DOM_TXT[k][band(v)])}</p></div>`).join("");
     const M = [["Iekšējā", (r.s.intr + r.s.iden) / 2, "#ff6b1a"], ["Ārējā", (r.s.intro + r.s.ext) / 2, "#c8281c"], ["Zema", r.s.amot, "#8a857e"]];
-    const mbars = M.map(([k, v, c]) => `<div class="mbar">${k}<i style="--w:${v * 25}%;--c:${c}"></i><em>${Math.round(v * 25)}%</em></div>`).join("");
+    const mbars = M.map(([k, v, c]) => `<div class="mbar">${L(k)}<i style="--w:${v * 25}%;--c:${c}"></i><em>${Math.round(v * 25)}%</em></div>`).join("");
     const strong = SKILLS.slice().sort((x, y) => a[y.id] - a[x.id])[0];
-    const skillAvg = (avg(SKILLS.map((q) => a[q.id])) || 0).toFixed(1).replace(".", ",");
+    const skillAvg = (avg(SKILLS.map((q) => a[q.id])) || 0).toFixed(1).replace(".", T(",", "."));
     const prio = r.prio.length ? r.prio.map((p) => {
       let [t, why, acts] = PRIO[p.k];
-      if (!acts) acts = [SKILL_TIP[r.weakSkill.skill], "Vājākā prasme tagad: " + r.weakSkill.skill.toLowerCase() + ". To trenēsim pirmo"];
-      return `<li><h4>${t}</h4><p>${why} <b>${p.k}: ${p.v}/100.</b></p><ul>${acts.map((x) => `<li>${x}</li>`).join("")}</ul></li>`;
-    }).join("") : `<li><h4>Precizitāte</h4><p>Visas jomas ir virs 80. Nākamo progresu atradīs testi laboratorijā.</p><ul><li>Spēka un izturības testi</li><li>Mērķis ar konkrētu skaitli un datumu</li></ul></li>`;
-    const flags = r.flags.length ? `<div class="sec"><h3>Uzmanību</h3><div class="flags">${r.flags.map((f) => `<div class="flag">${esc(f)}</div>`).join("")}</div></div>` : "";
-    const why = (a.Mwhy || []).map((x) => `<span class="hot">${esc(x)}</span>`).join("");
+      if (!acts) acts = [SKILL_TIP[r.weakSkill.skill], T("Vājākā prasme tagad: ", "Your weakest skill now: ") + L(r.weakSkill.skill).toLowerCase() + T(". To trenēsim pirmo", ". We will train it first")];
+      return `<li><h4>${L(t)}</h4><p>${L(why)} <b>${L(p.k)}: ${p.v}/100.</b></p><ul>${acts.map((x) => `<li>${L(x)}</li>`).join("")}</ul></li>`;
+    }).join("") : T(`<li><h4>Precizitāte</h4><p>Visas jomas ir virs 80. Nākamo progresu atradīs testi laboratorijā.</p><ul><li>Spēka un izturības testi</li><li>Mērķis ar konkrētu skaitli un datumu</li></ul></li>`, `<li><h4>Precision</h4><p>Every area is above 80. Your next progress will come from lab testing.</p><ul><li>Strength and endurance tests</li><li>A goal with a specific number and date</li></ul></li>`);
+    const flags = r.flags.length ? `<div class="sec"><h3>${T("Uzmanību", "Take note")}</h3><div class="flags">${r.flags.map((f) => `<div class="flag">${esc(f)}</div>`).join("")}</div></div>` : "";
+    const why = (a.Mwhy || []).map((x) => `<span class="hot">${esc(L(x))}</span>`).join("");
     const bars = (a.Mbar || []).filter((x) => BARRIER[x]);
-    const barHTML = bars.length ? `<dl class="answers">${bars.map((x) => `<div><dt>${esc(x)}</dt><dd>${BARRIER[x]}</dd></div>`).join("")}</dl>` : `<p>Tu neatzīmēji konkrētus šķēršļus. Tas ir labs sākumpunkts.</p>`;
-    const conf = a.Mconf <= 2 ? "Pārliecība vēl ir zema. Tā aug no mazām uzvarām, tāpēc pirmās nedēļas būs veidotas tā, lai tās noteikti izdotos." : a.Mconf >= 4 ? "Tu tici, ka tev izdosies. Tas ir viens no stiprākajiem prognozētājiem, ka plānu noturēsi." : "Pārliecība ir vidēja. Ar katru izpildītu nedēļu tā augs.";
+    const barHTML = bars.length ? `<dl class="answers">${bars.map((x) => `<div><dt>${esc(L(x))}</dt><dd>${L(BARRIER[x])}</dd></div>`).join("")}</dl>` : `<p>${T("Tu neatzīmēji konkrētus šķēršļus. Tas ir labs sākumpunkts.", "You didn't tick any specific barriers. That is a good starting point.")}</p>`;
+    const conf = a.Mconf <= 2 ? T("Pārliecība vēl ir zema. Tā aug no mazām uzvarām, tāpēc pirmās nedēļas būs veidotas tā, lai tās noteikti izdotos.", "Your confidence is still low. It grows from small wins, so the first weeks will be built so they are sure to work.") : a.Mconf >= 4 ? T("Tu tici, ka tev izdosies. Tas ir viens no stiprākajiem prognozētājiem, ka plānu noturēsi.", "You believe you will succeed. That is one of the strongest predictors that you will stick to the plan.") : T("Pārliecība ir vidēja. Ar katru izpildītu nedēļu tā augs.", "Your confidence is moderate. It will grow with every week you complete.");
     const rec = REC[r.rec], of = OFFER[r.rec];
     const SUP = { "Plāns, ko izpildu pats": " Tu teici, ka tev der plāns, ko izpildi {pats|pati}.", "Plāns un regulāra pārbaude": " Tu teici, ka tev palīdzētu regulāra pārbaude. Tieši to dod mentorship.", "Treneris blakus visu ceļu": " Tu teici, ka gribi treneri blakus visu ceļu. Tieši tā strādā mentorship." };
-    const supNote = r.rec === "consult" ? "" : r.rec === "plan" ? (a.Csup === "Plāns, ko izpildu pats" ? SUP[a.Csup] : "") : (a.Csup && a.Csup !== "Plāns, ko izpildu pats" ? SUP[a.Csup] : "");
-    const timeNote = a.time === "Līdz 2 h" ? " Ar 2 stundām nedēļā plāns ir iespējams: 2 spēka treniņi pa 45 minūtēm un ikdienas soļi." : "";
-    const prioNames = r.prio.map((p) => p.k.toLowerCase());
-    const prioNote = prioNames.length ? ` Sāksim ar to, ko rāda tavs profils: ${prioNames.length > 1 ? prioNames.slice(0, -1).join(", ") + " un " + prioNames[prioNames.length - 1] : prioNames[0]}.` : "";
-    const tags = [a.age ? esc(a.age) + " gadi" : "", a.freq ? esc(a.freq) + " treniņi nedēļā" : "", a.exp ? "Pieredze: " + esc(optLabel(a.exp)).toLowerCase() : "", a.time ? esc(a.time) + " nedēļā treniņiem" : ""].filter(Boolean).map((t) => `<span>${t}</span>`).join("")
-      + (a.goal || []).map((x) => `<span class="goal">${esc(x)}</span>`).join("");
+    const supNote = L(r.rec === "consult" ? "" : r.rec === "plan" ? (a.Csup === "Plāns, ko izpildu pats" ? SUP[a.Csup] : "") : (a.Csup && a.Csup !== "Plāns, ko izpildu pats" ? SUP[a.Csup] : ""));
+    const timeNote = a.time === "Līdz 2 h" ? T(" Ar 2 stundām nedēļā plāns ir iespējams: 2 spēka treniņi pa 45 minūtēm un ikdienas soļi.", " With 2 hours a week a plan is possible: 2 strength sessions of 45 minutes and daily steps.") : "";
+    const prioNames = r.prio.map((p) => L(p.k).toLowerCase());
+    const prioNote = prioNames.length ? `${T(" Sāksim ar to, ko rāda tavs profils: ", " We will start with what your profile shows: ")}${prioNames.length > 1 ? prioNames.slice(0, -1).join(", ") + T(" un ", " and ") + prioNames[prioNames.length - 1] : prioNames[0]}.` : "";
+    const tags = [a.age ? esc(a.age) + T(" gadi", " years old") : "", a.freq ? esc(a.freq) + T(" treniņi nedēļā", " sessions a week") : "", a.exp ? T("Pieredze: ", "Experience: ") + esc(optLabel(a.exp)).toLowerCase() : "", a.time ? esc(L(a.time)) + T(" nedēļā treniņiem", " a week for training") : ""].filter(Boolean).map((t) => `<span>${t}</span>`).join("")
+      + (a.goal || []).map((x) => `<span class="goal">${esc(L(x))}</span>`).join("");
     const ALT = {
-      mentor: ["Alternatīva", "Patstāvīgais plāns", "149 € vienreiz", "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}. Plāns netiek pielāgots katru nedēļu: ja dzīvē kaut kas mainās, tas jāveido no jauna."],
-      plan: ["Ja gribi vairāk atbalsta", "Elite Coaching Mentorship", "299 € mēnesī", "Plāns, ko pielāgoju katru nedēļu, 4 konsultācijas mēnesī un iknedēļas atskaite: es pamanu, kad tu nobremzē."],
+      mentor: ["Alternatīva", "Patstāvīgais plāns", "150 € vienreiz", "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}. Plāns netiek pielāgots katru nedēļu: ja dzīvē kaut kas mainās, tas jāveido no jauna."],
+      plan: ["Ja gribi vairāk atbalsta", "Elite Coaching Mentorship", "300 € mēnesī", "Plāns, ko pielāgoju katru nedēļu, 4 konsultācijas mēnesī un iknedēļas atskaite: es pamanu, kad tu nobremzē."],
     }[r.rec];
-    const alt = ALT ? `<div class="rec__alt"><span class="mono">${ALT[0]}</span><div class="rec__alt-h"><b>${ALT[1]}</b><em>${ALT[2]}</em></div><p>${ALT[3]}</p></div>` : "";
-    const STEP3 = { mentor: "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.", plan: "48 stundu laikā pēc sarunas saņem savu plānu.", consult: "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt." }[r.rec];
-    const waURL = "https://wa.me/" + WA + "?text=" + encodeURIComponent("Sveiki, Kristers. Gribu sākt sadarbību. Mans profils: " + id + (a.name ? " (" + a.name + ")" : "") + ".");
+    const alt = ALT ? `<div class="rec__alt"><span class="mono">${L(ALT[0])}</span><div class="rec__alt-h"><b>${L(ALT[1])}</b><em>${L(ALT[2])}</em></div><p>${L(ALT[3])}</p></div>` : "";
+    const STEP3 = L({ mentor: "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.", plan: "48 stundu laikā pēc sarunas saņem savu plānu.", consult: "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt." }[r.rec]);
+    const waURL = "https://wa.me/" + WA + "?text=" + encodeURIComponent(T("Sveiki, Kristers. Gribu sākt sadarbību. Mans profils: ", "Hi Kristers. I would like to start working together. My profile: ") + id + (a.name ? " (" + a.name + ")" : "") + ".");
     const reqURL = "https://tally.so/r/" + TALLY_FORM + "?" + new URLSearchParams({ profila_id: id, vards: a.name || "", ieteikums: REC[r.rec][0] + " · " + REC[r.rec][1] }).toString();
 
     $("report").innerHTML = G(`
-      ${isSample ? `<div class="sample"><span>Parauga atskaite ar izdomātām atbildēm, lai redzētu algoritmu darbībā.</span><button class="btn btn--ghost" id="own" type="button">Aizpildīt savu</button></div>` : ""}
+      ${isSample ? `<div class="sample"><span>${T("Parauga atskaite ar izdomātām atbildēm, lai redzētu algoritmu darbībā.", "A sample report with made-up answers, to show how it works.")}</span><button class="btn btn--ghost" id="own" type="button">${T("Aizpildīt savu", "Fill in mine")}</button></div>` : ""}
       <article class="sheet">
         <section class="pg pg--cover">
-          <div class="sheet__meta"><span class="cover__brand">Ansons<span class="sq"></span></span><span class="mono">Veiktspējas profils · ${id} · ${today}</span></div>
+          <div class="sheet__meta"><span class="cover__brand">Ansons<span class="sq"></span></span><span class="mono">${T("Veiktspējas profils", "Performance profile")} · ${id} · ${today}</span></div>
           <div class="cover">
             ${name ? `<p class="cover__name">${name}</p><i class="sigline"></i>` : `<i class="sigline"></i>`}
             <div class="cover__grid">
-              <div><span class="mono">Tavs profils</span><p class="hero-r__type">${atype}</p><p class="hero-r__desc">${adesc}</p></div>
-              <div class="gauge">${gauge(r.readiness)}<span class="mono">Sasniegtais potenciāls</span><span class="ready__l">${READY[band(r.readiness)]}</span></div>
+              <div><span class="mono">${T("Tavs profils", "Your profile")}</span><p class="hero-r__type">${atype}</p><p class="hero-r__desc">${adesc}</p></div>
+              <div class="gauge">${gauge(r.readiness)}<span class="mono">${T("Sasniegtais potenciāls", "Potential reached")}</span><span class="ready__l">${L(READY[band(r.readiness)])}</span></div>
             </div>
             <div class="tags">${tags}</div>
           </div>
-          <div class="sec sec--radar"><div class="sec__h"><h2>Sešas jomas</h2><p class="sec__lead">Ārējā līnija ir 100. Jo tuvāk malai, jo vairāk šī joma strādā tev par labu.</p></div>${radar(r.d)}</div>
+          <div class="sec sec--radar"><div class="sec__h"><h2>${T("Sešas jomas", "Six areas")}</h2><p class="sec__lead">${T("Ārējā līnija ir 100. Jo tuvāk malai, jo vairāk šī joma strādā tev par labu.", "The outer line is 100. The closer to the edge, the more that area works in your favour.")}</p></div>${radar(r.d)}</div>
         </section>
 
         <section class="pg">
           ${run("02")}
-          <div class="sec__h"><h2>Kur tu esi šobrīd</h2></div>
+          <div class="sec__h"><h2>${T("Kur tu esi šobrīd", "Where you are now")}</h2></div>
           <div class="jlist">${jrows}</div>
           ${flags}
         </section>
 
         <section class="pg${bars.length > 3 || (a.Mwhy || []).length > 4 ? " pg--tight" : ""}">
           ${run("03")}
-          <div class="sec__h"><h2>Dzinējs, bremzes, prāts</h2></div>
+          <div class="sec__h"><h2>${T("Dzinējs, bremzes, prāts", "Drive, brakes, mind")}</h2></div>
           <div class="two">
-            <div class="panel"><h3 class="ph">Slodze pret atjaunošanos</h3><span class="verdict v--${r.balance}">${BAL[r.balance][0]}</span><p>${BAL[r.balance][1]}</p>
-              <div class="mbar">Slodze<i style="--w:${r.load}%;--c:#141110"></i><em>${r.load}</em></div>
-              <div class="mbar">Kapacitāte<i style="--w:${r.capacity}%;--c:#ff6b1a"></i><em>${r.capacity}</em></div></div>
-            <div class="panel"><h3 class="ph">Motivācijas kvalitāte</h3><span class="verdict v--${r.mtype}">${MTYPE[r.mtype][0]}</span><p>${MTYPE[r.mtype][1]}</p>${mbars}</div>
-            <div class="panel panel--wide"><h3 class="ph">Tavs dzinējs un bremzes</h3><div class="drive${bars.length > 3 ? " drive--many" : ""}"><div><span class="verdict">Kāpēc tagad</span><div class="chiplist">${why || "<span>Nav atzīmēts</span>"}</div><p>${conf} Svarīgums: ${a.Mimp}/5 · pārliecība: ${a.Mconf}/5.</p></div><div><span class="verdict">Kas traucēja un ko darīsim</span>${barHTML}</div></div></div>
-            <div class="panel panel--wide"><h3 class="ph">Mentālās prasmes</h3><div class="mind">${rose(a, r.weakSkill.id)}<div class="mind__side">
-              <div class="mind__k is-weak"><span>Vājākā · trenēsim pirmo</span><b>${r.weakSkill.skill} · ${a[r.weakSkill.id]}/5</b><p>${SKILL_TIP[r.weakSkill.skill]}.</p></div>
-              <div class="mind__k"><span>Stiprākā · balsties uz to</span><b>${strong.skill} · ${a[strong.id]}/5</b></div>
-              <div class="mind__k"><span>Vidēji</span><b>${skillAvg} / 5</b></div>
-              <div class="legend"><span><i style="background:#ff6b1a"></i>4-5</span><span><i style="background:#141110"></i>3</span><span><i style="background:#b8b0a6"></i>1-2</span><span><i style="background:#c8281c"></i>vājākā</span></div>
+            <div class="panel"><h3 class="ph">${T("Slodze pret atjaunošanos", "Load vs recovery")}</h3><span class="verdict v--${r.balance}">${L(BAL[r.balance][0])}</span><p>${L(BAL[r.balance][1])}</p>
+              <div class="mbar">${L("Slodze")}<i style="--w:${r.load}%;--c:#141110"></i><em>${r.load}</em></div>
+              <div class="mbar">${L("Kapacitāte")}<i style="--w:${r.capacity}%;--c:#ff6b1a"></i><em>${r.capacity}</em></div></div>
+            <div class="panel"><h3 class="ph">${T("Motivācijas kvalitāte", "Quality of motivation")}</h3><span class="verdict v--${r.mtype}">${L(MTYPE[r.mtype][0])}</span><p>${L(MTYPE[r.mtype][1])}</p>${mbars}</div>
+            <div class="panel panel--wide"><h3 class="ph">${T("Tavs dzinējs un bremzes", "Your drive and brakes")}</h3><div class="drive${bars.length > 3 ? " drive--many" : ""}"><div><span class="verdict">${T("Kāpēc tagad", "Why now")}</span><div class="chiplist">${why || `<span>${T("Nav atzīmēts", "Nothing ticked")}</span>`}</div><p>${conf} ${T("Svarīgums", "Importance")}: ${a.Mimp}/5 · ${T("pārliecība", "confidence")}: ${a.Mconf}/5.</p></div><div><span class="verdict">${T("Kas traucēja un ko darīsim", "What held you back and what we will do")}</span>${barHTML}</div></div></div>
+            <div class="panel panel--wide"><h3 class="ph">${L("Mentālās prasmes")}</h3><div class="mind">${rose(a, r.weakSkill.id)}<div class="mind__side">
+              <div class="mind__k is-weak"><span>${T("Vājākā · trenēsim pirmo", "Weakest · we train it first")}</span><b>${L(r.weakSkill.skill)} · ${a[r.weakSkill.id]}/5</b><p>${L(SKILL_TIP[r.weakSkill.skill])}.</p></div>
+              <div class="mind__k"><span>${T("Stiprākā · balsties uz to", "Strongest · build on it")}</span><b>${L(strong.skill)} · ${a[strong.id]}/5</b></div>
+              <div class="mind__k"><span>${T("Vidēji", "Average")}</span><b>${skillAvg} / 5</b></div>
+              <div class="legend"><span><i style="background:#ff6b1a"></i>4-5</span><span><i style="background:#141110"></i>3</span><span><i style="background:#b8b0a6"></i>1-2</span><span><i style="background:#c8281c"></i>${T("vājākā", "weakest")}</span></div>
             </div></div></div>
           </div>
         </section>
 
         <section class="pg">
           ${run("04")}
-          <div class="sec__h"><h2>Tavas 3 prioritātes</h2><p class="sec__lead">Secībā pēc tā, kas tev dos visvairāk. Katrai ir divi pirmie soļi, ko vari sākt jau šonedēļ.</p></div>
+          <div class="sec__h"><h2>${T("Tavas 3 prioritātes", "Your 3 priorities")}</h2><p class="sec__lead">${T("Secībā pēc tā, kas tev dos visvairāk. Katrai ir divi pirmie soļi, ko vari sākt jau šonedēļ.", "In order of what will give you the most. Each has two first steps you can start this week.")}</p></div>
           <ol class="prio">${prio}</ol>
         </section>
 
         <section class="pg pg--cta">
           ${run("05")}
-          <div class="sec__h"><h2>Ieteiktais sākums</h2></div>
+          <div class="sec__h"><h2>${T("Ieteiktais sākums", "Recommended start")}</h2></div>
           <div class="rec">
-            <div class="rec__head"><div><span class="rec__tag">${of.tag}${of.badge ? `<span class="rec__badge">${of.badge}</span>` : ""}</span><p class="rec__t">${of.t}</p></div><div class="rec__price"><b>${of.price}</b><span>${of.per}</span></div></div>
+            <div class="rec__head"><div><span class="rec__tag">${L(of.tag)}${of.badge ? `<span class="rec__badge">${L(of.badge)}</span>` : ""}</span><p class="rec__t">${L(of.t)}</p></div><div class="rec__price"><b>${of.price}</b><span>${L(of.per)}</span></div></div>
             <i class="rec__line"></i>
-            <p class="rec__hook">${of.hook}</p>
-            <p class="rec__why">${rec[2]}${supNote}${timeNote}${prioNote}</p>
-            <ul class="rec__feats">${of.feats.map((x) => `<li>${CHECK}<span>${x}</span></li>`).join("")}</ul>
+            <p class="rec__hook">${L(of.hook)}</p>
+            <p class="rec__why">${L(rec[2])}${supNote}${timeNote}${prioNote}</p>
+            <ul class="rec__feats">${of.feats.map((x) => `<li>${CHECK}<span>${L(x)}</span></li>`).join("")}</ul>
             ${alt}
-            <ol class="rec__steps"><li class="is-done"><b>Pieteikums ${CHECK}</b>Jau izdarīts. Šis profils ir tavs pieteikums.</li><li><b>Pirmā saruna</b>Nosūti pieprasījumu ar pogu zemāk un uzraksti, kad tev ērti runāt. Es sazināšos ar tevi 24 stundu laikā.</li><li><b>Tavs plāns</b>${STEP3}</li></ol>
-            ${r.rec === "consult" ? "" : `<p class="rec__sci">Pētījumā tie, kas trenējās ar treneri blakus, kāpināja slodzi ātrāk un ieguva vairāk spēka nekā tie, kas to pašu programmu pildīja paši (<a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener">Mazzetti u.c., 2000</a>).</p>`}
-            <div class="rec__links"><a class="rec__go" href="${esc(reqURL)}" target="_blank" rel="noopener">Sākt sadarbību → <small>nosūti pieprasījumu, atbildēšu 24 stundu laikā</small></a><a class="rec__go rec__go--wa" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp <small>+371 2669 4933</small></a></div>
-            <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">Nosūtīt Kristeram</button><a class="btn btn--ghost" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp</a><button class="btn btn--ghost" id="pdf" type="button">Lejupielādēt PDF</button></div>
-            <span class="rec__note">Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.</span>
+            <ol class="rec__steps"><li class="is-done"><b>${T("Pieteikums", "Application")} ${CHECK}</b>${T("Jau izdarīts. Šis profils ir tavs pieteikums.", "Already done. This profile is your application.")}</li><li><b>${T("Pirmā saruna", "First call")}</b>${T("Nosūti pieprasījumu ar pogu zemāk un uzraksti, kad tev ērti runāt. Es sazināšos ar tevi 24 stundu laikā.", "Send a request with the button below and tell me when suits you to talk. I will get back to you within 24 hours.")}</li><li><b>${T("Tavs plāns", "Your plan")}</b>${STEP3}</li></ol>
+            ${r.rec === "consult" ? "" : `<p class="rec__sci">${T("Pētījumā tie, kas trenējās ar treneri blakus, kāpināja slodzi ātrāk un ieguva vairāk spēka nekā tie, kas to pašu programmu pildīja paši", "In a study, people who trained with a coach beside them increased their load faster and gained more strength than those who did the same programme on their own")} (<a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener">${T("Mazzetti u.c., 2000", "Mazzetti et al., 2000")}</a>).</p>`}
+            <div class="rec__links"><a class="rec__go" href="${esc(reqURL)}" target="_blank" rel="noopener">${T("Sākt sadarbību", "Start working together")} → <small>${T("nosūti pieprasījumu, atbildēšu 24 stundu laikā", "send a request, I reply within 24 hours")}</small></a><a class="rec__go rec__go--wa" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp <small>+371 2669 4933</small></a></div>
+            <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">${T("Nosūtīt Kristeram", "Send to Kristers")}</button><a class="btn btn--ghost" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp</a><button class="btn btn--ghost" id="pdf" type="button">${T("Lejupielādēt PDF", "Download PDF")}</button></div>
+            <span class="rec__note">${T("Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.", "After pressing the button you add your name and phone. The report is attached automatically, and I will get back to you within 24 hours on weekdays.")}</span>
           </div>
           <div class="send" id="sent" hidden></div>
-          <div class="next"><span class="mono">Kas tālāk</span><b>Kāpēc izvēlēties mani?</b><p>14 gadi sportā, sporta zinātne RSU un 20+ klienti. Paskaties, kā strādājam kopā.</p><a class="btn btn--ghost" href="${BACK}">Atpakaļ uz lapu</a></div>
-          <details class="how"><summary>Kā tiek aprēķināts</summary><div>
+          <div class="next"><span class="mono">${T("Kas tālāk", "What next")}</span><b>${T("Kāpēc izvēlēties mani?", "Why choose me?")}</b><p>${T("14 gadi sportā, sporta zinātne RSU un 20+ klienti. Paskaties, kā strādājam kopā.", "14 years in sport, sports science at RSU and 20+ clients. See how we work together.")}</p><a class="btn btn--ghost" href="${BACK}">${T("Atpakaļ uz lapu", "Back to the site")}</a></div>
+          <details class="how"><summary>${T("Kā tiek aprēķināts", "How it is calculated")}</summary><div>${LANG === "en" ? `
+          <p>Each answer from 1-5 becomes 0-100 points. <b>Training</b> = 80 % structure, consistency and progressive load + 20 % training frequency. <b>Sleep</b> = 75 % rhythm, satisfaction, alertness and efficiency + 25 % duration (7-9 h = 100), based on Buysse's sleep health model (<a href="https://doi.org/10.5665/sleep.3298" target="_blank" rel="noopener">Buysse, 2014</a>). <b>Recovery</b> = 60 % perceived stress (after Cohen's idea of perceived stress, <a href="https://doi.org/10.2307/2136404" target="_blank" rel="noopener">Cohen et al., 1983</a>) + 40 % recovery.</p>
+          <p><b>Motivation</b> = 50 % relative autonomy index <code>3·intrinsic + 2·identified − introjected − 2·external − 3·amotivation</code> based on self-determination theory (<a href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener">Ryan and Deci, 2000</a>; <a href="https://doi.org/10.1123/jsep.26.2.191" target="_blank" rel="noopener">Markland and Tobin, 2004</a>) + 25 % importance of change + 25 % confidence that it will work. The importance and confidence questions come from motivational interviewing (Miller and Rollnick); confidence is self-efficacy (<a href="https://doi.org/10.1037/0033-295X.84.2.191" target="_blank" rel="noopener">Bandura, 1977</a>). Reasons and barriers are not scored. They shape the text of the report.</p>
+          <p><b>Health</b> uses one self-rated health question, which in research predicts health outcomes well (<a href="https://doi.org/10.2307/2955359" target="_blank" rel="noopener">Idler and Benyamini, 1997</a>), plus energy and nutrition. The protein range of 1.6-2 g/kg is based on <a href="https://doi.org/10.1136/bjsports-2017-097608" target="_blank" rel="noopener">Morton et al., 2018</a>. <b>Mental skills</b> cover the skills of the Test of Performance Strategies model from sport psychology (<a href="https://doi.org/10.1080/026404199365560" target="_blank" rel="noopener">Thomas, Murphy and Hardy, 1999</a>).</p>
+          <p><b>Potential reached</b> = the average of the six areas. <b>Load vs recovery</b>: if training frequency is high and the average of sleep and recovery is below 50, the profile shows a risk of overload. <b>Priorities</b> = (100 − points) × weight: sleep 1.3, recovery and health 1.2, training 1.1, motivation 1.0, mental skills 0.9.</p>
+          <p>The questions are original and built on these models, but this is not a validated questionnaire. It is a coach's screening to start our conversation.</p>
+        ` : `
           <p>Katra atbilde 1-5 kļūst par 0-100 punktiem. <b>Treniņi</b> = 80 % struktūra, regularitāte un progresīva slodze + 20 % treniņu biežums. <b>Miegs</b> = 75 % ritms, apmierinātība, možums un efektivitāte + 25 % ilgums (7-9 h = 100), pēc Buysse miega veselības modeļa (<a href="https://doi.org/10.5665/sleep.3298" target="_blank" rel="noopener">Buysse, 2014</a>). <b>Atjaunošanās</b> = 60 % uztvertais stress (pēc Cohen uztvertā stresa idejas, <a href="https://doi.org/10.2307/2136404" target="_blank" rel="noopener">Cohen u.c., 1983</a>) + 40 % atjaunošanās.</p>
           <p><b>Motivācija</b> = 50 % relatīvās autonomijas indekss <code>3·iekšējā + 2·identificētā − introjicētā − 2·ārējā − 3·amotivācija</code> pēc pašnoteikšanās teorijas (<a href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener">Ryan un Deci, 2000</a>; <a href="https://doi.org/10.1123/jsep.26.2.191" target="_blank" rel="noopener">Markland un Tobin, 2004</a>) + 25 % pārmaiņu svarīgums + 25 % pārliecība, ka izdosies. Svarīguma un pārliecības jautājumi nāk no motivējošās intervēšanas (Miller un Rollnick), pārliecība ir pašefektivitāte (<a href="https://doi.org/10.1037/0033-295X.84.2.191" target="_blank" rel="noopener">Bandura, 1977</a>). Iemesli un šķēršļi netiek vērtēti punktos. Tie nosaka atskaites tekstu.</p>
           <p><b>Veselība</b> izmanto vienu pašvērtējuma jautājumu, kas pētījumos labi prognozē veselības iznākumus (<a href="https://doi.org/10.2307/2955359" target="_blank" rel="noopener">Idler un Benyamini, 1997</a>), plus enerģija un uzturs. Olbaltumvielu robeža 1,6-2 g/kg balstās <a href="https://doi.org/10.1136/bjsports-2017-097608" target="_blank" rel="noopener">Morton u.c., 2018</a>. <b>Mentālās prasmes</b> sedz septiņas prasmes no sporta psiholoģijas stratēģiju modeļa (<a href="https://doi.org/10.1080/026404199365560" target="_blank" rel="noopener">Thomas, Murphy un Hardy, 1999</a>).</p>
           <p><b>Sasniegtais potenciāls</b> = sešu jomu vidējais. <b>Slodze pret atjaunošanos</b>: ja treniņu biežums ir augsts un miega un atjaunošanās vidējais ir zem 50, profils rāda pārslodzes risku. <b>Prioritātes</b> = (100 − punkti) × svars: miegam 1,3, atjaunošanās un veselībai 1,2, treniņiem 1,1, motivācijai 1,0, mentālajām prasmēm 0,9.</p>
           <p>Jautājumi ir oriģināli un veidoti pēc šiem modeļiem, bet tā nav validēta aptauja. Tā ir trenera skrīnings sarunas sākumam.</p>
-        </div></details>
-          <p class="pfoot">Kristers Ansons · fitnesa un mentālās veiktspējas treneris · ansoneri.com · kristersansons14@gmail.com</p>
-          <p class="datanote"><b>Par taviem datiem.</b> Tavas atbildes un šo atskaiti saglabāju un izmantoju tikai trenera darbam: lai sagatavotos sarunai, veidotu tavu plānu un vēlāk salīdzinātu tavu progresu. Tās glabājas manā Google kontā, un es tās nenododu citiem. Bez vārda un kontaktiem tās izmantoju pakalpojuma uzlabošanai tikai tad, ja tam piekriti. Jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. <span class="fine">Šī atskaite ir trenera atgriezeniskā saite, nevis medicīnisks vai psiholoģisks novērtējums. Ja tev ir veselības problēmas, konsultējies ar ārstu.</span></p>
+        `}</div></details>
+          <p class="pfoot">Kristers Ansons · ${T("fitnesa un mentālās veiktspējas treneris", "fitness and mental performance coach")} · ansoneri.com · kristersansons14@gmail.com</p>
+          ${LANG === "en" ? `<p class="datanote"><b>About your data.</b> I keep your answers and this report and use them only for my coaching work: to prepare for our call, build your plan and later compare your progress. They are stored in my Google account and I do not pass them on to anyone. Without your name and contacts I use them to improve my service only if you agreed to that. You can ask me to delete them at any time by writing to kristersansons14@gmail.com. <span class="fine">This report is a coach's feedback, not a medical or psychological assessment. If you have health problems, see a doctor.</span></p>` : `<p class="datanote"><b>Par taviem datiem.</b> Tavas atbildes un šo atskaiti saglabāju un izmantoju tikai trenera darbam: lai sagatavotos sarunai, veidotu tavu plānu un vēlāk salīdzinātu tavu progresu. Tās glabājas manā Google kontā, un es tās nenododu citiem. Bez vārda un kontaktiem tās izmantoju pakalpojuma uzlabošanai tikai tad, ja tam piekriti. Jebkurā brīdī vari lūgt tās izdzēst, rakstot uz kristersansons14@gmail.com. <span class="fine">Šī atskaite ir trenera atgriezeniskā saite, nevis medicīnisks vai psiholoģisks novērtējums. Ja tev ir veselības problēmas, konsultējies ar ārstu.</span></p>`}
         </section>
       </article>`);
 
@@ -1065,7 +1283,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     });
     const done = () => {
       const sent = $("sent"); sent.hidden = false;
-      sent.innerHTML = `<div class="done"><b>Paldies${answers.name ? ", " + esc(answers.name) : ""}. Atskaite ir pie manis.</b><p>Sazināšos ar tevi 24 stundu laikā darba dienās. Pa to laiku paskaties, kā strādājam kopā.</p><a class="btn btn--main" href="${BACK}">Kā strādājam kopā</a></div>`;
+      sent.innerHTML = `<div class="done"><b>${T("Paldies", "Thank you")}${answers.name ? ", " + esc(answers.name) : ""}. ${T("Atskaite ir pie manis.", "Your report is with me.")}</b><p>${T("Sazināšos ar tevi 24 stundu laikā darba dienās. Pa to laiku paskaties, kā strādājam kopā.", "I will get back to you within 24 hours on weekdays. In the meantime, see how we work together.")}</p><a class="btn btn--main" href="${BACK}">${T("Kā strādājam kopā", "How we work together")}</a></div>`;
       sent.scrollIntoView({ block: "center" });
     };
     $("sendOpen").addEventListener("click", async () => {
@@ -1078,7 +1296,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       } finally { b.disabled = false; }
     });
     $("pdf").addEventListener("click", () => {
-      const t = document.title; document.title = "Ansoneri profils " + id + (answers.name ? " - " + answers.name : "");
+      const t = document.title; document.title = T("Ansoneri profils ", "Ansoneri profile ") + id + (answers.name ? " - " + answers.name : "");
       window.print(); setTimeout(() => { document.title = t; }, 1500);
     });
   }
