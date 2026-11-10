@@ -1477,6 +1477,18 @@ html.thread-on .mm__ring { stroke: transparent; }
 .foot__ico svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .foot__ico:hover { box-shadow: inset 0 0 0 1px currentColor; }
 .foot__copy { margin: 28px 0 0; text-align: center; font-size: 10.5px; letter-spacing: .2em; text-transform: uppercase; opacity: .7; }
+/* Quick profile options: buttons may wrap, both panels line up (10 Nov 2026) */
+.qp__next { grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); grid-template-rows: auto auto auto; }
+.qp__next .qp__more { grid-row: span 3; grid-template-rows: subgrid; align-items: center; gap: 12px; }
+.qp__next .qp__want { margin: 0; align-self: center; }
+.qp__next .qp__more .cta { white-space: normal; height: auto; min-height: 56px; padding: 12px 16px; line-height: 1.55; text-align: center; letter-spacing: .16em; gap: 10px; font-size: 11px; }
+.qp__next .qp__more .cta svg { flex: none; }
+.qp__next small { align-self: start; }
+@media (max-width: 560px) { .qp__next { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; } .qp__next .qp__more { grid-row: auto; grid-template-rows: none; } }
+/* Footer order: brand, line, role, privacy + icons, copyright (10 Nov 2026) */
+.foot__row { flex-direction: column; align-items: center; gap: 18px; }
+.foot__social { gap: 14px; }
+.foot__priv { margin-right: 8px; }
 </style>
 </head>
 <body>
@@ -1612,7 +1624,7 @@ html.thread-on .mm__ring { stroke: transparent; }
   <div class="foot__line"></div>
   <div class="foot__row mono">
     <span>Fitnesa un mentālās veiktspējas treneris</span>
-    <span class="foot__social"><a class="foot__ico" href="https://www.instagram.com/ansons_k/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a class="foot__ico" href="https://www.linkedin.com/in/kristers-ansons-109006262/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.6v.1M11.5 16.5v-6M11.5 13.2c0-1.6 1-2.7 2.4-2.7s2.3 1 2.3 2.7v3.3"/></svg></a><a href="privatuma-politika.html">Privātuma politika</a></span>
+    <span class="foot__social"><a class="foot__priv" href="privatuma-politika.html">Privātuma politika</a><a class="foot__ico" href="https://www.instagram.com/ansons_k/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none"/></svg></a><a class="foot__ico" href="https://www.linkedin.com/in/kristers-ansons-109006262/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3"/><path d="M8 10.5v6M8 7.6v.1M11.5 16.5v-6M11.5 13.2c0-1.6 1-2.7 2.4-2.7s2.3 1 2.3 2.7v3.3"/></svg></a></span>
   </div>
   <p class="foot__copy mono">© 2026 Ansoneri · Rīga</p>
 </footer>
