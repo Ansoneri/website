@@ -61,7 +61,7 @@ All page copy follows the design system's **Website copy** section and its voice
 
 ## Still to fill in
 
-- **WhatsApp number** - every WhatsApp link is `https://wa.me/37100000000`; replace the number in all pages.
+- **WhatsApp number** - done 10 Nov 2026: +371 2669 4933 (WhatsApp Business), links are `https://wa.me/37126694933`.
 - **Offers and prices** (design system, decided 9 Oct 2026): Rasējums 149 € vienreiz, Mentor 299 € mēnesī or 799 € par 3 mēnešiem, Konsultācija 50 € stundā; upgrade Rasējums → Mentor within 30 days credits the 149 €. Prices are written "149 €" (the Mentor artifact wrote "€149").
 - **"3 vietas"** - the Mentor page says "3 vietas uz ziemas sezonu" in the hero and the close, and "Palikušas 3 vietas" on the Mentor card; change all three when the number changes.
 - **Form length** - the Mentor artifact says the application takes 5 minutes; the live Tally form says about ten, so the site says "apmēram 10 minūtes". Change it if the form gets shorter.

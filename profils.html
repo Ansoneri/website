@@ -313,7 +313,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 .prio ul li { font-size: 15.5px; }
 
 /* next step: the offer, in depth */
-.rec { gap: 22px; padding: clamp(26px, 4.4vw, 48px); }
+.rec { gap: 28px; padding: clamp(30px, 5.6vw, 64px); }
 .rec__top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
 .rec__badge { padding: 6px 12px; border-radius: 999px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--bone); box-shadow: inset 0 0 0 1px rgba(255,107,26,.7); background: rgba(255,107,26,.12); }
 .rec__head { display: flex; justify-content: space-between; align-items: end; gap: 12px 28px; flex-wrap: wrap; }
@@ -343,7 +343,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 @media (max-width: 640px) { .rec__steps { grid-template-columns: minmax(0, 1fr); } }
 .rec .rec__sci { font-size: 14.5px; line-height: 1.5; color: var(--bone-2); padding-left: 14px; border-left: 2px solid var(--orange); max-width: 40em; }
 .rec__sci a { color: var(--bone-2); }
-.rec__go { display: none; }
+.rec__go, .rec__links { display: none; }
 .datanote { margin: 0; padding: 14px 16px; border-radius: 10px; background: rgba(20,17,16,.05); font-size: 13.5px; line-height: 1.55; color: var(--paper-text); }
 .datanote b { color: var(--paper-ink); }
 .datanote .fine { display: block; margin-top: 8px; font-size: 12.5px; }
@@ -415,8 +415,10 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .prio h4 { font-size: 21pt !important; }
   .prio p { font-size: 11.5pt !important; }
   .prio ul { gap: 2.6mm !important; margin-top: 3.5mm !important; } .prio ul li { font-size: 11pt !important; padding-left: 5mm !important; }
-  .rec { display: block !important; background: #141110 !important; color: #f5f3ee !important; border-radius: 4mm !important; padding: 6.5mm 9mm 6.5mm !important; break-inside: avoid; }
-  .rec > * + * { margin-top: 3.2mm !important; }
+  .rec { display: block !important; background: #141110 !important; color: #f5f3ee !important; border-radius: 4mm !important; padding: 10mm 12mm 10mm !important; break-inside: avoid; }
+  .rec > * + * { margin-top: 4.6mm !important; }
+  .rec > .rec__alt, .rec > .rec__steps, .rec > .rec__links { margin-top: 6mm !important; }
+  .rec__links { display: flex !important; flex-wrap: wrap; gap: 4mm; }
   .rec > .rec__line { margin-top: 3mm !important; height: 2px !important; }
   .rec .mono, .rec__price span { font-size: 7.5pt !important; }
   .rec__badge { font-size: 7pt !important; padding: 1.4mm 3mm !important; }
@@ -434,6 +436,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .rec .rec__sci { font-size: 8.5pt !important; line-height: 1.45 !important; color: #cfccc6 !important; max-width: none !important; padding-left: 3.5mm !important; }
   .rec__go { display: inline-flex !important; width: max-content; align-items: center; gap: 3mm; padding: 3.2mm 6mm; border-radius: 2mm; background: #030303; color: #f5f3ee !important; text-decoration: none; font: 500 8.5pt/1 var(--f-mono); letter-spacing: .18em; text-transform: uppercase; box-shadow: 0 0 0 .6mm #030303, 0 0 0 1mm #ff6b1a; }
   .rec__go small { font-size: 7pt; letter-spacing: .1em; text-transform: none; color: #8a857e; }
+  .rec__go--wa { box-shadow: 0 0 0 .3mm rgba(245,243,238,.45) !important; background: transparent !important; }
   .pfoot { display: block !important; margin: 0; padding-top: 2.5mm; border-top: .6pt solid #d8d4cc; font: 500 7.5pt/1.4 var(--f-mono); letter-spacing: .02em; color: #6b665f !important; }
   .pg--cta > .pfoot, .pg--cta > .datanote { margin-top: 3.5mm !important; }
   .pg--cta { padding-top: 11mm !important; }
@@ -491,6 +494,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
      Empty = no automatic notice; the Tally form below still works. */
   const NOTIFY_URL = "https://script.google.com/macros/s/AKfycby91wfYMiF59DVxrcif4_d67e9xdFgZ_2elaviFDl8scxvh2u7ZPR6z6qKzHSiy_USs/exec";
   const TALLY_FORM = "laaJxk"; /* Tally form "Nosūti profilu Kristeram": name, phone, e-mail, comment + the report as hidden fields */
+  const WA = "37126694933"; /* WhatsApp Business: +371 2669 4933 */
   const BACK = "index.html#darbs";
 
   const AGREE = ["Nepiekrītu", "Drīzāk nepiekrītu", "Ne jā, ne nē", "Drīzāk piekrītu", "Pilnīgi piekrītu"];
@@ -931,6 +935,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     }[r.rec];
     const alt = ALT ? `<div class="rec__alt"><span class="mono">${ALT[0]}</span><div class="rec__alt-h"><b>${ALT[1]}</b><em>${ALT[2]}</em></div><p>${ALT[3]}</p></div>` : "";
     const STEP3 = { mentor: "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.", plan: "48 stundu laikā pēc sarunas saņem savu plānu.", consult: "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt." }[r.rec];
+    const waURL = "https://wa.me/" + WA + "?text=" + encodeURIComponent("Sveiki, Kristers. Gribu sākt sadarbību. Mans profils: " + id + (a.name ? " (" + a.name + ")" : "") + ".");
     const reqURL = "https://tally.so/r/" + TALLY_FORM + "?" + new URLSearchParams({ profila_id: id, vards: a.name || "", ieteikums: REC[r.rec][0] + " · " + REC[r.rec][1] }).toString();
 
     $("report").innerHTML = G(`
@@ -992,8 +997,8 @@ label.q__t small { display: inline !important; margin-left: 10px; }
             ${alt}
             <ol class="rec__steps"><li class="is-done"><b>Pieteikums ${CHECK}</b>Jau izdarīts. Šis profils ir tavs pieteikums.</li><li><b>Pirmā saruna</b>Nosūti pieprasījumu ar pogu zemāk un uzraksti, kad tev ērti runāt. Es sazināšos ar tevi 24 stundu laikā.</li><li><b>Tavs plāns</b>${STEP3}</li></ol>
             ${r.rec === "consult" ? "" : `<p class="rec__sci">Pētījumā tie, kas trenējās ar treneri blakus, kāpināja slodzi ātrāk un ieguva vairāk spēka nekā tie, kas to pašu programmu pildīja paši (<a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener">Mazzetti u.c., 2000</a>).</p>`}
-            <a class="rec__go" href="${esc(reqURL)}" target="_blank" rel="noopener">Sākt sadarbību → <small>nosūti pieprasījumu, atbildēšu 24 stundu laikā</small></a>
-            <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">Nosūtīt Kristeram</button><button class="btn btn--ghost" id="pdf" type="button">Lejupielādēt PDF</button></div>
+            <div class="rec__links"><a class="rec__go" href="${esc(reqURL)}" target="_blank" rel="noopener">Sākt sadarbību → <small>nosūti pieprasījumu, atbildēšu 24 stundu laikā</small></a><a class="rec__go rec__go--wa" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp <small>+371 2669 4933</small></a></div>
+            <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">Nosūtīt Kristeram</button><a class="btn btn--ghost" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp</a><button class="btn btn--ghost" id="pdf" type="button">Lejupielādēt PDF</button></div>
             <span class="rec__note">Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.</span>
           </div>
           <div class="send" id="sent" hidden></div>
