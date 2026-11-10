@@ -502,7 +502,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   const NOTIFY_URL = "https://script.google.com/macros/s/AKfycby91wfYMiF59DVxrcif4_d67e9xdFgZ_2elaviFDl8scxvh2u7ZPR6z6qKzHSiy_USs/exec";
   const TALLY_FORM = "laaJxk"; /* Tally form "Nosūti profilu Kristeram": name, phone, e-mail, comment + the report as hidden fields */
   const WA = "37126694933"; /* WhatsApp Business: +371 2669 4933 */
-  const BACK = "index.html#darbs";
+  let BACK = "index.html#darbs";
   /* language: ?lang=en or the EN button; source tag for links shared in content: ?src=instagram (shows up in Kristers's e-mail and sheet) */
   const PARAMS = new URLSearchParams(location.search);
   let LANG = PARAMS.get("lang") === "en" ? "en" : PARAMS.get("lang") === "lv" ? "lv" : (() => { try { return localStorage.getItem("ansoneri-lang") === "en" ? "en" : "lv"; } catch (e) { return "lv"; } })();
@@ -948,6 +948,10 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     document.querySelectorAll("[data-i18n]").forEach((el) => { const k = el.dataset.i18n; el.innerHTML = LANG === "en" ? EN_HTML[k] : LV_HTML[k]; });
     const b = document.getElementById("lang"); b.textContent = LANG === "en" ? "LV" : "EN"; b.setAttribute("aria-label", LANG === "en" ? "Pārslēgt uz latviešu valodu" : "Switch to English");
     document.title = LANG === "en" ? "Full profile - Kristers Ansons" : "Pilnais profils - Kristers Ansons";
+    /* back links go to the home page in the same language */
+    const home = LANG === "en" ? "en/" : "index.html";
+    document.querySelectorAll(".brand, .back").forEach((a) => { a.href = home; });
+    BACK = home + "#darbs";
   }
 
   /* ===================== UI ===================== */
