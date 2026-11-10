@@ -119,7 +119,8 @@ TABLE = [
     ("Pilnais profils", "Full profile"),
     ("10 minūtes · detalizēta atskaite ar tavām prioritātēm", "10 minutes · a detailed report with your priorities"),
     ("Vēlies sakārtot šīs lietas?", "Want to sort this out?"),
-    (">Sazināmies " + ARROW, ">Let's talk " + ARROW),
+    ('rel="noopener">Sazināmies</a><small>Atstāj kontaktus, es sazināšos</small>', 'rel="noopener">Let\'s talk</a><small>Leave your contacts and I will get back to you</small>'),
+    ("Iegūsti pilno profilu", "Get the full profile"),
     ("Trenera atgriezeniskā saite pēc tavām atbildēm, nevis medicīnisks vai psiholoģisks novērtējums.",
      "A coach's feedback on your answers, not a medical or psychological assessment."),
     # quick profile script: the five keys are also the bar labels, so they change everywhere at once
@@ -347,7 +348,6 @@ TABLE = [
     ('<span class="qb">kā izskaties, jūties un funkcionē?</span>', '<span class="qb">how you look, feel and function?</span>'),
 
     # ---- closing ----
-    ('<span class="mono">Pirmais solis</span>', '<span class="mono">The first step</span>'),
     ("Tavs fitness ir tavu pēdējo 1000 izvēļu summa.", "Your fitness is the sum of your last 1000 choices."),
     ("Nākamās var būt gudrākas. Sāc ar profilu, un pirmajā sarunā atradīsim, kas tev dos visvairāk.",
      "The next ones can be smarter. Start with the profile, and in our first conversation we will find what gives you the most."),
