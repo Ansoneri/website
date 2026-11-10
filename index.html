@@ -8,6 +8,9 @@
 <meta name="theme-color" content="#030303">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="canonical" href="https://ansoneri.com/">
+<link rel="alternate" hreflang="lv" href="https://ansoneri.com/">
+<link rel="alternate" hreflang="en" href="https://ansoneri.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://ansoneri.com/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="lv_LV">
 <meta property="og:site_name" content="Ansoneri">
@@ -90,6 +93,11 @@ a { color: inherit; text-decoration: none; }
 .nav__links a { font-family: var(--f-mono); font-size: 11px; letter-spacing: .26em; text-transform: uppercase; color: var(--bone-2); transition: color .3s linear; }
 .nav__links a:hover { color: var(--bone); }
 .nav .cta { justify-self: end; }
+/* language switch: same mono caps as the links, thin outline, black core - always visible, also on phones */
+.nav__end { justify-self: end; display: flex; align-items: center; gap: 14px; }
+.nav__lang { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; height: 34px; padding: 0 10px; box-sizing: border-box; border-radius: 6px; background: var(--ink); box-shadow: inset 0 0 0 1px rgba(245,243,238,.3); font-family: var(--f-mono); font-size: 11px; letter-spacing: .2em; text-indent: .2em; text-transform: uppercase; color: var(--bone); transition: box-shadow .3s linear; }
+.nav__lang:hover, .nav__lang:focus-visible { box-shadow: inset 0 0 0 1px var(--bone); }
+@media (max-width: 700px) { .nav__end { gap: 10px; } }
 @media (max-width: 900px) { .nav { grid-template-columns: 1fr auto; } .nav__links { display: none; } }
 
 /* ---------- signature button ---------- */
@@ -1359,7 +1367,7 @@ html.thread-on .mm__ring { stroke: transparent; }
 <nav class="nav wrap" id="nav" aria-label="Galvenā navigācija">
   <a class="nav__brand" href="#top" aria-label="Kristers Ansons - sākums">Ansons<span class="sq"></span></a>
   <ul class="nav__links"><li><a href="#elites-fitness">Veiktspēja</a></li><li><a href="#tavs-profils">Profils</a></li><li><a href="#pieredze">Metode</a></li><li><a href="#klienti">Klienti</a></li><li><a href="#darbs">Sadarbība</a></li><li><a href="#mentor">Piedāvājums</a></li></ul>
-  <a class="cta cta--sm" href="https://tally.so/r/Gx2zdQ" target="_blank" rel="noopener">Sākt sadarbību <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15.5M13.5 6l6 6-6 6"/></svg></a>
+  <div class="nav__end"><a class="cta cta--sm" href="https://tally.so/r/Gx2zdQ" target="_blank" rel="noopener">Sākt sadarbību <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M4 12h15.5M13.5 6l6 6-6 6"/></svg></a><a class="nav__lang" href="en/" hreflang="en" lang="en" aria-label="English">EN</a></div>
 </nav>
 <main id="top">
 <section class="hero hero--vid" id="hero">
