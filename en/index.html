@@ -417,7 +417,7 @@ body { background: var(--ink) var(--g) repeat !important; background-size: var(-
 .wipe__img { z-index: 0; }
 .wipe__type { z-index: 2; }
 .deep-tex, .lfs, .method, .method__stage { background: var(--g) repeat, #4a0e09 url("../assets/gen/deep-red.webp") center / cover no-repeat; background-size: var(--gs), cover; }
-.fadeband { height: 60vh; background: var(--g) repeat, url("../assets/gen/fade-black.webp") center / 100% 100% no-repeat; background-size: var(--gs), 100% 100%; }
+.fadeband { height: 60vh; background: var(--g) repeat, linear-gradient(180deg, #2c0704 0%, #250603 14%, #1c0503 30%, #130302 48%, #0a0201 66%, #040101 82%, #000 100%); background-size: var(--gs), 100% 100%; }
 .vtag { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 60; font-family: var(--f-mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--bone-2); background: rgba(3,3,3,.72); padding: 8px 10px; border-radius: 6px; pointer-events: none; }
 .on-red .mono, .on-red .fx__d { color: rgba(245,243,238,.72); }
 .on-red .panel { background: rgba(10,4,3,.55); }
@@ -509,7 +509,12 @@ body { background: var(--ink) var(--g) repeat !important; background-size: var(-
   -webkit-mask-image: linear-gradient(0deg, #000 0%, rgba(0,0,0,.8) 30%, transparent 100%); mask-image: linear-gradient(0deg, #000 0%, rgba(0,0,0,.8) 30%, transparent 100%); }
 
 /* the science / sport block sits on the same dark red as the horizon that leads into it */
-.ds { background: var(--g) repeat, #4a0e09 url("../assets/gen/deep-red.webp") center / cover no-repeat; background-size: var(--gs), cover; }
+.ds { background: var(--g) repeat,
+    radial-gradient(ellipse 50% 24% at 82% 18%, rgba(20,4,2,.38), rgba(20,4,2,0) 72%),
+    radial-gradient(ellipse 60% 26% at 22% 46%, rgba(110,22,14,.38), rgba(110,22,14,0) 70%),
+    radial-gradient(ellipse 50% 24% at 70% 80%, rgba(20,4,2,.32), rgba(20,4,2,0) 72%),
+    linear-gradient(180deg, #4b0e09 0%, #440d08 45%, #3d0b07 100%);
+  background-size: var(--gs), auto, auto, auto, auto; }
 /* offers: lifted off the ground with a shadow, but nothing moves */
 .o-card { transform: none !important; }
 .o-mentor { transform: translateY(-10px) scale(1.03) !important; }
@@ -1255,12 +1260,12 @@ html.is-pv .vsw { display: none; }
 
 /* ===== round 15: timeline on the red, two colour versions ===== */
 #darbs { background: var(--g) repeat,
-    radial-gradient(ellipse 55% 30% at 18% 12%, rgba(120,24,15,.45), rgba(120,24,15,0) 70%),
-    radial-gradient(ellipse 45% 26% at 86% 38%, rgba(28,5,3,.38), rgba(28,5,3,0) 72%),
-    radial-gradient(ellipse 60% 28% at 30% 64%, rgba(105,20,13,.38), rgba(105,20,13,0) 70%),
-    radial-gradient(ellipse 50% 24% at 78% 86%, rgba(32,6,4,.32), rgba(32,6,4,0) 72%),
-    linear-gradient(180deg, #4b0e09 0%, #510f0a 45%, #4a0e09 100%);
-  background-size: var(--gs), auto, auto, auto, auto, auto; background-attachment: fixed, scroll, scroll, scroll, scroll, scroll; padding-bottom: calc(var(--space) * .4); }
+    radial-gradient(ellipse 55% 26% at 16% 14%, rgba(110,22,14,.40), rgba(110,22,14,0) 70%),
+    radial-gradient(ellipse 45% 24% at 86% 40%, rgba(20,4,2,.40), rgba(20,4,2,0) 72%),
+    radial-gradient(ellipse 60% 26% at 32% 66%, rgba(92,18,12,.34), rgba(92,18,12,0) 70%),
+    radial-gradient(ellipse 50% 22% at 76% 88%, rgba(20,4,2,.34), rgba(20,4,2,0) 72%),
+    linear-gradient(180deg, #3d0b07 0%, #3a0a06 50%, #2c0704 100%);
+  background-size: var(--gs), auto, auto, auto, auto, auto; padding-bottom: calc(var(--space) * .4); }
 @media (min-width: 1000px) { #darbs { padding-top: clamp(130px, 17vh, 230px) !important; } }
 #darbs .mvB__rail { background: rgba(245,243,238,.2); }
 #darbs .mvB__dot { background: #4a0e09; box-shadow: inset 0 0 0 2px rgba(245,243,238,.45); }
@@ -1351,7 +1356,7 @@ html .wipe__type p.wq { font-size: clamp(32px, 9.4vw, 46px) !important; max-widt
 .wipe__type { bottom: var(--bar); }
 /* results: the long red-to-black fade is back, and the section starts inside it */
 html #darbs ~ .fadeband { height: 36vh !important; }
-html #mentor { position: relative; z-index: 1; margin-top: -18vh !important; }
+html #mentor { position: relative; z-index: 1; margin-top: -18vh !important; background: linear-gradient(180deg, rgba(0,0,0,0) 0, #000 18vh, #000 calc(100% - 20vh), #030303 100%); }
 
 /* profile card: a second way out - straight to a conversation */
 .qp__talk { margin-top: 14px; }
@@ -1396,11 +1401,13 @@ html.thread-on .mm__ring { stroke: transparent; }
   #darbs .mvB__list { max-width: none; margin: 0; }
 }
 
-/* seamless dark run (10 Nov 2026): one grain pattern pinned to the screen, so no section edge shows as a change in texture */
-body { background-attachment: fixed !important; }
-.ds, .fadeband { background-attachment: fixed, scroll !important; }
-.wipe__stage::before { background-attachment: fixed; }
-@media (hover: none) { body { background-attachment: scroll !important; } .ds, .fadeband { background-attachment: scroll, scroll !important; } #darbs { background-attachment: scroll, scroll, scroll, scroll, scroll, scroll; } .wipe__stage::before { background-attachment: scroll; } }
+
+/* desktop: the first question sits centred in the free space left of the video, never under it */
+@media (min-width: 1000px) {
+  html .hq__t { justify-content: flex-start !important; padding: 0 !important; }
+  html .hq__t > div { width: calc(100vw - min(54vw, 74vh)); padding: 0 var(--gutter); box-sizing: border-box; }
+}
+@media (min-width: 1600px) { html .hq__t > div { width: calc(100vw - min(54vw, 74vh) - (100vw - 1560px) / 2); } }
 </style>
 </head>
 <body>
@@ -1614,7 +1621,7 @@ body { background-attachment: fixed !important; }
     /* the blurred room on desktop: the same video drawn tiny into a canvas, blurred by CSS - one video decode, not two */
     if (cv && !reduce) {
       const ctx = cv.getContext("2d");
-      const draw = () => { if (vw > 700 && vid.readyState >= 2) { try { ctx.drawImage(vid, 0, 0, cv.width, cv.height); } catch (e) {} } };
+      const draw = () => { if (vw > 700 && cv.offsetParent !== null && vid.readyState >= 2) { try { ctx.drawImage(vid, 0, 0, cv.width, cv.height); } catch (e) {} } };
       if ("requestVideoFrameCallback" in vid) { const loop = () => { draw(); vid.requestVideoFrameCallback(loop); }; vid.requestVideoFrameCallback(loop); }
       else setInterval(draw, 66);
       vid.addEventListener("loadeddata", draw);
