@@ -296,7 +296,7 @@ TABLE = [
     ("Treniņu plāns un uztura vadlīnijas", "Training plan and nutrition guidelines"),
     ("Ja dzīvē kaut kas mainās, plāns jāveido no jauna", "If something changes in your life, the plan has to be made again"),
     ("Pasūtīt plānu", "Order the plan"),
-    ("Veidots tieši tev", "Custom made"),
+    ("Ātrākais rezultāts", "Fastest results"),
     ('<p class="o-per">mēnesī</p>', '<p class="o-per">per month</p>'),
     ("Viss vienā cenā. Plāns, kas mainās līdz ar tavu dzīvi,<br>un treneris, kas palīdz to noturēt.",
      "Everything in one price. A plan that changes with your life,<br>and a coach who helps you stick to it."),
