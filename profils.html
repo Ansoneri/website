@@ -273,20 +273,16 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 .sec--radar .radar { max-width: 600px; justify-self: center; }
 
 /* domain rows */
-.jscale { display: grid; grid-template-columns: 190px minmax(0, 1fr) 70px; gap: 18px; font-family: var(--f-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--paper-mute); }
-.jscale > span:nth-child(2) { display: flex; justify-content: space-between; }
 .jlist { display: grid; border-top: 2px solid var(--paper-ink); }
 .jrow { display: grid; grid-template-columns: 190px minmax(0, 1fr) 70px; gap: 6px 18px; align-items: center; padding: 20px 0; border-bottom: 1px solid var(--paper-rule); }
 .jrow b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 24px; line-height: 1.1; color: var(--paper-ink); }
 .jbar { position: relative; height: 14px; border-radius: 7px; background: rgba(20,17,16,.08); }
-.jbar::before, .jbar::after { content: ""; position: absolute; top: -4px; bottom: -4px; width: 1px; background: rgba(20,17,16,.25); }
-.jbar::before { left: 45%; } .jbar::after { left: 70%; }
 .jbar i { position: absolute; inset: 0 auto 0 0; width: var(--w); border-radius: 7px; background: linear-gradient(90deg, var(--red), var(--orange)); }
 .jrow em { font-style: normal; font-family: var(--f-surname); font-size: 40px; line-height: 1; text-align: right; color: var(--paper-ink); font-variant-numeric: tabular-nums; }
 .jrow small { font-family: var(--f-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--paper-mute); }
 .jrow p { grid-column: 2 / -1; margin: 0; font-size: 15.5px; line-height: 1.5; color: var(--paper-text); }
 .jrow.is-low b, .jrow.is-low em, .jrow.is-low small { color: var(--red); }
-@media (max-width: 640px) { .jrow, .jscale { grid-template-columns: minmax(0, 1fr) 54px; } .jscale > span:first-child { display: none; } .jscale > span:nth-child(2) { grid-column: 1; } .jrow .jbar { grid-column: 1 / -1; grid-row: 2; } .jrow em { grid-row: 1; grid-column: 2; font-size: 32px; } .jrow b { font-size: 20px; } .jrow small { grid-row: 3; } .jrow p { grid-column: 1 / -1; } }
+@media (max-width: 640px) { .jrow { grid-template-columns: minmax(0, 1fr) 54px; } .jrow .jbar { grid-column: 1 / -1; grid-row: 2; } .jrow em { grid-row: 1; grid-column: 2; font-size: 32px; } .jrow b { font-size: 20px; } .jrow small { grid-row: 3; } .jrow p { grid-column: 1 / -1; } }
 
 /* depth page */
 .drive { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 28px; }
@@ -326,24 +322,26 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 .rec__price { display: grid; justify-items: end; }
 .rec__price b { font-family: var(--f-surname); font-weight: 400; font-size: clamp(56px, 7vw, 84px); line-height: .9; color: var(--bone); }
 .rec__price span { font-family: var(--f-mono); font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--bone-3); }
-.rec__line { display: block; height: 2px; border-radius: 1px; background: var(--signature); opacity: .9; }
+.rec__line { display: block; height: 2px; border-radius: 1px; background: var(--signature); }
 .rec .rec__hook { font-family: var(--f-display); font-weight: 500; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.3; color: var(--bone); max-width: 30em; }
 .rec .rec__why { font-size: 16px; color: var(--bone-2); }
 .rec__feats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 28px; }
 .rec__feats li { display: flex; gap: 10px; align-items: flex-start; font-size: 15.5px; font-weight: 700; line-height: 1.4; color: var(--bone); }
 .rec__feats svg { flex: none; width: 18px; height: 18px; margin-top: 1px; fill: none; stroke: var(--orange); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 640px) { .rec__feats { grid-template-columns: minmax(0, 1fr); } .rec__price { justify-items: start; } }
-.rec__cmp { display: grid; border-top: 1px solid rgba(245,243,238,.18); }
-.rec__cmp div { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 12px; padding: 10px 0; border-bottom: 1px solid rgba(245,243,238,.12); font-size: 14px; color: var(--bone-2); }
-.rec__cmp div span:first-child { color: var(--bone-3); font-weight: 600; }
-.rec__cmp div span:last-child { color: var(--bone); font-weight: 700; }
-.rec__cmp .h span { font-family: var(--f-mono); font-size: 10px; letter-spacing: .18em; text-transform: uppercase; color: var(--bone-3) !important; font-weight: 500 !important; }
+.rec__alt { display: grid; gap: 6px; padding: 16px 18px; border-radius: 10px; box-shadow: inset 0 0 0 1px rgba(245,243,238,.16); }
+.rec__alt-h { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 18px; flex-wrap: wrap; }
+.rec__alt-h b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 20px; color: var(--bone); }
+.rec__alt-h em { font-style: normal; font-family: var(--f-mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--bone-2); }
+.rec .rec__alt p { font-size: 14px; color: var(--bone-2); max-width: none; }
 .rec__steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; counter-reset: st; }
 .rec__steps li { counter-increment: st; display: grid; gap: 6px; align-content: start; font-size: 14px; line-height: 1.45; color: var(--bone-2); }
 .rec__steps li::before { content: "0" counter(st); font-family: var(--f-surname); font-size: 30px; line-height: 1; color: transparent; -webkit-text-stroke: 1px var(--orange); }
-.rec__steps b { font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 17px; color: var(--bone); }
+.rec__steps b { display: flex; align-items: center; gap: 8px; font-family: var(--f-display); font-weight: 700; text-transform: uppercase; font-size: 17px; color: var(--bone); }
+.rec__steps b svg { width: 18px; height: 18px; fill: none; stroke: var(--orange); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.rec__steps li.is-done::before { -webkit-text-stroke: 0; color: var(--orange); }
 @media (max-width: 640px) { .rec__steps { grid-template-columns: minmax(0, 1fr); } }
-.rec .rec__sci { font-size: 13px; color: var(--bone-3); }
+.rec .rec__sci { font-size: 14.5px; line-height: 1.5; color: var(--bone-2); padding-left: 14px; border-left: 2px solid var(--orange); max-width: 40em; }
 .rec__sci a { color: var(--bone-2); }
 .rec__go { display: none; }
 .datanote { margin: 0; padding: 14px 16px; border-radius: 10px; background: rgba(20,17,16,.05); font-size: 13.5px; line-height: 1.55; color: var(--paper-text); }
@@ -383,8 +381,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .tags { gap: 2mm !important; } .tags span { font-size: 8.5pt !important; padding: 1.4mm 3mm !important; }
   .sec--radar { display: grid !important; gap: 3mm !important; }
   .sec--radar .radar { width: 150mm !important; max-width: none !important; }
-  .jscale, .jrow { grid-template-columns: 44mm minmax(0, 1fr) 18mm !important; gap: 1.5mm 5mm !important; }
-  .jscale { font-size: 6.5pt !important; }
+  .jrow { grid-template-columns: 44mm minmax(0, 1fr) 18mm !important; gap: 1.5mm 5mm !important; }
   .jrow { padding: 7.4mm 0 !important; break-inside: avoid; }
   .jrow b { font-size: 17pt !important; }
   .jrow em { font-size: 28pt !important; }
@@ -400,7 +397,13 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .chiplist span { font-size: 8.5pt !important; padding: 1.2mm 2.4mm !important; }
   .answers { gap: 2mm !important; }
   .drive { gap: 3mm 7mm !important; }
-  .drive--many .answers { gap: 2mm 7mm !important; }
+  .drive--many .answers { gap: 1.6mm 7mm !important; }
+  .drive--many .answers div { display: block !important; }
+  .drive--many .answers dt, .drive--many .answers dd { display: inline !important; }
+  .drive--many .answers dt::after { content: ". "; }
+  .pg--tight { zoom: .9; }
+  .pg--tight .mind { grid-template-columns: 80mm minmax(0, 1fr) !important; }
+  .pg--tight .rose { width: 80mm !important; }
   .answers dd { line-height: 1.4 !important; }
   .mind { grid-template-columns: 92mm minmax(0, 1fr) !important; gap: 6mm !important; }
   .rose { width: 92mm !important; max-width: none !important; }
@@ -414,7 +417,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .prio ul { gap: 2.6mm !important; margin-top: 3.5mm !important; } .prio ul li { font-size: 11pt !important; padding-left: 5mm !important; }
   .rec { display: block !important; background: #141110 !important; color: #f5f3ee !important; border-radius: 4mm !important; padding: 6.5mm 9mm 6.5mm !important; break-inside: avoid; }
   .rec > * + * { margin-top: 3.2mm !important; }
-  .rec > .rec__line { margin-top: 3mm !important; }
+  .rec > .rec__line { margin-top: 3mm !important; height: 2px !important; }
   .rec .mono, .rec__price span { font-size: 7.5pt !important; }
   .rec__badge { font-size: 7pt !important; padding: 1.4mm 3mm !important; }
   .rec__tag { font-size: 8pt !important; margin-bottom: 1.5mm !important; }
@@ -423,9 +426,12 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .rec .rec__hook { font-size: 12.5pt !important; max-width: none !important; }
   .rec .rec__why { font-size: 9.5pt !important; line-height: 1.45 !important; max-width: none !important; color: #cfccc6 !important; }
   .rec__feats { gap: 2.4mm 8mm !important; } .rec__feats li { font-size: 9.5pt !important; } .rec__feats svg { width: 4mm !important; height: 4mm !important; }
-  .rec__cmp div { font-size: 8pt !important; line-height: 1.3 !important; padding: 1.1mm 0 !important; }
+  .rec__alt { padding: 3.5mm 4.5mm !important; gap: 1.2mm !important; break-inside: avoid; }
+  .rec__alt-h b { font-size: 12.5pt !important; } .rec__alt-h em { font-size: 7.5pt !important; }
+  .rec .rec__alt p { font-size: 8.5pt !important; line-height: 1.4 !important; }
+  .rec__steps b svg { width: 3.6mm !important; height: 3.6mm !important; }
   .rec__steps { gap: 6mm !important; } .rec__steps li { font-size: 8.5pt !important; line-height: 1.35 !important; gap: 1mm !important; } .rec__steps li::before { font-size: 20pt !important; } .rec__steps b { font-size: 11pt !important; }
-  .rec .rec__sci { font-size: 7pt !important; line-height: 1.35 !important; color: #8a857e !important; max-width: none !important; }
+  .rec .rec__sci { font-size: 8.5pt !important; line-height: 1.45 !important; color: #cfccc6 !important; max-width: none !important; padding-left: 3.5mm !important; }
   .rec__go { display: inline-flex !important; width: max-content; align-items: center; gap: 3mm; padding: 3.2mm 6mm; border-radius: 2mm; background: #030303; color: #f5f3ee !important; text-decoration: none; font: 500 8.5pt/1 var(--f-mono); letter-spacing: .18em; text-transform: uppercase; box-shadow: 0 0 0 .6mm #030303, 0 0 0 1mm #ff6b1a; }
   .rec__go small { font-size: 7pt; letter-spacing: .1em; text-transform: none; color: #8a857e; }
   .pfoot { display: block !important; margin: 0; padding-top: 2.5mm; border-top: .6pt solid #d8d4cc; font: 500 7.5pt/1.4 var(--f-mono); letter-spacing: .02em; color: #6b665f !important; }
@@ -885,7 +891,6 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       hook: "Viena saruna par tavu jautājumu. Klātienē Rīgā vai tiešsaistē.",
       feats: ["Izrunājam šo profilu un to, kas tevi ierobežo", "Atbildes uz taviem jautājumiem", "Skaidrs nākamais solis", "Ja vajag, palīdzu saprast, pie kura speciālista vērsties"], cmp: false },
   };
-  const APPLY = "https://tally.so/r/Gx2zdQ";
 
   function renderReport() {
     const r = score(answers), a = answers;
@@ -920,7 +925,13 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     const prioNote = prioNames.length ? ` Sāksim ar to, ko rāda tavs profils: ${prioNames.length > 1 ? prioNames.slice(0, -1).join(", ") + " un " + prioNames[prioNames.length - 1] : prioNames[0]}.` : "";
     const tags = [a.age ? esc(a.age) + " gadi" : "", a.freq ? esc(a.freq) + " treniņi nedēļā" : "", a.exp ? "Pieredze: " + esc(optLabel(a.exp)).toLowerCase() : "", a.time ? esc(a.time) + " nedēļā treniņiem" : ""].filter(Boolean).map((t) => `<span>${t}</span>`).join("")
       + (a.goal || []).map((x) => `<span class="goal">${esc(x)}</span>`).join("");
-    const cmp = of.cmp ? `<div class="rec__cmp"><div class="h"><span></span><span>Plāns</span><span>Mentorship</span></div><div><span>Konsultācijas</span><span>1 sākumā</span><span>4 mēnesī</span></div><div><span>Kad dzīve mainās</span><span>Plāns jāveido no jauna</span><span>Pielāgoju tajā pašā nedēļā</span></div><div><span>Kas pamana, ja nobremzē</span><span>Tu {pats|pati}</span><span>Es</span></div><div><span>Progresa mērījumi</span><span>Sākumā</span><span>Regulāri</span></div></div>` : "";
+    const ALT = {
+      mentor: ["Alternatīva", "Patstāvīgais plāns", "149 € vienreiz", "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}. Plāns netiek pielāgots katru nedēļu: ja dzīvē kaut kas mainās, tas jāveido no jauna."],
+      plan: ["Ja gribi vairāk atbalsta", "Elite Coaching Mentorship", "299 € mēnesī", "Plāns, ko pielāgoju katru nedēļu, 4 konsultācijas mēnesī un iknedēļas atskaite: es pamanu, kad tu nobremzē."],
+    }[r.rec];
+    const alt = ALT ? `<div class="rec__alt"><span class="mono">${ALT[0]}</span><div class="rec__alt-h"><b>${ALT[1]}</b><em>${ALT[2]}</em></div><p>${ALT[3]}</p></div>` : "";
+    const STEP3 = { mentor: "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.", plan: "48 stundu laikā pēc sarunas saņem savu plānu.", consult: "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt." }[r.rec];
+    const reqURL = "https://tally.so/r/" + TALLY_FORM + "?" + new URLSearchParams({ profila_id: id, vards: a.name || "", ieteikums: REC[r.rec][0] + " · " + REC[r.rec][1] }).toString();
 
     $("report").innerHTML = G(`
       ${isSample ? `<div class="sample"><span>Parauga atskaite ar izdomātām atbildēm, lai redzētu algoritmu darbībā.</span><button class="btn btn--ghost" id="own" type="button">Aizpildīt savu</button></div>` : ""}
@@ -935,20 +946,19 @@ label.q__t small { display: inline !important; margin-left: 10px; }
             </div>
             <div class="tags">${tags}</div>
           </div>
-          <div class="sec sec--radar"><div class="sec__h"><span class="mono">01 · Pārskats</span><h2>Sešas jomas</h2><p class="sec__lead">Ārējā līnija ir 100. Jo tuvāk malai, jo vairāk šī joma strādā tev par labu.</p></div>${radar(r.d)}</div>
+          <div class="sec sec--radar"><div class="sec__h"><h2>Sešas jomas</h2><p class="sec__lead">Ārējā līnija ir 100. Jo tuvāk malai, jo vairāk šī joma strādā tev par labu.</p></div>${radar(r.d)}</div>
         </section>
 
         <section class="pg">
           ${run("02")}
-          <div class="sec__h"><span class="mono">02 · Jomas tuvāk</span><h2>Kur tu esi šobrīd</h2></div>
-          <div><div class="jscale"><span></span><span><span>0</span><span>45</span><span>70</span><span>100</span></span><span></span></div>
-          <div class="jlist">${jrows}</div></div>
+          <div class="sec__h"><h2>Kur tu esi šobrīd</h2></div>
+          <div class="jlist">${jrows}</div>
           ${flags}
         </section>
 
-        <section class="pg">
+        <section class="pg${bars.length > 3 || (a.Mwhy || []).length > 4 ? " pg--tight" : ""}">
           ${run("03")}
-          <div class="sec__h"><span class="mono">03 · Dziļāk</span><h2>Dzinējs, bremzes, prāts</h2></div>
+          <div class="sec__h"><h2>Dzinējs, bremzes, prāts</h2></div>
           <div class="two">
             <div class="panel"><h3 class="ph">Slodze pret atjaunošanos</h3><span class="verdict v--${r.balance}">${BAL[r.balance][0]}</span><p>${BAL[r.balance][1]}</p>
               <div class="mbar">Slodze<i style="--w:${r.load}%;--c:#141110"></i><em>${r.load}</em></div>
@@ -966,23 +976,23 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 
         <section class="pg">
           ${run("04")}
-          <div class="sec__h"><span class="mono">04 · Plāns</span><h2>Tavas 3 prioritātes</h2><p class="sec__lead">Secībā pēc tā, kas tev dos visvairāk. Katrai ir divi pirmie soļi, ko vari sākt jau šonedēļ.</p></div>
+          <div class="sec__h"><h2>Tavas 3 prioritātes</h2><p class="sec__lead">Secībā pēc tā, kas tev dos visvairāk. Katrai ir divi pirmie soļi, ko vari sākt jau šonedēļ.</p></div>
           <ol class="prio">${prio}</ol>
         </section>
 
         <section class="pg pg--cta">
           ${run("05")}
-          <div class="sec__h"><span class="mono">05 · Nākamais solis</span><h2>Ieteiktais sākums</h2></div>
+          <div class="sec__h"><h2>Ieteiktais sākums</h2></div>
           <div class="rec">
             <div class="rec__head"><div><span class="rec__tag">${of.tag}${of.badge ? `<span class="rec__badge">${of.badge}</span>` : ""}</span><p class="rec__t">${of.t}</p></div><div class="rec__price"><b>${of.price}</b><span>${of.per}</span></div></div>
             <i class="rec__line"></i>
             <p class="rec__hook">${of.hook}</p>
             <p class="rec__why">${rec[2]}${supNote}${timeNote}${prioNote}</p>
             <ul class="rec__feats">${of.feats.map((x) => `<li>${CHECK}<span>${x}</span></li>`).join("")}</ul>
-            ${cmp}
-            <ol class="rec__steps"><li><b>Pieteikums</b>Aizpildi īsu anketu: tally.so/r/Gx2zdQ.</li><li><b>Pirmā saruna</b>Izrunājam šo profilu, tavus mērķus un to, kas līdz šim traucēja.</li><li><b>Tavs plāns</b>Pirmās nedēļas soļi, kas balstīti uz tavām 3 prioritātēm.</li></ol>
+            ${alt}
+            <ol class="rec__steps"><li class="is-done"><b>Pieteikums ${CHECK}</b>Jau izdarīts. Šis profils ir tavs pieteikums.</li><li><b>Pirmā saruna</b>Nosūti pieprasījumu ar pogu zemāk un uzraksti, kad tev ērti runāt. Es sazināšos ar tevi 24 stundu laikā.</li><li><b>Tavs plāns</b>${STEP3}</li></ol>
             ${r.rec === "consult" ? "" : `<p class="rec__sci">Pētījumā tie, kas trenējās ar treneri blakus, kāpināja slodzi ātrāk un ieguva vairāk spēka nekā tie, kas to pašu programmu pildīja paši (<a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener">Mazzetti u.c., 2000</a>).</p>`}
-            <a class="rec__go" href="${APPLY}" target="_blank" rel="noopener">Sākt sadarbību → <small>tally.so/r/Gx2zdQ</small></a>
+            <a class="rec__go" href="${esc(reqURL)}" target="_blank" rel="noopener">Sākt sadarbību → <small>nosūti pieprasījumu, atbildēšu 24 stundu laikā</small></a>
             <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">Nosūtīt Kristeram</button><button class="btn btn--ghost" id="pdf" type="button">Lejupielādēt PDF</button></div>
             <span class="rec__note">Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.</span>
           </div>
