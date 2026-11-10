@@ -186,7 +186,8 @@ TABLE = [
     # ---- how my method came about ----
     ("Kā tapusi mana metode", "How my method was built"),
     ("Izglītība, sports un darbs ar cilvēkiem.", "Education, sport and working with people."),
-    ('alt="Kristers Rīgas Stradiņa universitātē"', 'alt="Kristers at Riga Stradins University"'),
+    ('alt="Kristers izlaidumā Rīgas Stradiņa universitātē"', 'alt="Kristers at his graduation, Riga Stradins University"'),
+    ('alt="Kristers skrien sacensībās kopā ar draugu"', 'alt="Kristers running a race with a friend"'),
     ('alt="Kristers uzstājas RSU Psiholoģijas dienās 2026"', 'alt="Kristers speaking at the RSU Psychology Days 2026"'),
     ('<h3 class="ds__t">Izglītība</h3>', '<h3 class="ds__t">Education</h3>'),
     ("<p class=\"ds__l\">sporta zinātnē</p>", "<p class=\"ds__l\">in sport science</p>"),
