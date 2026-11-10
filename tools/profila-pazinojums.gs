@@ -22,6 +22,8 @@
  */
 
 const SHEET = 'Profili';
+// The deployed script is a standalone project, so it opens the sheet by ID (from the sheet's URL).
+const SHEET_ID = ''; // ID of the Google Sheet "Ansoneri profili"
 const HEAD = ['Laiks', 'ID', 'Vārds', 'Dzimums', 'Vecums', 'Profils', 'Potenciāls', 'Treniņi', 'Miegs', 'Atjaunošanās',
   'Motivācija', 'Veselība', 'Mentālās prasmes', 'Ieteikums', 'Lead', 'Uzlabošanai', 'Piekrišana', 'Kopsavilkums', 'Visas atbildes'];
 
@@ -46,7 +48,7 @@ function doPost(e) {
     const dom = d.domains || {};
     const answers = (d.details || []).slice(0, 120).map((x) => clip(x[0], 40) + ' | ' + clip(x[1], 200) + ': ' + clip(x[2], 600)).join('\n');
 
-    const ss = SpreadsheetApp.getActiveSpreadsheet();
+    const ss = SHEET_ID ? SpreadsheetApp.openById(SHEET_ID) : SpreadsheetApp.getActiveSpreadsheet();
     const sh = ss.getSheetByName(SHEET) || ss.insertSheet(SHEET);
     if (sh.getLastRow() === 0) { sh.appendRow(HEAD); sh.setFrozenRows(1); }
     sh.appendRow([new Date(), clip(d.id, 20), clip(d.name, 60), clip(d.sex, 20), clip(d.age, 5), clip(d.profile, 80), Number(d.readiness) || '',
@@ -59,6 +61,7 @@ function doPost(e) {
     MailApp.sendEmail({ to: me, subject: subject, body: body, name: 'Ansoneri profils' });
     return out('ok');
   } catch (err) {
+    console.error(err);
     return out('error');
   }
 }
