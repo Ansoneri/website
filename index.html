@@ -468,7 +468,7 @@ body { background: var(--ink) var(--g) repeat !important; background-size: var(-
 /* offers: low-key 3D triptych - side cards turn toward the middle, real shadows, a lit top edge */
 .o-body { background: var(--g) repeat, linear-gradient(180deg, #17110e 0%, #0a0807 45%, #050404 100%) !important; background-size: var(--gs), auto !important;
   box-shadow: inset 0 1px 0 rgba(245,243,238,.09), inset 0 -1px 0 rgba(0,0,0,.6), 0 2px 0 rgba(255,255,255,.02), 0 40px 70px -28px rgba(0,0,0,.9), 0 14px 26px -14px rgba(0,0,0,.75); }
-.o-tri::after { content: ""; position: absolute; left: 8%; right: 8%; bottom: -26px; height: 70px; z-index: 0; pointer-events: none; background: radial-gradient(closest-side, rgba(255,107,26,.16), transparent); filter: blur(8px); }
+.o-tri::after { content: ""; position: absolute; left: 4%; right: 4%; bottom: -70px; height: 160px; z-index: 0; pointer-events: none; background: radial-gradient(closest-side, rgba(255,107,26,.13), rgba(255,107,26,.05) 55%, transparent 100%); }
 @media (min-width: 1001px) {
   .o-tri { perspective: 1700px; }
   .o-card { transform-style: preserve-3d; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
@@ -1253,7 +1253,13 @@ html.is-pv .vsw { display: none; }
 @media (prefers-reduced-motion: reduce) { .mvA .is-swap { animation: none; } .mvC__card { transform: none; } }
 
 /* ===== round 15: timeline on the red, two colour versions ===== */
-#darbs { background: var(--g) repeat, linear-gradient(180deg, #4b0e09 0%, #510f0a 45%, #4a0e09 100%); background-size: var(--gs), auto; padding-bottom: calc(var(--space) * .4); }
+#darbs { background: var(--g) repeat,
+    radial-gradient(ellipse 55% 30% at 18% 12%, rgba(120,24,15,.45), rgba(120,24,15,0) 70%),
+    radial-gradient(ellipse 45% 26% at 86% 38%, rgba(28,5,3,.38), rgba(28,5,3,0) 72%),
+    radial-gradient(ellipse 60% 28% at 30% 64%, rgba(105,20,13,.38), rgba(105,20,13,0) 70%),
+    radial-gradient(ellipse 50% 24% at 78% 86%, rgba(32,6,4,.32), rgba(32,6,4,0) 72%),
+    linear-gradient(180deg, #4b0e09 0%, #510f0a 45%, #4a0e09 100%);
+  background-size: var(--gs), auto, auto, auto, auto, auto; background-attachment: fixed, scroll, scroll, scroll, scroll, scroll; padding-bottom: calc(var(--space) * .4); }
 @media (min-width: 1000px) { #darbs { padding-top: clamp(130px, 17vh, 230px) !important; } }
 #darbs .mvB__rail { background: rgba(245,243,238,.2); }
 #darbs .mvB__dot { background: #4a0e09; box-shadow: inset 0 0 0 2px rgba(245,243,238,.45); }
@@ -1388,6 +1394,12 @@ html.thread-on .mm__ring { stroke: transparent; }
   #darbs > .mvB { grid-column: 2; grid-row: 1; padding-left: 0 !important; padding-right: 0 !important; }
   #darbs .mvB__list { max-width: none; margin: 0; }
 }
+
+/* seamless dark run (10 Nov 2026): one grain pattern pinned to the screen, so no section edge shows as a change in texture */
+body { background-attachment: fixed !important; }
+.ds, .fadeband { background-attachment: fixed, scroll !important; }
+.wipe__stage::before { background-attachment: fixed; }
+@media (hover: none) { body { background-attachment: scroll !important; } .ds, .fadeband { background-attachment: scroll, scroll !important; } #darbs { background-attachment: scroll, scroll, scroll, scroll, scroll, scroll; } .wipe__stage::before { background-attachment: scroll; } }
 </style>
 </head>
 <body>
