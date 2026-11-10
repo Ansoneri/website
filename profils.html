@@ -453,6 +453,17 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   .pfoot, .datanote, .fine { break-inside: avoid; }
   .sec > h2, .sec h3, .ph, .sec__h { break-after: avoid; }
 }
+/* Phones (10 Nov 2026): cover = heading, ring, text; bigger petal labels */
+@media screen and (max-width: 640px) {
+  .cover__grid { grid-template-columns: minmax(0, 1fr); gap: 0; }
+  .cover__grid > div:first-child { display: contents; }
+  .cover__grid .hero-r__type { order: 1; }
+  .cover__grid .gauge { order: 2; margin: 34px 0 30px; }
+  .cover__grid .hero-r__desc { order: 3; margin-top: 0; }
+  .cover__grid > div:first-child > .mono { order: 0; margin-bottom: 4px; }
+  .rose--big .rl { font-size: 18px; }
+  .rose--big .rlv { font-size: 15px; }
+}
 </style>
 </head>
 <body>
@@ -1079,7 +1090,8 @@ label.q__t small { display: inline !important; margin-left: 10px; }
 
   /* mental skills: one petal per skill, length = answer 1-5 */
   function rose(a, weakId) {
-    const W = 440, H = 400, cx = 220, cy = 200, R = 122, n = SKILLS.length, st = 2 * Math.PI / n, gap = .045;
+    const big = window.matchMedia("screen and (max-width: 640px)").matches, LH = big ? 19 : 14;
+    const W = 440, H = 400, cx = 220, cy = 200, R = big ? 104 : 122, n = SKILLS.length, st = 2 * Math.PI / n, gap = .045;
     const P = (ang, r) => [cx + Math.cos(ang) * r, cy + Math.sin(ang) * r];
     const f = (x) => x.toFixed(1);
     let g = "";
@@ -1090,12 +1102,12 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       const [x0, y0] = P(a0, r), [x1, y1] = P(a1, r);
       g += `<path d="M${cx},${cy} L${f(x0)},${f(y0)} A${f(r)},${f(r)} 0 0 1 ${f(x1)},${f(y1)} Z" fill="${col}"/>`;
       const [lx, ly] = P(mid, R + 16), side = Math.abs(lx - cx) < 10 ? "middle" : lx < cx ? "end" : "start";
-      const lines = L(q.skill).split(" "), h = (lines.length + 1) * 14;
-      const top = ly < cy - 30 ? ly - h + 10 : ly > cy + 30 ? ly + 11 : ly - h / 2 + 10;
-      g += `<text class="rl${q.id === weakId ? " is-weak" : ""}" text-anchor="${side}">${lines.map((l, j) => `<tspan x="${f(lx)}" y="${f(top + j * 14)}">${l}</tspan>`).join("")}<tspan class="rlv" x="${f(lx)}" y="${f(top + lines.length * 14)}">${v}/5</tspan></text>`;
+      const lines = L(q.skill).split(" "), h = (lines.length + 1) * LH;
+      const top = ly < cy - 30 ? ly - h + 10 : ly > cy + 30 ? ly + (big ? 16 : 11) : ly - h / 2 + (big ? 14 : 10);
+      g += `<text class="rl${q.id === weakId ? " is-weak" : ""}" text-anchor="${side}">${lines.map((l, j) => `<tspan x="${f(lx)}" y="${f(top + j * LH)}">${l}</tspan>`).join("")}<tspan class="rlv" x="${f(lx)}" y="${f(top + lines.length * LH)}">${v}/5</tspan></text>`;
     });
     g += `<circle cx="${cx}" cy="${cy}" r="3" fill="#f5f3ee"/>`;
-    return `<svg class="rose" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L("Mentālās prasmes")}: ${SKILLS.map((q) => L(q.skill) + " " + a[q.id] + "/5").join(", ")}">${g}</svg>`;
+    return `<svg class="rose${big ? " rose--big" : ""}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${L("Mentālās prasmes")}: ${SKILLS.map((q) => L(q.skill) + " " + a[q.id] + "/5").join(", ")}">${g}</svg>`;
   }
 
   /* what each starting point includes - the same offer as on the home page (#mentor) */
@@ -1218,7 +1230,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
             <span class="rec__note">${T("Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.", "After pressing the button you add your name and phone. The report is attached automatically, and I will get back to you within 24 hours on weekdays.")}</span>
           </div>
           <div class="send" id="sent" hidden></div>
-          <div class="next"><span class="mono">${T("Kas tālāk", "What next")}</span><b>${T("Kāpēc izvēlēties mani?", "Why choose me?")}</b><p>${T("14 gadi sportā, sporta zinātne RSU un 20+ klienti. Paskaties, kā strādājam kopā.", "14 years in sport, sports science at RSU and 20+ clients. See how we work together.")}</p><a class="btn btn--ghost" href="${BACK}">${T("Atpakaļ uz lapu", "Back to the site")}</a></div>
+          <div class="next"><span class="mono">${T("Nākamais solis", "Next step")}</span><b>${T("Uz ko balstās šis profils?", "What is this profile based on?")}</b><p>${T("14 gadi sportā, sporta zinātne RSU un darbs ar 20+ klientiem. Uzzini vairāk par manu metodi.", "14 years in sport, sports science at RSU and work with 20+ clients. Learn more about my method.")}</p><a class="btn btn--ghost" href="${BACK.replace("#darbs", "#pieredze")}">${T("Uzzini vairāk", "Learn more")}</a></div>
           <details class="how"><summary>${T("Kā tiek aprēķināts", "How it is calculated")}</summary><div>${LANG === "en" ? `
           <p>Each answer from 1-5 becomes 0-100 points. <b>Training</b> = 80 % structure, consistency and progressive load + 20 % training frequency. <b>Sleep</b> = 75 % rhythm, satisfaction, alertness and efficiency + 25 % duration (7-9 h = 100), based on Buysse's sleep health model (<a href="https://doi.org/10.5665/sleep.3298" target="_blank" rel="noopener">Buysse, 2014</a>). <b>Recovery</b> = 60 % perceived stress (after Cohen's idea of perceived stress, <a href="https://doi.org/10.2307/2136404" target="_blank" rel="noopener">Cohen et al., 1983</a>) + 40 % recovery.</p>
           <p><b>Motivation</b> = 50 % relative autonomy index <code>3·intrinsic + 2·identified − introjected − 2·external − 3·amotivation</code> based on self-determination theory (<a href="https://doi.org/10.1037/0003-066X.55.1.68" target="_blank" rel="noopener">Ryan and Deci, 2000</a>; <a href="https://doi.org/10.1123/jsep.26.2.191" target="_blank" rel="noopener">Markland and Tobin, 2004</a>) + 25 % importance of change + 25 % confidence that it will work. The importance and confidence questions come from motivational interviewing (Miller and Rollnick); confidence is self-efficacy (<a href="https://doi.org/10.1037/0033-295X.84.2.191" target="_blank" rel="noopener">Bandura, 1977</a>). Reasons and barriers are not scored. They shape the text of the report.</p>
