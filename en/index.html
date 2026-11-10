@@ -417,7 +417,7 @@ body { background: var(--ink) var(--g) repeat !important; background-size: var(-
 .wipe__img { z-index: 0; }
 .wipe__type { z-index: 2; }
 .deep-tex, .lfs, .method, .method__stage { background: var(--g) repeat, #4a0e09 url("../assets/gen/deep-red.webp") center / cover no-repeat; background-size: var(--gs), cover; }
-.fadeband { height: 60vh; background: var(--g) repeat, linear-gradient(180deg, #2c0704 0%, #250603 14%, #1c0503 30%, #130302 48%, #0a0201 66%, #040101 82%, #000 100%); background-size: var(--gs), 100% 100%; }
+.fadeband { height: 60vh; background: none; }
 .vtag { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); z-index: 60; font-family: var(--f-mono); font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: var(--bone-2); background: rgba(3,3,3,.72); padding: 8px 10px; border-radius: 6px; pointer-events: none; }
 .on-red .mono, .on-red .fx__d { color: rgba(245,243,238,.72); }
 .on-red .panel { background: rgba(10,4,3,.55); }
@@ -509,12 +509,7 @@ body { background: var(--ink) var(--g) repeat !important; background-size: var(-
   -webkit-mask-image: linear-gradient(0deg, #000 0%, rgba(0,0,0,.8) 30%, transparent 100%); mask-image: linear-gradient(0deg, #000 0%, rgba(0,0,0,.8) 30%, transparent 100%); }
 
 /* the science / sport block sits on the same dark red as the horizon that leads into it */
-.ds { background: var(--g) repeat,
-    radial-gradient(ellipse 50% 24% at 82% 18%, rgba(20,4,2,.38), rgba(20,4,2,0) 72%),
-    radial-gradient(ellipse 60% 26% at 22% 46%, rgba(110,22,14,.38), rgba(110,22,14,0) 70%),
-    radial-gradient(ellipse 50% 24% at 70% 80%, rgba(20,4,2,.32), rgba(20,4,2,0) 72%),
-    linear-gradient(180deg, #4b0e09 0%, #440d08 45%, #3d0b07 100%);
-  background-size: var(--gs), auto, auto, auto, auto; }
+.ds { background: none; }
 /* offers: lifted off the ground with a shadow, but nothing moves */
 .o-card { transform: none !important; }
 .o-mentor { transform: translateY(-10px) scale(1.03) !important; }
@@ -1259,13 +1254,7 @@ html.is-pv .vsw { display: none; }
 @media (prefers-reduced-motion: reduce) { .mvA .is-swap { animation: none; } .mvC__card { transform: none; } }
 
 /* ===== round 15: timeline on the red, two colour versions ===== */
-#darbs { background: var(--g) repeat,
-    radial-gradient(ellipse 55% 26% at 16% 14%, rgba(110,22,14,.40), rgba(110,22,14,0) 70%),
-    radial-gradient(ellipse 45% 24% at 86% 40%, rgba(20,4,2,.40), rgba(20,4,2,0) 72%),
-    radial-gradient(ellipse 60% 26% at 32% 66%, rgba(92,18,12,.34), rgba(92,18,12,0) 70%),
-    radial-gradient(ellipse 50% 22% at 76% 88%, rgba(20,4,2,.34), rgba(20,4,2,0) 72%),
-    linear-gradient(180deg, #3d0b07 0%, #3a0a06 50%, #2c0704 100%);
-  background-size: var(--gs), auto, auto, auto, auto, auto; padding-bottom: calc(var(--space) * .4); }
+#darbs { background: none; padding-bottom: calc(var(--space) * .4); }
 @media (min-width: 1000px) { #darbs { padding-top: clamp(130px, 17vh, 230px) !important; } }
 #darbs .mvB__rail { background: rgba(245,243,238,.2); }
 #darbs .mvB__dot { background: #4a0e09; box-shadow: inset 0 0 0 2px rgba(245,243,238,.45); }
@@ -1356,7 +1345,7 @@ html .wipe__type p.wq { font-size: clamp(32px, 9.4vw, 46px) !important; max-widt
 .wipe__type { bottom: var(--bar); }
 /* results: the long red-to-black fade is back, and the section starts inside it */
 html #darbs ~ .fadeband { height: 36vh !important; }
-html #mentor { position: relative; z-index: 1; margin-top: -18vh !important; background: linear-gradient(180deg, rgba(0,0,0,0) 0, #000 18vh, #000 calc(100% - 20vh), #030303 100%); }
+html #mentor { position: relative; z-index: 1; margin-top: -18vh !important; }
 
 /* profile card: a second way out - straight to a conversation */
 .qp__talk { margin-top: 14px; }
@@ -1408,6 +1397,28 @@ html.thread-on .mm__ring { stroke: transparent; }
   html .hq__t > div { width: calc(100vw - min(54vw, 74vh)); padding: 0 var(--gutter); box-sizing: border-box; }
 }
 @media (min-width: 1600px) { html .hq__t > div { width: calc(100vw - min(54vw, 74vh) - (100vw - 1560px) / 2); } }
+
+/* the red run (How my method was built + How we work + the fade) is ONE block with one background:
+   red from the wipe, a few soft natural waves, slowly darker, then a long fade into the page's own grainy black.
+   Its grain sits in ::before and fades out where the page grain (body) takes over, so there is no edge anywhere. */
+.redrun { position: relative; isolation: isolate;
+  background:
+    radial-gradient(ellipse 120% 9% at 28% 16%, rgba(112,22,14,.30), rgba(112,22,14,0) 70%),
+    radial-gradient(ellipse 110% 8% at 74% 31%, rgba(22,4,2,.26), rgba(22,4,2,0) 70%),
+    radial-gradient(ellipse 120% 9% at 38% 47%, rgba(100,19,12,.26), rgba(100,19,12,0) 70%),
+    radial-gradient(ellipse 110% 8% at 68% 62%, rgba(22,4,2,.24), rgba(22,4,2,0) 70%),
+    linear-gradient(180deg, #4b0e09 0%, #440d08 26%, #3d0b07 50%, #350906 calc(100% - 70vh), #210604 calc(100% - 48vh), #0e0302 calc(100% - 26vh), rgba(3,3,3,0) 100%); }
+.redrun::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: var(--g) repeat; background-size: var(--gs);
+  -webkit-mask-image: linear-gradient(180deg, #000 calc(100% - 60vh), transparent 100%); mask-image: linear-gradient(180deg, #000 calc(100% - 60vh), transparent 100%); }
+
+/* desktop: the closing text sits on the left, the photo on the right */
+@media (min-width: 1000px) {
+  .endw__in { justify-items: start !important; text-align: left !important; }
+  .endw__in > * { max-width: min(46vw, 760px); }
+  .endw__h { text-wrap: balance; }
+  .endw__acts { justify-content: flex-start !important; }
+  .endw__in .endw__p, .endw__in .close__note, .endw__in .principle-it { margin-left: 0 !important; margin-right: 0 !important; text-align: left !important; }
+}
 </style>
 </head>
 <body>
@@ -1462,6 +1473,7 @@ html.thread-on .mm__ring { stroke: transparent; }
 
 
 
+<div class="redrun">
 <section class="ds ds3 on-red" id="pieredze"><div class="wrap">
   <header class="sect-head"><h2 class="sect">How my method was built</h2><p class="sect-lead">Education, sport and working with people.</p></header>
   <div class="ds__cols">
@@ -1502,6 +1514,7 @@ html.thread-on .mm__ring { stroke: transparent; }
     </div>
   </section>
 <div class="fadeband" aria-hidden="true"></div>
+</div>
 
 <section class="offer offer--orbit wrap" id="mentor">
     <header class="sect-head"><h2 class="sect">Offer</h2><p class="sect-lead">Three ways to start.</p></header>
@@ -1679,7 +1692,9 @@ html.thread-on .mm__ring { stroke: transparent; }
 
   /* offer: light follows the pointer on the card edges */
   const otri = $("#otri");
-  if (otri && fine && !reduce) { const oc = [...otri.querySelectorAll(".o-card")]; otri.addEventListener("pointermove", (e) => oc.forEach((c) => { const r = c.getBoundingClientRect(); c.style.setProperty("--mx", (e.clientX - r.left) + "px"); c.style.setProperty("--my", (e.clientY - r.top) + "px"); })); }
+  if (otri && fine && !reduce) { const oc = [...otri.querySelectorAll(".o-card")]; let pe = null, pq = false;
+    const apply = () => { pq = false; if (!pe) return; const rs = oc.map((c) => c.getBoundingClientRect()); oc.forEach((c, k) => { c.style.setProperty("--mx", (pe.clientX - rs[k].left) + "px"); c.style.setProperty("--my", (pe.clientY - rs[k].top) + "px"); }); };
+    otri.addEventListener("pointermove", (e) => { pe = e; if (!pq) { pq = true; requestAnimationFrame(apply); } }, { passive: true }); }
 
   /* the loop runs only while something moves, then sleeps until the next scroll */
   let running = false, lastScroll = 0;
