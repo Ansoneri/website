@@ -1517,8 +1517,13 @@ html.thread-on .mm__ring { stroke: transparent; }
 /* 11 Nov 2026 (Kristers): offer hierarchy on every card, balanced mentorship frame, softer glow, lighter closing headline */
 .o-side .o-feats { margin-top: 4px; padding-top: 16px; border-top: 1px solid rgba(245,243,238,.1); }
 .o-side .o-feats li { color: var(--bone-2); }
-.offer--orbit .o-mentor .o-edge { background: linear-gradient(180deg, rgba(255,150,80,.6), rgba(255,107,26,.34) 45%, rgba(214,52,34,.26)); }
-.offer--orbit .o-mentor::before { opacity: .72; }
+/* the mentorship frame: a plain inset shadow, not a 1px masked ring - on the scaled card (1.03) the ring fell between pixels and vanished at some widths */
+.offer--orbit .o-mentor .o-edge { padding: 0; background: none; -webkit-mask: none; mask: none; box-shadow: inset 0 0 0 1.5px rgba(255,120,40,.42); }
+/* glow as bright as before, but it ends sooner below the card */
+.offer--orbit .o-mentor::before { inset: -110px -130px -40px; }
+/* Safari: the rotating orbit light must not make the side cards re-rasterize (they jumped 1-2px every couple of seconds) */
+.offer--orbit .o-mentor .o-orbit { contain: paint; }
+.o-tri > .o-side { will-change: transform; }
 .o-hook { max-width: 30em; margin-inline: auto; text-wrap: balance; }
 a.o-note { display: inline-block; color: var(--bone-2); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(245,243,238,.35); }
 a.o-note:hover { color: var(--bone); text-decoration-color: var(--orange); }
