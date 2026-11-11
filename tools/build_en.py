@@ -286,7 +286,7 @@ TABLE = [
 
     # ---- offer ----
     ("<h2 class=\"sect\">Piedāvājums</h2>", "<h2 class=\"sect\">Offer</h2>"),
-    ("Trīs ceļi. Izvēlies to, kas der tavai dzīvei.", "Three paths. Choose the one that fits your life."),
+    ("No pirmā soļa līdz pilnai sistēmai.", "From the first step to the full system."),
     ('aria-label="Patstāvīgais plāns vai mentorship"', 'aria-label="Self-guided plan or mentorship"'),
     ("<h3>Patstāvīgais plāns</h3>", "<h3>Self-guided plan</h3>"),
     ("<small>vienreiz</small>", "<small>one-off</small>"),
