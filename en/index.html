@@ -1497,12 +1497,22 @@ html.thread-on .mm__ring { stroke: transparent; }
   .cmp__r > span { padding: 4px 10px 14px; min-width: 0; overflow-wrap: anywhere; }
   .cmp__r > span:first-child { padding: 14px 12px 8px; color: rgba(255,107,26,.85); }
   .cmp__r > span:nth-child(2) { padding-left: 12px; }
-  .cmp__r > span:nth-child(3), .cmp__r > span:nth-child(4) { box-shadow: inset 1px 0 0 rgba(245,243,238,.09); }
-  .cmp__r > span:nth-child(4) { background: rgba(255,107,26,.07); color: var(--bone); }
+  .cmp__t { background: linear-gradient(90deg, transparent calc(200% / 3), rgba(255,107,26,.075) calc(200% / 3)), rgba(18,14,12,.62); }
+  .cmp__r > span:nth-child(4) { color: var(--bone); }
   .cmp__head { background: rgba(245,243,238,.05); }
   .cmp__head > span { padding: 14px 10px 12px !important; font-size: 9.5px; letter-spacing: .1em; line-height: 1.2; color: rgba(245,243,238,.9); }
   .cmp__head > span:nth-child(2) { padding-left: 12px !important; }
   .cmp__head > span:nth-child(4) { color: var(--orange); }
+}
+/* 11 Nov 2026 (Kristers): quick-profile lever title gets room for the macrons; method columns on phones read like desktop */
+.qp__lever strong { line-height: 1.12; padding-top: .04em; }
+@media (max-width: 1000px) {
+  .ds3 .ds__t { margin-bottom: 4px; }
+  .ds3 .ds__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 22px; padding-top: 0; border-top: 2px solid rgba(245,243,238,.5); }
+  .ds3 .ds__s { gap: 5px; padding: 16px 0 18px; border-bottom: 1px solid rgba(245,243,238,.14); align-content: start; }
+  .ds3 .ds__v, .ds3 .ds__v--w { font-size: clamp(28px, 7.4vw, 40px); line-height: 1.05; padding-top: 0; }
+  .ds3 .ds__l { margin: 2px 0 0; font: 500 10.5px/1.4 var(--f-mono); letter-spacing: .14em; color: #ff9a5c; }
+  .ds3 .ds__d { font-size: 14px; font-weight: 500; line-height: 1.5; color: rgba(245,243,238,.7); }
 }
 </style>
 </head>
