@@ -121,6 +121,7 @@ TABLE = [
     ("Vēlies sakārtot šīs lietas?", "Want to sort this out?"),
     ('rel="noopener">Sazināmies</a><small>Atstāj kontaktus, es sazināšos</small>', 'rel="noopener">Let\'s talk</a><small>Leave your contacts and I will get back to you</small>'),
     ("Iegūsti pilno profilu", "Get the full profile"),
+    ("Novērtē visus 5 punktus, un šeit parādīsies tavs profils.", "Rate all 5 and your profile will appear here."),
     ("Trenera atgriezeniskā saite pēc tavām atbildēm, nevis medicīnisks vai psiholoģisks novērtējums.",
      "A coach's feedback on your answers, not a medical or psychological assessment."),
     # quick profile script: the five keys are also the bar labels, so they change everywhere at once
