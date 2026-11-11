@@ -695,7 +695,9 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     const prio = Object.entries(d).map(([k, v]) => ({ k, v, need: (100 - v) * W[k] })).filter((x) => x.v < 80).sort((x, y) => y.need - x.need).slice(0, 3);
     let rec;
     if (health) rec = "consult";
-    else if (a.Cinv === "Līdz 50 €" || a.Cwhen === "Pagaidām tikai interesējos") rec = "consult";
+    else if (a.Cinv === "Līdz 50 €" || a.Cwhen === "Pagaidām tikai interesējos") rec = "start";
+    /* 50-150 € a month: never the 300 € mentorship first - the plan (150 € once) for those who run it alone, otherwise one consultation that can lead on to mentorship */
+    else if (a.Cinv === "50-150 €") rec = a.Csup === "Plāns, ko izpildu pats" ? "plan" : "start";
     else if (a.Csup === "Plāns, ko izpildu pats" && readiness >= 60 && !(a.Mbar || []).includes("Nav, kas palīdz noturēt ritmu") && !(a.Mbar || []).includes("Motivācija pazūd pēc dažām nedēļām")) rec = "plan";
     else rec = "mentor";
     /* for Kristers only: how warm the lead is */
@@ -767,6 +769,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
   };
   const REC = {
     consult: ["Konsultācija", "50 €", "Sāksim ar sarunu par veselību un to, kas tevi ierobežo. Plāns sekos, kad zināsim, kas ir droši tavā situācijā."],
+    start: ["Konsultācija", "50 €", "Sāksim ar vienu sarunu. Izrunāsim tavu profilu, un tu aiziesi ar skaidriem pirmajiem soļiem. Ja gribēsi iet tālāk, no šīs sarunas varam turpināt ar mentorship."],
     plan: ["Patstāvīgais plāns", "150 €", "Tavs pamats ir stabils, un ritmu tu proti noturēt. Personīgs plāns dos virzienu, ko vari izpildīt {pats|pati}."],
     mentor: ["Elite Coaching Mentorship", "300 € mēnesī", "Tev noderēs struktūra un kāds, kas palīdz noturēt ritmu. Viss vienā cenā: konsultācijas, testi, materiāli, treniņu plāns un pielāgošana katru nedēļu."],
   };
@@ -902,7 +905,7 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     "Līdzsvarā": "Balanced", "Slodze un atjaunošanās šobrīd ir samērīgas.": "Your load and recovery are in proportion right now.",
     "Slodze": "Load", "Kapacitāte": "Capacity",
     /* recommendation and offer */
-    "Konsultācija": "Consultation", "Sāksim ar sarunu par veselību un to, kas tevi ierobežo. Plāns sekos, kad zināsim, kas ir droši tavā situācijā.": "We will start with a conversation about your health and what is limiting you. The plan will follow once we know what is safe in your situation.",
+    "Konsultācija": "Consultation", "Sāksim ar vienu sarunu. Izrunāsim tavu profilu, un tu aiziesi ar skaidriem pirmajiem soļiem. Ja gribēsi iet tālāk, no šīs sarunas varam turpināt ar mentorship.": "We start with one conversation. We go through your profile and you leave with clear first steps. If you want to go further, we can continue with mentorship from there.", "Kad būsi {gatavs|gatava}": "When you are ready", "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}.": "A starting conversation, your profile, a training plan and nutrition guidelines. I build it, you follow it.", "Sarunas beigās zināsi savus pirmos soļus un to, vai tev der iet tālāk.": "By the end of the conversation you will know your first steps and whether going further suits you.", "Sāksim ar sarunu par veselību un to, kas tevi ierobežo. Plāns sekos, kad zināsim, kas ir droši tavā situācijā.": "We will start with a conversation about your health and what is limiting you. The plan will follow once we know what is safe in your situation.",
     "Patstāvīgais plāns": "Self-guided plan", "Tavs pamats ir stabils, un ritmu tu proti noturēt. Personīgs plāns dos virzienu, ko vari izpildīt {pats|pati}.": "Your base is solid and you know how to keep a rhythm. A personal plan will give you a direction you can follow on your own.",
     "Tev noderēs struktūra un kāds, kas palīdz noturēt ritmu. Viss vienā cenā: konsultācijas, testi, materiāli, treniņu plāns un pielāgošana katru nedēļu.": "You will benefit from structure and someone who helps you keep the rhythm. Everything in one price: consultations, tests, materials, a training plan and adjustments every week.",
     " Tu teici, ka tev der plāns, ko izpildi {pats|pati}.": " You said a plan you follow on your own suits you.",
@@ -1151,9 +1154,9 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     const bars = (a.Mbar || []).filter((x) => BARRIER[x]);
     const barHTML = bars.length ? `<dl class="answers">${bars.map((x) => `<div><dt>${esc(L(x))}</dt><dd>${L(BARRIER[x])}</dd></div>`).join("")}</dl>` : `<p>${T("Tu neatzīmēji konkrētus šķēršļus. Tas ir labs sākumpunkts.", "You didn't tick any specific barriers. That is a good starting point.")}</p>`;
     const conf = a.Mconf <= 2 ? T("Pārliecība vēl ir zema. Tā aug no mazām uzvarām, tāpēc pirmās nedēļas būs veidotas tā, lai tās noteikti izdotos.", "Your confidence is still low. It grows from small wins, so the first weeks will be built so they are sure to work.") : a.Mconf >= 4 ? T("Tu tici, ka tev izdosies. Tas ir viens no stiprākajiem prognozētājiem, ka plānu noturēsi.", "You believe you will succeed. That is one of the strongest predictors that you will stick to the plan.") : T("Pārliecība ir vidēja. Ar katru izpildītu nedēļu tā augs.", "Your confidence is moderate. It will grow with every week you complete.");
-    const rec = REC[r.rec], of = OFFER[r.rec];
+    const rec = REC[r.rec], of = OFFER[r.rec === "start" ? "consult" : r.rec];
     const SUP = { "Plāns, ko izpildu pats": " Tu teici, ka tev der plāns, ko izpildi {pats|pati}.", "Plāns un regulāra pārbaude": " Tu teici, ka tev palīdzētu regulāra pārbaude. Tieši to dod mentorship.", "Treneris blakus visu ceļu": " Tu teici, ka gribi treneri blakus visu ceļu. Tieši tā strādā mentorship." };
-    const supNote = L(r.rec === "consult" ? "" : r.rec === "plan" ? (a.Csup === "Plāns, ko izpildu pats" ? SUP[a.Csup] : "") : (a.Csup && a.Csup !== "Plāns, ko izpildu pats" ? SUP[a.Csup] : ""));
+    const supNote = L(r.rec === "consult" || r.rec === "start" ? "" : r.rec === "plan" ? (a.Csup === "Plāns, ko izpildu pats" ? SUP[a.Csup] : "") : (a.Csup && a.Csup !== "Plāns, ko izpildu pats" ? SUP[a.Csup] : ""));
     const timeNote = a.time === "Līdz 2 h" ? T(" Ar 2 stundām nedēļā plāns ir iespējams: 2 spēka treniņi pa 45 minūtēm un ikdienas soļi.", " With 2 hours a week a plan is possible: 2 strength sessions of 45 minutes and daily steps.") : "";
     const prioNames = r.prio.map((p) => L(p.k).toLowerCase());
     const prioNote = prioNames.length ? `${T(" Sāksim ar to, ko rāda tavs profils: ", " We will start with what your profile shows: ")}${prioNames.length > 1 ? prioNames.slice(0, -1).join(", ") + T(" un ", " and ") + prioNames[prioNames.length - 1] : prioNames[0]}.` : "";
@@ -1162,9 +1165,11 @@ label.q__t small { display: inline !important; margin-left: 10px; }
     const ALT = {
       mentor: ["Alternatīva", "Patstāvīgais plāns", "150 € vienreiz", "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}. Plāns netiek pielāgots katru nedēļu: ja dzīvē kaut kas mainās, tas jāveido no jauna."],
       plan: ["Ja gribi vairāk atbalsta", "Elite Coaching Mentorship", "300 € mēnesī", "Plāns, ko pielāgoju katru nedēļu, 4 konsultācijas mēnesī un iknedēļas atskaite: es laicīgi pamanu, kad tev nesanāk."],
+      start: a.Cinv === "50-150 €" ? ["Alternatīva", "Patstāvīgais plāns", "150 € vienreiz", "Sākuma saruna, tavs profils, treniņu plāns un uztura vadlīnijas. Es to izveidoju, tu seko {pats|pati}."]
+        : ["Kad būsi {gatavs|gatava}", "Elite Coaching Mentorship", "300 € mēnesī", "Plāns, ko pielāgoju katru nedēļu, 4 konsultācijas mēnesī un iknedēļas atskaite: es laicīgi pamanu, kad tev nesanāk."],
     }[r.rec];
     const alt = ALT ? `<div class="rec__alt"><span class="mono">${L(ALT[0])}</span><div class="rec__alt-h"><b>${L(ALT[1])}</b><em>${L(ALT[2])}</em></div><p>${L(ALT[3])}</p></div>` : "";
-    const STEP3 = L({ mentor: "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.", plan: "48 stundu laikā pēc sarunas saņem savu plānu.", consult: "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt." }[r.rec]);
+    const STEP3 = L({ mentor: "48 stundu laikā pēc sarunas saņem plānu pirmajam mēnesim.", plan: "48 stundu laikā pēc sarunas saņem savu plānu.", consult: "Sarunas beigās zināsi, kas ir droši tavā situācijā un ar ko sākt.", start: "Sarunas beigās zināsi savus pirmos soļus un to, vai tev der iet tālāk." }[r.rec]);
     const waURL = "https://wa.me/" + WA + "?text=" + encodeURIComponent(T("Sveiki, Kristers. Gribu sākt sadarbību. Mans profils: ", "Hi Kristers. I would like to start working together. My profile: ") + id + (a.name ? " (" + a.name + ")" : "") + ".");
     const reqURL = "https://tally.so/r/" + TALLY_FORM + "?" + new URLSearchParams({ profila_id: id, vards: a.name || "", ieteikums: REC[r.rec][0] + " · " + REC[r.rec][1] }).toString();
 
@@ -1225,8 +1230,8 @@ label.q__t small { display: inline !important; margin-left: 10px; }
             <p class="rec__why">${L(rec[2])}${supNote}${timeNote}${prioNote}</p>
             <ul class="rec__feats">${of.feats.map((x) => `<li>${CHECK}<span>${L(x)}</span></li>`).join("")}</ul>
             ${alt}
-            <ol class="rec__steps"><li class="is-done"><b>${T("Pieteikums", "Application")} ${CHECK}</b>${T("Jau izdarīts. Šis profils ir tavs pieteikums.", "Already done. This profile is your application.")}</li><li><b>${T("Pirmā saruna", "First call")}</b>${T("Nosūti pieprasījumu ar pogu zemāk un uzraksti, kad tev ērti runāt. Es sazināšos ar tevi 24 stundu laikā.", "Send a request with the button below and tell me when suits you to talk. I will get back to you within 24 hours.")}</li><li><b>${T("Tavs plāns", "Your plan")}</b>${STEP3}</li></ol>
-            ${r.rec === "consult" ? "" : `<p class="rec__sci">${T("Pētījumā tie, kas trenējās ar treneri blakus, kāpināja slodzi ātrāk un ieguva vairāk spēka nekā tie, kas to pašu programmu pildīja paši", "In a study, people who trained with a coach beside them increased their load faster and gained more strength than those who did the same programme on their own")} (<a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener">${T("Mazzetti u.c., 2000", "Mazzetti et al., 2000")}</a>).</p>`}
+            <ol class="rec__steps"><li class="is-done"><b>${T("Pieteikums", "Application")} ${CHECK}</b><span>${T("Jau izdarīts. Šis profils ir tavs pieteikums.", "Already done. This profile is your application.")}</span></li><li><b>${T("Pirmā saruna", "First call")}</b><span>${T("Nosūti pieprasījumu ar pogu zemāk un uzraksti, kad tev ērti runāt. Es sazināšos ar tevi 24 stundu laikā.", "Send a request with the button below and tell me when suits you to talk. I will get back to you within 24 hours.")}</span></li><li><b>${T("Tavs plāns", "Your plan")}</b>${STEP3}</li></ol>
+            ${r.rec === "consult" || r.rec === "start" ? "" : `<p class="rec__sci">${T("Pētījumā tie, kas trenējās ar treneri blakus, kāpināja slodzi ātrāk un ieguva vairāk spēka nekā tie, kas to pašu programmu pildīja paši", "In a study, people who trained with a coach beside them increased their load faster and gained more strength than those who did the same programme on their own")} (<a href="https://pubmed.ncbi.nlm.nih.gov/10862549/" target="_blank" rel="noopener">${T("Mazzetti u.c., 2000", "Mazzetti et al., 2000")}</a>).</p>`}
             <div class="rec__links"><a class="rec__go" href="${esc(reqURL)}" target="_blank" rel="noopener">${T("Sākt sadarbību", "Start working together")} → <small>${T("nosūti pieprasījumu, atbildēšu 24 stundu laikā", "send a request, I reply within 24 hours")}</small></a><a class="rec__go rec__go--wa" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp <small>+371 2669 4933</small></a></div>
             <div class="rec__acts"><button class="btn btn--main" id="sendOpen" type="button">${T("Nosūtīt Kristeram", "Send to Kristers")}</button><a class="btn btn--ghost" href="${esc(waURL)}" target="_blank" rel="noopener">WhatsApp</a><button class="btn btn--ghost" id="pdf" type="button">${T("Lejupielādēt PDF", "Download PDF")}</button></div>
             <span class="rec__note">${T("Pēc pogas nospiešanas norādīsi vārdu un telefonu. Atskaite tiks pievienota automātiski, un es sazināšos ar tevi 24 stundu laikā darba dienās.", "After pressing the button you add your name and phone. The report is attached automatically, and I will get back to you within 24 hours on weekdays.")}</span>
@@ -1290,6 +1295,13 @@ label.q__t small { display: inline !important; margin-left: 10px; }
       summary: summaryText(r, id) + (viewLink() ? "\n\nAtvērt atskaiti (to pašu, ko redzēja klients, ar PDF lejupielādi):\n" + viewLink() : ""), details: details(), view: viewLink(),
     });
     try { fetch(NOTIFY_URL, { method: "POST", mode: "no-cors", keepalive: true, headers: { "Content-Type": "text/plain;charset=utf-8" }, body }).catch(() => {}); } catch (e) {}
+    /* a moment later the same report as a PDF, for Kristers's e-mail (the Apps Script attaches it; too big for keepalive, so a plain request) */
+    setTimeout(async () => {
+      try { const doc = await buildPdf(); const pdf = doc.output("datauristring").split(",")[1];
+        fetch(NOTIFY_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify({ type: "pdf", id, name: a.name || "", profile: G(ARCH[r.arch][0]), readiness: r.readiness, lead: r.lead, filename: pdfName() + ".pdf", view: viewLink(), pdf }) }).catch(() => {});
+      } catch (e) {}
+    }, 1500);
   }
 
   function loadTally() {
@@ -1318,11 +1330,83 @@ label.q__t small { display: inline !important; margin-left: 10px; }
         const q = new URLSearchParams(hidden()); window.open("https://tally.so/r/" + TALLY_FORM + "?" + q.toString(), "_blank", "noopener");
       } finally { b.disabled = false; }
     });
-    $("pdf").addEventListener("click", () => {
-      const t = document.title; document.title = T("Ansoneri profils ", "Ansoneri profile ") + id + (answers.name ? " - " + answers.name : "");
-      window.print(); setTimeout(() => { document.title = t; }, 1500);
+    $("pdf").addEventListener("click", async () => {
+      const b = $("pdf"); if (b.disabled) return; b.disabled = true; toast(T("Gatavoju PDF...", "Preparing the PDF..."));
+      try { const doc = await buildPdf(); doc.save(pdfName() + ".pdf"); }
+      catch (e) { const t = document.title; document.title = pdfName(); window.print(); setTimeout(() => { document.title = t; }, 1500); }
+      finally { b.disabled = false; }
     });
   }
+  /* ===== PDF: built by the page itself (html2canvas + jsPDF, vendored in assets/js), so every browser - iPhone Safari included -
+     gets the same five A4 pages. Each .pg is drawn from a hidden copy of the page that uses the print stylesheet (scoped to html.pdfx),
+     so the visible page never changes. The same file goes to Kristers with the notification. ===== */
+  const pdfName = () => T("Pilnais profils", "Full profile") + (answers.name ? " - " + String(answers.name).replace(/[\\/:*?"<>|]+/g, "").trim() : "");
+  const loadJs = (src) => new Promise((res, rej) => { if (document.querySelector(`script[data-src="${src}"]`)) return res(); const sc = document.createElement("script"); sc.src = src; sc.dataset.src = src; sc.onload = res; sc.onerror = rej; document.head.appendChild(sc); });
+  let pdfCss = "";
+  function scopedPrintCss() {
+    if (pdfCss) return pdfCss;
+    const out = [];
+    for (const sh of document.styleSheets) { let rules; try { rules = sh.cssRules; } catch (e) { continue; }
+      for (const r of rules) { if (!(r.media && /print/.test(r.media.mediaText))) continue;
+        for (const x of r.cssRules) { if (!x.selectorText) continue;
+          const sel = x.selectorText.split(",").map((p) => { p = p.trim(); return /^(html|:root)/.test(p) ? p.replace(/^(html|:root)/, "html.pdfx") : "html.pdfx " + p; }).join(", ");
+          out.push(sel + "{" + x.style.cssText + "}"); } } }
+    out.push("html.pdfx .sheet { width: 210mm !important; } html.pdfx .pg { width: 210mm; min-height: 297mm; box-sizing: border-box; background: #fff; padding-bottom: 10mm !important; }"
+      + " html.pdfx .rec__steps li { display: block !important; } html.pdfx .rec__steps li > b, html.pdfx .rec__steps li > span, html.pdfx .rec__steps li::before { display: block; margin-bottom: 1mm; } html.pdfx .rec__steps li > b { display: flex; }");
+    return (pdfCss = out.join("\n"));
+  }
+  /* charts are drawn as images, which cannot see the page fonts: embed them (assets/fonts/pdf) and inline every style */
+  const UR = { latin: "U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD",
+    "latin-ext": "U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF" };
+  const PDF_FONTS = [["PdfOswald", "oswald", [500, 700]], ["PdfMono", "ibm-plex-mono", [400, 500]], ["PdfAnton", "anton", [400]]];
+  let fontCss = null;
+  async function chartFonts() {
+    if (fontCss) return fontCss;
+    const toData = (u) => fetch(u).then((r) => r.blob()).then((b) => new Promise((res) => { const fr = new FileReader(); fr.onload = () => res(fr.result); fr.readAsDataURL(b); }));
+    const out = [];
+    for (const [fam, file, ws] of PDF_FONTS) for (const w of ws) for (const sub of ["latin", "latin-ext"]) {
+      const data = await toData(`assets/fonts/pdf/${file}-${sub}-${w}-normal.woff2`);
+      out.push(`@font-face{font-family:${fam};font-weight:${w};src:url(${data}) format("woff2");unicode-range:${UR[sub]};}`);
+    }
+    return (fontCss = out.join(""));
+  }
+  function selfContainedSvg(sv, win, fcss) {
+    const map = (f) => /Oswald/.test(f) ? "PdfOswald" : /Plex Mono/.test(f) ? "PdfMono" : /Anton/.test(f) ? "PdfAnton" : f;
+    sv.querySelectorAll("*").forEach((e) => { const c = win.getComputedStyle(e);
+      ["fill", "stroke", "stroke-width", "stroke-dasharray", "stroke-linecap", "opacity", "fill-opacity", "stroke-opacity", "text-anchor", "dominant-baseline"].forEach((k) => e.style.setProperty(k, c.getPropertyValue(k)));
+      if (e.tagName === "text" || e.tagName === "tspan") { e.style.fontFamily = map(c.fontFamily); e.style.fontSize = c.fontSize; e.style.fontWeight = c.fontWeight; e.style.letterSpacing = c.letterSpacing;
+        if (c.textTransform === "uppercase") e.childNodes.forEach((n) => { if (n.nodeType === 3) n.nodeValue = n.nodeValue.toUpperCase(); }); } });
+    const st = win.document.createElementNS("http://www.w3.org/2000/svg", "style"); st.textContent = fcss; sv.insertBefore(st, sv.firstChild);
+  }
+  async function buildPdf() {
+    await Promise.all([loadJs("assets/js/html2canvas.min.js"), loadJs("assets/js/jspdf.umd.min.js")]);
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const css = scopedPrintCss(), fcss = await chartFonts(), pages = [...document.querySelectorAll("#report .pg")];
+    const doc = new window.jspdf.jsPDF({ unit: "mm", format: "a4", compress: true });
+    for (let i = 0; i < pages.length; i++) {
+      const canvas = await window.html2canvas(pages[i], { scale: 2, backgroundColor: "#ffffff", useCORS: true, logging: false, windowWidth: 1200, windowHeight: 1700,
+        onclone: (cd) => {
+          cd.documentElement.classList.add("pdfx");
+          /* the copy must not use the phone layout: drop narrow-screen rules there (the visible page keeps them) */
+          for (const sh of cd.styleSheets) { let rs; try { rs = sh.cssRules; } catch (e) { continue; }
+            for (let j = rs.length - 1; j >= 0; j--) { const r = rs[j]; if (r.media && /max-width/.test(r.media.mediaText) && !/print/.test(r.media.mediaText)) sh.deleteRule(j); } }
+          const st = cd.createElement("style"); st.textContent = css; cd.head.appendChild(st);
+          /* html2canvas draws inset "ring" shadows badly: turn them into borders in the copy */
+          cd.querySelectorAll("#report .pg *").forEach((e) => { const bs = cd.defaultView.getComputedStyle(e).boxShadow;
+            const m = bs && /inset/.test(bs) && bs.match(/^(rgba?\([^)]*\)) 0px 0px 0px ([\d.]+)px inset$/);
+            if (m) { e.style.boxShadow = "none"; e.style.border = m[2] + "px solid " + m[1]; } });
+          /* html2canvas copies ::before/::after sizes from the live page; grid-spanning ones (the big priority numbers) must size in the copy */
+          cd.querySelectorAll("html2canvaspseudoelement").forEach((e) => { if (/span/.test(e.style.gridRow || "")) { e.style.height = "auto"; e.style.minHeight = "0"; } });
+          /* charts: html2canvas draws an SVG at its width/height attributes, so give them the laid-out size */
+          cd.querySelectorAll("#report .pg svg").forEach((sv) => { const r = sv.getBoundingClientRect(); if (r.width) { sv.setAttribute("width", Math.round(r.width)); sv.setAttribute("height", Math.round(r.height)); sv.style.width = Math.round(r.width) + "px"; sv.style.height = Math.round(r.height) + "px"; selfContainedSvg(sv, cd.defaultView, fcss); } });
+        } });
+      const k = Math.min(210 / canvas.width, 297 / canvas.height), w = canvas.width * k, h = canvas.height * k;
+      if (i) doc.addPage();
+      doc.addImage(canvas.toDataURL("image/jpeg", .86), "JPEG", (210 - w) / 2, 0, w, h);
+    }
+    return doc;
+  }
+  window.__ansoneriPdf = buildPdf; /* used by the notification below and by tests */
   let tt;
   function toast(m) { const t = $("toast"); t.textContent = m; t.hidden = false; clearTimeout(tt); tt = setTimeout(() => t.hidden = true, 3200); }
 })();
