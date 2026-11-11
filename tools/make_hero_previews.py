@@ -2,7 +2,7 @@
 import re, pathlib
 root = pathlib.Path(__file__).resolve().parent.parent
 src = (root / "index.html").read_text()
-NAMES = {"1": "Signature line", "2": "Cinematic", "3": "Glass"}
+NAMES = {"1": "Ember", "2": "Horizon", "3": "Quiet glass"}
 SVG_DEFS = ('<defs><linearGradient id="hxg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a120c" stop-opacity=".15"/>'
   '<stop offset=".25" stop-color="#c8281c"/><stop offset=".6" stop-color="#ff6b1a"/><stop offset=".92" stop-color="#ffd7b0"/><stop offset="1" stop-color="#f5f3ee" stop-opacity="0"/></linearGradient>'
   '<linearGradient id="hxg2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff6b1a" stop-opacity="0"/><stop offset=".35" stop-color="#ff6b1a"/><stop offset=".8" stop-color="#ffd7b0"/><stop offset="1" stop-color="#f5f3ee" stop-opacity="0"/></linearGradient></defs>')
@@ -15,13 +15,11 @@ def paths(cls, d, p, layers):
     for k, extra in layers:
         out += f'<path class="{k} dk {extra}" d="{d}" pathLength="1"/><path class="{k} ph {extra}" d="{p}" pathLength="1"/>'
     return out
-ACCENTS = ('<div class="hx hx--1" aria-hidden="true"><svg viewBox="0 0 1000 1000" preserveAspectRatio="none">' + SVG_DEFS
-  + paths("", D1, P1, [("glow", "draw"), ("mid", "draw"), ("core", "draw"), ("spark", "")]) + '</svg></div>'
-  + '<div class="hx hx--2" aria-hidden="true"><div class="light"></div><svg viewBox="0 0 1000 1000" preserveAspectRatio="none">' + SVG_DEFS
-  + paths("", D2, P2, [("arc-g", "draw"), ("arc", "draw")]) + '</svg></div>'
-  + '<div class="hx hx--3" aria-hidden="true"><div class="light"></div></div>')
+ACCENTS = ('<div class="hx hx--1" aria-hidden="true"><i class="glow"></i><i class="gr"></i><i class="rim"></i></div>'
+  '<div class="hx hx--2" aria-hidden="true"><i class="corner"></i><i class="gr c"></i><i class="band"></i><i class="gr b"></i></div>'
+  '<div class="hx hx--3" aria-hidden="true"><i class="glow"></i><i class="gr"></i></div>')
 SCRIPT = ('<script>(function(){var s=document.querySelector("#hero .stage");function f(){var o=Math.max(0,1-scrollY/(innerHeight*.55));'
-  's.style.setProperty("--hxO",o.toFixed(3));}addEventListener("scroll",f,{passive:true});f();})();</script>')
+  's.style.setProperty("--hxO",o.toFixed(3));}var v=document.getElementById("vframe");if(v)s.style.setProperty("--vl",v.getBoundingClientRect().left+"px");addEventListener("scroll",f,{passive:true});f();})();</script>')
 for n, name in NAMES.items():
     h = src.replace('<html lang="lv"', f'<html lang="lv" data-hero="{n}"', 1)
     assert 'data-hero' in h
