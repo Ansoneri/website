@@ -1,0 +1,52 @@
+/* Hero accent previews (11 Nov 2026) - loaded only by preview-hero-*.html, never by index.html */
+.hx { position: absolute; inset: 0; z-index: 3; pointer-events: none; opacity: var(--hxO, 1); }
+.hx svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.hx path { fill: none; vector-effect: non-scaling-stroke; stroke-linecap: round; }
+.hx--1, .hx--2, .hx--3 { display: none; }
+html[data-hero="1"] .hx--1, html[data-hero="2"] .hx--2, html[data-hero="3"] .hx--3 { display: block; }
+.hx .ph { display: none; }
+@media (max-width: 700px) { .hx .dk { display: none; } .hx .ph { display: inline; } }
+
+/* 1 - signature line: a long light line along the bottom that rises into the reel */
+.hx--1 .glow { stroke: url(#hxg); stroke-width: 18px; opacity: .14; }
+.hx--1 .mid { stroke: url(#hxg); stroke-width: 6px; opacity: .38; }
+.hx--1 .core { stroke: url(#hxg); stroke-width: 2.2px; }
+.hx--1 .spark { stroke: #ffe2c8; stroke-width: 2.6px; stroke-dasharray: .05 1; animation: hx-run 6s linear infinite; opacity: .9; }
+.hx--1 .draw { stroke-dasharray: 1 1; stroke-dashoffset: 1; animation: hx-draw 1.8s linear .3s forwards; }
+@keyframes hx-draw { to { stroke-dashoffset: 0; } }
+@keyframes hx-run { from { stroke-dashoffset: 1.05; } to { stroke-dashoffset: 0; } }
+html[data-hero="1"] .vframe { box-shadow: inset 0 0 0 1px rgba(255,107,26,.0); }
+
+/* 2 - cinematic focus: warm light from the lower left, a light arc and a warm edge on the reel */
+.hx--2 .light { position: absolute; inset: 0;
+  background: radial-gradient(70% 55% at 4% 100%, rgba(255,107,26,.34), rgba(200,40,28,.16) 38%, rgba(90,18,12,.06) 60%, transparent 75%),
+              radial-gradient(40% 50% at 56% 62%, rgba(255,107,26,.10), transparent 70%); }
+.hx--2 .arc-g { stroke: url(#hxg2); stroke-width: 26px; opacity: .12; }
+.hx--2 .arc { stroke: url(#hxg2); stroke-width: 2px; }
+.hx--2 .draw { stroke-dasharray: 1 1; stroke-dashoffset: 1; animation: hx-draw 2.2s linear .2s forwards; }
+html[data-hero="2"] .vframe::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(90deg, rgba(255,107,26,.16), rgba(255,107,26,0) 30%), linear-gradient(0deg, rgba(200,40,28,.18), rgba(200,40,28,0) 35%); mix-blend-mode: soft-light; }
+
+/* 3 - glass frame: the name sits on a dark glass panel lit from behind */
+.hx--3 .light { position: absolute; inset: 0;
+  background: radial-gradient(34% 40% at 30% 70%, rgba(255,107,26,.30), rgba(200,40,28,.12) 45%, transparent 72%); }
+html[data-hero="3"] .hero--vid .hb { isolation: isolate; }
+html[data-hero="3"] .hero--vid .hb::before { content: ""; position: absolute; z-index: -1; inset: -44px -56px -40px -48px; border-radius: 26px;
+  background: linear-gradient(135deg, rgba(255,120,40,.16), rgba(26,19,16,.5) 42%, rgba(10,8,8,.38));
+  -webkit-backdrop-filter: blur(18px) saturate(1.2); backdrop-filter: blur(18px) saturate(1.2);
+  box-shadow: inset 0 0 0 1px rgba(255,150,90,.24), inset 0 1px 0 rgba(255,232,214,.16), 0 50px 90px -40px rgba(0,0,0,.9); }
+html[data-hero="3"] .hero--vid .hb::after { content: ""; position: absolute; z-index: -1; left: -48px; top: -44px; width: 46%; height: 2px; border-radius: 2px;
+  background: linear-gradient(90deg, #5a120c, #c8281c 35%, #ff6b1a 70%, #f5f3ee); }
+@media (max-width: 700px) {
+  html[data-hero="3"] .hero--vid .hb::before { inset: -26px 10px -26px 10px; border-radius: 20px; }
+  html[data-hero="3"] .hero--vid .hb::after { left: 10px; top: -26px; }
+  .hx--3 .light { background: radial-gradient(80% 40% at 30% 82%, rgba(255,107,26,.26), transparent 72%); }
+}
+
+/* preview switcher */
+.hxbar { position: fixed; z-index: 90; left: 50%; bottom: 14px; translate: -50% 0; display: flex; gap: 6px; padding: 6px; border-radius: 999px;
+  background: rgba(10,8,8,.82); box-shadow: inset 0 0 0 1px rgba(245,243,238,.14); font: 500 11px/1 var(--f-mono); letter-spacing: .14em; text-transform: uppercase; }
+.hxbar a { white-space: nowrap; padding: 9px 13px; border-radius: 999px; color: rgba(245,243,238,.7); }
+.hxbar a.on { background: #ff6b1a; color: #0b0908; }
+@media (prefers-reduced-motion: reduce) { .hx .spark { display: none; } .hx .draw { animation: none; stroke-dashoffset: 0; } }
+@media (max-width: 700px) { .hxbar { font-size: 10px; letter-spacing: .08em; gap: 2px; } .hxbar a { padding: 8px 10px; } .hxbar .nm { display: none; } }
